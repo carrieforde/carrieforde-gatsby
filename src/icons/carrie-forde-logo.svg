@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="74.804" height="74.803" viewBox="0 0 74.804 74.803">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="74.804" height="74.803" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="carrie-forde-logo" clip-path="url(#clip-path)">
+    <path id="Path_1" data-name="Path 1" d="M190.764,10.278V0h-74.8V74.8h74.8V64.521H126.238V10.278Z" transform="translate(-115.96)" fill="#707070"/>
+    <path id="Path_2" data-name="Path 2" d="M229.293,64.229V56.52H172.48V95.341h7.71V79.785h49.1V72.076h-49.1V64.229Z" transform="translate(-154.489 -38.529)" fill="#707070"/>
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="41.215" height="7.709" transform="translate(33.585 48.721)" fill="#707070"/>
+  </g>
+</svg>
