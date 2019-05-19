@@ -1,6 +1,7 @@
 ---
-title: Setting up project environments
-date: 02/23/2018
+title: "Setting up project environments"
+date: 2018-02-23
+category: "Development"
 ---
 
 I’m gonna be straight with ya. The main reason I wanted to write this post was because I successfully utilized Let’s Encrypt to add an SSL certificate to aurorathe.me. And SSHing into a remote server, and not breaking it (in fact, making at least some part of it more secure) feels like black magic. So today, let’s make this a broader discussion and talk about the project environments I set up to work on Aurora Theme.
