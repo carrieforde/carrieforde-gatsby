@@ -37,6 +37,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-sass`,
       options: {
         includePaths: [
@@ -44,9 +50,14 @@ module.exports = {
           "node_modules/aurora-utilities/sass",
         ],
         postCssPlugins: [
-          require("postcss-unit-conversion"),
           require("autoprefixer")({ grid: true, browsers: "last 2 versions" }),
           require("css-mqpacker")({ sort: true }),
+          require("postcss-unit-conversion")({
+            base: 18,
+            precision: 5,
+            toEM: ["letter-spacing", "text-shadow"],
+            toREM: ["font-size", "margin", "padding", "width", "height"],
+          }),
         ],
       },
     },

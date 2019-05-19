@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 const Article = ({ data }) => {
   const post = data.markdownRemark,
@@ -9,6 +10,7 @@ const Article = ({ data }) => {
 
   return (
     <Layout>
+      <SEO title={title} />
       <header className="post">
         <span className="post__category">{category}</span>
         <h1 className="post__title">{title}</h1>
