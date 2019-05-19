@@ -2,7 +2,6 @@ module.exports = {
   siteMetadata: {
     title: `Carrie Forde`,
     description: `Carrie Forde is a front end software engineer in San Mateo, California who specializes in building elegant, maintainable, and performant websites.`,
-    logo: `src/images/carrie-forde-logo.svg`,
     author: `@carrieforde`,
   },
   plugins: [
@@ -34,6 +33,20 @@ module.exports = {
         rule: {
           include: /icons/,
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        includePaths: [
+          "node_modules/reset.css",
+          "node_modules/aurora-utilities/sass",
+        ],
+        postCssPlugins: [
+          require("postcss-unit-conversion"),
+          require("autoprefixer")({ grid: true, browsers: "last 2 versions" }),
+          require("css-mqpacker")({ sort: true }),
+        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
