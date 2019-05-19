@@ -2,6 +2,7 @@ import Typography from "typography"
 // import CodePlugin from "typography-plugin-code"
 
 const typography = new Typography({
+  title: "Carrie Forde",
   baseFontSize: "18px",
   baseLineHeight: 1.75,
   googleFonts: [
@@ -11,14 +12,15 @@ const typography = new Typography({
     },
     {
       name: "IBM Plex Mono",
-      styles: ["400"],
+      styles: ["400", "600"],
     },
   ],
   headerFontFamily: ["Libre Franklin", "sans-serif"],
   bodyFontFamily: ["Libre Franklin", "sans-serif"],
+  headerColor: "#243B53",
+  bodyColor: "#334E68",
   headerWeight: 600,
   boldWeight: 600,
-  scaleRatio: 3,
 })
 
 export default typography
