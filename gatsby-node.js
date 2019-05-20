@@ -1,5 +1,5 @@
-const path = require("path")
-const { createFilePath } = require("gatsby-source-filesystem")
+const path = require('path');
+const { createFilePath } = require('gatsby-source-filesystem');
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -7,21 +7,21 @@ const { createFilePath } = require("gatsby-source-filesystem")
  */
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
 
-  if (node.internal.type === "MarkdownRemark") {
-    const slug = createFilePath({ node, getNode, basePath: "articles" })
+  if (node.internal.type === 'MarkdownRemark') {
+    const slug = createFilePath({ node, getNode, basePath: 'content/posts' });
 
     createNodeField({
       node,
-      name: "slug",
-      value: slug,
-    })
+      name: 'slug',
+      value: slug
+    });
   }
-}
+};
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
   return graphql(`
     {
       allMarkdownRemark {
@@ -38,11 +38,11 @@ exports.createPages = ({ graphql, actions }) => {
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       createPage({
         path: node.fields.slug,
-        component: path.resolve("./src/templates/article.js"),
+        component: path.resolve('./src/templates/post.js'),
         context: {
-          slug: node.fields.slug,
-        },
-      })
-    })
-  })
-}
+          slug: node.fields.slug
+        }
+      });
+    });
+  });
+};

@@ -6,7 +6,7 @@ import Article from '../components/Article/Article';
 import SEO from '../components/SEO/SEO';
 import PropTypes from 'prop-types';
 
-const Articles = ({ data }) => {
+const Blog = ({ data }) => {
   return (
     <Site>
       <SEO title="Articles" />
@@ -18,11 +18,11 @@ const Articles = ({ data }) => {
   );
 };
 
-Articles.propTypes = {
+Blog.propTypes = {
   data: PropTypes.object
 };
 
-export default Articles;
+export default Blog;
 
 export const query = graphql`
   query {
