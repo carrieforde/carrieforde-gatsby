@@ -1,20 +1,20 @@
 import React from 'react';
-import Layout from '../components/layout';
+import Site from '../components/Site/Site';
 import { graphql } from 'gatsby';
 
-import Article from '../components/article';
-import SEO from '../components/seo';
+import Article from '../components/Article/Article';
+import SEO from '../components/SEO/SEO';
 import PropTypes from 'prop-types';
 
 const Articles = ({ data }) => {
   return (
-    <Layout>
+    <Site>
       <SEO title="Articles" />
       <h1>Articles</h1>
       {data.allMarkdownRemark.edges.map((article, index) => (
         <Article key={index} {...article} />
       ))}
-    </Layout>
+    </Site>
   );
 };
 

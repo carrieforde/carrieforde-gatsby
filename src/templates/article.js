@@ -1,7 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import Site from '../components/Site/Site';
+import SEO from '../components/SEO/SEO';
+import PropTypes from 'prop-types';
 
 const Article = ({ data }) => {
   const post = data.markdownRemark,
@@ -9,7 +10,7 @@ const Article = ({ data }) => {
     { title, date, category } = frontmatter;
 
   return (
-    <Layout>
+    <Site>
       <SEO title={title} />
       <header className="post">
         <span className="post__category">{category}</span>
@@ -20,8 +21,12 @@ const Article = ({ data }) => {
         className="post__content"
         dangerouslySetInnerHTML={{ __html: html }}
       />
-    </Layout>
+    </Site>
   );
+};
+
+Article.propTypes = {
+  data: PropTypes.object
 };
 
 export default Article;
