@@ -1,9 +1,10 @@
-import React from "react"
-import Layout from "../components/layout"
-import { graphql } from "gatsby"
+import React from 'react';
+import Layout from '../components/layout';
+import { graphql } from 'gatsby';
 
-import Article from "../components/article"
-import SEO from "../components/seo"
+import Article from '../components/article';
+import SEO from '../components/seo';
+import PropTypes from 'prop-types';
 
 const Articles = ({ data }) => {
   return (
@@ -14,10 +15,14 @@ const Articles = ({ data }) => {
         <Article key={index} {...article} />
       ))}
     </Layout>
-  )
-}
+  );
+};
 
-export default Articles
+Articles.propTypes = {
+  data: PropTypes.object
+};
+
+export default Articles;
 
 export const query = graphql`
   query {
@@ -37,4 +42,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

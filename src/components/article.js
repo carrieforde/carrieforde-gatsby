@@ -1,9 +1,9 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react';
+import { Link } from 'gatsby';
 
 const Article = data => {
   const { excerpt, frontmatter, timeToRead, fields } = data.node,
-    { title, date } = frontmatter
+    { title, date } = frontmatter;
 
   return (
     <article className="post">
@@ -16,7 +16,7 @@ const Article = data => {
       </header>
       <div className="post__excerpt">{excerpt}</div>
     </article>
-  )
-}
+  );
+};
 
-export default Article
+export default Article;

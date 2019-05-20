@@ -1,12 +1,12 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import React from 'react';
+import { graphql } from 'gatsby';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 const Article = ({ data }) => {
   const post = data.markdownRemark,
     { frontmatter, html } = post,
-    { title, date, category } = frontmatter
+    { title, date, category } = frontmatter;
 
   return (
     <Layout>
@@ -21,10 +21,10 @@ const Article = ({ data }) => {
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </Layout>
-  )
-}
+  );
+};
 
-export default Article
+export default Article;
 
 export const query = graphql`
   query($slug: String) {
@@ -37,4 +37,4 @@ export const query = graphql`
       html
     }
   }
-`
+`;

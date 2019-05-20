@@ -29,10 +29,23 @@
     "typography-plugin-code": "^0.16.19"
   },
   "devDependencies": {
+    "@danbruegge/gatsby-plugin-stylelint": "^3.4.0",
     "autoprefixer": "^9.5.1",
     "css-mqpacker": "^7.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-flowtype": "^3.9.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "gatsby-plugin-eslint": "^2.0.5",
     "postcss-unit-conversion": "0.0.3",
-    "prettier": "^1.17.1"
+    "prettier": "^1.17.1",
+    "stylelint": "^10.0.1",
+    "stylelint-config-recommended-scss": "^3.3.0",
+    "stylelint-order": "^3.0.0",
+    "stylelint-scss": "^3.6.1"
   },
   "keywords": [
     "gatsby"
@@ -41,7 +54,10 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
+    "format": "prettier --write src/**/*.{js,jsx,css,scss}",
+    "lint:all": "npm run lint:es && npm run lint:style",
+    "lint:es": "eslint 'src/**/*.{js,jsx}' --quiet --fix",
+    "lint:style": "stylelint 'src/**/*.{css,scss}' --fix",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""

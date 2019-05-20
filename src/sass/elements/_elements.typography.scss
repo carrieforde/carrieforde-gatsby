@@ -55,41 +55,41 @@ tt,
 var {
     background-color: map-get($neutral, 1) !important;
     border-radius: 3px;
+    color: $header-color !important;
     font-family: $font-family-monospace !important;
     font-size: 18px;
     padding: 0 $size-1 !important;
-    color: $header-color !important;
 }
 
 pre {
     background-color: map-get($neutral, 1) !important;
     border: 1px solid map-get($neutral, 3);
-    overflow-x: scroll;
-    padding: $size-4 !important;
     margin-bottom: $size-6 !important;
     margin-top: $size-6 !important;
+    overflow-x: scroll;
+    padding: $size-4 !important;
 }
 
 blockquote {
-    position: relative;
     color: $header-color;
     margin: $size-7 $size-6;
+    position: relative;
     
     &:before {
         color: map-get($primary, 1);
         content: '\0201C';
         font-size: $size-11;
-        position: absolute;
+        left: -35px;
         line-height: 1;
-        z-index: -1;
+        position: absolute;
         top: -35px;
-        left: -35px
+        z-index: -1
     }
 }
 
 cite {
-    font-size: $type-12;
     display: block;
+    font-size: $type-12;
     margin-top: $size-3;
 }
 
