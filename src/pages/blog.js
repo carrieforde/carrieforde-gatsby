@@ -9,11 +9,21 @@ import PropTypes from 'prop-types';
 const Blog = ({ data }) => {
   return (
     <Site>
-      <SEO title="Articles" />
-      <h1>Articles</h1>
-      {data.allMarkdownRemark.edges.map((article, index) => (
-        <Article key={index} {...article} />
-      ))}
+      <SEO title="Blog" />
+      <header className="page__header">
+        <h1 className="page__title">Blog</h1>
+        <p className="page__excerpt">
+          Occasional posts on JavaScript, WordPress, and front end development.
+        </p>
+      </header>
+
+      <ul className="blog">
+        {data.allMarkdownRemark.edges.map((article, index) => (
+          <li key={index} className="blog__post">
+            <Article {...article} />
+          </li>
+        ))}
+      </ul>
     </Site>
   );
 };
@@ -32,6 +42,7 @@ export const query = graphql`
           frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
+            category
           }
           timeToRead
           excerpt

@@ -1,14 +1,33 @@
-// Settings.
-@import "settings/settings.typography";
-@import "settings/settings.sizes";
-@import "settings/settings.colors";
-@import "settings/settings.transitions";
-
 // Elements
-@import "elements/elements.typography";
-
-// Objects.
-@import "objects/objects.site";
+@import 'elements/elements.typography';
 
 // Utilities.
-@import "utilities/utilities.visually-hidden";
+@import 'utilities/utilities.visually-hidden';
+
+.page__title {
+	color: map-get($neutral, 7);
+	font-size: $type-60;
+	font-weight: 300;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.page__excerpt {
+	font-size: $type-24;
+	font-weight: 600;
+	line-height: 1.4;
+	margin-top: $size-6;
+}
+
+.blog {
+	list-style: none;
+	margin: 0;
+	margin-top: $size-6;
+	padding: 0;
+}
+
+.blog__post {
+	& + & {
+		margin-top: $size-7;
+	}
+}

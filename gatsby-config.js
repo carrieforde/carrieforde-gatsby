@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   siteMetadata: {
     title: `Carrie Forde`,
@@ -61,6 +63,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sass`,
       options: {
+        data: '@import "settings";',
+        includePaths: [path.join(__dirname, './src/sass/')],
         postCssPlugins: [
           require('autoprefixer')({ grid: true, browsers: 'last 2 versions' }),
           require('css-mqpacker')({ sort: true }),

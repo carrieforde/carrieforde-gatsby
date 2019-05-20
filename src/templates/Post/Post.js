@@ -1,13 +1,20 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Site from '../components/Site/Site';
-import SEO from '../components/SEO/SEO';
+import Site from '../../components/Site/Site';
+import SEO from '../../components/SEO/SEO';
 import PropTypes from 'prop-types';
+import './Post.scss';
 
-const Article = ({ data }) => {
+const Post = ({ data }) => {
   const post = data.markdownRemark,
     { frontmatter, html } = post,
-    { title, date, category } = frontmatter;
+    { title, date, category, snippet } = frontmatter;
+
+  let excerpt = '';
+
+  if (snippet) {
+    excerpt = <p className="post__excerpt">{snippet}</p>;
+  }
 
   return (
     <Site>
@@ -15,6 +22,7 @@ const Article = ({ data }) => {
       <header className="post">
         <span className="post__category">{category}</span>
         <h1 className="post__title">{title}</h1>
+        {excerpt}
         <span className="post__date">{date}</span>
       </header>
       <div
@@ -25,11 +33,11 @@ const Article = ({ data }) => {
   );
 };
 
-Article.propTypes = {
+Post.propTypes = {
   data: PropTypes.object
 };
 
-export default Article;
+export default Post;
 
 export const query = graphql`
   query($slug: String) {
@@ -38,6 +46,7 @@ export const query = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         category
+        snippet
       }
       html
     }

@@ -1,12 +1,11 @@
 ---
-title: "Webpack for WordPress"
+title: 'Webpack for WordPress'
 date: 2018-10-13
-category: "WordPress"
+category: 'WordPress'
+snippet: 'With the rise of React in WordPress, there are more and more developers turning to webpack for managing and bundling front end assets.'
 ---
 
-With the rise of React in WordPress, there are more and more developers turning to webpack for managing and bundling front end assets. In this post, I’ll cover webpack at a high level (what it is, and why we might reach for it), and show you how you can unleash the power of webpack in your WordPress projects to manage and bundle front end assets.
-
-## What is webpack and why should I consider using it?
+In this post, I’ll cover webpack at a high level (what it is, and why we might reach for it), and show you how you can unleash the power of webpack in your WordPress projects to manage and bundle front end assets.
 
 At first glance, it’s really tempting to classify webpack as yet another front end task runner. Not unlike Grunt or Gulp, it can perform tasks such as JavaScript and Sass compilation and minification. But the way in which webpack works with these files is what makes webpack stand out.
 
@@ -58,7 +57,7 @@ And this is pretty great if you only need to deal with JavaScript. In fact, you 
 Go ahead and open up webpack.config.js within the `_s` directory. The first thing we’re going to do is declare a variable at the top of the file:
 
 ```javascript
-const path = require("path")
+const path = require('path');
 ```
 
 [`path`](https://nodejs.org/api/path.html) is a built in Node module, that will allow us to declare relative paths to files throughout `_s`, and prevent any clashes with paths in our operating system. During this tutorial, you’ll often see path used with the [`__dirname`](https://nodejs.org/docs/latest/api/globals.html#globals_dirname) global.
@@ -72,12 +71,12 @@ Within our configuration object let’s declare the entry and output properties.
 ```javascript
 module.exports = {
   context: __dirname,
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: "bundle.js",
-  },
-}
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js'
+  }
+};
 ```
 
 - **`context`** is an absolute path to your application so webpack always knows where to run. It’s not strictly required, but means that you can run webpack from anywhere in your app without issue.
@@ -89,9 +88,9 @@ module.exports = {
 Now that we’ve defined our basic configuration, let’s open index.js and import the files in our js directory using the import statement.
 
 ```javascript
-import "./js/customizer"
-import "./js/navigation"
-import "./js/skip-link-focus-fix"
+import './js/customizer';
+import './js/navigation';
+import './js/skip-link-focus-fix';
 ```
 
 Go ahead and entry `node_modules/.bin/webpack` in your terminal (within the `_s` directory), and you should see a minified file in the public directory that looks something like this:
@@ -109,13 +108,13 @@ Minification is the process of stripping out whitespace, and replacing other unn
 ```javascript
 module.exports = {
   context: __dirname,
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js'
   },
-  mode: "development",
-}
+  mode: 'development'
+};
 ```
 
 In the code above, you’ll see I added the `mode` property. Since webpack defaults to production, I set it to development. Now when you run `node_modules/.bin/webpack` in your project, you’ll see a verbose, human-readable file.
@@ -129,14 +128,14 @@ Source maps are added using the devtool property:
 ```javascript
 module.exports = {
   context: __dirname,
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js'
   },
-  mode: "development",
-  devtool: "source-map",
-}
+  mode: 'development',
+  devtool: 'source-map'
+};
 ```
 
 `source-map` is one among a wide variety of source map options for the `devtool` property. I recommend reviewing the [webpack documentation on `devtool`](https://webpack.js.org/configuration/devtool/) to learn more about your options.
@@ -208,26 +207,26 @@ Without going too deep in the weeds, the basic idea here is that Babel will look
 Loaders live within a `rules` array that is nested within a module object. Each loader is an object that consists of a test property, which determines which files will be targeted for the transform, and a loader property, which tells webpack which loader to use for the actual transformation. Here’s our webpack file with the Babel loader:
 
 ```javascript
-const path = require("path")
+const path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js'
   },
-  mode: "development",
-  devtool: "cheap-eval-source-map",
+  mode: 'development',
+  devtool: 'cheap-eval-source-map',
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
-      },
-    ],
-  },
-}
+        loader: 'babel-loader'
+      }
+    ]
+  }
+};
 ```
 
 Let’s take a closer look at the object for Babel:
@@ -252,109 +251,109 @@ We can test that our new rule is working by refactoring navigation.js to use ES6
  *
  * Handles toggling the navigation menu for small screens and enables TAB key navigation support for dropdown menus.
  */
-;(function() {
-  let container, button, menu, links, i, len
+(function() {
+  let container, button, menu, links, i, len;
 
-  container = document.getElementById("site-navigation")
+  container = document.getElementById('site-navigation');
 
   if (!container) {
-    return
+    return;
   }
 
-  button = container.querySelector("button") // querySelector will automatically return the first match.
-  if ("undefined" === typeof button) {
-    return
+  button = container.querySelector('button'); // querySelector will automatically return the first match.
+  if ('undefined' === typeof button) {
+    return;
   }
 
-  menu = container.querySelector("ul")
+  menu = container.querySelector('ul');
 
   // Hide menu toggle button if menu is empty and return early.
-  if ("undefined" === typeof menu) {
-    button.style.display = "none"
-    return
+  if ('undefined' === typeof menu) {
+    button.style.display = 'none';
+    return;
   }
 
-  menu.setAttribute("aria-expanded", "false")
-  if (!menu.classList.contains("nav-menu")) {
-    menu.classList.add("nav-menu")
+  menu.setAttribute('aria-expanded', 'false');
+  if (!menu.classList.contains('nav-menu')) {
+    menu.classList.add('nav-menu');
   }
 
   button.onclick = () => {
-    if (container.classList.contains("toggled")) {
-      container.classList.remove("toggled")
-      button.setAttribute("aria-expanded", "false")
-      menu.setAttribute("aria-expanded", "false")
+    if (container.classList.contains('toggled')) {
+      container.classList.remove('toggled');
+      button.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-expanded', 'false');
     } else {
-      container.classList.add("toggled")
-      button.setAttribute("aria-expanded", "true")
-      menu.setAttribute("aria-expanded", "true")
+      container.classList.add('toggled');
+      button.setAttribute('aria-expanded', 'true');
+      menu.setAttribute('aria-expanded', 'true');
     }
-  }
+  };
 
   // Get all the link elements within the menu.
-  links = menu.querySelectorAll("a")
+  links = menu.querySelectorAll('a');
 
   // Each time a menu link is focused or blurred, toggle focus.
   for (const link of links) {
-    link.addEventListener("focus", toggleFocus, true)
-    link.addEventListener("blur", toggleFocus, true)
+    link.addEventListener('focus', toggleFocus, true);
+    link.addEventListener('blur', toggleFocus, true);
   }
 
   /**
    * Sets or removes .focus class on an element.
    */
   function toggleFocus() {
-    const self = this
+    const self = this;
 
     // Move up through the ancestors of the current link until we hit .nav-menu.
-    while (!self.classList.contains("nav-menu")) {
+    while (!self.classList.contains('nav-menu')) {
       // On li elements toggle the class .focus.
-      if ("LI" === self.tagName) {
-        if (self.classList.contains("focus")) {
-          self.classList.remove("focus")
+      if ('LI' === self.tagName) {
+        if (self.classList.contains('focus')) {
+          self.classList.remove('focus');
         } else {
-          self.classList.add("focus")
+          self.classList.add('focus');
         }
       }
 
-      self = self.parentElement
+      self = self.parentElement;
     }
   }
 
   /**
    * Toggles `focus` class to allow submenu access on tablets.
    */
-  ;(function(container) {
+  (function(container) {
     const parentLink = container.querySelectorAll(
-      ".menu-item-has-children > a, .page_item_has_children > a"
-    )
-    let touchStartFn, i
+      '.menu-item-has-children > a, .page_item_has_children > a'
+    );
+    let touchStartFn, i;
 
-    if ("ontouchstart" in window) {
+    if ('ontouchstart' in window) {
       touchStartFn = e => {
-        const menuItem = this.parentNode
-        let i
+        const menuItem = this.parentNode;
+        let i;
 
-        if (!menuItem.classList.contains("focus")) {
-          e.preventDefault()
+        if (!menuItem.classList.contains('focus')) {
+          e.preventDefault();
           for (i = 0; i < menuItem.parentNode.children.length; ++i) {
             if (menuItem === menuItem.parentNode.children[i]) {
-              continue
+              continue;
             }
-            menuItem.parentNode.children[i].classList.remove("focus")
+            menuItem.parentNode.children[i].classList.remove('focus');
           }
-          menuItem.classList.add("focus")
+          menuItem.classList.add('focus');
         } else {
-          menuItem.classList.remove("focus")
+          menuItem.classList.remove('focus');
         }
-      }
+      };
 
       for (const child of parentLink) {
-        child.addEventListener("touchstart", touchStartFn, false)
+        child.addEventListener('touchstart', touchStartFn, false);
       }
     }
-  })(container)
-})()
+  })(container);
+})();
 ```
 
 Now after running `npm run dev`, we see that the arrow function has been transformed into a regular function, the `forof` loop became a standard for loop, and usage of `let` and `const` has been transformed into `var`.
@@ -366,32 +365,32 @@ The arrow function is now a standard function, and the forof was transformed int
 We can enhance our JavaScript processing a bit further by adding the eslint-loader to lint our files, and print errors in the console as we save.
 
 ```javascript
-const path = require("path")
+const path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js'
   },
-  mode: "development",
-  devtool: "cheap-eval-source-map",
+  mode: 'development',
+  devtool: 'cheap-eval-source-map',
   module: {
     rules: [
       {
-        enforce: "pre",
+        enforce: 'pre',
         exclude: /node_modules/,
         test: /\.jsx$/,
-        loader: "eslint-loader",
+        loader: 'eslint-loader'
       },
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
-      },
-    ],
-  },
-}
+        loader: 'babel-loader'
+      }
+    ]
+  }
+};
 ```
 
 #### Going beyond JavaScript
@@ -412,7 +411,7 @@ Let’s start by adding this object below our babel-loader object:
 You’ll notice that instead of the `loader` property, we’re using the `use` property, which is able to take an array of loaders. Now, we can add an import line to our `index.js` file to tell webpack where our styles live:
 
 ```javascript
-import "./sass/style.scss"
+import './sass/style.scss';
 ```
 
 If we run npm run build, we should find that everything compiles successfully, but if you take a peak in the public folder, you won’t see a compiled CSS file. When working in a static environment, webpack and review the DOM and inline only the styles needed for an individual page. But because WordPress works in a server environment, this doesn’t quite work for us. We need a way of extracting our styles to a separate file so we can enqueue theme in the theme’s function.php file.
@@ -428,34 +427,34 @@ The purpose of the `MiniCssExtractPlugin` extract the CSS from our source files 
 The first thing we’ll need to do is require the `MiniCssExtractPlugin` in the top of the file, and then we can add the plugins property to the configuration object.
 
 ```javascript
-const path = require("path"),
-  MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const path = require('path'),
+  MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   context: __dirname,
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js'
   },
-  mode: "development",
-  devtool: "source-map",
+  mode: 'development',
+  devtool: 'source-map',
   module: {
     rules: [
       {
-        enforce: "pre",
+        enforce: 'pre',
         exclude: /node_modules/,
         test: /\.jsx$/,
-        loader: "eslint-loader",
+        loader: 'eslint-loader'
       },
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
-      },
-    ],
+        loader: 'babel-loader'
+      }
+    ]
   },
-  plugins: [new MiniCssExtractPlugin({ filename: "../style.css" })],
-}
+  plugins: [new MiniCssExtractPlugin({ filename: '../style.css' })]
+};
 ```
 
 - **`const MiniCssExtractPlugin = require('mini-css-extract-plugin')`** saves `MiniCssExtractPlugin` to a variable for use in our configuration object.
@@ -464,38 +463,38 @@ module.exports = {
 The only option we need to pass to `MiniCssExtractPlugin` at this time is an object with a `filename` property, and a string value that points to our `style.css` in the root of our project.
 
 ```javascript
-const path = require("path"),
-  MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const path = require('path'),
+  MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   context: __dirname,
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js'
   },
-  mode: "development",
-  devtool: "source-map",
+  mode: 'development',
+  devtool: 'source-map',
   module: {
     rules: [
       {
-        enforce: "pre",
+        enforce: 'pre',
         exclude: /node_modules/,
         test: /\.jsx$/,
-        loader: "eslint-loader",
+        loader: 'eslint-loader'
       },
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
+        loader: 'babel-loader'
       },
       {
         test: /\.s?css\$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-      },
-    ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      }
+    ]
   },
-  plugins: [new MiniCssExtractPlugin({ filename: "../style.css" })],
-}
+  plugins: [new MiniCssExtractPlugin({ filename: '../style.css' })]
+};
 ```
 
 The only difference between our previous loader for managing styles, and our updated loader is that we added `MiniCssExtractPlugin.loader` as the first item in the use array.
@@ -511,43 +510,43 @@ It’s really great that webpack minifies our bundle by default when we run npm 
 We need to require two more plugins and set up an optimization object to process and minify our files.
 
 ```javascript
-const path = require("path"),
-  MiniCssExtractPlugin = require("mini-css-extract-plugin"),
-  UglifyJSPlugin = require("uglifyjs-webpack-plugin"),
-  OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+const path = require('path'),
+  MiniCssExtractPlugin = require('mini-css-extract-plugin'),
+  UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
+  OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   context: __dirname,
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js'
   },
-  mode: "development",
-  devtool: "source-map",
+  mode: 'development',
+  devtool: 'source-map',
   module: {
     rules: [
       {
-        enforce: "pre",
+        enforce: 'pre',
         exclude: /node_modules/,
         test: /\.jsx$/,
-        loader: "eslint-loader",
+        loader: 'eslint-loader'
       },
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
+        loader: 'babel-loader'
       },
       {
         test: /\.s?css\$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-      },
-    ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      }
+    ]
   },
-  plugins: [new MiniCssExtractPlugin({ filename: "../style.css" })],
+  plugins: [new MiniCssExtractPlugin({ filename: '../style.css' })],
   optimization: {
-    minimizer: [new UglifyJSPlugin(), new OptimizeCssAssetsPlugin()],
-  },
-}
+    minimizer: [new UglifyJSPlugin(), new OptimizeCssAssetsPlugin()]
+  }
+};
 ```
 
 You’ll notice that I required both the `UglifyJSPlugin` and `OptimizeCSSAssetsPlugin`. In webpack, when you use a custom minifier, the default minifier no longer works, so we need to include `UglifyJSPlugin` to take care of our JavaScript minification.
@@ -561,50 +560,50 @@ webpack comes with it’s own auto-reloading `devServer`, but it’s difficult t
 As before, our first step is to require the BrowserSyncPlugin.
 
 ```javascript
-const path = require("path"),
-  MiniCssExtractPlugin = require("mini-css-extract-plugin"),
-  UglifyJSPlugin = require("uglifyjs-webpack-plugin"),
-  OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
-  BrowserSyncPlugin = require("browser-sync-webpack-plugin")
+const path = require('path'),
+  MiniCssExtractPlugin = require('mini-css-extract-plugin'),
+  UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
+  OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
+  BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
   context: __dirname,
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js'
   },
-  mode: "development",
-  devtool: "source-map",
+  mode: 'development',
+  devtool: 'source-map',
   module: {
     rules: [
       {
-        enforce: "pre",
+        enforce: 'pre',
         exclude: /node_modules/,
         test: /\.jsx$/,
-        loader: "eslint-loader",
+        loader: 'eslint-loader'
       },
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
+        loader: 'babel-loader'
       },
       {
         test: /\.s?css\$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-      },
-    ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      }
+    ]
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: "../style.css" }),
+    new MiniCssExtractPlugin({ filename: '../style.css' }),
     new BrowserSyncPlugin({
-      files: "**/*.php",
-      proxy: "http://underscores.test",
-    }),
+      files: '**/*.php',
+      proxy: 'http://underscores.test'
+    })
   ],
   optimization: {
-    minimizer: [new UglifyJSPlugin(), new OptimizeCssAssetsPlugin()],
-  },
-}
+    minimizer: [new UglifyJSPlugin(), new OptimizeCssAssetsPlugin()]
+  }
+};
 ```
 
 Then, we instantiate the `BrowserSyncPlugin` in the plugins array, and pass a few values within the configuration object:
@@ -622,12 +621,12 @@ Right now, our `index.js` file looks like this:
 
 ```javascript
 // Theme Sass.
-import "./sass/style.scss"
+import './sass/style.scss';
 
 // Theme JavaScript.
-import "./js/customizer"
-import "./js/navigation"
-import "./js/skip-link-focus-fix"
+import './js/customizer';
+import './js/navigation';
+import './js/skip-link-focus-fix';
 ```
 
 Notice anything amiss here?
@@ -639,54 +638,54 @@ The first thing we’ll need to do is move customizer.js to the root of src. Thi
 Next, we’ll update our webpack file.
 
 ```javascript
-const path = require("path"),
-  MiniCssExtractPlugin = require("mini-css-extract-plugin"),
-  UglifyJSPlugin = require("uglifyjs-webpack-plugin"),
-  OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
-  BrowserSyncPlugin = require("browser-sync-webpack-plugin")
+const path = require('path'),
+  MiniCssExtractPlugin = require('mini-css-extract-plugin'),
+  UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
+  OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
+  BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
   context: __dirname,
   entry: {
-    frontend: "./src/index.js",
-    customizer: "./src/customizer.js",
+    frontend: './src/index.js',
+    customizer: './src/customizer.js'
   },
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: "[name]-bundle.js",
+    path: path.resolve(__dirname, 'public'),
+    filename: '[name]-bundle.js'
   },
-  mode: "development",
-  devtool: "source-map",
+  mode: 'development',
+  devtool: 'source-map',
   module: {
     rules: [
       {
-        enforce: "pre",
+        enforce: 'pre',
         exclude: /node_modules/,
         test: /\.jsx$/,
-        loader: "eslint-loader",
+        loader: 'eslint-loader'
       },
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
+        loader: 'babel-loader'
       },
       {
         test: /\.s?css\$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-      },
-    ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      }
+    ]
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: "../style.css" }),
+    new MiniCssExtractPlugin({ filename: '../style.css' }),
     new BrowserSyncPlugin({
-      files: "**/*.php",
+      files: '**/*.php',
       injectChanges: true,
-      proxy: "http://underscores.test",
-    }),
+      proxy: 'http://underscores.test'
+    })
   ],
   optimization: {
-    minimizer: [new UglifyJSPlugin(), new OptimizeCssAssetsPlugin()],
-  },
-}
+    minimizer: [new UglifyJSPlugin(), new OptimizeCssAssetsPlugin()]
+  }
+};
 ```
 
 `entry` now takes an object, and I’ve updated `output` to take the `[name]` placeholder. When webpack runs, we’ll get an output bundle for each entry, and the property for each entry will be placed in the `[name]` placeholder. So `customizer.js will compile to`customizer-bundle.js`.
@@ -694,54 +693,54 @@ module.exports = {
 If you’re using React in your theme, you may want to considering adding `babel-polyfill` so you can support IE11. Each key in the entry object can take either a string, or an array. One of the methods Babel suggests for adding `babel-polyfill` is to add it as the first item in an array for one of the entry points:
 
 ```javascript
-const path = require("path"),
-  MiniCssExtractPlugin = require("mini-css-extract-plugin"),
-  UglifyJSPlugin = require("uglifyjs-webpack-plugin"),
-  OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
-  BrowserSyncPlugin = require("browser-sync-webpack-plugin")
+const path = require('path'),
+  MiniCssExtractPlugin = require('mini-css-extract-plugin'),
+  UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
+  OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
+  BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
   context: __dirname,
   entry: {
-    frontend: ["babel-polyfill", "./src/index.js"],
-    customizer: "./src/customizer.js",
+    frontend: ['babel-polyfill', './src/index.js'],
+    customizer: './src/customizer.js'
   },
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: "[name]-bundle.js",
+    path: path.resolve(__dirname, 'public'),
+    filename: '[name]-bundle.js'
   },
-  mode: "development",
-  devtool: "source-map",
+  mode: 'development',
+  devtool: 'source-map',
   module: {
     rules: [
       {
-        enforce: "pre",
+        enforce: 'pre',
         exclude: /node_modules/,
         test: /\.jsx$/,
-        loader: "eslint-loader",
+        loader: 'eslint-loader'
       },
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
+        loader: 'babel-loader'
       },
       {
         test: /\.s?css\$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-      },
-    ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      }
+    ]
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: "../style.css" }),
+    new MiniCssExtractPlugin({ filename: '../style.css' }),
     new BrowserSyncPlugin({
-      files: "**/*.php",
+      files: '**/*.php',
       injectChanges: true,
-      proxy: "http://underscores.test",
-    }),
+      proxy: 'http://underscores.test'
+    })
   ],
   optimization: {
-    minimizer: [new UglifyJSPlugin(), new OptimizeCssAssetsPlugin()],
-  },
-}
+    minimizer: [new UglifyJSPlugin(), new OptimizeCssAssetsPlugin()]
+  }
+};
 ```
 
 ### Finishing touches
@@ -751,56 +750,56 @@ At this point, we have a fairly robust webpack configuration. We can compile and
 We’ve already added linting for our JavaScript files, but let’s also add linting for our Sass files:
 
 ```javascript
-const path = require("path"),
-  MiniCssExtractPlugin = require("mini-css-extract-plugin"),
-  UglifyJSPlugin = require("uglifyjs-webpack-plugin"),
-  OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
-  BrowserSyncPlugin = require("browser-sync-webpack-plugin"),
-  StyleLintPlugin = require("stylelint-webpack-plugin")
+const path = require('path'),
+  MiniCssExtractPlugin = require('mini-css-extract-plugin'),
+  UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
+  OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
+  BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
+  StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   context: __dirname,
   entry: {
-    frontend: ["babel-polyfill", "./src/index.js"],
-    customizer: "./src/customizer.js",
+    frontend: ['babel-polyfill', './src/index.js'],
+    customizer: './src/customizer.js'
   },
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: "[name]-bundle.js",
+    path: path.resolve(__dirname, 'public'),
+    filename: '[name]-bundle.js'
   },
-  mode: "development",
-  devtool: "source-map",
+  mode: 'development',
+  devtool: 'source-map',
   module: {
     rules: [
       {
-        enforce: "pre",
+        enforce: 'pre',
         exclude: /node_modules/,
         test: /\.jsx$/,
-        loader: "eslint-loader",
+        loader: 'eslint-loader'
       },
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
+        loader: 'babel-loader'
       },
       {
         test: /\.s?css\$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-      },
-    ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      }
+    ]
   },
   plugins: [
     new StyleLintPlugin(),
-    new MiniCssExtractPlugin({ filename: "../style.css" }),
+    new MiniCssExtractPlugin({ filename: '../style.css' }),
     new BrowserSyncPlugin({
-      files: "**/*.php",
+      files: '**/*.php',
       injectChanges: true,
-      proxy: "http://underscores.test",
-    }),
+      proxy: 'http://underscores.test'
+    })
   ],
   optimization: {
-    minimizer: [new UglifyJSPlugin(), new OptimizeCssAssetsPlugin()],
-  },
-}
+    minimizer: [new UglifyJSPlugin(), new OptimizeCssAssetsPlugin()]
+  }
+};
 ```
 
 Adding `StyleLint` is pretty easy. We started by requiring the package at the top of the file, and instantiating it within our plugins array. Now when you run npm run dev or npm run build you’ll see some errors appear in the console.
@@ -812,77 +811,77 @@ StyleLint errors in the terminal.
 Finally, let’s add a loader to manage image assets, and a loader and plugin to manage SVGs.
 
 ```javascript
-const path = require("path"),
-  MiniCssExtractPlugin = require("mini-css-extract-plugin"),
-  UglifyJSPlugin = require("uglifyjs-webpack-plugin"),
-  OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
-  BrowserSyncPlugin = require("browser-sync-webpack-plugin"),
-  StyleLintPlugin = require("stylelint-webpack-plugin"),
-  SpriteLoaderPlugin = require("svg-sprite-loader/plugin")
+const path = require('path'),
+  MiniCssExtractPlugin = require('mini-css-extract-plugin'),
+  UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
+  OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
+  BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
+  StyleLintPlugin = require('stylelint-webpack-plugin'),
+  SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 module.exports = {
   context: __dirname,
   entry: {
-    frontend: ["babel-polyfill", "./src/index.js"],
-    customizer: "./src/customizer.js",
+    frontend: ['babel-polyfill', './src/index.js'],
+    customizer: './src/customizer.js'
   },
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: "[name]-bundle.js",
+    path: path.resolve(__dirname, 'public'),
+    filename: '[name]-bundle.js'
   },
-  mode: "development",
-  devtool: "source-map",
+  mode: 'development',
+  devtool: 'source-map',
   module: {
     rules: [
       {
-        enforce: "pre",
+        enforce: 'pre',
         exclude: /node_modules/,
         test: /\.jsx$/,
-        loader: "eslint-loader",
+        loader: 'eslint-loader'
       },
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
+        loader: 'babel-loader'
       },
       {
         test: /\.s?css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       },
       {
         test: /\.svg$/,
-        loader: "svg-sprite-loader",
+        loader: 'svg-sprite-loader',
         options: {
           extract: true,
-          spriteFilename: "svg-defs.svg",
-        },
+          spriteFilename: 'svg-defs.svg'
+        }
       },
       {
         test: /\.(jpe?g|png|gif)\$/,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
-              outputPath: "images/",
-              name: "[name].[ext]",
-            },
+              outputPath: 'images/',
+              name: '[name].[ext]'
+            }
           },
-          "img-loader",
-        ],
-      },
-    ],
+          'img-loader'
+        ]
+      }
+    ]
   },
   plugins: [
     new StyleLintPlugin(),
-    new MiniCssExtractPlugin({ filename: "../style.css" }),
+    new MiniCssExtractPlugin({ filename: '../style.css' }),
     new SpriteLoaderPlugin(),
     new BrowserSyncPlugin({
-      files: "**/*.php",
+      files: '**/*.php',
       injectChanges: true,
-      proxy: "http://underscores.test",
-    }),
+      proxy: 'http://underscores.test'
+    })
   ],
   optimization: {
-    minimizer: [new UglifyJSPlugin(), new OptimizeCssAssetsPlugin()],
-  },
-}
+    minimizer: [new UglifyJSPlugin(), new OptimizeCssAssetsPlugin()]
+  }
+};
 ```
