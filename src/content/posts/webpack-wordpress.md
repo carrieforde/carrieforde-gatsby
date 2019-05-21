@@ -2,7 +2,7 @@
 title: 'Webpack for WordPress'
 date: 2018-10-13
 category: 'WordPress'
-snippet: 'With the rise of React in WordPress, there are more and more developers turning to webpack for managing and bundling front end assets.'
+description: 'With the rise of React in WordPress, there are more and more developers turning to webpack for managing and bundling front end assets.'
 ---
 
 In this post, I’ll cover webpack at a high level (what it is, and why we might reach for it), and show you how you can unleash the power of webpack in your WordPress projects to manage and bundle front end assets.

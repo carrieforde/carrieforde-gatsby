@@ -8,21 +8,15 @@ import './Post.scss';
 const Post = ({ data }) => {
   const post = data.markdownRemark,
     { frontmatter, html } = post,
-    { title, date, category, snippet } = frontmatter;
-
-  let excerpt = '';
-
-  if (snippet) {
-    excerpt = <p className="post__excerpt">{snippet}</p>;
-  }
+    { title, date, category, description } = frontmatter;
 
   return (
     <Site>
-      <SEO title={title} />
+      <SEO title={title} description={description} />
       <header className="post">
         <span className="post__category">{category}</span>
         <h1 className="post__title">{title}</h1>
-        {excerpt}
+        {description && <p className="post__description">{description}</p>}
         <span className="post__date">{date}</span>
       </header>
       <div
@@ -46,7 +40,7 @@ export const query = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         category
-        snippet
+        description
       }
       html
     }
