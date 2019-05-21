@@ -4,7 +4,14 @@ module.exports = {
   siteMetadata: {
     title: `Carrie Forde`,
     description: `Carrie Forde is a front end software engineer in San Mateo, California who specializes in building elegant, maintainable, and performant websites.`,
-    author: `@carrieforde`
+    author: `@carrieforde`,
+    socials: {
+      mail: 'carrie@carrieforde.com',
+      linkedin: 'https://linkedin.com/in/carrieforde',
+      github: 'https://github.com/carrieforde',
+      codepen: 'https://codepen.io/carrieforde',
+      twitter: 'https://twitter.com/carrieforde'
+    }
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
