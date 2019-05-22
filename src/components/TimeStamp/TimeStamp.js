@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import timeStampStyles from './timeStamp.module.css';
 
 const TimeStamp = ({ date }) => {
-  const dateTime = new Date(date);
+  const dateTime = new Date(date).toISOString();
 
   return (
     <time className={timeStampStyles.pageDate} dateTime={dateTime}>

@@ -74,11 +74,18 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-sass`,
+      resolve: `gatsby-plugin-postcss`,
       options: {
-        data: '@import "settings";',
-        includePaths: [path.join(__dirname, './src/sass/')],
         postCssPlugins: [
+          require(`postcss-preset-env`)({
+            stage: 0,
+            importFrom: './src/styles/global.css',
+            features: {
+              'nesting-rules': true,
+              'custom-properties': true,
+              'custom-media-queries': true
+            }
+          }),
           require('autoprefixer')({ grid: true, browsers: 'last 2 versions' }),
           require('css-mqpacker')({ sort: true }),
           require('postcss-unit-conversion')({

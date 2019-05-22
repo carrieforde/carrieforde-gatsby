@@ -1,0 +1,28 @@
+.article__title {
+	font-weight: 300;
+}
+
+.article__category {
+	color: var(--color-primary-8);
+	display: block;
+	font-size: var(--font-size-1);
+	font-weight: 300;
+	margin-bottom: var(--size-1);
+	text-transform: uppercase;
+}
+
+.article__date,
+.article__time-to-read,
+.article__separator {
+	color: var(--color-neutral-6);
+	display: inline-block;
+	font-size: var(--font-size-1);
+	font-weight: 300;
+	margin-bottom: var(--size-2);
+	margin-top: var(--size-2);
+}
+
+.article__separator {
+	margin-left: var(--size-1);
+	margin-right: var(--size-1);
+}

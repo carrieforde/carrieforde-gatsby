@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import Site from '../../components/Site/Site';
 import SEO from '../../components/SEO/SEO';
 import PropTypes from 'prop-types';
-import './Post.scss';
 
 import PageHeader from '../../components/PageHeader/PageHeader';
 

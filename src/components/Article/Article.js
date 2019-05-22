@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import './Article.scss';
+import articleStyles from './article.module.css';
 
 const Article = data => {
   const { excerpt, frontmatter, timeToRead, fields } = data.node,
     { title, date, category } = frontmatter;
 
   return (
-    <article className="article">
+    <article className={articleStyles.article}>
       <header className="article__header">
         <span className="article__category">{category}</span>
         <Link to={fields.slug}>

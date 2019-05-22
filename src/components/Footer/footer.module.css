@@ -1,0 +1,7 @@
+.footer {
+	color: var(--color-neutral-6);
+	font-size: var(--font-size-1);
+	font-weight: 300;
+	margin-top: var(--size-10);
+	text-align: center;
+}

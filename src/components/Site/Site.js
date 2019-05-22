@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from 'gatsby';
 
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import './Site.scss';
+import siteStyles from './site.module.css';
 
 const Site = ({ children }) => (
   <StaticQuery
@@ -18,9 +18,9 @@ const Site = ({ children }) => (
       }
     `}
     render={data => (
-      <div className="site">
+      <div className={siteStyles.site}>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <main className="page">{children}</main>
+        <main className={siteStyles.page}>{children}</main>
         <Footer />
       </div>
     )}

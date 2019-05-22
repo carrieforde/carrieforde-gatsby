@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Logo from '../../icons/carrie-forde-logo.svg';
-import './Header.scss';
+import headerStyles from './header.module.css';
 
 const Header = ({ siteTitle }) => (
   <header className="site-header">
-    <Link className="site-branding" to="/">
-      <Logo className="site-logo" />
+    <Link className={headerStyles.siteBranding} to="/">
+      <Logo className={headerStyles.siteLogo} />
       <h1 className="site-title visually-hidden">{siteTitle}</h1>
     </Link>
   </header>
