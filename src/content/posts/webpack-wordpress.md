@@ -19,7 +19,7 @@ The main requirements for getting started with webpack include:
    Follow the instructions for installing Node on the Node site (or if you’re on a Mac, it’s super easy to manage with brew). NPM comes bundled with Node, but understanding the Node package ecosystem is helpful.
 - **A little JavaScript knowledge**  
    Webpack is JavaScript-driven, and understanding JS basics will make working with weback easier.
-- **Patience**
+- **Patience**  
   The webpack ecosystem takes some time to wrap one’s head around. Research and experimentation will serve you well in your journey to learn webpack.
 
 ## Creating a webpack file for a WordPress theme
@@ -64,7 +64,7 @@ const path = require('path');
 
 Next, let’s start building our configuration object. Since webpack works in a Node environment, we’ll assign our configuration object to module.exports. According to [TutorialsTeacher.com](http://www.tutorialsteacher.com/nodejs/nodejs-module-exports),
 
-> module is a variable that represents current module and exports is an object that will be exposed as a module. So, whatever you assign to module.exports or exports, will be exposed as a module.
+> `module` is a variable that represents current module and exports is an object that will be exposed as a module. So, whatever you assign to `module.exports` or `exports`, will be exposed as a `module`.
 
 Within our configuration object let’s declare the entry and output properties.
 
@@ -142,8 +142,7 @@ module.exports = {
 
 Now that we have the basics of our webpack config laid out. let’s try running `node_modules/.bin/webpack` again. If everything worked correctly, we should see a human-readable `bundle.js`, and if we have errors or `console.log()` statements, we’ll see where they are in our source code.
 
-[image here]
-An example of source maps in action.
+![An example of source maps in action.](../../images/source-map-example.jpg)
 
 The developer tools show that I have a `console.log()` statement on line 10 of `navigation.js`, and a problem with jQuery in `customizer.js`.
 
@@ -162,7 +161,7 @@ Go ahead and run `npm run build` and have a peek at your bundle.js file to ensur
 
 Your final "scripts" object should look something like this:
 
-```javascripton
+```JSON
 {
   "scripts": {
     "build": "webpack --mode=production",
@@ -358,9 +357,9 @@ We can test that our new rule is working by refactoring navigation.js to use ES6
 
 Now after running `npm run dev`, we see that the arrow function has been transformed into a regular function, the `forof` loop became a standard for loop, and usage of `let` and `const` has been transformed into `var`.
 
-[image here]
-The `bundle.js` file after the JS has been run through Babel. We no longer see arrow functions, and the for of loop was transformed into a regular for loop.
-The arrow function is now a standard function, and the forof was transformed into a for loop.
+![The `bundle.js` file after the JS has been run through Babel.](../../images/transpiled-js.jpg)
+
+The arrow function is now a standard function, and the `forof` was transformed into a `for` loop.
 
 We can enhance our JavaScript processing a bit further by adding the eslint-loader to lint our files, and print errors in the console as we save.
 
@@ -804,9 +803,7 @@ module.exports = {
 
 Adding `StyleLint` is pretty easy. We started by requiring the package at the top of the file, and instantiating it within our plugins array. Now when you run npm run dev or npm run build you’ll see some errors appear in the console.
 
-[image here]
-StyleLint errors in the terminal.
-StyleLint errors in the terminal.
+![StyleLint errors in the terminal.](../../images/stylelint-errors.jpg)
 
 Finally, let’s add a loader to manage image assets, and a loader and plugin to manage SVGs.
 

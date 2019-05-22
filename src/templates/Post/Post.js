@@ -15,7 +15,10 @@ const Post = ({ data }) => {
       <SEO title={title} description={description} />
       <header className="post">
         <span className="post__category">{category}</span>
-        <h1 className="post__title">{title}</h1>
+        <h1
+          className="post__title"
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
         {description && <p className="post__description">{description}</p>}
         <span className="post__date">{date}</span>
       </header>
