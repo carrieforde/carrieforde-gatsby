@@ -1,9 +1,9 @@
 .socialNav {
 	color: #1d0ebe;
+	display: inline-flex;
 	list-style: none;
 	margin: 24px 0 0;
 	padding: 0;
-	display: inline-flex;
 }
 
 .socialNav__item {
@@ -14,7 +14,7 @@
 .socialNav__item + .socialNav__item {
 	/* margin-top: 12px; */
 	margin-left: 12px;
-		margin-top: 0;
+	margin-top: 0;
 }
 
 .socialNav__item a {

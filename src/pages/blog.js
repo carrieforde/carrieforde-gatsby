@@ -5,17 +5,16 @@ import { graphql } from 'gatsby';
 import Article from '../components/Article/Article';
 import SEO from '../components/SEO/SEO';
 import PropTypes from 'prop-types';
+import PageHeader from '../components/PageHeader/PageHeader';
 
 const Blog = ({ data }) => {
   return (
     <Site>
       <SEO title="Blog" />
-      <header className="page__header">
-        <h1 className="page__title">Blog</h1>
-        <p className="page__excerpt">
-          Occasional posts on JavaScript, WordPress, and front end development.
-        </p>
-      </header>
+      <PageHeader
+        title="Blog"
+        description="Occasional posts on JavaScript, WordPress, and front end development."
+      />
 
       <ul className="blog">
         {data.allMarkdownRemark.edges.map((article, index) => (

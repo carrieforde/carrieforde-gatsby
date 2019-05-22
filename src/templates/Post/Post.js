@@ -5,6 +5,8 @@ import SEO from '../../components/SEO/SEO';
 import PropTypes from 'prop-types';
 import './Post.scss';
 
+import PageHeader from '../../components/PageHeader/PageHeader';
+
 const Post = ({ data }) => {
   const post = data.markdownRemark,
     { frontmatter, html } = post,
@@ -13,15 +15,12 @@ const Post = ({ data }) => {
   return (
     <Site>
       <SEO title={title} description={description} />
-      <header className="post">
-        <span className="post__category">{category}</span>
-        <h1
-          className="post__title"
-          dangerouslySetInnerHTML={{ __html: title }}
-        />
-        {description && <p className="post__description">{description}</p>}
-        <span className="post__date">{date}</span>
-      </header>
+      <PageHeader
+        title={title}
+        description={description}
+        category={category}
+        date={date}
+      />
       <div
         className="post__content"
         dangerouslySetInnerHTML={{ __html: html }}
