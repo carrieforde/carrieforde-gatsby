@@ -10,15 +10,17 @@
 }
 
 .visuallyHiddenFocusable {
-	&:focus {
-		border: auto;
-		clip: auto;
-		height: auto;
-		margin: 0;
-		overflow: visible;
-		position: static;
-		width: auto;
-	}
+	composes: visuallyHidden;
+}
+
+.visuallyHiddenFocusable:focus {
+	border: auto;
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
 }
 
 .listReset {

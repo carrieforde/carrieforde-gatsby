@@ -57,6 +57,18 @@ a:focus {
 	background-size: 5px 100%;
 }
 
+ol,
+ul {
+	font-size: var(--font-size-2);
+}
+
+@media screen and (min-width: 600px) {
+	ol,
+	ul {
+		font-size: var(--font-size-3);
+	}
+}
+
 li {
 	margin-bottom: 0;
 }
@@ -133,4 +145,11 @@ sup {
 
 img {
 	margin-bottom: var(--size-5);
+}
+
+button {
+	background-color: transparent;
+	border: none;
+	color: var(--color-neutral-9);
+	display: inline-block;
 }

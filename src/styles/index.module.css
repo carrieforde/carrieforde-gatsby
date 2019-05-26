@@ -1,5 +1,9 @@
-.content {
+.section {
 	margin-top: var(--size-8);
+}
+
+.hiddenHeadline {
+	composes: visuallyHiddenFocusable from './utilities.module.css';
 }
 
 .avatar {
