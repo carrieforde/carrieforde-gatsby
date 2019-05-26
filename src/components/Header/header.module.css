@@ -1,3 +1,9 @@
+.siteHeader {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+
 .siteBranding {
 	background: none;
 }

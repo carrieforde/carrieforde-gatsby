@@ -130,3 +130,7 @@ sub,
 sup {
 	font-size: var(--font-size-1);
 }
+
+img {
+	margin-bottom: var(--size-5);
+}
