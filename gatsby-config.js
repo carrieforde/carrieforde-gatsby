@@ -77,17 +77,12 @@ module.exports = {
       resolve: `gatsby-plugin-postcss`,
       options: {
         postCssPlugins: [
-          require(`postcss-preset-env`)({
+          require('postcss-preset-env')({
             stage: 0,
-            importFrom: './src/styles/global.css',
-            features: {
-              'nesting-rules': true,
-              'custom-properties': true,
-              'custom-media-queries': true
-            }
+            browsers: 'last 2 versions',
+            autoprefixer: { grid: true },
+            importFrom: './src/styles/settings.css'
           }),
-          require('autoprefixer')({ grid: true, browsers: 'last 2 versions' }),
-          require('css-mqpacker')({ sort: true }),
           require('postcss-unit-conversion')({
             base: 18,
             precision: 5,
