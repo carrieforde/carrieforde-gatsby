@@ -7,6 +7,8 @@ import SEO from '../components/SEO/SEO';
 import PropTypes from 'prop-types';
 import PageHeader from '../components/PageHeader/PageHeader';
 
+import blog from '../styles/blog.module.css';
+
 const Blog = ({ data }) => {
   return (
     <Site>
@@ -16,9 +18,9 @@ const Blog = ({ data }) => {
         description="Occasional posts on JavaScript, WordPress, and front end development."
       />
 
-      <ul className="blog">
+      <ul className={blog.postList}>
         {data.allMarkdownRemark.edges.map((article, index) => (
-          <li key={index} className="blog__post">
+          <li key={index} className={blog.postListItem}>
             <Article {...article} />
           </li>
         ))}
@@ -42,6 +44,7 @@ export const query = graphql`
             title
             date(formatString: "MMMM DD, YYYY")
             category
+            description
           }
           timeToRead
           excerpt

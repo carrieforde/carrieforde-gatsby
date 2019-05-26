@@ -1,9 +1,8 @@
 import Typography from 'typography';
-// import CodePlugin from "typography-plugin-code"
 
 const typography = new Typography({
   title: 'Carrie Forde',
-  baseFontSize: '18px',
+  baseFontSize: '16px',
   baseLineHeight: 1.75,
   googleFonts: [
     {

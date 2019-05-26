@@ -33,34 +33,34 @@ const SocialNav = () => {
 
         return (
           <ul className={socialNavStyles.socialNav}>
-            <li className={socialNavStyles.socialNav__item}>
+            <li className={socialNavStyles.socialNavItem}>
               <a href={`mailto:${mail}`}>
                 <Mail />
-                <span className="visually-hidden">Mail</span>
+                <span className={socialNavStyles.socialNavLabel}>Mail</span>
               </a>
             </li>
-            <li className={socialNavStyles.socialNav__item}>
+            <li className={socialNavStyles.socialNavItem}>
               <a href={linkedin}>
                 <LinkedIn />
-                <span className="visually-hidden">LinkedIn</span>
+                <span className={socialNavStyles.socialNavLabel}>LinkedIn</span>
               </a>
             </li>
-            <li className={socialNavStyles.socialNav__item}>
+            <li className={socialNavStyles.socialNavItem}>
               <a href={github}>
                 <Github />
-                <span className="visually-hidden">Github</span>
+                <span className={socialNavStyles.socialNavLabel}>Github</span>
               </a>
             </li>
-            <li className={socialNavStyles.socialNav__item}>
+            <li className={socialNavStyles.socialNavItem}>
               <a href={codepen}>
                 <CodePen />
-                <span className="visually-hidden">CodePen</span>
+                <span className={socialNavStyles.socialNavLabel}>CodePen</span>
               </a>
             </li>
-            <li className={socialNavStyles.socialNav__item}>
+            <li className={socialNavStyles.socialNavItem}>
               <a href={twitter}>
                 <Twitter />
-                <span className="visually-hidden">Twitter</span>
+                <span className={socialNavStyles.socialNavLabel}>Twitter</span>
               </a>
             </li>
           </ul>

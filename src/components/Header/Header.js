@@ -9,7 +9,7 @@ const Header = ({ siteTitle }) => (
   <header className="site-header">
     <Link className={headerStyles.siteBranding} to="/">
       <Logo className={headerStyles.siteLogo} />
-      <h1 className="site-title visually-hidden">{siteTitle}</h1>
+      <h1 className={headerStyles.siteTitle}>{siteTitle}</h1>
     </Link>
   </header>
 );

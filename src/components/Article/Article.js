@@ -1,24 +1,33 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import TimeStamp from '../TimeStamp/TimeStamp';
 
 import articleStyles from './article.module.css';
+import timeStampStyles from '../TimeStamp/timeStamp.module.css';
 
 const Article = data => {
   const { excerpt, frontmatter, timeToRead, fields } = data.node,
-    { title, date, category } = frontmatter;
+    { title, date, category, description } = frontmatter;
 
   return (
     <article className={articleStyles.article}>
-      <header className="article__header">
-        <span className="article__category">{category}</span>
+      <header className={articleStyles.articleHeader}>
+        <span className={articleStyles.articleCategory}>{category}</span>
         <Link to={fields.slug}>
-          <h2 className="article__title">{title}</h2>
+          <h2
+            className={articleStyles.articleTitle}
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
         </Link>
-        <span className="article__date">{date}</span>
-        <span className="article__separator">&#9656;</span>
-        <span className="article__time-to-read">{timeToRead} minute read</span>
+        <TimeStamp date={date} className={timeStampStyles.timeStampIsSmall} />
+        <span className={articleStyles.articleSeparator}>&#9656;</span>
+        <span className={articleStyles.articleTimeToRead}>
+          {timeToRead} minute read
+        </span>
       </header>
-      <div className="article__excerpt">{excerpt}</div>
+      <div className={articleStyles.articleDescription}>
+        {description || excerpt}
+      </div>
     </article>
   );
 };

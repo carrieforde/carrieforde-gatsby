@@ -1,0 +1,8 @@
+.postList {
+	composes: listReset from './utilities.module.css';
+	margin-top: var(--size-8);
+}
+
+.postListItem + .postListItem {
+	margin-top: var(--size-7);
+}

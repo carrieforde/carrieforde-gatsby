@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import pageTitleStyles from './pageTitle.module.css';
 
 const PageTitle = ({ title }) => (
-  <h1 className={pageTitleStyles.pageTitle}>{title}</h1>
+  <h1
+    className={pageTitleStyles.pageTitle}
+    dangerouslySetInnerHTML={{ __html: title }}
+  />
 );
 
 PageTitle.propTypes = {

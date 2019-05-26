@@ -1,8 +1,14 @@
-.article__title {
+.articleTitle {
 	font-weight: 300;
 }
 
-.article__category {
+.articleTitle > * {
+	background-color: transparent !important;
+	font-size: inherit !important;
+	padding: 0 !important;
+}
+
+.articleCategory {
 	color: var(--color-primary-8);
 	display: block;
 	font-size: var(--font-size-1);
@@ -11,9 +17,9 @@
 	text-transform: uppercase;
 }
 
-.article__date,
-.article__time-to-read,
-.article__separator {
+.articleDate,
+.articleTimeToRead,
+.articleSeparator {
 	color: var(--color-neutral-6);
 	display: inline-block;
 	font-size: var(--font-size-1);
@@ -22,7 +28,7 @@
 	margin-top: var(--size-2);
 }
 
-.article__separator {
+.articleSeparator {
 	margin-left: var(--size-1);
 	margin-right: var(--size-1);
 }

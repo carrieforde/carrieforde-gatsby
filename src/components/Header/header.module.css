@@ -5,3 +5,7 @@
 .siteLogo {
 	width: 50px;
 }
+
+.siteTitle {
+	composes: visuallyHidden from '../../styles/utilities.module.css';
+}

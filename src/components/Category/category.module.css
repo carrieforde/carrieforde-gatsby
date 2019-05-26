@@ -1,8 +1,8 @@
 .category {
-	color: #3525e6;
+	color: var(--color-primary-8);
 	display: block;
-	font-size: 0.77778rem;
+	font-size: var(--font-size-1);
 	font-weight: 300;
-	margin-bottom: 4px;
+	margin-bottom: var(--size-1);
 	text-transform: uppercase;
 }
