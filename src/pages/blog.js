@@ -1,11 +1,11 @@
 import React from 'react';
-import Site from '../components/Site/Site';
+import Site from '../components/Site';
 import { graphql } from 'gatsby';
 
-import Article from '../components/Article/Article';
-import SEO from '../components/SEO/SEO';
+import Article from '../components/Article';
+import SEO from '../components/SEO';
 import PropTypes from 'prop-types';
-import PageHeader from '../components/PageHeader/PageHeader';
+import PageHeader from '../components/PageHeader';
 
 import blog from '../styles/blog.module.css';
 

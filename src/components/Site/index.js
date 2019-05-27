@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import siteStyles from './site.module.css';
+import Header from '../Header';
+import Footer from '../Footer';
+import styles from './site.module.css';
 
 const Site = ({ children }) => (
   <StaticQuery
@@ -18,9 +18,9 @@ const Site = ({ children }) => (
       }
     `}
     render={data => (
-      <div className={siteStyles.site}>
+      <div className={styles.site}>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <main className={siteStyles.page}>{children}</main>
+        <main className={styles.page}>{children}</main>
         <Footer />
       </div>
     )}

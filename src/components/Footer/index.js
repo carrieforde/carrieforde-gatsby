@@ -1,10 +1,10 @@
 import React from 'react';
-import SocialNav from '../SocialNav/SocialNav';
+import SocialNav from '../SocialNav';
 
-import footerStyles from './footer.module.css';
+import styles from './footer.module.css';
 
 const Footer = () => (
-  <footer className={footerStyles.footer}>
+  <footer className={styles.footer}>
     <p>
       Copyright &copy; 2013 &ndash; {new Date().getFullYear()} Carrie Forde.
     </p>

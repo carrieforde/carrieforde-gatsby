@@ -7,7 +7,7 @@ import Github from '../../icons/github-brands.svg';
 import CodePen from '../../icons/codepen-brands.svg';
 import Twitter from '../../icons/twitter-brands.svg';
 
-import socialNavStyles from './socialNav.module.css';
+import styles from './socialNav.module.css';
 
 const SocialNav = () => {
   return (
@@ -32,35 +32,35 @@ const SocialNav = () => {
           { mail, linkedin, github, codepen, twitter } = socials;
 
         return (
-          <ul className={socialNavStyles.socialNav}>
-            <li className={socialNavStyles.socialNavItem}>
+          <ul className={styles.socialNav}>
+            <li className={styles.socialNavItem}>
               <a href={`mailto:${mail}`}>
                 <Mail />
-                <span className={socialNavStyles.socialNavLabel}>Mail</span>
+                <span className={styles.socialNavLabel}>Mail</span>
               </a>
             </li>
-            <li className={socialNavStyles.socialNavItem}>
+            <li className={styles.socialNavItem}>
               <a href={linkedin}>
                 <LinkedIn />
-                <span className={socialNavStyles.socialNavLabel}>LinkedIn</span>
+                <span className={styles.socialNavLabel}>LinkedIn</span>
               </a>
             </li>
-            <li className={socialNavStyles.socialNavItem}>
+            <li className={styles.socialNavItem}>
               <a href={github}>
                 <Github />
-                <span className={socialNavStyles.socialNavLabel}>Github</span>
+                <span className={styles.socialNavLabel}>Github</span>
               </a>
             </li>
-            <li className={socialNavStyles.socialNavItem}>
+            <li className={styles.socialNavItem}>
               <a href={codepen}>
                 <CodePen />
-                <span className={socialNavStyles.socialNavLabel}>CodePen</span>
+                <span className={styles.socialNavLabel}>CodePen</span>
               </a>
             </li>
-            <li className={socialNavStyles.socialNavItem}>
+            <li className={styles.socialNavItem}>
               <a href={twitter}>
                 <Twitter />
-                <span className={socialNavStyles.socialNavLabel}>Twitter</span>
+                <span className={styles.socialNavLabel}>Twitter</span>
               </a>
             </li>
           </ul>

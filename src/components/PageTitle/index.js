@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import pageTitleStyles from './pageTitle.module.css';
+import styles from './pageTitle.module.css';
 
 const PageTitle = ({ title }) => (
   <h1
-    className={pageTitleStyles.pageTitle}
+    className={styles.pageTitle}
     dangerouslySetInnerHTML={{ __html: title }}
   />
 );

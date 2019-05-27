@@ -1,10 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Site from '../../components/Site/Site';
-import SEO from '../../components/SEO/SEO';
+import Site from '../../components/Site';
+import SEO from '../../components/SEO';
 import PropTypes from 'prop-types';
 
-import PageHeader from '../../components/PageHeader/PageHeader';
+import PageHeader from '../../components/PageHeader';
 
 const Post = ({ data }) => {
   const post = data.markdownRemark,

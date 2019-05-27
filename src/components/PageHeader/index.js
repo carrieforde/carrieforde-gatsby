@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import PageTitle from '../PageTitle/PageTitle';
-import PageDescription from '../PageDescription/PageDescription';
-import TimeStamp from '../TimeStamp/TimeStamp';
-import Category from '../Category/Category';
+import PageTitle from '../PageTitle';
+import PageDescription from '../PageDescription';
+import TimeStamp from '../TimeStamp';
+import Category from '../Category';
 
 const PageHeader = ({ title, description, category, date }) => (
   <header className="pageHeader">

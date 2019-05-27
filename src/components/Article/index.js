@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import TimeStamp from '../TimeStamp/TimeStamp';
+import PropTypes from 'prop-types';
+import TimeStamp from '../TimeStamp';
 
-import articleStyles from './article.module.css';
+import styles from './article.module.css';
 import timeStampStyles from '../TimeStamp/timeStamp.module.css';
 
 const Article = data => {
@@ -10,26 +11,28 @@ const Article = data => {
     { title, date, category, description } = frontmatter;
 
   return (
-    <article className={articleStyles.article}>
-      <header className={articleStyles.articleHeader}>
-        <span className={articleStyles.articleCategory}>{category}</span>
+    <article className={styles.article}>
+      <header className={styles.articleHeader}>
+        <span className={styles.articleCategory}>{category}</span>
         <Link to={fields.slug}>
           <h2
-            className={articleStyles.articleTitle}
+            className={styles.articleTitle}
             dangerouslySetInnerHTML={{ __html: title }}
           />
         </Link>
         <TimeStamp date={date} className={timeStampStyles.timeStampIsSmall} />
-        <span className={articleStyles.articleSeparator}>&#9656;</span>
-        <span className={articleStyles.articleTimeToRead}>
+        <span className={styles.articleSeparator}>&#9656;</span>
+        <span className={styles.articleTimeToRead}>
           {timeToRead} minute read
         </span>
       </header>
-      <div className={articleStyles.articleDescription}>
-        {description || excerpt}
-      </div>
+      <div className={styles.articleDescription}>{description || excerpt}</div>
     </article>
   );
+};
+
+Article.propTypes = {
+  data: PropTypes.object.isRequired
 };
 
 export default Article;

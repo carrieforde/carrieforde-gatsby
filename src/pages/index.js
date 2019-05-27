@@ -2,13 +2,13 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-import Site from '../components/Site/Site';
+import Site from '../components/Site';
 
-import SEO from '../components/SEO/SEO';
+import SEO from '../components/SEO';
 import pageTitleStyles from '../components/PageTitle/pageTitle.module.css';
 import indexStyles from '../styles/index.module.css';
 
-import PageDescription from '../components/PageDescription/PageDescription';
+import PageDescription from '../components/PageDescription';
 import pageDescriptionStyles from '../components/PageDescription/pageDescription.module.css';
 
 import Tabs from '../components/Tabs';

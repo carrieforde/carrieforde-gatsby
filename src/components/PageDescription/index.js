@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import pageDescriptionStyles from './pageDescription.module.css';
+import styles from './pageDescription.module.css';
 
 const PageDescription = ({ description }) => (
-  <p className={pageDescriptionStyles.pageDescription}>{description}</p>
+  <p className={styles.pageDescription}>{description}</p>
 );
 
 PageDescription.propTypes = {

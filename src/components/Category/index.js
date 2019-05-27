@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import categoryStyles from './category.module.css';
+import styles from './category.module.css';
 
 const Category = ({ category }) => (
-  <p className={categoryStyles.category}>{category}</p>
+  <p className={styles.category}>{category}</p>
 );
 
 Category.propTypes = {
