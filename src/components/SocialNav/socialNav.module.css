@@ -24,23 +24,3 @@
 .socialNavLabel {
 	composes: visuallyHidden from '../../styles/utilities.module.css';
 }
-
-/* @media screen and (max-width: 749px) {
-	.socialNav {
-		display: inline-flex;
-	}
-
-	.socialNav__item + .socialNav__item {
-		margin-left: 12px;
-		margin-top: 0;
-	}
-} */
-
-/* @media screen and (min-width: 750px) {
-	.socialNav {
-		left: calc(((100vw - 640px) / 2) - 32px);
-		position: fixed;
-		top: 50vh;
-		transform: translateY(-50%);
-	}
-} */
