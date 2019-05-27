@@ -92,7 +92,14 @@ module.exports = {
         ]
       }
     },
-    '@danbruegge/gatsby-plugin-stylelint'
+    '@danbruegge/gatsby-plugin-stylelint',
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GATSBY_GA_ID || null
+      }
+    },
+    'gatsby-plugin-netlify'
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
