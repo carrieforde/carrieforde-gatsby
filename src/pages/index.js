@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import PropTypes from 'prop-types';
 
 import Site from '../components/Site';
 
@@ -81,6 +82,10 @@ const IndexPage = ({ data }) => {
   );
 };
 
+IndexPage.propTypes = {
+  data: PropTypes.object.isRequired
+};
+
 export default IndexPage;
 
 export const query = graphql`
@@ -94,6 +99,7 @@ export const query = graphql`
     }
     experience: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/experience/" } }
+      sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
         node {
