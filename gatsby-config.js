@@ -133,9 +133,7 @@ module.exports = {
             },
             query: `
               {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
+                allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/posts/"}}, sort: { fields: [frontmatter___date], order: DESC }) {
                   edges {
                     node {
                       excerpt
