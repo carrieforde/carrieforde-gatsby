@@ -3,7 +3,7 @@ company: 'MIGHTYminnow'
 title: 'Front End Developer & Designer'
 location: 'Oakland, CA'
 range: 'July 2015 - February 2016'
-date: 2016-07-05
+date: 2015-07-05
 ---
 
 Designed WordPress websites for nonprofit organizations and small business clients in the San Francisco Bay Area. Gained front end development skills by creating child themes using CSS and PHP. Teaching assistant for live WordPress workshops.

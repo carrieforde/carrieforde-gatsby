@@ -2,7 +2,7 @@
 company: 'WebDevStudios'
 title: 'Senior Front End Developer'
 location: 'Glenside, PA (remote)'
-date: '2016-06-23'
+date: 2016-06-23
 range: 'June 2016 - August 2017'
 ---
 
