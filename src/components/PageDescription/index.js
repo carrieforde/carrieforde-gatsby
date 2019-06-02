@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 import styles from './pageDescription.module.css';
 
 const PageDescription = ({ description }) => (
-  <p className={styles.pageDescription}>{description}</p>
+  <p
+    className={styles.pageDescription}
+    dangerouslySetInnerHTML={{ __html: description }}
+  />
 );
 
 PageDescription.propTypes = {
