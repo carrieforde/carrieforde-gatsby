@@ -26,7 +26,10 @@ const Article = data => {
           {timeToRead} minute read
         </span>
       </header>
-      <div className={styles.articleDescription}>{description || excerpt}</div>
+      <div
+        className={styles.articleDescription}
+        dangerouslySetInnerHTML={{ __html: description || excerpt }}
+      />
     </article>
   );
 };
