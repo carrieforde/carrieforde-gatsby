@@ -5,6 +5,7 @@ import SEO from '../../components/SEO';
 import PropTypes from 'prop-types';
 
 import PageHeader from '../../components/PageHeader';
+import 'cf-components-alert';
 
 const Post = ({ data }) => {
   const post = data.markdownRemark,
