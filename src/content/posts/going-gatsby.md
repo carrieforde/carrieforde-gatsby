@@ -5,7 +5,7 @@ category: 'Development'
 description: 'After six years with WordPress, I switched to Gatsby&ndash;a static site generator.'
 ---
 
-[Gatsby](https://www.gatsbyjs.org/) seems to be the new hotness in the front end community. A large part Gatsby's appeal is that it's based on React, and gives developers a lot of flexibility in where the data layer lives.
+[Gatsby](https://www.gatsbyjs.org/) seems to be the new hotness in the front end community. A large part of Gatsby's appeal is that it's based on React, and gives developers a lot of flexibility in where the data layer lives.
 
 I was drawn to Gatsby on the promise of getting a "blazing fast website." [Version 4](https://github.com/carrieforde/carrieforde-theme) of my site was actually pretty fast. I had hosting on Flywheel and the indicators in my Lighthouse audits consistently hit green, but I was always bothered by the fact that **all** my CSS was enqueueing even if significant portions of it weren't used. Clearly, this is less important on a small personal site than it is, say, a large enterprise site, but it still bothered me.
 
@@ -15,7 +15,7 @@ Another thing about Gatsby that piqued my interest were folks like [Zac Gordon](
 
 In my current role at [FFN](https://freedomfinancialnetwork.com), I spend a lot of time developing custom blocks for the [FDR](https://www.freedomdebtrelief.com) website. I put a lot of thought into whether a block can be reused / repurposed, whether a new style can be added to an existing block, or if I need to create something from scratch. If I create something from scratch, how explicit do pieces of the block need to be? Can I get away with using `<InnerBlocks />` and templates? How does one make a block both flexible, yet unbreakable?
 
-The "problem" with Gutenberg is that developers on are the hook to deliver both an editing experience, **and** and front end experience (i.e. presentational experience) for custom content blocks. When it comes to my personal site, I just want to figure out how to feed the data into a component, not how I should compose a bunch of input fields, color selectors, etc. At the end of the day, I just wanted a site to introduce myself, highlight my professional experience, and host a blog. Continuing down the path of WordPress seemed a little heavy-handed for my needs.
+The "problem" with Gutenberg is that developers on are the hook to deliver both an editing experience, **and** front end experience (i.e. presentational experience) for custom content blocks. When it comes to my personal site, I just want to figure out how to feed the data into a component, not how I should compose a bunch of input fields, color selectors, etc. At the end of the day, I just wanted a site to introduce myself, highlight my professional experience, and host a blog. Continuing down the path of WordPress seemed a little heavy-handed for my needs.
 
 Gutenberg adds a certain amount of friction that I don't want to bother with in my free time. By using React, I can create components for different parts of my site, and just feed them static data (like I have for the home page of my site), or dynamic data (like I have for the blog). Of course you can do this with Gutenberg, but unlike Gutenberg, I didn't have to worry about creating a separate editing experience. I can just pull in a component, feed it data, and go.
 
@@ -27,7 +27,7 @@ Because I use markdown on a near-daily basis and am intimately familiar with the
 
 One thing I love about `gatsby-transformer-remark` (and markdown for static site generators generally), is that it supports frontmatter&ndash;a flexible way of managing information about a piece of content. If you're trying to correlate this with WordPress, frontmatter may include the post title, categories & tags, publish date, post status, template, or any information you may store in post meta. For blog posts, I decided to start small and keep it to title, date, and category.
 
-So now instead of adding my this information in specific input fields on a post screen, I add the frontmatter to the top of my post, which typically looks something like this:
+So now instead of adding this information in specific input fields on a post screen, I add the frontmatter to the top of my post, which typically looks something like this:
 
 ```md
 ---
