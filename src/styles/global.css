@@ -153,3 +153,12 @@ button {
 	color: var(--color-neutral-9);
 	display: inline-block;
 }
+
+/**
+ * Web components
+ */
+cf-alert {
+	border-radius: 3px;
+	margin-bottom: var(--size-6);
+	margin-top: var(--size-6);
+}
