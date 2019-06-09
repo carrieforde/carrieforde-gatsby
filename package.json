@@ -7,6 +7,7 @@
   "dependencies": {
     "cf-components-alert": "^1.0.1",
     "gatsby": "^2.5.5",
+    "gatsby-cli": "^2.6.5",
     "gatsby-image": "^2.1.0",
     "gatsby-plugin-feed": "^2.2.1",
     "gatsby-plugin-google-analytics": "^2.0.20",
