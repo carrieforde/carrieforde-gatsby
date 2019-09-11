@@ -348,7 +348,7 @@ Now that we have a Cucumber test case, we'll need to make some updates to `e2e/p
  */
 exports.config = {
   allScriptsTimeout: 11000,
-  specs: ['./src/**/*.e2e-spec.ts'],
+  specs: ['./features/*.feature'],
   capabilities: {
     browserName: 'chrome'
   },
@@ -367,7 +367,7 @@ This console output is a stubbed out step definition file, which we'll review in
 
 ## Step definitions
 
-While the `calculator.feature` file helped us outline a test to run in plain text, we still need to implement code to execute the test. The code we'll implement is a set of _steps_ required to carry out the scenario. In Cucumber terminology, this is called a **step definition**. The output we saw in the terminal in the previous section were the set of steps we're going to take in our step definition file. Let's go ahead and start implementing these steps.
+While the `calculator.feature` file helped us outline a test to run in plain text, we still need to implement code to execute the test. The code we'll implement is a set of _steps_ required to carry out the scenario. In Cucumber terminology, this is called a **step definition**. The output we saw in the terminal in the previous section is a set of steps we're going to take in our step definition file. Let's go ahead and start implementing these steps.
 
 Under `e2e`, add a new `steps` directory, and add a file called `calculator.step.ts`. Open the file, and copy the stubbed tests from your terminal into the file:
 
@@ -405,7 +405,16 @@ Given('I have navigated to the calculator', async () => {
 });
 ```
 
-Before we can try running these steps, we need to make two updates to our `protractor.conf.js` file:
+Before proceeding, we need to add a global `timeout.ts` file within our `steps` directory. Because the tests run asynchronously, we sometimes end up in situations where a step hasn't had time to execute before moving onto the next. In many cases, such as our `Given` block above, that step is vital in navigating us to the page under test. By adding a timeout file, we can give the browser more time to work its magic before Protractor fails.
+
+```ts
+// timeout.ts
+import { setDefaultTimeout } from 'cucumber';
+
+setDefaultTimeout(60 * 1000);
+```
+
+Additionally, we need to make two updates to our `protractor.conf.js` file:
 
 ```js
 // protractor.conf.js
@@ -538,6 +547,7 @@ By including `chai.use(chaiAsPromised)` in the `Before()`, which is called befor
 Now that we have our testing basics down, let's go back to our `calculator.feature` file and add some more tests. In our initial `app.e2e-spec.ts`, we had two tests for our addition functionality. Let's add the second test to our Cucumber file:
 
 ```gherkin
+# calculator.feature
 Feature: Calculator
 
   A super calculator that performs operations on two numbers.
@@ -618,6 +628,7 @@ Now that we know we can parameterize our Cucumber tests, we can work toward simp
 First, let's update our `calculator.feature` file to use the `Scenario Outline` and replace our parameters with variables:
 
 ```gherkin
+# calculator.feature
 Feature: Calculator
 
   A super calculator that performs operations on two numbers.
@@ -631,6 +642,7 @@ Feature: Calculator
 Next, we need to add an `Examples` table to tell Cucumber what values we want to pass into our scenario:
 
 ```gherkin
+# calculator.feature
 Scenario Outline: Add two numbers
     Given I have navigated to the calculator
     When I add two numbers "<first>" and "<second>"
@@ -645,6 +657,7 @@ Examples:
 Notice that the first row of our table defines the variables we used in our scenario. Within the column for each variable, we define the values we want to pass. For example, in the second row of the table, we have `first = 1`, `second = 2`, and `result = 3`. We can easily expand our scenarios simply by adding more examples, rather than writing more scenarios:
 
 ```gherkin
+# calculator.feature
 Feature: Calculator
 
   A super calculator that performs operations on two numbers.
@@ -679,3 +692,25 @@ If you'd like to see the completed setup, you can find [angular-with-protractor-
 - [Chai as Promised](https://www.chaijs.com/plugins/chai-as-promised/)
 - [Protractor Cucumber Framework](https://github.com/protractor-cucumber-framework/protractor-cucumber-framework)
 - [Cucumber JS](https://github.com/cucumber/cucumber-js)
+
+## Addendum: when tests don't go as expected
+
+I came across some issues with the asynchronous nature of Protractor as I was implementing Cucumber on a work project. Let's be real, I came across _a lot_ of challenges while implementing this at work.
+
+One issue I bumped up against repeatedly was this error:
+
+```
+E/launcher - Error while waiting for Protractor to sync with the page: "both angularJS testability and angular testability are undefined.  This could be either because this is a non-angular page or because your test involves client-side navigation, which can interfere with Protractor's bootstrapping.
+```
+
+After a lot of searching, painful tutorials, and some trial and error, I finally figured out this error occurs because Protractor doesn't have enough time with the browser open to actually hit the site under test. If you're encountering a similar issue, you might want to try something like this:
+
+```ts
+Given('I have navigated to the calculator', async () => {
+  await browser.wait(calc.navigateTo(), 5000);
+});
+```
+
+`browser.wait()` takes a condition or promise to resolve and an optional timeout (a message can also be passed). The timeout will wait for `timeout` time for the condition to be true (i.e. resolved) before proceeding.
+
+These _quirks_ have been the most challenging part of familiarizing myself with Protractor and using Cucumber. The main takeaway here is that you may need to tweak things in the usage of Protractor (by trying things from the [API](https://www.protractortest.org/#/api)) until you get a concrete pass **or** fail. If you're getting errors, keep tweaking until you get that pass or fail.
