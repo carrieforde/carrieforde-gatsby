@@ -5,6 +5,10 @@ category: 'WordPress'
 description: 'With the rise of React in WordPress, there are more and more developers turning to webpack for managing and bundling front end assets.'
 ---
 
+<cf-alert type="info">
+  If you're looking for a fully-fleshed out version of <code>_s</code> with webpack, check out the <a href="https://github.com/carrieforde/_s-with-webpack">_s-with-webpack</a> repo.
+</cf-alert>
+
 In this post, I’ll cover webpack at a high level (what it is, and why we might reach for it), and show you how you can unleash the power of webpack in your WordPress projects to manage and bundle front end assets.
 
 At first glance, it’s really tempting to classify webpack as yet another front end task runner. Not unlike Grunt or Gulp, it can perform tasks such as JavaScript and Sass compilation and minification. But the way in which webpack works with these files is what makes webpack stand out.
@@ -632,7 +636,7 @@ Notice anything amiss here?
 
 There’s no reason we need to load `customizer.js` on the front end (in fact, it’s enqueued through `customizer.php` in `_s` by default). Enqueuing `customizer.js` as-is doesn’t reap the same minification benefits that we have for the rest of our JavaScript. The great news is that webpack can actually take multiple entry files, and produce multiple output bundles.
 
-The first thing we’ll need to do is move customizer.js to the root of src. This isn’t strictly necessary, but I feel like it keeps our bundle sources a little cleaner. (Make sure you remove the import from `index.js`, too!)
+The first thing we’ll need to do is move `customizer.js` to the root of `src`. This isn’t strictly necessary, but I feel like it keeps our bundle sources a little cleaner. (Make sure you remove the import from `index.js`, too!)
 
 Next, we’ll update our webpack file.
 
@@ -646,7 +650,7 @@ const path = require('path'),
 module.exports = {
   context: __dirname,
   entry: {
-    frontend: './src/index.js',
+    frontend: ['./src/index.js', './src/sass/style.scss'],
     customizer: './src/customizer.js'
   },
   output: {
@@ -674,7 +678,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: '../style.css' }),
+    new MiniCssExtractPlugin({ filename: '[name].css' }),
     new BrowserSyncPlugin({
       files: '**/*.php',
       injectChanges: true,
@@ -689,58 +693,11 @@ module.exports = {
 
 `entry` now takes an object, and I’ve updated `output` to take the `[name]` placeholder. When webpack runs, we’ll get an output bundle for each entry, and the property for each entry will be placed in the `[name]` placeholder. So `customizer.js will compile to`customizer-bundle.js`.
 
-If you’re using React in your theme, you may want to considering adding `babel-polyfill` so you can support IE11. Each key in the entry object can take either a string, or an array. One of the methods Babel suggests for adding `babel-polyfill` is to add it as the first item in an array for one of the entry points:
+Each key in the entry object can take either a string, or an array. To keep our JavaScript files tidy and strictly JavaScript, I have converted the `frontend` entry to an array and added it here. Additionally, I updated the CSS plugin to use the `[name]` placeholder: `new MiniCssExtractPlugin({ filename: '[name].css' })`.
 
-```javascript
-const path = require('path'),
-  MiniCssExtractPlugin = require('mini-css-extract-plugin'),
-  UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
-  OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
-  BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-
-module.exports = {
-  context: __dirname,
-  entry: {
-    frontend: ['babel-polyfill', './src/index.js'],
-    customizer: './src/customizer.js'
-  },
-  output: {
-    path: path.resolve(__dirname, 'public'),
-    filename: '[name]-bundle.js'
-  },
-  mode: 'development',
-  devtool: 'source-map',
-  module: {
-    rules: [
-      {
-        enforce: 'pre',
-        exclude: /node_modules/,
-        test: /\.jsx$/,
-        loader: 'eslint-loader'
-      },
-      {
-        test: /\.jsx?$/,
-        loader: 'babel-loader'
-      },
-      {
-        test: /\.s?css\$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-      }
-    ]
-  },
-  plugins: [
-    new MiniCssExtractPlugin({ filename: '../style.css' }),
-    new BrowserSyncPlugin({
-      files: '**/*.php',
-      injectChanges: true,
-      proxy: 'http://underscores.test'
-    })
-  ],
-  optimization: {
-    minimizer: [new UglifyJSPlugin(), new OptimizeCssAssetsPlugin()]
-  }
-};
-```
+<cf-alert type="tip">
+  If you’re using React in your theme, you may want to considering adding <code>babel-polyfill</code> so you can support IE11. Babel suggests adding it as the first item of your frontend entry's array.
+</cf-alert>
 
 ### Finishing touches
 
@@ -801,7 +758,7 @@ module.exports = {
 };
 ```
 
-Adding `StyleLint` is pretty easy. We started by requiring the package at the top of the file, and instantiating it within our plugins array. Now when you run npm run dev or npm run build you’ll see some errors appear in the console.
+Adding `StyleLint` is pretty easy. We started by requiring the package at the top of the file, and instantiating it within our plugins array. Now when you run `npm run dev` or `npm run build` you’ll see some errors appear in the console.
 
 ![StyleLint errors in the terminal.](../../images/stylelint-errors.jpg)
 
