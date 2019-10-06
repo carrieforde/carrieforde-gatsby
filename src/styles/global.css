@@ -104,6 +104,7 @@ pre {
 }
 
 pre code[class^='language-'] {
+	font-size: var(--font-size-2);
 	white-space: pre !important;
 }
 
@@ -161,4 +162,8 @@ cf-alert {
 	border-radius: 3px;
 	margin-bottom: var(--size-6);
 	margin-top: var(--size-6);
+}
+
+.gatsby-resp-image-link {
+	background: none;
 }
