@@ -1,6 +1,7 @@
 ---
 title: 'Webpack for WordPress'
 date: 2018-10-13
+updated: 2019-10-06
 category: 'WordPress'
 description: 'With the rise of React in WordPress, there are more and more developers turning to webpack for managing and bundling front end assets.'
 ---
@@ -149,9 +150,6 @@ Now that we have the basics of our webpack config laid out. let’s try running 
 ![An example of source maps in action.](../../images/source-map-example.jpg)
 
 The developer tools show that I have a `console.log()` statement on line 10 of `navigation.js`, and a problem with jQuery in `customizer.js`.
-
-[image here]
-Source maps show us that we have a `console.log()` on line 10 of `navigation.js`, and a problem with jQuery in our `customizer.js`.
 
 #### Adding Node scripts
 
@@ -696,7 +694,7 @@ module.exports = {
 Each key in the entry object can take either a string, or an array. To keep our JavaScript files tidy and strictly JavaScript, I have converted the `frontend` entry to an array and added it here. Additionally, I updated the CSS plugin to use the `[name]` placeholder: `new MiniCssExtractPlugin({ filename: '[name].css' })`.
 
 <cf-alert type="tip">
-  If you’re using React in your theme, you may want to considering adding <code>babel-polyfill</code> so you can support IE11. Babel suggests adding it as the first item of your frontend entry's array.
+  If you’re using React in your theme, you may want to consider adding <code>babel-polyfill</code> so you can support IE11. Babel suggests adding it as the first item of your frontend entry's array.
 </cf-alert>
 
 ### Finishing touches

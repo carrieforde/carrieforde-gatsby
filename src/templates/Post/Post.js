@@ -10,7 +10,7 @@ import 'cf-components-alert';
 const Post = ({ data }) => {
   const post = data.markdownRemark,
     { frontmatter, html } = post,
-    { title, date, category, description } = frontmatter;
+    { title, date, updated, category, description } = frontmatter;
 
   return (
     <Site>
@@ -20,6 +20,7 @@ const Post = ({ data }) => {
         description={description}
         category={category}
         date={date}
+        updated={updated}
       />
       <div
         className="post__content"
@@ -41,6 +42,7 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        updated(formatString: "MMMM DD, YYYY")
         category
         description
       }

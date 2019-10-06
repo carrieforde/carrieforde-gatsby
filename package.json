@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Carrie Forde <carrie@carrieforde.com>",
   "dependencies": {
-    "cf-components-alert": "^1.0.1",
+    "cf-components-alert": "^1.0.4",
     "gatsby": "^2.5.5",
     "gatsby-cli": "^2.6.5",
     "gatsby-image": "^2.1.0",

@@ -2676,10 +2676,10 @@ ccount@^1.0.0, ccount@^1.0.3:
   resolved "https://registry.yarnpkg.com/ccount/-/ccount-1.0.4.tgz#9cf2de494ca84060a2a8d2854edd6dfb0445f386"
   integrity sha512-fpZ81yYfzentuieinmGnphk0pLkOTMm6MZdVqwd77ROvhko6iujLNGrHH5E7utq3ygWklwfmwuG+A7P+NpqT6w==
 
-cf-components-alert@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/cf-components-alert/-/cf-components-alert-1.0.1.tgz#8e90edb95ed9122ed8e4abb867e64a2484dfc7b0"
-  integrity sha512-CwXFJzLMxsERuCga7CfeIDGf3GpOFAb2CLk0gA1CHNKOBa2CqdzLvC5ST5Mz5HOuEHiQswX2MxKAM58FFXul5g==
+cf-components-alert@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/cf-components-alert/-/cf-components-alert-1.0.4.tgz#d0eefbf49b879a4bbffa61f8093cf16d846a0858"
+  integrity sha512-PETnXtNwEzxTNn6TOeZXzgsUHL0H1ULQy9KfyZcbgUmdqPdKt7RcXxVmnIk1kZWpzIceqye8mQ6dAi+k+lkpoA==
   dependencies:
     lit-element "^2.1.0"
 

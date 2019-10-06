@@ -57,8 +57,8 @@ const IndexPage = ({ data }) => {
             <a href="www.freedomfinancialnetwork.com">
               Freedom Financial Network
             </a>{' '}
-            where I lead the architecture and development of{' '}
-            <a href="www.freedomdebtrelief.com">freedomdebtrelief.com</a>.
+            where I design and implement clever frontend solutions for{' '}
+            <a href="https://lendage.com">Lendage</a>.
           </p>
           <p>I reach for these technologies on a daily basis:</p>
 
@@ -66,10 +66,13 @@ const IndexPage = ({ data }) => {
             <li>HTML</li>
             <li>CSS (& Sass)</li>
             <li>JavaScript (ES6+)</li>
-            <li>WordPress</li>
             <li>Git</li>
+            <li>TypeScript</li>
+            <li>Angular</li>
+            <li>Firebase</li>
             <li>Webpack</li>
             <li>React</li>
+            <li>WordPress</li>
           </ul>
         </section>
 

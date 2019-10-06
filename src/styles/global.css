@@ -162,6 +162,7 @@ cf-alert {
 	border-radius: 3px;
 	margin-bottom: var(--size-6);
 	margin-top: var(--size-6);
+	padding-left: 40px;
 }
 
 .gatsby-resp-image-link {

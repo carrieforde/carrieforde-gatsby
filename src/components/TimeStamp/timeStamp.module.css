@@ -13,3 +13,7 @@
 	margin-bottom: var(--size-2);
 	margin-top: var(--size-2);
 }
+
+.timeStampUpdated {
+	font-weight: 600;
+}
