@@ -29,7 +29,7 @@ Meta-frameworks including [Next.js](https://nextjs.org/) or [Nuxt.js](https://nu
 
 Static site generators like [Gatsby](https://www.gatsbyjs.org/), [VuePress](https://vuepress.vuejs.org/), or [Hugo](https://gohugo.io/), are also big in the space. SSGs rely on the build step during CI/CD to build a site into static files and deploy them to a host. SSGs often come with huge performance benefits because the build step aggressively shakes out unused styles and scripts, and only serves assets absolutely required on page load. Additionally, SSG sites typically have fewer attack vectors because less client-side JavaScript is required.
 
-To make content editing & management easier, JAMstack sites are often paired with a headless CMS. It's worth noting that going headless isn't an absolute requirement. WordPress, for example, can be paired with Gatsby for static site generation (although, I do think there are challenges with this approach).
+To make content editing & management easier, JAMstack sites are often paired with a headless CMS. It's worth noting that going headless isn't an absolute requirement. WordPress, for example, can be paired with Gatsby for static site generation (although, I do think there are challenges with this approach). The landscape of headless CMSes is broad, and includes [Contentful](https://www.contentful.com/), [Sanity](https://www.contentful.com/), [Forestry](https://forestry.io/), [Netlify CMS](https://www.netlifycms.org/) among many others. And while these headless solutions not only make the editing experience better for content managers, they also allow developers to easily customize the underlying API.
 
 One of the most compelling tools I've seen for site editing is [TinaCMS](https://tinacms.org/), which claims to not actually be a CMS, but rather an in-situ site editing experience. Of the challenges I've seen folks face when working with WordPress, not understanding _how_ components work in context has been the biggest. TinaCMS aims to solve this problem, and I can't wait to try it.
 
@@ -50,14 +50,14 @@ Even if you weren't able to make it to the JAMstack conference, you can still wa
 1. **[Migrating JAMstack and OhShitGit](https://youtu.be/PqlhYVqLDm0) &ndash; Katie Sylor-Miller**  
    I came across [OhShitGit](https://ohshitgit.com/) a few years ago, and I have found it to be an incredibly valuable resource in *git*ting out of some sticky situations. Sylor-Miller's talk was a deep-dive into Git, and a the role it plays in the JAMstack.
 1. **[Supercharging JAMstack apps with multiple APIs via GraphQL](https://youtu.be/O3j1ho9FBkk) &ndash; Sean Grove**  
-   Having been immersed in a more JAMstack-focused role for the past several months, I can see the power of being able to query and work with multiple APIs via GraphQL. Grove walked through an example where he used multiple services' to quickly spin up new Netlify sites from SSG setup, to domain purchase, to deployment.
+   Having been immersed in a more JAMstack-focused role for the past several months, I can see the power of being able to query and work with multiple APIs via GraphQL. Grove walked through an example where he used multiple services to quickly spin up new Netlify sites from SSG setup, to domain purchase, to deployment.
 
 ## Takeaways & where to go from here
 
 While the JAMstack can seem a bit overwhelming, I would absolutely invest time learning a few of the tools and frameworks in the ecosystem. For those new to JAMstack or front end development, I'd suggest the following:
 
 1. **Get a solid grasp on vanilla JavaScript**  
-   Learning a JS framework is a lot easier if you have a solid grasp of vanilla JavaScript. In particular, you need want to understand newer JS concepts like classes, functional JS, Promises, `async` / `await` etc. Also make sure you know how to make API requests&mdash;learn `fetch()` and don't always depend on third-party libraries for making requests.
+   Learning a JS framework is a lot easier if you have a solid grasp of vanilla JavaScript. In particular, you need to understand newer JS concepts like classes, functional JS, Promises, `async` / `await` etc. Also make sure you know how to make API requests&mdash;learn `fetch()` and don't always depend on third-party libraries for making requests.
 1. **Choose & learn a JS framework**  
    This narrows down a few choices later, and generally sets you up for success in the front end developer job market. I recommend React, but look at local job postings to see what's relevant your local job market. I'd advise against Angular (even though that's what I use in my day job!) because there is little to no support for SSG, etc.
 1. **Choose & learn a SSG and / or meta-framework**  
