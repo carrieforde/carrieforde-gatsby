@@ -147,7 +147,7 @@ module.exports = {
 
 Now that we have the basics of our webpack config laid out. let’s try running `node_modules/.bin/webpack` again. If everything worked correctly, we should see a human-readable `bundle.js`, and if we have errors or `console.log()` statements, we’ll see where they are in our source code.
 
-![An example of source maps in action.](../../images/source-map-example.jpg)
+![An example of source maps in action.](source-map-example.jpg)
 
 The developer tools show that I have a `console.log()` statement on line 10 of `navigation.js`, and a problem with jQuery in `customizer.js`.
 
@@ -359,7 +359,7 @@ We can test that our new rule is working by refactoring navigation.js to use ES6
 
 Now after running `npm run dev`, we see that the arrow function has been transformed into a regular function, the `forof` loop became a standard for loop, and usage of `let` and `const` has been transformed into `var`.
 
-![The `bundle.js` file after the JS has been run through Babel.](../../images/transpiled-js.jpg)
+![The `bundle.js` file after the JS has been run through Babel.](transpiled-js.jpg)
 
 The arrow function is now a standard function, and the `forof` was transformed into a `for` loop.
 
@@ -758,7 +758,7 @@ module.exports = {
 
 Adding `StyleLint` is pretty easy. We started by requiring the package at the top of the file, and instantiating it within our plugins array. Now when you run `npm run dev` or `npm run build` you’ll see some errors appear in the console.
 
-![StyleLint errors in the terminal.](../../images/stylelint-errors.jpg)
+![StyleLint errors in the terminal.](stylelint-output.jpg)
 
 Finally, let’s add a loader to manage image assets, and a loader and plugin to manage SVGs.
 

@@ -66,7 +66,7 @@ When you run this command, a few things should happen:
 1. A browser pops open (and probably closes shortly after)
 1. Your terminal indicates your test has successfully completed
 
-![A successful Protractor test](../../images/a-successsful-protractor-test.jpg)
+![A successful Protractor test](a-successsful-protractor-test.jpg)
 
 You've just successfully run your first E2E test! 🎉
 
@@ -361,7 +361,7 @@ exports.config = {
 
 Go ahead and run `npm run e2e` again, and have a peak in the terminal once it's finished. You should see something like this:
 
-![Stubbed out step definition](../../images/stubbed-step-definition.jpg)
+![Stubbed out step definition](stubbed-step-definition.jpg)
 
 This console output is a stubbed out step definition file, which we'll review in the next section.
 
@@ -446,7 +446,7 @@ exports.config = {
 
 We also need an `onPrepare()` function to transpiles the Typescript files before executing the tests. Now we're ready to run `npm run e2e` again. This time, you should see something like this:
 
-![Terminal output after Cucumber's Given step is implemented](../../images/cucumber-output-after-given-implemented.jpg)
+![Terminal output after Cucumber's Given step is implemented](cucumber-output-after-given-implemented.jpg)
 
 The checkmark to the left of the `Given` line in the terminal indicates that this step of the test is passing. Hooray! 🎉
 
@@ -601,9 +601,7 @@ Then('the displayed output should be {string}', string => {
 });
 ```
 
-Try running `npm run e2e` again to see the test pass. You should see something like this in your console:
-
-![Console output of two passed Cucumber scenarios](../../images/cucumber-two-passed-scenarios.jpg)
+Try running `npm run e2e` again to see the test pass.
 
 It's pretty neat that we have two passing scenarios now, but we didn't make any updates to our step definition file, so how is this possible? There are two elements at play here:
 
@@ -677,7 +675,7 @@ Feature: Calculator
 
 When I run `npm run e2e`, I now have four passing scenarios and 12 passing tests.
 
-![More passing Cucumber scenarios and steps](../../images/more-passing-scenarios-using-examples.jpg)
+![More passing Cucumber scenarios and steps](more-passing-scenarios-using-examples.jpg)
 
 This wraps up our introduction to E2E testing with Protractor and Cucumber. We've covered a lot of ground, but there's even more we can do with the Protractor & Cucumber integration including automating HTML reports and grabbing screenshots when tests fail. Be on the lookout for a second part coming soon!
 

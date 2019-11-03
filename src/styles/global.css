@@ -105,6 +105,7 @@ pre {
 
 pre code[class^='language-'] {
 	font-size: var(--font-size-2);
+	padding: 0 !important;
 	white-space: pre !important;
 }
 

@@ -37,20 +37,20 @@ Interestingly, [Foxhound](https://github.com/ryelle/Foxhound), which is also a R
 
 To give myself a head start, I’m using Underscores as the foundation for Aurora. [Underscores](http://underscores.me/) doesn’t look like much from the start, but it’s packed with a lot of stuff, and it will save me time enqueuing things, getting the file structure set up, and getting a theme that looks like a theme.
 
-![Aurora with all the Underscores files](../../images/aurora-files-with-full-underscores.jpg)
+![Aurora with all the Underscores files](aurora-files-with-full-underscores.jpg)
 Before: Aurora with the full set of files from Underscores
 
-![Aurora homepage with default Underscores](../../images/aurora-home-with-full-underscores.jpg)
+![Aurora homepage with default Underscores](aurora-home-with-full-underscores.jpg)
 Before: Aurora home page with full Underscores
 
 But as you can see from the file structure screenshot, there are a lot of files. So first things, first, buh-bye to all the stuff we don’t need.
 
-![Aurora with only the files needed for React dev](../../images/aurora-files-offical-starting-point.jpg)
+![Aurora with only the files needed for React dev](aurora-files-offical-starting-point.jpg)
 After: Aurora with only the files we need to start.
 
 Ah, that’s better. Less cruft to cut through to get started, and I didn’t completely break the theme.
 
-![Aurora homepage after files were paired down](../../images/aurora-home-offical-start-point.jpg)
+![Aurora homepage after files were paired down](aurora-home-offical-start-point.jpg)
 After: Aurora homepage after removing a bunch of files.
 
 Clearly, obliterating the `template-parts/` directory prevents any content from loading, but that’s fine. We’ll replace it with JavaScript soon enough.
