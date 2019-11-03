@@ -758,7 +758,7 @@ module.exports = {
 
 Adding `StyleLint` is pretty easy. We started by requiring the package at the top of the file, and instantiating it within our plugins array. Now when you run `npm run dev` or `npm run build` you’ll see some errors appear in the console.
 
-![StyleLint errors in the terminal.](stylelint-errors.jpg)
+![StyleLint errors in the terminal.](stylelint-output.jpg)
 
 Finally, let’s add a loader to manage image assets, and a loader and plugin to manage SVGs.
 
