@@ -23,7 +23,7 @@ One of the things I love about JAMstack is the variety of tooling available to f
 
 JavaScript frameworks are the heart JAMstack, and most modern front end devs are familiar with the framework landscape, likely using a framework regularly. According to last year's [State of JavaScript survey](https://2018.stateofjs.com/front-end-frameworks/overview/), React currently leads popularity, and based on the talks I heard over the two days, it seems React is leading in the JAMstack space, too.
 
-![Front end frameworks overview from State of JS](../../images/framework-overview-state-of-js.jpg)
+![Front end frameworks overview from State of JS](framework-overview-state-of-js.jpg)
 
 Meta-frameworks including [Next.js](https://nextjs.org/) or [Nuxt.js](https://nuxtjs.org/), are another big player in JAMstack. These frameworks do a lot of heavy lifting for developers allowing us to easily set up server-side rendering, static site generation, code splitting, hot module replacement, etc. While I'd heard of both Next.js and Nuxt.js before the conference, I'd never bothered looking at either. But now that I have a better sense of what these meta-frameworks offer, I'm certainly interested in digging in, learning more, and seeing how I could use one in my day-to-day.
 
@@ -37,7 +37,7 @@ If you're looking for a bit of a broader overview of the JAMstack toolkit, Chris
 
 ## Top talks from the conference
 
-![Shop Talk Show Live](../../images/shop-talk-show-live.jpg)
+![Shop Talk Show Live](shop-talk-show-live.jpg)
 
 Even if you weren't able to make it to the JAMstack conference, you can still watch all the talks on the [JAMstack Conf YouTube channel](https://www.youtube.com/channel/UC8bRyfU7ycLXnEBfvdorpUg). And while I really enjoyed most of the talks, these were among my favorites:
 

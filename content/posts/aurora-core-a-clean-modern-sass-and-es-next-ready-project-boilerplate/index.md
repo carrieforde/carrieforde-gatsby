@@ -102,7 +102,7 @@ After the initial project setup, I focused on creating my foundational Sass file
 
 There is nearly as much / more documentation for this mixin as there is code! But it sure is helpful to have documentation to which I can refer later.
 
-![A screenshot of Sassdoc documentation for a button mixin within Aurora Core.](../../images/button-sassdoc.jpg)
+![A screenshot of Sassdoc documentation for a button mixin within Aurora Core.](button-sassdoc.jpg)
 
 ## Introducing Webpack
 

@@ -15,7 +15,7 @@ import pageDescriptionStyles from '../components/PageDescription/pageDescription
 import Tabs from '../components/Tabs';
 
 const IndexPage = ({ data }) => {
-  const { file, experience } = data;
+  const { image, jobs } = data;
   return (
     <Site>
       <SEO title="Home" />
@@ -43,7 +43,7 @@ const IndexPage = ({ data }) => {
           <h2 className={indexStyles.hiddenHeadline}>About</h2>
           <Img
             className={indexStyles.avatar}
-            fluid={file.childImageSharp.fluid}
+            fluid={image.childImageSharp.fluid}
           />
           <p>
             Before becoming a software engineer, I worked as a business analyst
@@ -78,7 +78,7 @@ const IndexPage = ({ data }) => {
 
         <section id="experience" className={indexStyles.section}>
           <h2>Experience</h2>
-          <Tabs {...experience} />
+          <Tabs {...jobs} />
         </section>
       </div>
     </Site>
@@ -93,15 +93,15 @@ export default IndexPage;
 
 export const query = graphql`
   query {
-    file(relativePath: { eq: "images/carrie_color-factory.JPG" }) {
+    image: file(relativePath: { regex: "/carrie_color-factory.JPG/" }) {
       childImageSharp {
         fluid(maxWidth: 250) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    experience: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/experience/" } }
+    jobs: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/jobs/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {

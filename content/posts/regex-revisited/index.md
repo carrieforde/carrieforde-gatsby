@@ -124,7 +124,7 @@ Things get a little loosey goosey with the array and object checks, and this is 
 
 We’ve now defined parameters for keys and all allowable values. But if you plug this into RegExr using the sample valid object above, you’ll notice it only highlights the first line.
 
-![JSON validator after first key-value regex check](../../images/regex_json-validator-first-key-value.jpg)
+![JSON validator after first key-value regex check](regex_json-validator-first-key-value.jpg)
 
 What we also notice is that the regex stops at the comma. It’s almost as simple as tacking on a comma at the end, but not quite. We need to add an opening parenthesis just after the opening curly brace for the entire regex, and we’ll add another closing parenthesis before the closing `/`. The comma will go between the final two closing parentheses. We’ll also add our handy zero or more `*` to allow for multiple key-value pairs. Now our regex is looking like this:
 
@@ -134,7 +134,7 @@ var pattern = /^{(\s*(("\w+"):\s*(("[^"][\w\s!@#\$%^&_()\-+={}[\];:',.<>?/]+")|\
 
 And now we have all but the last key-value pair and closing curly brace highlighted.
 
-![JSON regex matching all but last key-value pair](../../images/regex_json-validator-all-but-last-key-value.jpg)
+![JSON regex matching all but last key-value pair](regex_json-validator-all-but-last-key-value.jpg)
 
 ### Capturing the final key-value pair
 
@@ -228,7 +228,7 @@ The trickiest bit here wasn’t identifying potential links for harvesting, but 
 
 You’ll notice the text variable’s regex has some weird extra characters in it, namely `(?!>)` and `(?=<\/a>)`. We’ve already discussed that parentheses are used for capturing groups, and the same is true in both these instances. Adding `?!`, known as a negative lookahead, to the first capturing group, however, tells our regex to look for the closing angle bracket of our opening a tag, but doesn’t actually include it on our match. We need the second part, our positive lookahead `?=`, to tell our regex to keep looking until you find this closing a tag, but again, don’t actually include the `</a>` itself in our results. Basically, the combination of a negative and positive lookahead is creating a boundary for our text regex, and returns only the link text value. Pretty neat, huh? RegExr illustrates this really well:
 
-![Regex lookahead example](../../images/regex_lookaheads.jpg)
+![Regex lookahead example](regex_lookaheads.jpg)
 
 The rest of the `forEach` pushes our set of external websites and email addresses to an object, which is rendered to the screen by a separate function.
 
