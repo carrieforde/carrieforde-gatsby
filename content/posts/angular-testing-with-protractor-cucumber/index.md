@@ -601,9 +601,7 @@ Then('the displayed output should be {string}', string => {
 });
 ```
 
-Try running `npm run e2e` again to see the test pass. You should see something like this in your console:
-
-![Console output of two passed Cucumber scenarios](cucumber-two-passed-scenarios.jpg)
+Try running `npm run e2e` again to see the test pass.
 
 It's pretty neat that we have two passing scenarios now, but we didn't make any updates to our step definition file, so how is this possible? There are two elements at play here:
 
