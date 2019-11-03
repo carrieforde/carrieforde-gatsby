@@ -93,7 +93,7 @@ export default IndexPage;
 
 export const query = graphql`
   query {
-    image: file(relativePath: { regex: "/carrie_color-factory.JPG/" }) {
+    image: file(relativePath: { eq: "pages/home/carrie_color-factory.JPG" }) {
       childImageSharp {
         fluid(maxWidth: 250) {
           ...GatsbyImageSharpFluid
