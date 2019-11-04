@@ -1,5 +1,8 @@
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
+
+const slugify = slug => slug.replace(/\s/g, '-').toLowerCase();
+
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -21,7 +24,9 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: 'slug',
       value: slug
     });
+  }
 
+  if (node.internal.type === 'AllMarkdownRemark') {
     const category = createFilePath({
       node,
       getNode,
@@ -97,7 +102,7 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors;
   }
 
-  const { posts, pages, categories } = result.data;
+  const { pages, posts, categories } = result.data;
 
   posts.edges.forEach(post => {
     createPage({
@@ -111,39 +116,23 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
-  // categories.group.forEach(category => {
-  //   createPage({
-  //     path: `category/${slugify(category.fieldValue)}`,
-  //     component: path.resolve('./src/templates/Categories/Categories.js'),
-  //     context: {
-  //       category: category.fieldValue
-  //     }
-  //   });
-  // });
-
-  // pages.edges.forEach(page => {
-  //   createPage({
-  //     path: page.node.fields.slug,
-  //     component: path.resolve('./src/templates/Page/Page.js'),
-  //     context: {
-  //       slug: page.node.fields.slug
-  //     }
-  //   });
-  // });
-};
-
-// Fix polyfill for webcomponents.
-exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  if (stage === 'build-html') {
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /cf-alert/,
-            use: loaders.null()
-          }
-        ]
+  pages.edges.forEach(page => {
+    createPage({
+      path: page.node.fields.slug,
+      component: path.resolve('./src/templates/Page/Page.js'),
+      context: {
+        slug: page.node.fields.slug
       }
     });
-  }
+  });
+
+  categories.group.forEach(category => {
+    createPage({
+      path: `category/${slugify(category.fieldValue)}`,
+      component: path.resolve('./src/templates/Category/Category.js'),
+      context: {
+        category: category.fieldValue
+      }
+    });
+  });
 };
