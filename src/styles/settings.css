@@ -100,4 +100,5 @@
 	--font-family-monospace: 'IBM Plex Mono', monospace;
 
 	--transition-background: background 0.3s ease-in-out;
+	--transition-transform: transform 0.3s ease;
 }

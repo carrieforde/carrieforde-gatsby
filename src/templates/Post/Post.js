@@ -6,11 +6,13 @@ import PropTypes from 'prop-types';
 
 import PageHeader from '../../components/PageHeader';
 import 'cf-components-alert';
+import Pagination from '../../components/Pagination';
 
-const Post = ({ data }) => {
-  const post = data.markdownRemark,
+const Post = props => {
+  const post = props.data.markdownRemark,
     { frontmatter, html } = post,
-    { title, date, updated, category, description } = frontmatter;
+    { title, date, updated, category, description } = frontmatter,
+    { next, previous } = props.pageContext;
 
   return (
     <Site>
@@ -26,12 +28,14 @@ const Post = ({ data }) => {
         className="post__content"
         dangerouslySetInnerHTML={{ __html: html }}
       />
+      <Pagination next={next} previous={previous} />
     </Site>
   );
 };
 
 Post.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  pageContext: PropTypes.object
 };
 
 export default Post;
