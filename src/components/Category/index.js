@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 
 import styles from './category.module.css';
+import { slugify } from '../../utils/utilities';
 
 const Category = ({ category }) => (
-  <p className={styles.category}>{category}</p>
+  <Link className={styles.category} to={`/category/${slugify(category)}`}>
+    {category}
+  </Link>
 );
 
 Category.propTypes = {

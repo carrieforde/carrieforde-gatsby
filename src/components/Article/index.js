@@ -5,6 +5,7 @@ import TimeStamp from '../TimeStamp';
 
 import styles from './article.module.css';
 import timeStampStyles from '../TimeStamp/timeStamp.module.css';
+import Category from '../Category';
 
 const Article = data => {
   const { excerpt, frontmatter, timeToRead, fields } = data.node,
@@ -13,7 +14,7 @@ const Article = data => {
   return (
     <article className={styles.article}>
       <header className={styles.articleHeader}>
-        <span className={styles.articleCategory}>{category}</span>
+        <Category category={category} />
         <Link to={fields.slug}>
           <h2
             className={styles.articleTitle}

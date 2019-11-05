@@ -6,13 +6,11 @@ import PropTypes from 'prop-types';
 
 import PageHeader from '../../components/PageHeader';
 import 'cf-components-alert';
-import Pagination from '../../components/Pagination';
 
-const Post = props => {
-  const post = props.data.markdownRemark,
-    { frontmatter, html } = post,
-    { title, date, updated, category, description } = frontmatter,
-    { next, previous } = props.pageContext;
+const Page = ({ data }) => {
+  const page = data.markdownRemark,
+    { frontmatter, html } = page,
+    { title, date, updated, category, description } = frontmatter;
 
   return (
     <Site>
@@ -25,29 +23,24 @@ const Post = props => {
         updated={updated}
       />
       <div
-        className="post__content"
+        className="page__content"
         dangerouslySetInnerHTML={{ __html: html }}
       />
-      <Pagination next={next} previous={previous} />
     </Site>
   );
 };
 
-Post.propTypes = {
-  data: PropTypes.object,
-  pageContext: PropTypes.object
+Page.propTypes = {
+  data: PropTypes.object
 };
 
-export default Post;
+export default Page;
 
 export const query = graphql`
   query($slug: String) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
-        updated(formatString: "MMMM DD, YYYY")
-        category
         description
       }
       html

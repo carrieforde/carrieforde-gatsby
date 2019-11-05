@@ -1,6 +1,7 @@
 .category {
+	background: transparent;
 	color: var(--color-primary-8);
-	display: block;
+	display: inline-block;
 	font-size: var(--font-size-1);
 	font-weight: 300;
 	margin-bottom: var(--size-1);
