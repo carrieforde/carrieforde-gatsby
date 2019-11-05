@@ -136,3 +136,19 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 };
+
+// Fix polyfill for webcomponents.
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === 'build-html') {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /cf-alert/,
+            use: loaders.null()
+          }
+        ]
+      }
+    });
+  }
+};
