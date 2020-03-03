@@ -101,4 +101,11 @@
 
 	--transition-background: background 0.3s ease-in-out;
 	--transition-transform: transform 0.3s ease;
+
+	--alcatraz-accordion-border: 1px solid var(--color-neutral-2);
+	--alcatraz-accordion-border-radius: 4px;
+
+	--cat-fact-bg-color: var(--color-neutral-1);
+	--cat-fact-border-radius: 4px;
+	--cat-fact-padding: var(--size-4);
 }

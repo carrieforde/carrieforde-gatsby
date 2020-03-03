@@ -166,6 +166,15 @@ cf-alert {
 	padding-left: 40px;
 }
 
+alcatraz-accordion,
+cat-fact {
+	margin-top: var(--size-6);
+}
+
 .gatsby-resp-image-link {
 	background: none;
+}
+
+.pageHeader + .page__content {
+	margin-top: var(--size-7);
 }

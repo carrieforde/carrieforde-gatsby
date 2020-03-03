@@ -4,6 +4,16 @@
     "stylelint-order"
   ],
   "rules": {
-    "order/properties-alphabetical-order": true
+    "order/properties-alphabetical-order": true,
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": [
+          "/^cf-/",
+          "/^alcatraz-/",
+          "/^cat-/"
+        ]
+      }
+    ]
   }
 }
