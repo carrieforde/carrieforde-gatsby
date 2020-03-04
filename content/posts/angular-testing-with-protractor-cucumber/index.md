@@ -10,7 +10,7 @@ In this post, we're going to walk through setting up Protractor and Cucumber wit
 
 For this walkthrough, let's spin up a new Angular project with the [Angular CLI](https://angular.io/cli):
 
-```sh
+```bash
 ng new angular-with-cucumber
 ```
 
@@ -55,7 +55,7 @@ describe('Protractor demo app', () => {
 
 Since Protractor is already set up in our project and it comes with a a configuration file (`e2e/protractor.conf.js`), we can simply run our test:
 
-```sh
+```bash
 npm run e2e
 ```
 
@@ -309,7 +309,7 @@ Now that we have the basics of Protractor covered, let's add Cucumber.
 
 First, we'll need to install a few dependencies. Go ahead and run the following within your project:
 
-```sh
+```bash
 npm install --save-dev @types/{chai,chai-as-promised,cucumber} chai chai-as-promised cucumber cucumber-html-reporter protractor-cucumber-framework
 ```
 

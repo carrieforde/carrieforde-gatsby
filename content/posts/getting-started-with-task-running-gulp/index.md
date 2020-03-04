@@ -12,7 +12,7 @@ First thing’s first–with any task runner, you will need to make sure you hav
 
 Once you have Node installed, you’ll need to use NPM, the package manger that comes bundled with Node, to install Gulp. Several Node packages can be installed globally on your computer, and / or locally to your project. In this case, we’ll want to start by installing Gulp globally. Simply type the following into your terminal prompt:
 
-```sh
+```bash
 npm install -g gulp-cli
 ```
 
@@ -20,7 +20,7 @@ In this command, the `-g` flag is what tells Node to install this as a global pa
 
 Now that we have the Gulp CLI installed globally, we’re ready to get started configuring our project. If you already have a project for which you’d like to set up Sass, simply navigate to that project via your terminal. Something like this:
 
-```sh
+```bash
 cd path/to/your/project
 ```
 
@@ -32,7 +32,7 @@ Now we’re ready to start setting up our project to use Gulp. The first step in
 
 The first step is to ensure you’re in the correct directory for your project. Once you have ensured you’re in the correct directory, we’ll need to create our package.json file by typing the following in the terminal prompt:
 
-```sh
+```bash
 npm init
 ```
 
@@ -46,7 +46,7 @@ Earlier I mentioned that Node allows us to install packages globally on our comp
 
 The first package we’ll install is Gulp itself. We can do this by typing the following into the terminal window:
 
-```sh
+```bash
 npm install --save-dev gulp
 ```
 
@@ -56,7 +56,7 @@ This may be a good point to stop and add `node_modules` to your `.gitignore` fil
 
 While we’re in the installation stage, let’s also install the Sass package we’ll need:
 
-```sh
+```bash
 npm install --save-dev gulp-sass
 ```
 
