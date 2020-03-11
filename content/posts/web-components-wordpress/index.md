@@ -2,7 +2,7 @@
 title: 'Web components & WordPress'
 date: 2020-02-29
 category: 'WordPress'
-description: 'Delivering interactive elements to a JavaScript application via the WordPress REST API has a host of challenges, but web components may hold the solution'
+description: 'Delivering interactive elements to a JavaScript application via the WordPress REST API has a host of challenges, but web components may hold the solution.'
 ---
 
 Last spring, I worked on a project where we supplied static content from a WordPress site to a React app via the REST API, which seems like a fairly common use case for the WP REST API. The challenge we faced in this project was that the content from the WordPress site included a carousel&mdash;an interactive component.
@@ -85,236 +85,140 @@ Now that we have Lit Element set up, let's add some new files to our project. We
 └── README.md
 ```
 
-We'll start by having our web component output "Hello World." To do this, we'll need to extend the `LitElement` base class in `index.js`:
+Now that our project is spun up, we're ready to start coding.
+
+### Scaffolding a basic component
+
+Let's start by having our component simply output &ldquo;Hello World&rdquo;. We'll start by adding some code in `index.js`:
 
 ```js
 // index.js
 import { LitElement, html } from 'lit-element';
 
-class AlcatrazAccordion extends LitElement {
+class MyAccordion extends LitElement {
   render() {
     return html`
-      <h2>hello world!</h2>
+      Hello World 🌍
     `;
   }
 }
 
-customElements.define('alcatraz-accordion', AlcatrazAccordion);
+customElements.define('my-accordion', MyAccordion);
 ```
 
 The `render` method returns our component's HTML template. The `html` function is simply a wrapper for creating the template. `customElements.define()` allows us to define a name for our web component, and associate the extended `LitElement` class to this tag.
 
-Next, we will test that our component renders as expected in HTML.
+<cf-alert type="warning">
+  All custom elements (i.e. web components) must use hyphenated names to avoid conflicting with existing HTML elements.
+</cf-alert>
+
+Now that the web component is defined, we're ready to use it in our HTML. Let's add a basic HTML5 scaffold to `index.html` adding our web component script, and placing an instance of our custom element in the `body`:
 
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alcatraz Accordion</title>
+    <title>My Accordion</title>
     <script type="module" src="index.js"></script>
   </head>
   <body>
-    <alcatraz-accordion></alcatraz-accordion>
+    <my-accordion></my-accordion>
   </body>
 </html>
 ```
 
-This is a standard HTML5 template with two additions:
-
-```html
-<script type="module" src="index.js"></script>
-```
-
-and
-
-```html
-<alcatraz-accordion></alcatraz-accordion>
-```
-
 The `script` tag imports the `index.js` file where we defined our new web component. We added `type="module"` because we're using [JS modules](https://developer.mozilla.org/en-US/docs/Web/JS/Guide/Modules) in this project (e.g. `import { LitElement, html } from LitElement;`).
 
-`<alcatraz-accordion></alcatraz-accordion>` is what actually outputs our new web component to the screen. If you kick off `polymer serve` in your terminal, and visit the link, you should see our new web component. 🎉
+`<my-accordion></my-accordion>` is what actually outputs our new web component to the screen. If you kick off `polymer serve` in your terminal, and visit the link, you should see our new web component. 🎉
 
 ![Our simple Hello World component in the browser](hello-world-web-component.jpg)
 
-Now that we can see the component works, we'll update it to have more of an accordion structure.
+We've taken our first step to creating a web component, by creating a component that outputs static text, but now it's time to get into building our accordion.
 
-First, we'll update the `render` method of the component to output a `slot` rather than our &ldquo;hello world!&rdquo; text:
+### Adding the accordion template
+
+First, we'll update the `render` method and replace `Hello World 🌍` with a `slot`.
 
 ```js
 // index.js
-render() {
+import { LitElement, html } from 'lit-element';
+
+class MyAccordion extends LitElement {
+  render() {
     return html`
       <slot></slot>
     `;
   }
-```
-
-A `slot` is like a placeholder for other content in a component. In this case, we've left our `slot` unnamed, but you can name slots to have specific areas for your component's content.
-
-Next, we'll create a new JS file called `panel.js` to handle the panels of the accordion.
-
-```js
-// panel.js
-import { LitElement, html } from 'lit-element';
-
-class AlcatrazAccordionPanel extends LitElement {
-  render() {
-    return html``;
-  }
 }
 
-customElements.define('alcatraz-accordion-panel', AlcatrazAccordionPanel);
+customElements.define('my-accordion', MyAccordion);
 ```
+
+A `slot` is like a placeholder for other content in a component. In this case, we've left our `slot` unnamed, but you can name slots to have specific areas for your component's content. At this point, this is all we need the accordion file to do. We'll use this component as a wrapper for our &ldquo;panels&rdquo;, and actually output our content in a separate web component.
+
+Let's go ahead and create a new JS file called `panel.js`. Following the [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/) for accordions, we'll do our best to ensure our panel template uses semantic markup and ARIA attributes appropriately.
 
 We'll start by filling out the HTML template. Because I care about accessibility, I am going to follow the [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/) for my accordion.
 
 ```js
-// panel.js
-render() {
-  return html`
-    <h3>
-      <button
-        id="button1"
-        type="button"
-        aria-expanded="true"
-        aria-controls="panel1"
-      >
-        About Me
-      </button>
-    </h3>
-    <div id="panel1" role="region" aria-labelledby="panel1">
-      <h4>Carrie Forde</h4>
-      <p>Software Engineer</p>
-    </div>
-  `;
-}
-```
-
-To view the new web component, we first need to import it into our `index.js` file, then we can add the panel to our `alcatraz-accordion` element in `index.html`.
-
-```js
-// index.js
-import { LitElement, html } from 'lit-element';
-import './panel';
-
-class AlcatrazAccordion extends LitElement {
-  render() {
-    return html`
-      <slot></slot>
-    `;
-  }
-}
-
-customElements.define('alcatraz-accordion', AlcatrazAccordion);
-```
-
-```html
-<!-- index.html -->
-<alcatraz-accordion>
-  <alcatraz-accordion-panel></alcatraz-accordion-panel>
-</alcatraz-accordion>
-```
-
-Now if we refresh the browser, we should see our updated web component with the `alcatraz-accordion-panel` component.
-
-![Accordion with panel component](accordion-panel.jpg)
-
-```js
 import { LitElement, html } from 'lit-element';
 
-class AlcatrazAccordionPanel extends LitElement {
-  constructor() {
-    super();
-
-    this.label = 'About Me';
-    this.expanded = false;
-  }
-
-  static get properties() {
-    return {
-      label: { type: String },
-      expanded: { type: Boolean }
-    };
-  }
-
-  expand() {
-    return (this.expanded = !this.expanded);
-  }
-
+class MyAccordionPanel extends LitElement {
   render() {
     return html`
-      ${this.label
-        ? html`
-            <h3>
-              <button
-                id="button1"
-                type="button"
-                .aria-expanded="${this.expanded}"
-                aria-controls="panel1"
-                @click="${() => this.expand()}"
-              >
-                ${this.label}
-              </button>
-            </h3>
-          `
-        : null}
-      <div
-        id="panel1"
-        role="region"
-        aria-labelledby="panel1"
-        .hidden="${!this.expanded}"
-      >
-        <slot></slot>
+      <h3>
+        <button
+          id="button1"
+          type="button"
+          aria-expanded="true"
+          aria-controls="panel1"
+        >
+          Whitney
+        </button>
+      </h3>
+      <div id="panel1" role="region" aria-labelledby="panel1">
+        <img src="" alt="Whitney kitten taking a nap in her human's bed" />
+        <p>Age: 13</p>
+        <p>Likes:</p>
+        <ul>
+          <li>Fireplaces</li>
+          <li>Sunshine</li>
+          <li>Chicken</li>
+        </ul>
       </div>
     `;
   }
 }
 
-customElements.define('alcatraz-accordion-panel', AlcatrazAccordionPanel);
+customElements.define('my-accordion-panel', MyAccordionPanel);
 ```
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alcatraz Accordion</title>
-    <script type="module" src="index.js"></script>
-  </head>
-  <body>
-    <alcatraz-accordion>
-      <alcatraz-accordion-panel label="K2" expanded="true">
-        <p>Age: 13</p>
-        <p>Color: gray</p>
-      </alcatraz-accordion-panel>
-      <alcatraz-accordion-panel label="Whitney">
-        <p>Age: 13</p>
-        <p>Color: orange</p>
-      </alcatraz-accordion-panel>
-      <alcatraz-accordion-panel label="Minnie">
-        <p>Age: 4</p>
-        <p>Color: gray</p>
-      </alcatraz-accordion-panel>
-      <alcatraz-accordion-panel label="Paul">
-        <p>Age: 3</p>
-        <p>Color: orange</p>
-      </alcatraz-accordion-panel>
-    </alcatraz-accordion>
-  </body>
-</html>
-```
-
-### Add styles
+We can quickly test the panel behaves as expected. First, add the following line to `index.js`:
 
 ```js
-import { LitElement, html, css } from 'lit-element';
+import './panel';
+```
 
-class AlcatrazAccordionPanel extends LitElement {
+Then add an instance of the panel inside your `my-accordion` element in `index.html`:
+
+```html
+<!-- index.html -->
+<my-accordion>
+  <my-accordion-panel></my-accordion-panel>
+</my-accordion>
+```
+
+Now if we refresh the browser, we should see our updated web component with the `my-accordion-panel` component.
+
+![Accordion with panel component](accordion-panel-with-static-content.jpg)
+
+This is a good start, but we want to allow users to add their own content to `my-accordion-panel`. The easiest change to start making the component more flexible is to replace the content within the `div` with a `slot`. Next, we'll want to introduce properties to handle the button text and panel state.
+
+```js
+import { LitElement, html } from 'lit-element';
+
+class MyAccordionPanel extends LitElement {
   constructor() {
     super();
 
@@ -322,33 +226,6 @@ class AlcatrazAccordionPanel extends LitElement {
     this.expanded = false;
   }
 
-  static get styles() {
-    return css`
-      :host {
-        display: block;
-        padding: var(--alcatraz-accordion-item-padding, 1rem);
-      }
-
-      h3 {
-        margin: 0;
-      }
-
-      button {
-        background-color: var(--alcatraz-accordion-button-bg-color, #fff);
-        border: none;
-        display: block;
-        font-size: var(--alcatraz-accordion-button-font-size, 20px);
-        padding: 0;
-        text-align: var(--alcatraz-accordion-button-text-align, left);
-        width: 100%;
-      }
-
-      div {
-        margin-top: var(--alcatraz-accordion-panel-margin-top, 1rem);
-      }
-    `;
-  }
-
   static get properties() {
     return {
       label: { type: String },
@@ -360,31 +237,27 @@ class AlcatrazAccordionPanel extends LitElement {
     return (this.expanded = !this.expanded);
   }
 
-  convertLabel(string) {
+  kebabCase(string) {
     return string.replace(/\s/g, '-').toLowerCase();
   }
 
   render() {
     return html`
-      ${this.label
-        ? html`
-            <h3>
-              <button
-                id="button-${this.convertLabel(this.label)}"
-                type="button"
-                .aria-expanded="${this.expanded}"
-                aria-controls="panel-${this.convertLabel(this.label)}"
-                @click="${() => this.expand()}"
-              >
-                ${this.label}
-              </button>
-            </h3>
-          `
-        : null}
+      <h3>
+        <button
+          id="${this.kebabCase(this.label)}-button"
+          type="button"
+          .aria-expanded="${this.expanded}"
+          aria-controls="${this.kebabCase(this.label)}-panel"
+          @click="${() => this.expand()}"
+        >
+          ${this.label}
+        </button>
+      </h3>
       <div
-        id="panel-${this.convertLabel(this.label)}"
+        id="${this.kebabCase(this.label)}-panel"
         role="region"
-        aria-labelledby="button-${this.convertLabel(this.label)}"
+        aria-labelledby="${this.kebabCase(this.label)}-button"
         .hidden="${!this.expanded}"
       >
         <slot></slot>
@@ -393,8 +266,174 @@ class AlcatrazAccordionPanel extends LitElement {
   }
 }
 
-customElements.define('alcatraz-accordion-panel', AlcatrazAccordionPanel);
+customElements.define('my-accordion-panel', MyAccordionPanel);
 ```
+
+The first thing we're doing is setting up the class `constructor`. Because the panel class extends LitElement, we need to call `super()`, then we can add and set default values for the properties we want to use, `label` and `expanded`.
+
+Next, we set up the `properties` getter from LitElement. Properties are useful because LitElement will always be listening for changes to properties, and will update our component appropriately when changes are detected. In this instance, we doing two things when call the `properties` getter:
+
+1. Declare the properties we're going to use in the component.
+1. Convert the property type.
+
+There's a bit of nuance when thinking about converting the property type, so let's look at an example.
+
+Our `button` has an `aria-expanded` attribute, and when we set this attribute, we expect it to be either `aria-expanded="true"` or `aria-expanded="false"`. HTML attributes are always represented as strings regardless of whether they are boolean values (as in this case), or not. By using the `properties` getter, we can tell LitElement that when we're working with `expanded` in the pure JS, we expect it to be converted to a boolean, but when it's used in the HTML template it's converted to a string.
+
+After setting up the `properties` getter, we have a method to handle updating the state of `expanded`, and a helper method, `kebabCase`, that will make it easier to create unique IDs for the panels in the HTML.
+
+Finally, the `render` method has been updated to use the newly defined properties. You may notice that `aria-expanded` and `hidden` both have a `.` prepended to them. The `.` tells LitElement to bind that attributes property to one of our declared properties so it renders correctly in the HTML.
+
+Now we can update the content of `my-accordion` in `index.html`.
+
+```html
+<!-- index.html -->
+<my-accordion>
+  <my-accordion-panel label="K2" expanded="true">
+    <p>Age: 13</p>
+    <p>Color: gray</p>
+  </my-accordion-panel>
+  <my-accordion-panel label="Whitney">
+    <p>Age: 13</p>
+    <p>Color: orange</p>
+  </my-accordion-panel>
+  <my-accordion-panel label="Minnie">
+    <p>Age: 4</p>
+    <p>Color: gray</p>
+  </my-accordion-panel>
+  <my-accordion-panel label="Paul">
+    <p>Age: 3</p>
+    <p>Color: orange</p>
+  </my-accordion-panel>
+</my-accordion>
+```
+
+Here, you'll see that we're using `label` and `expanded` as attributes. These will be passed down to `my-accordion-panel` as properties.
+
+If you reload the page, you will see a fully-functioning accordion.
+
+![A functional accordion](functional-accordion.gif)
+
+### Styling a web component
+
+The basic mechanics of the accordion are fine, but it doesn't look pretty, so in this section we'll focus on adding styles.
+
+We'll start our styles by adding a border around `my-accordion`. To do this, we'll add a `styles` getter to the `MyAccordion` class:
+
+```js
+import { LitElement, html, css } from 'lit-element';
+import './panel';
+
+class MyAccordion extends LitElement {
+  static get styles() {
+    return css`
+      :host {
+        border: 1px solid gray;
+        display: block;
+      }
+    `;
+  }
+
+  render() {
+    return html`
+      <slot></slot>
+    `;
+  }
+}
+
+customElements.define('my-accordion', MyAccordion);
+```
+
+We use `:host` here to target the _host_ (i.e. container) of the [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM). The shadow DOM here being the contents of our HTML template. By default, a host does not have any properties including `display`, so in order to get the `border` to display properly, `display: block` needs to be added.
+
+A border is the only style I want to add to `my-accordion` for now, so let's move onto styling the panel.
+
+```js
+import { LitElement, html, css } from 'lit-element';
+
+class MyAccordionPanel extends LitElement {
+  constructor() {
+    super();
+
+    this.label = '';
+    this.expanded = false;
+  }
+
+  static get properties() {
+    return {
+      label: { type: String },
+      expanded: { type: Boolean }
+    };
+  }
+
+  static get styles() {
+    return css`
+      :host {
+        display: block;
+        padding: 1rem;
+      }
+
+      h3 {
+        margin: 0;
+      }
+
+      button {
+        background-color: transparent;
+        border: 0;
+        display: block;
+        font-size: 1rem;
+        padding: 0;
+        text-align: left;
+        width: 100%;
+      }
+
+      div {
+        margin-top: 1rem;
+      }
+    `;
+  }
+
+  expand() {
+    return (this.expanded = !this.expanded);
+  }
+
+  kebabCase(string) {
+    return string.replace(/\s/g, '-').toLowerCase();
+  }
+
+  render() {
+    return html`
+      <h3>
+        <button
+          id="${this.kebabCase(this.label)}-button"
+          type="button"
+          .aria-expanded="${this.expanded}"
+          aria-controls="${this.kebabCase(this.label)}-panel"
+          @click="${() => this.expand()}"
+        >
+          ${this.label}
+        </button>
+      </h3>
+      <div
+        id="${this.kebabCase(this.label)}-panel"
+        role="region"
+        aria-labelledby="${this.kebabCase(this.label)}-button"
+        .hidden="${!this.expanded}"
+      >
+        <slot></slot>
+      </div>
+    `;
+  }
+}
+
+customElements.define('my-accordion-panel', MyAccordionPanel);
+```
+
+It might be alarming to see no classes used in the styles, but the neat thing about web components and the shadow DOM is that we can use element selectors in our styles no fear of them being overwritten by styles in our application.
+
+So if adding `button { background-color: hotpink; }` in the application styles doesn't work, how do we update our web components' styles from our application?
+
+#### Creating theme-able components with custom properties
 
 ## Creating a block
 
@@ -402,35 +441,35 @@ customElements.define('alcatraz-accordion-panel', AlcatrazAccordionPanel);
 const { registerBlockType } = wp.blocks;
 const { __ } = wp.i18n;
 
-registerBlockType('alcatraz-blocks-accordion/alcatraz-blocks-accordion', {
-  title: __('Alcatraz Blocks Accordion', 'alcatraz-blocks-accordion'),
+registerBlockType('my-blocks-accordion/my-blocks-accordion', {
+  title: __('Alcatraz Blocks Accordion', 'my-blocks-accordion'),
   category: 'widgets',
   supports: {
     html: false
   },
   edit: () => (
-    <alcatraz-accordion>
-      <alcatraz-accordion-panel label="K2" expanded="true">
+    <my-accordion>
+      <my-accordion-panel label="K2" expanded="true">
         <p>Age: 13</p>
         <p>Color: gray</p>
-      </alcatraz-accordion-panel>
-      <alcatraz-accordion-panel label="Whitney">
+      </my-accordion-panel>
+      <my-accordion-panel label="Whitney">
         <p>Age: 13</p>
         <p>Color: orange</p>
-      </alcatraz-accordion-panel>
-    </alcatraz-accordion>
+      </my-accordion-panel>
+    </my-accordion>
   ),
   save: () => (
-    <alcatraz-accordion>
-      <alcatraz-accordion-panel label="K2" expanded="true">
+    <my-accordion>
+      <my-accordion-panel label="K2" expanded="true">
         <p>Age: 13</p>
         <p>Color: gray</p>
-      </alcatraz-accordion-panel>
-      <alcatraz-accordion-panel label="Whitney">
+      </my-accordion-panel>
+      <my-accordion-panel label="Whitney">
         <p>Age: 13</p>
         <p>Color: orange</p>
-      </alcatraz-accordion-panel>
-    </alcatraz-accordion>
+      </my-accordion-panel>
+    </my-accordion>
   )
 });
 ```
@@ -439,11 +478,11 @@ registerBlockType('alcatraz-blocks-accordion/alcatraz-blocks-accordion', {
 <?php
 /**
  * Plugin Name:     Alcatraz Blocks Accordion
- * Plugin URI:      https://github.com/carrieforde/alcatraz-blocks-accordion.git
+ * Plugin URI:      https://github.com/carrieforde/my-blocks-accordion.git
  * Description:     A simple plugin scaffold for a WP Content Block.
  * Author:          carrieforde
  * Author URI:      https://carrieforde.com
- * Text Domain:     alcatraz-blocks-accordion
+ * Text Domain:     my-blocks-accordion
  * Domain Path:     /languages
  * Version:         1.0.0
  *
@@ -464,9 +503,9 @@ function alcatraz_blocks_accordion_init() {
 		return;
 	}
 
-	$index_js = 'dist/alcatraz-blocks-accordion-block.js';
+	$index_js = 'dist/my-blocks-accordion-block.js';
 	wp_register_script(
-		'alcatraz-blocks-accordion-editor',
+		'my-blocks-accordion-editor',
 		plugins_url( $index_js, __FILE__ ),
 		array(
 			'wp-blocks',
@@ -478,9 +517,9 @@ function alcatraz_blocks_accordion_init() {
 	);
 
 	register_block_type(
-		'alcatraz-blocks-accordion/alcatraz-blocks-accordion',
+		'my-blocks-accordion/my-blocks-accordion',
 		array(
-			'editor_script' => 'alcatraz-blocks-accordion-editor',
+			'editor_script' => 'my-blocks-accordion-editor',
 		)
 	);
 }
@@ -490,12 +529,12 @@ add_action( 'wp_enqueue_scripts', 'alcatraz_blocks_accordion_enqueue_scripts' );
  *  Enqueue front end scripts.
  */
 function alcatraz_blocks_accordion_enqueue_scripts() {
-	if ( has_block( 'alcatraz-blocks-accordion/alcatraz-blocks-accordion' ) ) {
+	if ( has_block( 'my-blocks-accordion/my-blocks-accordion' ) ) {
 
-		$index_js = 'dist/alcatraz-blocks-accordion-component.js';
+		$index_js = 'dist/my-blocks-accordion-component.js';
 
 		wp_enqueue_script(
-			'alcatraz-blocks-accordion-component',
+			'my-blocks-accordion-component',
 			plugins_url( $index_js, __FILE__ ),
 			array(),
 			'1.0.0',
@@ -509,7 +548,7 @@ add_filter( 'script_loader_tag', 'alcatraz_blocks_accordion_script_attributes', 
  * Modify script attributes.
  */
 function alcatraz_blocks_accordion_script_attributes( $tag, $handle ) {
-	if ( 'alcatraz-blocks-accordion-component' !== $handle ) {
+	if ( 'my-blocks-accordion-component' !== $handle ) {
 		return $tag;
 	}
 
@@ -526,8 +565,8 @@ const { __ } = wp.i18n;
 
 // import "./panel";
 
-registerBlockType('alcatraz-blocks-accordion/alcatraz-blocks-accordion', {
-  title: __('Alcatraz Accordion', 'alcatraz-blocks-accordion'),
+registerBlockType('my-blocks-accordion/my-blocks-accordion', {
+  title: __('Alcatraz Accordion', 'my-blocks-accordion'),
   category: 'widgets',
   supports: {
     html: false
@@ -557,30 +596,30 @@ registerBlockType('alcatraz-blocks-accordion/alcatraz-blocks-accordion', {
             </PanelBody>
           </InspectorControls>
         )}
-        <alcatraz-accordion multiPanel={multiPanel}>
-          <alcatraz-accordion-panel label="K2" expanded="true">
+        <my-accordion multiPanel={multiPanel}>
+          <my-accordion-panel label="K2" expanded="true">
             <p>Age: 13</p>
             <p>Color: gray</p>
-          </alcatraz-accordion-panel>
-          <alcatraz-accordion-panel label="Whitney">
+          </my-accordion-panel>
+          <my-accordion-panel label="Whitney">
             <p>Age: 13</p>
             <p>Color: orange</p>
-          </alcatraz-accordion-panel>
-        </alcatraz-accordion>
+          </my-accordion-panel>
+        </my-accordion>
       </Fragment>
     );
   },
   save: () => (
-    <alcatraz-accordion>
-      <alcatraz-accordion-panel label="K2" expanded="true">
+    <my-accordion>
+      <my-accordion-panel label="K2" expanded="true">
         <p>Age: 13</p>
         <p>Color: gray</p>
-      </alcatraz-accordion-panel>
-      <alcatraz-accordion-panel label="Whitney">
+      </my-accordion-panel>
+      <my-accordion-panel label="Whitney">
         <p>Age: 13</p>
         <p>Color: orange</p>
-      </alcatraz-accordion-panel>
-    </alcatraz-accordion>
+      </my-accordion-panel>
+    </my-accordion>
   )
 });
 ```

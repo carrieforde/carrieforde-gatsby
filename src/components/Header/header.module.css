@@ -1,5 +1,5 @@
 .siteHeader {
-	align-items: center;
+	align-items: flex-end;
 	display: flex;
 	justify-content: space-between;
 	line-height: 1;
