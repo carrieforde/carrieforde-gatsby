@@ -166,8 +166,8 @@ cf-alert {
 	padding-left: 40px;
 }
 
-alcatraz-accordion,
-cat-fact {
+alcatraz-accordion {
+	margin-bottom: var(--size-6);
 	margin-top: var(--size-6);
 }
 

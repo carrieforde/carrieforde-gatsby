@@ -3,12 +3,12 @@ import { graphql } from 'gatsby';
 import Site from '../../components/Site';
 import SEO from '../../components/SEO';
 import PropTypes from 'prop-types';
-
 import PageHeader from '../../components/PageHeader';
-import 'cf-components-alert';
 import Pagination from '../../components/Pagination';
+import 'cf-components-alert';
+import '@alcatraz-components/accordion';
 
-const Post = props => {
+const Post = (props) => {
   const post = props.data.markdownRemark,
     { frontmatter, html } = post,
     { title, date, updated, category, description } = frontmatter,
@@ -35,7 +35,7 @@ const Post = props => {
 
 Post.propTypes = {
   data: PropTypes.object,
-  pageContext: PropTypes.object
+  pageContext: PropTypes.object,
 };
 
 export default Post;
