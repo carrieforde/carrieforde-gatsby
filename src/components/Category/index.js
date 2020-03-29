@@ -12,7 +12,7 @@ const Category = ({ category }) => (
 );
 
 Category.propTypes = {
-  category: PropTypes.string
+  category: PropTypes.string,
 };
 
 export default Category;

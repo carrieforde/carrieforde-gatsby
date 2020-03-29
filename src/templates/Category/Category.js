@@ -9,7 +9,7 @@ import PageHeader from '../../components/PageHeader';
 
 import blog from '../../styles/blog.module.css';
 
-const Category = props => {
+const Category = (props) => {
   const { category } = props.pageContext;
   return (
     <Site>
@@ -28,7 +28,10 @@ const Category = props => {
 };
 
 Category.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  pageContext: {
+    category: PropTypes.string,
+  },
 };
 
 export default Category;

@@ -68,12 +68,7 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
-    >
-      <link
-        href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,600|Libre+Franklin:300,400,400i,600,600i&display=swap"
-        rel="stylesheet"
-      ></link>
-    </Helmet>
+    ></Helmet>
   );
 }
 

@@ -6,6 +6,10 @@ import Sun from '../../icons/sun-light.svg';
 import Moon from '../../icons/moon-stars-light.svg';
 
 const DarkMode = () => {
+  if (!global.window) {
+    return null;
+  }
+
   const prefersDark =
     window.matchMedia &&
     window.matchMedia('(prefers-color-scheme: dark)').matches;

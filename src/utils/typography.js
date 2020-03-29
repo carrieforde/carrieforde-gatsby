@@ -16,8 +16,6 @@ const typography = new Typography({
   ],
   headerFontFamily: ['Libre Franklin', 'sans-serif'],
   bodyFontFamily: ['Libre Franklin', 'sans-serif'],
-  // headerColor: '#243B53',
-  // bodyColor: '#334E68',
   headerWeight: 600,
   boldWeight: 600,
 });
