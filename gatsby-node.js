@@ -1,7 +1,7 @@
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 
-const slugify = slug => slug.replace(/\s/g, '-').toLowerCase();
+const slugify = (slug) => slug.replace(/\s/g, '-').toLowerCase();
 
 /**
  * Implement Gatsby's Node APIs in this file.
@@ -16,13 +16,13 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const slug = createFilePath({
       node,
       getNode,
-      basePath: `${__dirname}/content/posts`
+      basePath: `${__dirname}/content/posts`,
     });
 
     createNodeField({
       node,
       name: 'slug',
-      value: slug
+      value: slug,
     });
   }
 
@@ -30,13 +30,13 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const category = createFilePath({
       node,
       getNode,
-      basePath: `${__dirname}/content/posts`
+      basePath: `${__dirname}/content/posts`,
     });
 
     createNodeField({
       node,
       name: 'category',
-      value: category
+      value: category,
     });
   }
 };
@@ -104,35 +104,35 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const { pages, posts, categories } = result.data;
 
-  posts.edges.forEach(post => {
+  posts.edges.forEach((post) => {
     createPage({
       path: post.node.fields.slug,
       component: path.resolve('./src/templates/Post/Post.js'),
       context: {
         slug: post.node.fields.slug,
         previous: post.previous ? post.previous : null,
-        next: post.next ? post.next : null
-      }
+        next: post.next ? post.next : null,
+      },
     });
   });
 
-  pages.edges.forEach(page => {
+  pages.edges.forEach((page) => {
     createPage({
       path: page.node.fields.slug,
       component: path.resolve('./src/templates/Page/Page.js'),
       context: {
-        slug: page.node.fields.slug
-      }
+        slug: page.node.fields.slug,
+      },
     });
   });
 
-  categories.group.forEach(category => {
+  categories.group.forEach((category) => {
     createPage({
       path: `category/${slugify(category.fieldValue)}`,
       component: path.resolve('./src/templates/Category/Category.js'),
       context: {
-        category: category.fieldValue
-      }
+        category: category.fieldValue,
+      },
     });
   });
 };
@@ -144,11 +144,15 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
       module: {
         rules: [
           {
-            test: /(cf-alert|alcatraz-accordion|cat-fact)/,
-            use: loaders.null()
-          }
-        ]
-      }
+            test: /cf-alert/,
+            use: loaders.null(),
+          },
+          {
+            test: /@alcatraz-components\/accordion/,
+            use: loaders.null(),
+          },
+        ],
+      },
     });
   }
 };
