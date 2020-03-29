@@ -1,0 +1,82 @@
+.light-mode {
+	--body-bg-color: #fff;
+	--text-color: var(--color-neutral-8);
+
+	--footer-color: var(--color-neutral-6);
+
+	--heading-color: var(--color-neutral-9);
+	--heading-color-alt: var(--color-neutral-6);
+
+	--link: var(--color-primary-8);
+	--link-bg-color: var(--color-primary-1);
+
+	--blockquote-accent: var(--color-primary-1);
+
+	--code-bg: var(--color-neutral-1);
+	--pre-border-color: var(--color-neutral-3);
+
+	--timestamp-color: var(--color-neutral-6);
+
+	--pagination-color: var(--link);
+
+	--alcatraz-accordion-border: 1px solid var(--color-neutral-2);
+	--alcatraz-accordion-border-radius: 4px;
+
+	--logo-c: var(--color-neutral-10);
+	--logo-bar: var(--color-neutral-2);
+	--logo-gradient-start: var(--color-primary-8);
+	--logo-gradient-1: var(--color-primary-7);
+	--logo-gradient-2: var(--color-primary-6);
+	--logo-gradient-3: var(--color-primary-5);
+	--logo-gradient-4: var(--color-primary-4);
+	--logo-gradient-end: var(--color-primary-2);
+}
+
+.dark-mode {
+	--body-bg-color: var(--color-neutral-10);
+	--text-color: var(--color-neutral-3);
+	--heading-color: var(--color-neutral-3);
+	--link: var(--color-primary-3);
+	--link-bg-color: var(--color-primary-7);
+
+	--footer-color: var(--color-neutral-5);
+
+	--heading-color-alt: var(--color-neutral-4);
+
+	--blockquote-accent: var(--color-primary-7);
+
+	--code-bg: var(--color-neutral-9);
+	--pre-border-color: var(--color-neutral-7);
+
+	--timestamp-color: var(--color-neutral-5);
+	--pagination-color: var(--link);
+
+	/* Default */
+	--alert-bg-default: var(--color-neutral-7); /* background-color */
+	--alert-color-default: var(--color-neutral-1); /* text color */
+
+	/* Info */
+	--alert-bg-info: var(--color-info-9);
+	--alert-color-info: var(--color-info-1);
+
+	/* Tip / Success */
+	--alert-bg-tip: var(--color-secondary-8);
+	--alert-color-tip: var(--color-secondary-1);
+
+	/* Warning */
+	--alert-bg-warning: var(--color-warning-9);
+	--alert-color-warning: var(--color-warning-1);
+
+	/* Danger */
+	--alert-bg-danger: var(--color-danger-9);
+	--alert-color-danger: var(--color-danger-1);
+
+	--logo-c: var(--color-neutral-3);
+	--logo-bar: var(--color-neutral-8);
+	--logo-gradient-start: var(--color-primary-1);
+	--logo-gradient-1: var(--color-primary-2);
+	--logo-gradient-2: var(--color-primary-4);
+	--logo-gradient-3: var(--color-primary-5);
+	--logo-gradient-4: var(--color-primary-6);
+	--logo-gradient-end: var(--color-primary-7);
+}

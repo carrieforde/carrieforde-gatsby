@@ -6,5 +6,7 @@
 
 // You can delete this file if you're not using it
 import './src/styles/settings.css';
+import './src/styles/themes.css';
+import 'normalize.css/normalize.css';
 import './src/styles/global.css';
 import 'prismjs/themes/prism-solarizedlight.css';

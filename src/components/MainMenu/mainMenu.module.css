@@ -1,3 +1,8 @@
+.mainNavigation {
+	align-items: baseline;
+	display: inline-flex;
+}
+
 .link {
 	background: transparent;
 	color: var(--link);
@@ -12,6 +17,7 @@
 
 @media screen and (min-width: 800px) {
 	.mainNavigation {
+		align-items: stretch;
 		position: fixed;
 		right: calc(((100vw - var(--size-15)) / 2) - var(--size-8));
 		top: var(--size-10);

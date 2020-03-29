@@ -2,22 +2,25 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { useState } from 'react';
 import styles from './darkModeToggle.module.css';
+import Sun from '../../icons/sun-light.svg';
+import Moon from '../../icons/moon-stars-light.svg';
 
 const DarkMode = () => {
-  const [darkMode, setMode] = useState(false);
+  const prefersDark =
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const [darkMode, setMode] = useState(prefersDark);
+  const icon = darkMode ? <Sun /> : <Moon />;
 
   return (
     <>
       <Helmet
         htmlAttributes={{
-          class: darkMode ? 'dark' : null,
+          class: darkMode ? 'dark-mode' : 'light-mode',
         }}
       />
-      <label
-        htmlFor="dark-mode"
-        className={`${styles.toggle} ${darkMode ? styles.darkToggle : null}`}
-      >
-        {darkMode}
+      <label htmlFor="dark-mode" className={styles.toggle}>
+        {icon}
         <input
           type="checkbox"
           id="dark-mode"

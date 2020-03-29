@@ -3,26 +3,16 @@
 }
 
 .toggle {
-	background-color: var(--color-neutral-1);
-	border: 1px solid var(--color-neutral-3);
-	border-radius: 12px;
-	height: var(--size-4);
-	position: relative;
-	width: var(--size-6);
+	display: inline-block;
+	height: 14px;
+	margin-left: var(--size-3);
+	width: 14px;
 }
 
-.toggle:before {
-	background-color: var(--color-primary-9);
-	border-radius: 50%;
-	content: '';
-	display: block;
-	height: var(--size-4);
-	left: 0;
-	position: absolute;
-	transition: var(--transition-left);
-	width: var(--size-4);
-}
-
-.darkToggle:before {
-	left: 100%;
+@media screen and (min-width: 800px) {
+	.toggle {
+		margin-left: 0;
+		margin-top: var(--size-3);
+		transform: rotate(90deg);
+	}
 }

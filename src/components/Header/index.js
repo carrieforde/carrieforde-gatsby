@@ -5,7 +5,6 @@ import React from 'react';
 import Logo from '../../icons/carrie-forde-logo.svg';
 import MainMenu from '../MainMenu';
 import styles from './header.module.css';
-import DarkMode from '../DarkModeToggle';
 
 const Header = ({ siteTitle }) => (
   <header className={styles.siteHeader}>
@@ -14,7 +13,6 @@ const Header = ({ siteTitle }) => (
       <h1 className={styles.siteTitle}>{siteTitle}</h1>
     </Link>
     <MainMenu />
-    <DarkMode />
   </header>
 );
 
