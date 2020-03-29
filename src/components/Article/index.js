@@ -7,7 +7,7 @@ import styles from './article.module.css';
 import timeStampStyles from '../TimeStamp/timeStamp.module.css';
 import Category from '../Category';
 
-const Article = data => {
+const Article = (data) => {
   const { excerpt, frontmatter, timeToRead, fields } = data.node,
     { title, date, category, description } = frontmatter;
 
@@ -36,7 +36,7 @@ const Article = data => {
 };
 
 Article.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
 };
 
 export default Article;

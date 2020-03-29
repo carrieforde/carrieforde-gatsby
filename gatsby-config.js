@@ -10,9 +10,9 @@ module.exports = {
       linkedin: 'https://linkedin.com/in/carrieforde',
       github: 'https://github.com/carrieforde',
       codepen: 'https://codepen.io/carrieforde',
-      twitter: 'https://twitter.com/carrieforde'
+      twitter: 'https://twitter.com/carrieforde',
     },
-    siteUrl: 'https://carrieforde.com'
+    siteUrl: 'https://carrieforde.com',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -20,29 +20,29 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `posts`,
-        path: `${__dirname}/content/posts`
-      }
+        path: `${__dirname}/content/posts`,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
-        path: `${__dirname}/content/pages`
-      }
+        path: `${__dirname}/content/pages`,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `jobs`,
-        path: `${__dirname}/content/jobs`
-      }
+        path: `${__dirname}/content/jobs`,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`
-      }
+        path: `${__dirname}/src/images`,
+      },
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -55,17 +55,17 @@ module.exports = {
               inlineCodeMarker: null,
               aliases: {},
               showLineNumbers: false,
-              noInlineHighlight: false
-            }
+              noInlineHighlight: false,
+            },
           },
           {
             resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 640
-            }
-          }
-        ]
-      }
+              maxWidth: 640,
+            },
+          },
+        ],
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -78,22 +78,22 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#3525e6`,
         display: `minimal-ui`,
-        icon: `src/images/carrie-forde-icon.png` // This path is relative to the root of the site.
-      }
+        icon: `src/images/carrie-forde-icon.png`, // This path is relative to the root of the site.
+      },
     },
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /icons/
-        }
-      }
+          include: /icons/,
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: `src/utils/typography`
-      }
+        pathToConfigModule: `src/utils/typography`,
+      },
     },
     {
       resolve: `gatsby-plugin-postcss`,
@@ -103,23 +103,23 @@ module.exports = {
             stage: 0,
             browsers: 'last 2 versions',
             autoprefixer: { grid: true },
-            importFrom: './src/styles/settings.css'
+            importFrom: './src/styles/settings.css',
           }),
           require('postcss-unit-conversion')({
             base: 18,
             precision: 5,
             toEM: ['letter-spacing', 'text-shadow'],
-            toREM: ['font-size', 'margin', 'padding', 'width', 'height']
-          })
-        ]
-      }
+            toREM: ['font-size', 'margin', 'padding', 'width', 'height'],
+          }),
+        ],
+      },
     },
     '@danbruegge/gatsby-plugin-stylelint',
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: process.env.GATSBY_GA_ID || null
-      }
+        trackingId: process.env.GATSBY_GA_ID || null,
+      },
     },
     'gatsby-plugin-netlify',
     `gatsby-plugin-offline`,
@@ -141,14 +141,14 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
+              return allMarkdownRemark.edges.map((edge) => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description:
                     edge.node.frontmatter.description || edge.node.excerpt,
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ 'content:encoded': edge.node.html }]
+                  custom_elements: [{ 'content:encoded': edge.node.html }],
                 });
               });
             },
@@ -176,17 +176,17 @@ module.exports = {
             // if `string` is used, it will be used to create RegExp and then test if pathname of
             // current page satisfied this regular expression;
             // if not provided or `undefined`, all pages will have feed reference inserted
-            match: '^/blog/'
-          }
-        ]
-      }
+            match: '^/blog/',
+          },
+        ],
+      },
     },
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: ['/experience/*']
-      }
+        exclude: ['/experience/*'],
+      },
     },
-    'gatsby-plugin-robots-txt'
-  ]
+    'gatsby-plugin-robots-txt',
+  ],
 };

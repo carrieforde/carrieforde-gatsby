@@ -16,20 +16,20 @@ This site is based off the default [Gatsby Starter](https://github.com/gatsbyjs/
 
 1. Clone the repo locally
 
-```sh
+```bash
 git clone https://github.com/carrieforde/carrieforde-gatsby.git carrieforde
 ```
 
 2. Install dependencies
 
-```sh
+```bash
 cd carrieforde
 npm install
 ```
 
-3. Start hte development server
+3. Start the development server
 
-```sh
+```bash
 gastby develop
 ```
 
