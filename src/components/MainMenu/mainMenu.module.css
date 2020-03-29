@@ -1,6 +1,6 @@
 .link {
 	background: transparent;
-	color: var(--color-primary-8);
+	color: var(--link);
 	font-size: var(--font-size-2);
 	font-weight: 300;
 	text-transform: uppercase;

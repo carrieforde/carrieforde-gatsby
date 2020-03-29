@@ -1,5 +1,5 @@
 .socialNav {
-	color: var(--color-primary-8);
+	color: var(--link);
 	display: inline-flex;
 	list-style: none;
 	margin: var(--size-5) 0 0;
@@ -12,7 +12,6 @@
 }
 
 .socialNavItem + .socialNavItem {
-	/* margin-top: 12px; */
 	margin-left: var(--size-3);
 	margin-top: 0;
 }

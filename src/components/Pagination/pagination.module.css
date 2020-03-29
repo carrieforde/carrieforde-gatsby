@@ -7,7 +7,7 @@
 
 .paginationItem {
 	background: transparent;
-	color: var(--color-primary-8);
+	color: var(--pagination-color);
 	display: flex;
 	flex: 0 0 50%;
 	line-height: 1.2;

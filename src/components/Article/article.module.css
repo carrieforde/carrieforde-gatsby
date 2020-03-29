@@ -8,19 +8,9 @@
 	padding: 0 !important;
 }
 
-.articleCategory {
-	color: var(--color-primary-8);
-	display: block;
-	font-size: var(--font-size-1);
-	font-weight: 300;
-	margin-bottom: var(--size-1);
-	text-transform: uppercase;
-}
-
-.articleDate,
 .articleTimeToRead,
 .articleSeparator {
-	color: var(--color-neutral-6);
+	color: var(--timestamp-color);
 	display: inline-block;
 	font-size: var(--font-size-1);
 	font-weight: 300;
