@@ -1,0 +1,28 @@
+.visuallyHidden {
+	composes: visuallyHidden from '../../styles/utilities.module.css';
+}
+
+.toggle {
+	background-color: var(--color-neutral-1);
+	border: 1px solid var(--color-neutral-3);
+	border-radius: 12px;
+	height: var(--size-4);
+	position: relative;
+	width: var(--size-6);
+}
+
+.toggle:before {
+	background-color: var(--color-primary-9);
+	border-radius: 50%;
+	content: '';
+	display: block;
+	height: var(--size-4);
+	left: 0;
+	position: absolute;
+	transition: var(--transition-left);
+	width: var(--size-4);
+}
+
+.darkToggle:before {
+	left: 100%;
+}
