@@ -5,6 +5,10 @@
 }
 
 body {
+	background-color: var(--body-bg-color);
+	color: var(--text-color);
+	font-family: var(--font-family-body);
+	line-height: 1.75;
 	word-wrap: break-word;
 }
 
@@ -14,7 +18,11 @@ h3,
 h4,
 h5,
 h6 {
+	color: var(--heading-color);
+	font-weight: 600;
+	line-height: 1.1;
 	margin-bottom: var(--size-2);
+	margin-top: 0;
 }
 
 * + h1,
@@ -28,10 +36,23 @@ h6 {
 
 p {
 	margin-bottom: 0;
+	margin-top: 0;
 }
 
 p + p {
 	margin-top: var(--size-6);
+}
+
+ol,
+ul {
+	font-size: var(--font-size-2);
+}
+
+@media screen and (min-width: 600px) {
+	ol,
+	ul {
+		font-size: var(--font-size-3);
+	}
 }
 
 p + ul,
@@ -57,18 +78,6 @@ a:focus {
 	background-size: 5px 100%;
 }
 
-ol,
-ul {
-	font-size: var(--font-size-2);
-}
-
-@media screen and (min-width: 600px) {
-	ol,
-	ul {
-		font-size: var(--font-size-3);
-	}
-}
-
 li {
 	margin-bottom: 0;
 }
@@ -79,15 +88,15 @@ li > ol {
 	margin-top: var(--size-2);
 }
 
-code,
+/* code,
 kbd,
 pre,
 samp,
 tt,
 var {
-	background-color: var(--color-neutral-1) !important;
+	background-color: var(--code-bg) !important;
 	border-radius: 3px;
-	color: var(--header-color) !important;
+	color: var(--heading-color) !important;
 	font-family: var(--font-family-monospace) !important;
 	font-size: 18px;
 	padding: 0 var(--size-1) !important;
@@ -95,8 +104,7 @@ var {
 }
 
 pre {
-	background-color: var(--color-neutral-1) !important;
-	border: 1px solid var(--color-neutral-3);
+	border: 1px solid var(--pre-border-color);
 	margin-bottom: var(--size-6) !important;
 	margin-top: var(--size-6) !important;
 	overflow-x: scroll;
@@ -107,16 +115,16 @@ pre code[class^='language-'] {
 	font-size: var(--font-size-2);
 	padding: 0 !important;
 	white-space: pre !important;
-}
+} */
 
 blockquote {
-	color: var(--header-color);
+	color: var(--heading-color);
 	margin: var(--size-7) var(--size-6);
 	position: relative;
 }
 
 blockquote:before {
-	color: var(--color-primary-1);
+	color: var(--blockquote-accent);
 	content: '\0201C';
 	font-size: var(--size-11);
 	left: -35px;
@@ -152,7 +160,7 @@ img {
 button {
 	background-color: transparent;
 	border: none;
-	color: var(--color-neutral-9);
+	color: var(--heading-color);
 	display: inline-block;
 }
 

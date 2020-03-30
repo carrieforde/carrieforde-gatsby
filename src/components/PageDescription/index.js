@@ -11,11 +11,11 @@ const PageDescription = ({ description }) => (
 );
 
 PageDescription.propTypes = {
-  description: PropTypes.string
+  description: PropTypes.string,
 };
 
 PageDescription.defaultProps = {
-  description: ''
+  description: '',
 };
 
 export default PageDescription;

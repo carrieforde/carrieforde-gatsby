@@ -27,6 +27,7 @@
     "gatsby-source-filesystem": "^2.0.36",
     "gatsby-transformer-remark": "^2.3.12",
     "gatsby-transformer-sharp": "^2.1.19",
+    "normalize.css": "^8.0.1",
     "postcss-custom-properties": "^9.1.1",
     "postcss-nesting": "^7.0.0",
     "postcss-preset-env": "^6.6.0",

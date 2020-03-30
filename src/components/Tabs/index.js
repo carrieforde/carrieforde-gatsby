@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import styles from './tabs.module.css';
+import PropTypes from 'prop-types';
 
 class Tabs extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currentTab: 0
+      currentTab: 0,
     };
   }
 
@@ -71,5 +72,20 @@ class Tabs extends Component {
     );
   }
 }
+
+Tabs.propTypes = {
+  edges: {
+    node: {
+      frontmatter: {
+        title: PropTypes.string,
+        date: PropTypes.string,
+        company: PropTypes.string,
+        location: PropTypes.string,
+        range: PropTypes.string,
+      },
+      html: PropTypes.string,
+    },
+  },
+};
 
 export default Tabs;

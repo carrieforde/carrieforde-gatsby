@@ -17,7 +17,7 @@ const Site = ({ children }) => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <div className={styles.site}>
         <Header siteTitle={data.site.siteMetadata.title} />
         <main className={styles.page}>{children}</main>
@@ -28,7 +28,7 @@ const Site = ({ children }) => (
 );
 
 Site.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default Site;

@@ -36,7 +36,7 @@ const Article = (data) => {
 };
 
 Article.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object,
 };
 
 export default Article;

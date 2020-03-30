@@ -1,5 +1,5 @@
 .footer {
-	color: var(--color-neutral-6);
+	color: var(--footer-color);
 	font-size: var(--font-size-1);
 	font-weight: 300;
 	margin-top: var(--size-10);

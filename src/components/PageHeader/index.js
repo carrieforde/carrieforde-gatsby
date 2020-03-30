@@ -27,7 +27,7 @@ PageHeader.propTypes = {
   description: PropTypes.string,
   category: PropTypes.string,
   date: PropTypes.string,
-  updated: PropTypes.string
+  updated: PropTypes.string,
 };
 
 export default PageHeader;

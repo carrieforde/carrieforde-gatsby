@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 import styles from './mainMenu.module.css';
+import DarkMode from '../DarkModeToggle';
 
 const MainMenu = () => (
   <nav className={styles.mainNavigation}>
@@ -14,6 +15,7 @@ const MainMenu = () => (
     <Link className={styles.link} to="/blog">
       Blog
     </Link>
+    <DarkMode />
   </nav>
 );
 

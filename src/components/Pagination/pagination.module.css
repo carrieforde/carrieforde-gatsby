@@ -7,7 +7,7 @@
 
 .paginationItem {
 	background: transparent;
-	color: var(--color-primary-8);
+	color: var(--pagination-color);
 	display: flex;
 	flex: 0 0 50%;
 	line-height: 1.2;
@@ -34,6 +34,10 @@
 	margin-left: var(--size-1);
 }
 
+.previous .arrow {
+	margin-right: var(--size-1);
+}
+
 .next:hover .arrow {
 	transform: translateX(8px);
 }
@@ -42,10 +46,6 @@
 	composes: paginationItem;
 	margin-right: auto;
 	padding-right: var(--size-3);
-}
-
-.previous .arrow {
-	margin-right: var(--size-1);
 }
 
 .previous:hover .arrow {

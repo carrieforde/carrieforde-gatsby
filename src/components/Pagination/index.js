@@ -25,5 +25,5 @@ export default Pagination;
 
 Pagination.propTypes = {
   next: PropTypes.object,
-  previous: PropTypes.object
+  previous: PropTypes.object,
 };

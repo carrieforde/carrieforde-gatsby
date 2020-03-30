@@ -16,7 +16,7 @@ const TimeStamp = ({ date, className, updated }) => {
 TimeStamp.propTypes = {
   date: PropTypes.string,
   className: PropTypes.string,
-  updated: PropTypes.any
+  updated: PropTypes.any,
 };
 
 export default TimeStamp;

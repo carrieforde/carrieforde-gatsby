@@ -27,7 +27,7 @@ const SocialNav = () => {
           }
         }
       `}
-      render={data => {
+      render={(data) => {
         const { socials } = data.site.siteMetadata,
           { mail, linkedin, github, codepen, twitter } = socials;
 
