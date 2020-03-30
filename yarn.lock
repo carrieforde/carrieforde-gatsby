@@ -3,9 +3,9 @@
 
 
 "@alcatraz-components/accordion@^1.0.1":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@alcatraz-components/accordion/-/accordion-1.0.2.tgz#87f30b5f3c3af15d8f8aaad44756e797c7252e75"
-  integrity sha512-Tz1scQ3yRa38f0aazuPO+9zVaxI1r4S5NHnmOLBaE5zqeThCiK7dZQdWbBf3FGi20IxlJPCtiz7GLx5HaPU1WA==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@alcatraz-components/accordion/-/accordion-1.0.3.tgz#5b7698c3df55db042052d6b903b97a55d5d42aa5"
+  integrity sha512-yPYRKZnH7aqB3kKz73HBbW/VBn1g2BOAN4ApE/s+kVvUdlLIbZuJ3wm5e19AGOZJJff3uwW7iisSqnhknTeIsg==
   dependencies:
     lit-element "^2.2.1"
 

@@ -100,4 +100,6 @@
 	--transition-background: background 0.3s ease-in-out;
 	--transition-transform: transform 0.3s ease;
 	--transition-left: right 0.3s ease;
+
+	--alcatraz-accordion-border-radius: 4px;
 }

@@ -88,7 +88,7 @@ li > ol {
 	margin-top: var(--size-2);
 }
 
-code,
+/* code,
 kbd,
 pre,
 samp,
@@ -115,7 +115,7 @@ pre code[class^='language-'] {
 	font-size: var(--font-size-2);
 	padding: 0 !important;
 	white-space: pre !important;
-}
+} */
 
 blockquote {
 	color: var(--heading-color);
