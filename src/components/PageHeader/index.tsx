@@ -1,13 +1,18 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-
-import PageTitle from '../PageTitle';
-import PageDescription from '../PageDescription';
-import TimeStamp from '../TimeStamp';
 import Category from '../Category';
+import PageDescription from '../PageDescription';
+import PageTitle from '../PageTitle';
+import TimeStamp from '../TimeStamp';
+import { PageHeaderProps } from './PageHeader.interface';
 import styles from './pageHeader.module.css';
 
-const PageHeader = ({ title, description, category, date, updated }) => (
+const PageHeader: React.FC<PageHeaderProps> = ({
+  title,
+  description,
+  category,
+  date,
+  updated,
+}) => (
   <header className="pageHeader">
     {category && <Category category={category} />}
     <PageTitle title={title} />
@@ -21,13 +26,5 @@ const PageHeader = ({ title, description, category, date, updated }) => (
     )}
   </header>
 );
-
-PageHeader.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  category: PropTypes.string,
-  date: PropTypes.string,
-  updated: PropTypes.string,
-};
 
 export default PageHeader;

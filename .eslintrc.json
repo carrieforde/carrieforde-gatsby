@@ -10,19 +10,16 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:import/errors",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended",
     "prettier/react"
   ],
-  "plugins": [
-    "react",
-    "import",
-    "jsx-a11y",
-    "react-hooks",
-    "@typescript-eslint"
-  ],
+  "rules": {
+    "react/prop-types": 0,
+    "@typescript-eslint/no-var-requires": 1
+  },
+  "plugins": ["react", "jsx-a11y", "react-hooks", "@typescript-eslint"],
   "env": {
     "browser": true,
     "es6": true,

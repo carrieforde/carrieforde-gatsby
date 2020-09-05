@@ -1,15 +1,13 @@
+import { graphql, StaticQuery } from 'gatsby';
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-
-import Mail from '../../icons/paper-plane-light.svg';
-import LinkedIn from '../../icons/linkedin-in-brands.svg';
-import Github from '../../icons/github-brands.svg';
 import CodePen from '../../icons/codepen-brands.svg';
+import Github from '../../icons/github-brands.svg';
+import LinkedIn from '../../icons/linkedin-in-brands.svg';
+import Mail from '../../icons/paper-plane-light.svg';
 import Twitter from '../../icons/twitter-brands.svg';
-
 import styles from './socialNav.module.css';
 
-const SocialNav = () => {
+const SocialNav: React.FC<unknown> = () => {
   return (
     <StaticQuery
       query={graphql`

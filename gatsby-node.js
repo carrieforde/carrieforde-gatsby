@@ -107,7 +107,7 @@ exports.createPages = async ({ graphql, actions }) => {
   posts.edges.forEach((post) => {
     createPage({
       path: post.node.fields.slug,
-      component: path.resolve('./src/templates/Post/Post.js'),
+      component: path.resolve('./src/templates/Post/Post.tsx'),
       context: {
         slug: post.node.fields.slug,
         previous: post.previous ? post.previous : null,
@@ -119,7 +119,7 @@ exports.createPages = async ({ graphql, actions }) => {
   pages.edges.forEach((page) => {
     createPage({
       path: page.node.fields.slug,
-      component: path.resolve('./src/templates/Page/Page.js'),
+      component: path.resolve('./src/templates/Page/Page.tsx'),
       context: {
         slug: page.node.fields.slug,
       },
@@ -129,7 +129,7 @@ exports.createPages = async ({ graphql, actions }) => {
   categories.group.forEach((category) => {
     createPage({
       path: `category/${slugify(category.fieldValue)}`,
-      component: path.resolve('./src/templates/Category/Category.js'),
+      component: path.resolve('./src/templates/Category/Category.tsx'),
       context: {
         category: category.fieldValue,
       },

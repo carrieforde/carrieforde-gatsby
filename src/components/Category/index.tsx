@@ -1,18 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-
-import styles from './category.module.css';
+import React from 'react';
 import { slugify } from '../../utils/utilities';
+import { CategoryProps } from './Category.interface';
+import styles from './category.module.css';
 
-const Category = ({ category }) => (
+const Category: React.FC<CategoryProps> = ({ category }) => (
   <Link className={styles.category} to={`/category/${slugify(category)}`}>
     {category}
   </Link>
 );
-
-Category.propTypes = {
-  category: PropTypes.string,
-};
 
 export default Category;

@@ -1,18 +1,19 @@
-import React from 'react';
+import '@alcatraz-components/accordion';
+import 'cf-components-alert';
 import { graphql } from 'gatsby';
-import Site from '../../components/Site';
-import SEO from '../../components/SEO';
-import PropTypes from 'prop-types';
+import React from 'react';
+import ReactHtmlParser from 'react-html-parser';
 import PageHeader from '../../components/PageHeader';
 import Pagination from '../../components/Pagination';
-import 'cf-components-alert';
-import '@alcatraz-components/accordion';
+import SEO from '../../components/SEO';
+import Site from '../../components/Site';
+import { PostProps } from './Post.interface';
 
-const Post = (props) => {
-  const post = props.data.markdownRemark,
-    { frontmatter, html } = post,
-    { title, date, updated, category, description } = frontmatter,
-    { next, previous } = props.pageContext;
+const Post: React.FC<PostProps> = ({ data, pageContext }) => {
+  const post = data.markdownRemark;
+  const { frontmatter, html } = post;
+  const { title, date, updated, category, description } = frontmatter;
+  const { next, previous } = pageContext;
 
   return (
     <Site>
@@ -24,18 +25,10 @@ const Post = (props) => {
         date={date}
         updated={updated}
       />
-      <div
-        className="post__content"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      <div className="post__content">{ReactHtmlParser(html)}</div>
       <Pagination next={next} previous={previous} />
     </Site>
   );
-};
-
-Post.propTypes = {
-  data: PropTypes.object,
-  pageContext: PropTypes.object,
 };
 
 export default Post;

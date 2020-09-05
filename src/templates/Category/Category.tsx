@@ -1,37 +1,33 @@
-import React from 'react';
-import Site from '../../components/Site';
 import { graphql } from 'gatsby';
-
+import React from 'react';
 import Article from '../../components/Article';
-import SEO from '../../components/SEO';
-import PropTypes from 'prop-types';
+import { CategoryProps } from '../../components/Category/Category.interface';
 import PageHeader from '../../components/PageHeader';
-
+import SEO from '../../components/SEO';
+import Site from '../../components/Site';
 import blog from '../../styles/blog.module.css';
+import { Edge } from '../../interfaces/edge.interface';
+import { getComponentKey } from '../../utils/utilities';
 
-const Category = (props) => {
-  const { category } = props.pageContext;
+const Category: React.FC<CategoryProps> = ({ pageContext, data }) => {
+  const { category } = pageContext;
   return (
     <Site>
       <SEO title={`Posts in ${category}`} />
       <PageHeader title={`Posts in ${category}`} />
 
       <ul className={blog.postList}>
-        {props.data.allMarkdownRemark.edges.map((article, index) => (
-          <li key={index} className={blog.postListItem}>
+        {data.allMarkdownRemark.edges.map((article: Edge, index: number) => (
+          <li
+            key={getComponentKey(article.node.frontmatter.title, index)}
+            className={blog.postListItem}
+          >
             <Article {...article} />
           </li>
         ))}
       </ul>
     </Site>
   );
-};
-
-Category.propTypes = {
-  data: PropTypes.object,
-  pageContext: {
-    category: PropTypes.string,
-  },
 };
 
 export default Category;

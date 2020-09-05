@@ -1,21 +1,18 @@
-import React from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import PropTypes from 'prop-types';
-
-import Site from '../components/Site';
-
-import SEO from '../components/SEO';
-import pageTitleStyles from '../components/PageTitle/pageTitle.module.css';
-import indexStyles from '../styles/index.module.css';
-
+import React from 'react';
 import PageDescription from '../components/PageDescription';
 import pageDescriptionStyles from '../components/PageDescription/pageDescription.module.css';
-
+import pageTitleStyles from '../components/PageTitle/pageTitle.module.css';
+import SEO from '../components/SEO';
+import Site from '../components/Site';
 import Tabs from '../components/Tabs';
+import { PageProps } from '../interfaces/page.interface';
+import indexStyles from '../styles/index.module.css';
 
-const IndexPage = ({ data }) => {
+const IndexPage: React.FC<PageProps> = ({ data }) => {
   const { image, jobs } = data;
+
   return (
     <Site>
       <SEO title="Home" />
@@ -83,10 +80,6 @@ const IndexPage = ({ data }) => {
       </div>
     </Site>
   );
-};
-
-IndexPage.propTypes = {
-  data: PropTypes.object.isRequired,
 };
 
 export default IndexPage;

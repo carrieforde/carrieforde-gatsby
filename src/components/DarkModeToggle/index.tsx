@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Helmet from 'react-helmet';
-import { useState } from 'react';
-import styles from './darkModeToggle.module.css';
-import Sun from '../../icons/sun-light.svg';
 import Moon from '../../icons/moon-stars-light.svg';
+import Sun from '../../icons/sun-light.svg';
+import styles from './darkModeToggle.module.css';
 
-const DarkMode = () => {
+const DarkMode: React.FC<unknown> = () => {
   if (!global.window) {
     return null;
   }

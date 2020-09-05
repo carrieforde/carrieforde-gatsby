@@ -1,12 +1,11 @@
+import { graphql, StaticQuery } from 'gatsby';
 import React from 'react';
-import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
-
-import Header from '../Header';
 import Footer from '../Footer';
+import Header from '../Header';
+import { SiteProps } from './Site.interface';
 import styles from './site.module.css';
 
-const Site = ({ children }) => (
+const Site: React.FC<SiteProps> = ({ children }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -26,9 +25,5 @@ const Site = ({ children }) => (
     )}
   />
 );
-
-Site.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default Site;
