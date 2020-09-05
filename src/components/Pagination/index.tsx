@@ -1,20 +1,20 @@
-import React from 'react';
 import { Link } from 'gatsby';
-import PropTypes from 'prop-types';
-
+import React from 'react';
+import ReactHtmlParser from 'react-html-parser';
+import { PaginationProps } from './Pagination.interface';
 import styles from './pagination.module.css';
 
-const Pagination = ({ next, previous }) => (
+const Pagination: React.FC<PaginationProps> = ({ next, previous }) => (
   <nav className={styles.pagination}>
     {previous && (
       <Link className={styles.previous} to={previous.fields.slug}>
         <span className={styles.arrow}>&larr;</span>
-        <p dangerouslySetInnerHTML={{ __html: previous.frontmatter.title }} />
+        <p>{ReactHtmlParser(previous.frontmatter.title)}</p>
       </Link>
     )}
     {next && (
       <Link className={styles.next} to={next.fields.slug}>
-        <p dangerouslySetInnerHTML={{ __html: next.frontmatter.title }} />
+        <p>{ReactHtmlParser(next.frontmatter.title)}</p>
         <span className={styles.arrow}>&rarr;</span>
       </Link>
     )}
@@ -22,8 +22,3 @@ const Pagination = ({ next, previous }) => (
 );
 
 export default Pagination;
-
-Pagination.propTypes = {
-  next: PropTypes.object,
-  previous: PropTypes.object,
-};

@@ -1,12 +1,11 @@
 import { Link } from 'gatsby';
-import PropTypes from 'prop-types';
 import React from 'react';
-
 import Logo from '../../icons/carrie-forde-logo.svg';
 import MainMenu from '../MainMenu';
+import { HeaderProps } from './Header.interface';
 import styles from './header.module.css';
 
-const Header = ({ siteTitle }) => (
+const Header: React.FC<HeaderProps> = ({ siteTitle = '' }) => (
   <header className={styles.siteHeader}>
     <Link className={styles.siteBranding} to="/">
       <Logo className={styles.siteLogo} />
@@ -15,13 +14,5 @@ const Header = ({ siteTitle }) => (
     <MainMenu />
   </header>
 );
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-};
-
-Header.defaultProps = {
-  siteTitle: ``,
-};
 
 export default Header;

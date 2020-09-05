@@ -1,15 +1,13 @@
-import React from 'react';
-import Site from '../components/Site';
 import { graphql } from 'gatsby';
-
+import React from 'react';
 import Article from '../components/Article';
-import SEO from '../components/SEO';
-import PropTypes from 'prop-types';
 import PageHeader from '../components/PageHeader';
-
+import SEO from '../components/SEO';
+import Site from '../components/Site';
+import { BlogProps } from '../interfaces/blog.interface';
 import blog from '../styles/blog.module.css';
 
-const Blog = ({ data }) => {
+const Blog: React.FC<BlogProps> = ({ data }) => {
   return (
     <Site>
       <SEO title="Blog" />
@@ -27,10 +25,6 @@ const Blog = ({ data }) => {
       </ul>
     </Site>
   );
-};
-
-Blog.propTypes = {
-  data: PropTypes.object,
 };
 
 export default Blog;

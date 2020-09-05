@@ -1,25 +1,22 @@
-import React from 'react';
 import { Link } from 'gatsby';
-import PropTypes from 'prop-types';
-import TimeStamp from '../TimeStamp';
-
-import styles from './article.module.css';
-import timeStampStyles from '../TimeStamp/timeStamp.module.css';
+import React from 'react';
+import ReactHtmlParser from 'react-html-parser';
 import Category from '../Category';
+import TimeStamp from '../TimeStamp';
+import timeStampStyles from '../TimeStamp/timeStamp.module.css';
+import { ArticleProps } from './Article.interface';
+import styles from './article.module.css';
 
-const Article = (data) => {
-  const { excerpt, frontmatter, timeToRead, fields } = data.node,
-    { title, date, category, description } = frontmatter;
+const Article: React.FC<ArticleProps> = ({ node }) => {
+  const { excerpt, frontmatter, timeToRead, fields } = node;
+  const { title, date, category, description } = frontmatter;
 
   return (
     <article className={styles.article}>
       <header className={styles.articleHeader}>
         <Category category={category} />
         <Link to={fields.slug}>
-          <h2
-            className={styles.articleTitle}
-            dangerouslySetInnerHTML={{ __html: title }}
-          />
+          <h2 className={styles.articleTitle}>{ReactHtmlParser(title)}</h2>
         </Link>
         <TimeStamp date={date} className={timeStampStyles.timeStampIsSmall} />
         <span className={styles.articleSeparator}>&#9656;</span>
@@ -27,16 +24,11 @@ const Article = (data) => {
           {timeToRead} minute read
         </span>
       </header>
-      <div
-        className={styles.articleDescription}
-        dangerouslySetInnerHTML={{ __html: description || excerpt }}
-      />
+      <div className={styles.articleDescription}>
+        {ReactHtmlParser(description || excerpt)}
+      </div>
     </article>
   );
-};
-
-Article.propTypes = {
-  data: PropTypes.object,
 };
 
 export default Article;

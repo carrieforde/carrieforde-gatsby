@@ -1,10 +1,9 @@
-import React from 'react';
 import { Link } from 'gatsby';
-
-import styles from './mainMenu.module.css';
+import React from 'react';
 import DarkMode from '../DarkModeToggle';
+import styles from './mainMenu.module.css';
 
-const MainMenu = () => (
+const MainMenu: React.FC<unknown> = () => (
   <nav className={styles.mainNavigation}>
     <Link className={styles.link} to="/#about">
       About

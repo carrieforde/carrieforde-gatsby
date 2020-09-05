@@ -1,9 +1,8 @@
 import React from 'react';
-
-import Site from '../components/Site';
 import SEO from '../components/SEO';
+import Site from '../components/Site';
 
-const NotFoundPage = () => (
+const NotFoundPage: React.FC<unknown> = () => (
   <Site>
     <SEO title="404: Not found" />
     <h1>NOT FOUND</h1>

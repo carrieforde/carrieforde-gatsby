@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { TimeStampProps } from './TimeStamp.interface';
 import styles from './timeStamp.module.css';
 
-const TimeStamp = ({ date, className, updated }) => {
+const TimeStamp: React.FC<TimeStampProps> = ({ date, className, updated }) => {
   const dateTime = new Date(date).toISOString();
 
   return (
@@ -11,12 +11,6 @@ const TimeStamp = ({ date, className, updated }) => {
       {date}
     </time>
   );
-};
-
-TimeStamp.propTypes = {
-  date: PropTypes.string,
-  className: PropTypes.string,
-  updated: PropTypes.any,
 };
 
 export default TimeStamp;
