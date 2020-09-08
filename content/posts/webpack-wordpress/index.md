@@ -4,6 +4,7 @@ date: 2018-10-13
 updated: 2019-10-06
 category: 'WordPress'
 description: 'With the rise of React in WordPress, there are more and more developers turning to webpack for managing and bundling front end assets.'
+showToc: true
 ---
 
 <cf-alert type="info">

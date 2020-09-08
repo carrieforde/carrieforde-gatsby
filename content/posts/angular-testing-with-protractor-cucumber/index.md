@@ -2,6 +2,7 @@
 title: 'Testing Angular apps with Protractor & Cucumber'
 category: 'JavaScript'
 date: 2019-09-10
+showToc: true
 ---
 
 End-to-end (E2E) tests allow developers to test the flow of their applications. Let's say you have a very basic calculator app that allows a user to enter two numbers and get a result. So a test you might want to run is that entering "1" in the first input and entering "2" in the second results in "3" when the user is performing an addition operation.

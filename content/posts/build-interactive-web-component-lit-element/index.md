@@ -2,6 +2,7 @@
 title: 'How to build an interactive web component with LitElement'
 date: 2020-03-28
 category: 'JavaScript'
+showToc: true
 ---
 
 <cf-alert type="info">
