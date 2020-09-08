@@ -77,9 +77,7 @@ import { LitElement, html } from 'lit-element';
 
 class MyAccordion extends LitElement {
   render() {
-    return html`
-      Hello World 🌍
-    `;
+    return html` Hello World 🌍 `;
   }
 }
 
@@ -126,9 +124,7 @@ import { LitElement, html } from 'lit-element';
 
 class MyAccordion extends LitElement {
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 }
 
@@ -207,7 +203,7 @@ class MyAccordionPanel extends LitElement {
   static get properties() {
     return {
       label: { type: String },
-      expanded: { type: Boolean }
+      expanded: { type: Boolean },
     };
   }
 
@@ -310,9 +306,7 @@ class MyAccordion extends LitElement {
   }
 
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 }
 
@@ -468,7 +462,7 @@ class MyAccordion extends LitElement {
   static get properties() {
     return {
       panels: { type: Array },
-      multiPanel: { type: Boolean }
+      multiPanel: { type: Boolean },
     };
   }
 
@@ -490,7 +484,7 @@ class MyAccordion extends LitElement {
   shouldUpdate(changedProperties) {
     if (!this.initialized) {
       this.panels = Array.from(this.children);
-      this.panels.map(panel => panel.setAttribute('tabIndex', '0'));
+      this.panels.map((panel) => panel.setAttribute('tabIndex', '0'));
       this.addEventListener('click', this.handleClick);
       this.addEventListener('keyup', this.handleKeyup);
       this.initialized = true;
@@ -532,7 +526,7 @@ class MyAccordionPanel extends LitElement {
   static get properties() {
     return {
       label: { type: String },
-      expanded: { type: Boolean }
+      expanded: { type: Boolean },
     };
   }
 
@@ -604,7 +598,7 @@ class MyAccordion extends LitElement {
   handleClick(event) {
     const { target } = event;
 
-    this.panels.map(panel => {
+    this.panels.map((panel) => {
       if (panel === target) {
         if (panel.hasAttribute('expanded')) {
           panel.removeAttribute('expanded');
@@ -633,7 +627,7 @@ class MyAccordion extends LitElement {
   handleClick(event) {
     const { target } = event;
 
-    this.panels.map(panel => {
+    this.panels.map((panel) => {
       if (
         !this.multiPanel &&
         panel !== target &&
@@ -679,7 +673,7 @@ class MyAccordion extends LitElement {
   handleKeyup(event) {}
 
   updatePanels(target) {
-    this.panels.map(panel => {
+    this.panels.map((panel) => {
       if (
         !this.multiPanel &&
         panel !== target &&

@@ -8,10 +8,11 @@ import Pagination from '../../components/Pagination';
 import SEO from '../../components/SEO';
 import Site from '../../components/Site';
 import { PostProps } from './Post.interface';
+import TableOfContents from '../../components/TableOfContents';
 
 const Post: React.FC<PostProps> = ({ data, pageContext }) => {
   const post = data.markdownRemark;
-  const { frontmatter, html } = post;
+  const { frontmatter, html, tableOfContents } = post;
   const { title, date, updated, category, description } = frontmatter;
   const { next, previous } = pageContext;
 
@@ -25,7 +26,11 @@ const Post: React.FC<PostProps> = ({ data, pageContext }) => {
         date={date}
         updated={updated}
       />
-      <div className="post__content">{ReactHtmlParser(html)}</div>
+      <TableOfContents tableOfContents={tableOfContents} />
+      <div
+        className="post__content"
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
       <Pagination next={next} previous={previous} />
     </Site>
   );
@@ -44,6 +49,7 @@ export const query = graphql`
         description
       }
       html
+      tableOfContents
     }
   }
 `;

@@ -49,6 +49,13 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 640,
+            },
+          },
+          'gatsby-remark-autolink-headers',
+          {
             resolve: `gatsby-remark-prismjs`,
             options: {
               classPrefix: 'language-',
@@ -56,12 +63,6 @@ module.exports = {
               aliases: {},
               showLineNumbers: false,
               noInlineHighlight: false,
-            },
-          },
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              maxWidth: 640,
             },
           },
         ],
