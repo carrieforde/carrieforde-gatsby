@@ -2,6 +2,7 @@
 title: 'Getting started with task running & Gulp'
 date: 2017-10-25
 category: 'Development'
+showToc: true
 ---
 
 Front-end development typically consists of many stages, including scaffolding (setting up the project environment), development of the website or application, testing, optimization, and deployment. Setting up project environments and the rest of the project workflow from scratch project after project can become cumbersome. Task runners were introduced to solve this problem. Task runners help developers manage and automate all the tasks associated with the various stages of development. In this article, I will focus on the popular task runner Gulp, and show you how to set up [Gulp](https://gulpjs.com/) with a basic tasks for compiling Sass.

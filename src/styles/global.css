@@ -88,35 +88,6 @@ li > ol {
 	margin-top: var(--size-2);
 }
 
-/* code,
-kbd,
-pre,
-samp,
-tt,
-var {
-	background-color: var(--code-bg) !important;
-	border-radius: 3px;
-	color: var(--heading-color) !important;
-	font-family: var(--font-family-monospace) !important;
-	font-size: 18px;
-	padding: 0 var(--size-1) !important;
-	white-space: initial !important;
-}
-
-pre {
-	border: 1px solid var(--pre-border-color);
-	margin-bottom: var(--size-6) !important;
-	margin-top: var(--size-6) !important;
-	overflow-x: scroll;
-	padding: var(--size-4) !important;
-}
-
-pre code[class^='language-'] {
-	font-size: var(--font-size-2);
-	padding: 0 !important;
-	white-space: pre !important;
-} */
-
 blockquote {
 	color: var(--heading-color);
 	margin: var(--size-7) var(--size-6);
@@ -174,6 +145,11 @@ cf-alert {
 	padding-left: 40px;
 }
 
+cf-alert a {
+	background: none;
+	text-decoration: underline;
+}
+
 alcatraz-accordion {
 	margin-bottom: var(--size-6);
 	margin-top: var(--size-6);
@@ -185,4 +161,8 @@ alcatraz-accordion {
 
 .pageHeader + .page__content {
 	margin-top: var(--size-7);
+}
+
+.anchor {
+	background: none;
 }

@@ -16,6 +16,11 @@
 
 	--pagination-color: var(--link);
 
+	--button-color: #fff;
+	--button-bg-color: var(--color-primary-9);
+
+	--box-shadow-color: var(--color-neutral-2);
+
 	--alcatraz-accordion-border: 1px solid var(--color-neutral-2);
 
 	--logo-c: var(--color-neutral-10);
@@ -43,6 +48,11 @@
 
 	--timestamp-color: var(--color-neutral-5);
 	--pagination-color: var(--link);
+
+	--button-color: var(--color-neutral-9);
+	--button-bg-color: var(--link);
+
+	--box-shadow-color: var(--color-neutral-8);
 
 	/* Default */
 	--alert-bg-default: var(--color-neutral-7); /* background-color */

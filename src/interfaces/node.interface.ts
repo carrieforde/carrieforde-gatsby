@@ -7,4 +7,5 @@ export interface Node {
   excerpt: string;
   fields: Fields;
   html: string;
+  tableOfContents?: string;
 }

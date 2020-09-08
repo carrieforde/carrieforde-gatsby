@@ -2,17 +2,17 @@ import '@alcatraz-components/accordion';
 import 'cf-components-alert';
 import { graphql } from 'gatsby';
 import React from 'react';
-import ReactHtmlParser from 'react-html-parser';
 import PageHeader from '../../components/PageHeader';
 import Pagination from '../../components/Pagination';
 import SEO from '../../components/SEO';
 import Site from '../../components/Site';
+import TableOfContents from '../../components/TableOfContents';
 import { PostProps } from './Post.interface';
 
 const Post: React.FC<PostProps> = ({ data, pageContext }) => {
   const post = data.markdownRemark;
-  const { frontmatter, html } = post;
-  const { title, date, updated, category, description } = frontmatter;
+  const { frontmatter, html, tableOfContents } = post;
+  const { title, date, updated, category, description, showToc } = frontmatter;
   const { next, previous } = pageContext;
 
   return (
@@ -25,7 +25,11 @@ const Post: React.FC<PostProps> = ({ data, pageContext }) => {
         date={date}
         updated={updated}
       />
-      <div className="post__content">{ReactHtmlParser(html)}</div>
+      {showToc && <TableOfContents tableOfContents={tableOfContents} />}
+      <div
+        className="post__content"
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
       <Pagination next={next} previous={previous} />
     </Site>
   );
@@ -42,8 +46,10 @@ export const query = graphql`
         updated(formatString: "MMMM DD, YYYY")
         category
         description
+        showToc
       }
       html
+      tableOfContents
     }
   }
 `;

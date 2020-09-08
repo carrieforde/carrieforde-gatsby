@@ -4,6 +4,7 @@ export interface Frontmatter {
   updated?: string;
   category?: string;
   description?: string;
+  showToc?: boolean;
   company?: string;
   location?: string;
   range?: string;
