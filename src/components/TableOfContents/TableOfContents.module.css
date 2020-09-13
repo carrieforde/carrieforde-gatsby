@@ -59,9 +59,9 @@
 }
 
 .tocButton svg {
-	height: auto;
+	height: 24px;
 	transition: transform 0.3s ease-in-out;
-	width: 100%;
+	width: 24px;
 }
 
 .tocOpen .tocButton svg {
