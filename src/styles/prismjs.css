@@ -16,8 +16,8 @@
 	--inlineCodeColor: var(--blockBackground);
 	--inlineCodeBackground: var(--baseColor);
 
-	--highlightBackground: #f7ebc6;
-	--highlightAccent: #f7d87c;
+	--highlightBackground: var(--color-warning-1);
+	--highlightAccent: var(--color-warning-8);
 }
 
 .dark-mode {
@@ -35,6 +35,9 @@
 	--selectedColor: #b3d4fc;
 	--inlineCodeColor: var(--blockBackground);
 	--inlineCodeBackground: var(--baseColor);
+
+	--highlightBackground: rgba(222, 145, 29, 0.2);
+	--highlightAccent: var(--color-warning-4);
 }
 
 code,
@@ -152,4 +155,15 @@ code[class*='language-'] ::selection {
 }
 .token.entity {
 	cursor: help;
+}
+
+.gatsby-highlight-code-line {
+	background-color: var(--highlightBackground);
+	border-left: 0.25em solid var(--highlightAccent);
+	display: block;
+	margin-left: -16px;
+	margin-right: -20%;
+	padding-left: 0.75em;
+	padding-right: var(--size-4);
+	width: fit-content;
 }
