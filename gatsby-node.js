@@ -2,6 +2,10 @@ const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 
 const slugify = (slug) => slug.replace(/\s/g, '-').toLowerCase();
+const getPostSlug = (slug) => {
+  const splitSlug = slug.split('/');
+  return `${splitSlug[splitSlug.length - 1]}/`;
+};
 
 /**
  * Implement Gatsby's Node APIs in this file.
@@ -17,12 +21,13 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       getNode,
       basePath: `${__dirname}/content/posts`,
+      trailingSlash: false,
     });
 
     createNodeField({
       node,
       name: 'slug',
-      value: slug,
+      value: getPostSlug(slug),
     });
   }
 
