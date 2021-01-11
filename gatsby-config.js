@@ -120,7 +120,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: process.env.GATSBY_GA_ID || null,
+        trackingId: process.env.GATSBY_GA_ID,
       },
     },
     'gatsby-plugin-netlify',

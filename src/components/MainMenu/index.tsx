@@ -1,6 +1,5 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import DarkMode from '../DarkModeToggle';
 import styles from './mainMenu.module.css';
 
 const MainMenu: React.FC<unknown> = () => (
@@ -14,7 +13,6 @@ const MainMenu: React.FC<unknown> = () => (
     <Link className={styles.link} to="/blog">
       Blog
     </Link>
-    <DarkMode />
   </nav>
 );
 
