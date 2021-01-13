@@ -8,10 +8,11 @@ import SEO from '../../components/SEO';
 import Site from '../../components/Site';
 import TableOfContents from '../../components/TableOfContents';
 import { PostProps } from './Post.interface';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 const Post: React.FC<PostProps> = ({ data, pageContext }) => {
-  const post = data.markdownRemark;
-  const { frontmatter, html, tableOfContents } = post;
+  const post = data.mdx;
+  const { frontmatter, body, tableOfContents } = post;
   const { title, date, updated, category, description, showToc } = frontmatter;
   const { next, previous } = pageContext;
 
@@ -25,11 +26,11 @@ const Post: React.FC<PostProps> = ({ data, pageContext }) => {
         date={date}
         updated={updated}
       />
-      {showToc && <TableOfContents tableOfContents={tableOfContents} />}
-      <div
-        className="post__content"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      {showToc && <TableOfContents {...tableOfContents} />}
+      <div className="post__content">
+        <MDXRenderer>{body}</MDXRenderer>
+      </div>
+
       <Pagination next={next} previous={previous} />
     </Site>
   );
@@ -39,7 +40,7 @@ export default Post;
 
 export const query = graphql`
   query($slug: String) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
@@ -48,7 +49,7 @@ export const query = graphql`
         description
         showToc
       }
-      html
+      body
       tableOfContents
     }
   }

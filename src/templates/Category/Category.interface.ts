@@ -6,7 +6,7 @@ export interface CategoryProps {
     category: string;
   };
   data: {
-    allMarkdownRemark: {
+    allMdx: {
       edges: Edge[];
     };
   };

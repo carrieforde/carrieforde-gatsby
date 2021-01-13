@@ -9,6 +9,7 @@ import styles from './pageHeader.module.css';
 const PageHeader: React.FC<PageHeaderProps> = ({
   title,
   description,
+  multiLineDescription,
   category,
   date,
   updated,
@@ -16,7 +17,12 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   <header className="pageHeader">
     {category && <Category category={category} />}
     <PageTitle title={title} />
-    {description && <PageDescription description={description} />}
+    {(description || multiLineDescription) && (
+      <PageDescription
+        description={description}
+        multiLineDescription={multiLineDescription}
+      />
+    )}
     {date && <TimeStamp date={date} />}
     {updated && (
       <Fragment>

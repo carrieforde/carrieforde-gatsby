@@ -8,4 +8,5 @@ export interface Frontmatter {
   company?: string;
   location?: string;
   range?: string;
+  multiLineDescription?: string[];
 }

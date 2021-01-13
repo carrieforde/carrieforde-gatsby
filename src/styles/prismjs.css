@@ -61,7 +61,7 @@ pre {
 	border: 1px solid var(--borderColor);
 	margin-bottom: var(--size-6);
 	margin-top: var(--size-6);
-	overflow-x: scroll;
+	overflow-x: auto;
 	padding: var(--size-4);
 }
 

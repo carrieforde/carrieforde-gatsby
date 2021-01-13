@@ -1,16 +1,20 @@
 import 'cf-components-alert';
 import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
-import ReactHtmlParser from 'react-html-parser';
 import PageHeader from '../../components/PageHeader';
 import SEO from '../../components/SEO';
 import Site from '../../components/Site';
 import { PageProps } from '../../interfaces/page.interface';
+import ExperienceTabs from '../../components/ExperienceTabs';
+import { MDXProvider } from '@mdx-js/react';
+
+const shortcodes = { ExperienceTabs };
 
 const Page: React.FC<PageProps> = ({ data }) => {
-  const page = data.markdownRemark;
-  const { frontmatter, html } = page;
-  const { title, date, updated, category, description } = frontmatter;
+  const page = data.mdx;
+  const { frontmatter, body } = page;
+  const { title, description, multiLineDescription } = frontmatter;
 
   return (
     <Site>
@@ -18,11 +22,13 @@ const Page: React.FC<PageProps> = ({ data }) => {
       <PageHeader
         title={title}
         description={description}
-        category={category}
-        date={date}
-        updated={updated}
+        multiLineDescription={multiLineDescription}
       />
-      <div className="page__content">{ReactHtmlParser(html)}</div>
+      <div className="page__content">
+        <MDXProvider components={shortcodes}>
+          <MDXRenderer>{body}</MDXRenderer>
+        </MDXProvider>
+      </div>
     </Site>
   );
 };
@@ -31,12 +37,13 @@ export default Page;
 
 export const query = graphql`
   query($slug: String) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
         description
+        multiLineDescription
       }
-      html
+      body
     }
   }
 `;

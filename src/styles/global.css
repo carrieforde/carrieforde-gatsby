@@ -165,4 +165,34 @@ alcatraz-accordion {
 
 .anchor {
 	background: none;
+	left: -20px;
+	position: absolute;
+}
+
+.avatar {
+	clip-path: circle();
+	margin: 0 auto var(--size-6);
+	shape-outside: circle();
+	width: var(--size-12);
+}
+
+.gridList {
+	display: grid;
+	font-size: var(--font-size-2);
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.gridList li {
+	margin-top: 0;
+}
+
+@media screen and (min-width: 600px) {
+	.avatar {
+		float: right;
+		margin-left: var(--size-5);
+	}
+
+	.gridList {
+		font-size: var(--font-size-3);
+	}
 }

@@ -7,8 +7,12 @@ import timeStampStyles from '../TimeStamp/timeStamp.module.css';
 import { ArticleProps } from './Article.interface';
 import styles from './article.module.css';
 
-const Article: React.FC<ArticleProps> = ({ node }) => {
-  const { excerpt, frontmatter, timeToRead, fields } = node;
+const Article: React.FC<ArticleProps> = ({
+  excerpt,
+  frontmatter,
+  timeToRead,
+  fields,
+}) => {
   const { title, date, category, description } = frontmatter;
 
   return (

@@ -8,6 +8,6 @@ export interface PageProps {
       childImageSharp: GatsbyImageProps;
     };
     jobs?: Edge[];
-    markdownRemark?: Node;
+    mdx?: Node;
   };
 }

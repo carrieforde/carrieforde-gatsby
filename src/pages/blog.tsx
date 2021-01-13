@@ -8,6 +8,7 @@ import { BlogProps } from '../interfaces/blog.interface';
 import blog from '../styles/blog.module.css';
 
 const Blog: React.FC<BlogProps> = ({ data }) => {
+  console.log(data.allMdx.edges);
   return (
     <Site>
       <SEO title="Blog" />
@@ -17,9 +18,9 @@ const Blog: React.FC<BlogProps> = ({ data }) => {
       />
 
       <ul className={blog.postList}>
-        {data.allMarkdownRemark.edges.map((article, index) => (
+        {data.allMdx.edges.map(({ node }, index) => (
           <li key={index} className={blog.postListItem}>
-            <Article {...article} />
+            <Article {...node} />
           </li>
         ))}
       </ul>
@@ -31,7 +32,7 @@ export default Blog;
 
 export const query = graphql`
   query {
-    allMarkdownRemark(
+    allMdx(
       filter: { fileAbsolutePath: { regex: "/posts/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {

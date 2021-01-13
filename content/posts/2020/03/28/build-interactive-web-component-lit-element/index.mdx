@@ -6,7 +6,11 @@ showToc: true
 ---
 
 <cf-alert type="info">
-  You can find the <a href="https://github.com/alcatraz-components/accordion">source code for the accordion web component</a> on Github.
+  You can find the{' '}
+  <a href="https://github.com/alcatraz-components/accordion">
+    source code for the accordion web component
+  </a>{' '}
+  on Github.
 </cf-alert>
 
 Last spring, I worked on a project where we supplied static content from a WordPress site to a React app via the REST API. The challenge we faced in this project was that the content from the WordPress site included interactive components.
@@ -88,7 +92,8 @@ customElements.define('my-accordion', MyAccordion);
 The `render()` method returns our component's HTML template. The `html` function is simply a wrapper for creating the template. `customElements.define()` allows us to define a name for our web component, and associate the extended `LitElement` class to this tag.
 
 <cf-alert type="warning">
-  All custom elements (i.e. web components) must use hyphenated names to avoid conflicting with existing HTML elements.
+  All custom elements (i.e. web components) must use hyphenated names to avoid
+  conflicting with existing HTML elements.
 </cf-alert>
 
 Now that the web component is defined, we're ready to use it in our HTML. Let's add a basic HTML5 scaffold to `index.html` adding our web component script, and placing an instance of our custom element in the `body`:
@@ -875,36 +880,41 @@ And that's it! We now have a fully-functioning, accessible accordion web compone
 <alcatraz-accordion>
   <alcatraz-accordion-panel label="K2" expanded="true">
     <figure>
-      <img src="https://cat-fact-wp.carrieforde.co/wp-content/uploads/2020/03/IMG_0263-768x1024.jpg" alt="K2 enjoying a sunny day" />
+      <img src="k2-in-the-sun@2x.jpg" alt="K2 enjoying a sunny day" />
       <figcaption>
-        Age: 13<br>
+        Age: 13
+        <br />
         Likes: treats, sunshine, his siblings
       </figcaption>
     </figure>
   </alcatraz-accordion-panel>
   <alcatraz-accordion-panel label="Whitney">
     <figure>
-      <img src="https://cat-fact-wp.carrieforde.co/wp-content/uploads/2020/03/60038935706__27EDF0AD-4F91-491D-A517-88AAD903E330-768x1024.jpg" alt="Whitney enjoying an afternoon in bed" />
+      <img
+        src="whitney-in-bed@2x.jpg"
+        alt="Whitney enjoying an afternoon in bed"
+      />
       <figcaption>
-        Age: 13<br>
+        Age: 13
+        <br />
         Likes: treats, sunshine, fireplaces
       </figcaption>
     </figure>
   </alcatraz-accordion-panel>
   <alcatraz-accordion-panel label="Minnie">
     <figure>
-      <img src="https://cat-fact-wp.carrieforde.co/wp-content/uploads/2020/03/IMG_0405-1024x768.jpg" alt="Minnie cuddling a toy mouse" />
+      <img src="minnie-cuddling-mouse.jpg" alt="Minnie cuddling a toy mouse" />
       <figcaption>
-        Age: 4<br>
+        Age: 4<br />
         Likes: toy mice & birdies, playtime, getting into trouble
       </figcaption>
     </figure>
   </alcatraz-accordion-panel>
   <alcatraz-accordion-panel label="Paul">
     <figure>
-      <img src="https://cat-fact-wp.carrieforde.co/wp-content/uploads/2020/03/IMG_0172-768x1024.jpg" alt="Paul hanging out in the afternoon sun" />
+      <img src="paul-in-sun.jpg" alt="Paul hanging out in the afternoon sun" />
       <figcaption>
-        Age: 3<br>
+        Age: 3<br />
         Likes: his humans, cuddles, high places
       </figcaption>
     </figure>

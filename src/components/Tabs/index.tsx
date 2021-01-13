@@ -1,8 +1,8 @@
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React, { useState } from 'react';
-import styles from './tabs.module.css';
-import { TabsProps } from './Tabs.interface';
 import { getComponentKey } from '../../utils/utilities';
-import ReactHtmlParser from 'react-html-parser';
+import { TabsProps } from './Tabs.interface';
+import styles from './tabs.module.css';
 
 const Tabs: React.FC<TabsProps> = ({ edges }) => {
   const [currentTab, setCurrentTab] = useState(0);
@@ -36,7 +36,7 @@ const Tabs: React.FC<TabsProps> = ({ edges }) => {
       </div>
 
       {edges.map((job, index) => {
-        const { frontmatter, html } = job.node;
+        const { frontmatter, body } = job.node;
         const { title, location, range, company } = frontmatter;
         const panelKey = `${getComponentKey(company, index)}-panel`;
         return (
@@ -58,7 +58,9 @@ const Tabs: React.FC<TabsProps> = ({ edges }) => {
               <span>{range}</span>
             </p>
 
-            <div>{ReactHtmlParser(html)}</div>
+            <div>
+              <MDXRenderer>{body}</MDXRenderer>
+            </div>
           </div>
         );
       })}
