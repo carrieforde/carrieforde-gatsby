@@ -51,7 +51,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
           </p>
           <p>
             I currently work at{' '}
-            <a href="www.freedomfinancialnetwork.com">
+            <a href="https://www.freedomfinancialnetwork.com">
               Freedom Financial Network
             </a>{' '}
             where I design and implement clever frontend solutions for{' '}
