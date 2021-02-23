@@ -17,12 +17,12 @@ const Category: React.FC<CategoryProps> = ({ pageContext, data }) => {
       <PageHeader title={`Posts in ${category}`} />
 
       <ul className={blog.postList}>
-        {data.allMdx.edges.map((article: Edge, index: number) => (
+        {data.allMdx.edges.map(({ node }, index: number) => (
           <li
-            key={getComponentKey(article.node.frontmatter.title, index)}
+            key={getComponentKey(node.frontmatter.title, index)}
             className={blog.postListItem}
           >
-            <Article {...article} />
+            <Article {...node} />
           </li>
         ))}
       </ul>
