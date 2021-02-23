@@ -8,7 +8,6 @@ import { BlogProps } from '../interfaces/blog.interface';
 import blog from '../styles/blog.module.css';
 
 const Blog: React.FC<BlogProps> = ({ data }) => {
-  console.log(data.allMdx.edges);
   return (
     <Site>
       <SEO title="Blog" />
