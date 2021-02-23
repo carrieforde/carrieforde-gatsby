@@ -1,6 +1,6 @@
 ---
 company: 'Freedom Financial Network'
-title: 'Software Engineer'
+title: 'Senior Software Engineer'
 location: 'San Mateo, CA'
 date: '2018-06-11'
 range: 'June 2018 - Present'

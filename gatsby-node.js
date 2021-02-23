@@ -4,7 +4,7 @@ const { createFilePath } = require('gatsby-source-filesystem');
 const slugify = (slug) => slug.replace(/\s/g, '-').toLowerCase();
 const getPostSlug = (slug) => {
   const splitSlug = slug.split('/');
-  return `${splitSlug[splitSlug.length - 1]}/`;
+  return `/${splitSlug[splitSlug.length - 1]}/`;
 };
 
 /**
@@ -16,7 +16,7 @@ const getPostSlug = (slug) => {
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === 'MarkdownRemark') {
+  if (node.internal.type === 'Mdx') {
     const slug = createFilePath({
       node,
       getNode,
@@ -31,7 +31,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     });
   }
 
-  if (node.internal.type === 'AllMarkdownRemark') {
+  if (node.internal.type === 'allMdx') {
     const category = createFilePath({
       node,
       getNode,
@@ -50,12 +50,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const result = await graphql(`
     query Content {
-      pages: allMarkdownRemark(
-        filter: {
-          fileAbsolutePath: { regex: "/pages/" }
-          fields: { slug: { ne: "/home/" } }
-        }
-      ) {
+      pages: allMdx(filter: { fileAbsolutePath: { regex: "/pages/" } }) {
         edges {
           node {
             id
@@ -65,7 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      posts: allMarkdownRemark(
+      posts: allMdx(
         filter: { fileAbsolutePath: { regex: "/posts/" } }
         sort: { fields: frontmatter___date, order: DESC }
       ) {
@@ -93,9 +88,7 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      categories: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/posts/" } }
-      ) {
+      categories: allMdx(filter: { fileAbsolutePath: { regex: "/posts/" } }) {
         group(field: frontmatter___category) {
           fieldValue
         }
@@ -123,7 +116,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
   pages.edges.forEach((page) => {
     createPage({
-      path: page.node.fields.slug,
+      path: page.node.fields.slug.includes('home')
+        ? '/'
+        : page.node.fields.slug,
       component: path.resolve('./src/templates/Page/Page.tsx'),
       context: {
         slug: page.node.fields.slug,

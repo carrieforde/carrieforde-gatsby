@@ -45,9 +45,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-plugin-mdx',
       options: {
-        plugins: [
+        extensions: [`.md`, `.mdx`],
+        gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
             options: {
@@ -142,8 +143,8 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map((edge) => {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map((edge) => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description:
                     edge.node.frontmatter.description || edge.node.excerpt,
@@ -156,7 +157,7 @@ module.exports = {
             },
             query: `
               {
-                allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/posts/"}}, sort: { fields: [frontmatter___date], order: DESC }) {
+                allMdx(filter: { fileAbsolutePath: { regex: "/posts/"}}, sort: { fields: [frontmatter___date], order: DESC }) {
                   edges {
                     node {
                       excerpt

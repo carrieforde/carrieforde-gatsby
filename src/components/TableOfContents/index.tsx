@@ -1,15 +1,9 @@
-import ReactHtmlParser from 'react-html-parser';
-import React, { useState, ReactElement, useEffect } from 'react';
-import styles from './TableOfContents.module.css';
+import React, { ReactElement, useEffect, useState } from 'react';
 import Chevron from '../../icons/chevron-circle-left-light.svg';
+import { TableOfContentsProps } from './table-of-contents.interface';
+import styles from './TableOfContents.module.css';
 
-interface TableOfContentsProps {
-  tableOfContents: string;
-}
-
-function TableOfContents({
-  tableOfContents,
-}: TableOfContentsProps): ReactElement {
+function TableOfContents({ items }: TableOfContentsProps): ReactElement {
   const [tocOpen, setTocState] = useState(false);
   const handleClick = () => {
     if (tocOpen) {
@@ -52,7 +46,13 @@ function TableOfContents({
         <span className={styles.tocButtonText}>Table of Contents</span>
       </button>
       <h3 className={styles.tableOfContentsHeading}>Table of Contents</h3>
-      {ReactHtmlParser(tableOfContents)}
+      <ul>
+        {items.map(({ url, title }, index) => (
+          <li key={`toc-${index}`}>
+            <a href={url}>{title}</a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

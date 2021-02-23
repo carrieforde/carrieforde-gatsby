@@ -17,7 +17,7 @@ const Category: React.FC<CategoryProps> = ({ pageContext, data }) => {
       <PageHeader title={`Posts in ${category}`} />
 
       <ul className={blog.postList}>
-        {data.allMarkdownRemark.edges.map((article: Edge, index: number) => (
+        {data.allMdx.edges.map((article: Edge, index: number) => (
           <li
             key={getComponentKey(article.node.frontmatter.title, index)}
             className={blog.postListItem}
@@ -34,7 +34,7 @@ export default Category;
 
 export const query = graphql`
   query PostsByCategory($category: String!) {
-    allMarkdownRemark(
+    allMdx(
       filter: { frontmatter: { category: { eq: $category } } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {

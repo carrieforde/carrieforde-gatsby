@@ -1,5 +1,3 @@
 import { Node } from '../../interfaces/node.interface';
 
-export interface ArticleProps {
-  node: Node;
-}
+export type ArticleProps = Node;
