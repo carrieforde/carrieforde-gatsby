@@ -123,6 +123,13 @@ module.exports = {
         trackingId: process.env.GATSBY_GA_ID,
       },
     },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: process.env.GATSBY_GTM_ID,
+        includeInDevelopment: true,
+      },
+    },
     'gatsby-plugin-netlify',
     `gatsby-plugin-offline`,
     {

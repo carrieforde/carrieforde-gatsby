@@ -24,31 +24,31 @@ const SocialNav: React.FC<unknown> = () => {
         }
       `}
       render={(data) => {
-        const { socials } = data.site.siteMetadata,
-          { mail, linkedin, github, codepen, twitter } = socials;
+        const { socials } = data.site.siteMetadata;
+        const { mail, linkedin, github, codepen } = socials;
 
         return (
           <ul className={styles.socialNav}>
             <li className={styles.socialNavItem}>
-              <a href={`mailto:${mail}`}>
+              <a href={`mailto:${mail}`} className="socialLink">
                 <Mail />
                 <span className={styles.socialNavLabel}>Mail</span>
               </a>
             </li>
             <li className={styles.socialNavItem}>
-              <a href={linkedin}>
+              <a href={linkedin} className="socialLink">
                 <LinkedIn />
                 <span className={styles.socialNavLabel}>LinkedIn</span>
               </a>
             </li>
             <li className={styles.socialNavItem}>
-              <a href={github}>
+              <a href={github} className="socialLink">
                 <Github />
                 <span className={styles.socialNavLabel}>Github</span>
               </a>
             </li>
             <li className={styles.socialNavItem}>
-              <a href={codepen}>
+              <a href={codepen} className="socialLink">
                 <CodePen />
                 <span className={styles.socialNavLabel}>CodePen</span>
               </a>
