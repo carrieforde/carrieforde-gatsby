@@ -73,7 +73,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
+        name: `Carrie Forde`,
         short_name: `carrieforde`,
         start_url: `/`,
         background_color: `#fff`,
@@ -121,6 +121,12 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: process.env.GATSBY_GA_ID,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: process.env.GATSBY_GTM_ID,
       },
     },
     'gatsby-plugin-netlify',
