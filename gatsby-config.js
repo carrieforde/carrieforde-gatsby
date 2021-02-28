@@ -73,7 +73,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
+        name: `Carrie Forde`,
         short_name: `carrieforde`,
         start_url: `/`,
         background_color: `#fff`,
