@@ -8,8 +8,9 @@ import Site from '../../components/Site';
 import { PageProps } from '../../interfaces/page.interface';
 import ExperienceTabs from '../../components/ExperienceTabs';
 import { MDXProvider } from '@mdx-js/react';
+import PageDescription from '../../components/PageDescription';
 
-const shortcodes = { ExperienceTabs };
+const shortcodes = { ExperienceTabs, PageDescription };
 
 const Page: React.FC<PageProps> = ({ data }) => {
   const page = data.mdx;
