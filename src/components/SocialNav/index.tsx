@@ -4,7 +4,6 @@ import CodePen from '../../icons/codepen-brands.svg';
 import Github from '../../icons/github-brands.svg';
 import LinkedIn from '../../icons/linkedin-in-brands.svg';
 import Mail from '../../icons/paper-plane-light.svg';
-import Twitter from '../../icons/twitter-brands.svg';
 import styles from './socialNav.module.css';
 
 const SocialNav: React.FC<unknown> = () => {
@@ -19,7 +18,6 @@ const SocialNav: React.FC<unknown> = () => {
                 linkedin
                 github
                 codepen
-                twitter
               }
             }
           }
@@ -53,12 +51,6 @@ const SocialNav: React.FC<unknown> = () => {
               <a href={codepen}>
                 <CodePen />
                 <span className={styles.socialNavLabel}>CodePen</span>
-              </a>
-            </li>
-            <li className={styles.socialNavItem}>
-              <a href={twitter}>
-                <Twitter />
-                <span className={styles.socialNavLabel}>Twitter</span>
               </a>
             </li>
           </ul>

@@ -10,7 +10,6 @@ module.exports = {
       linkedin: 'https://linkedin.com/in/carrieforde',
       github: 'https://github.com/carrieforde',
       codepen: 'https://codepen.io/carrieforde',
-      twitter: 'https://twitter.com/carrieforde',
     },
     siteUrl: 'https://carrieforde.com',
   },
