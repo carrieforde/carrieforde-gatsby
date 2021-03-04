@@ -6,6 +6,7 @@ import { PaginationProps } from './Pagination.interface';
 import styles from './pagination.module.css';
 
 const Pagination: React.FC<PaginationProps> = ({ next, previous }) => {
+  const gtmObj = { event: 'click', category: 'Pagination' };
   return (
     <nav className={styles.pagination}>
       {previous && (
@@ -14,7 +15,7 @@ const Pagination: React.FC<PaginationProps> = ({ next, previous }) => {
           to={previous.fields.slug}
           onClick={() =>
             gtm({
-              event: 'click',
+              ...gtmObj,
               label: previous.frontmatter.title,
             })
           }
@@ -29,7 +30,7 @@ const Pagination: React.FC<PaginationProps> = ({ next, previous }) => {
           to={next.fields.slug}
           onClick={() =>
             gtm({
-              event: 'click',
+              ...gtmObj,
               label: next.frontmatter.title,
             })
           }
