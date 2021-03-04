@@ -13,7 +13,9 @@ const Footer: React.FC<unknown> = () => (
       <Link
         to="/privacy"
         className={utils.noBackgroundLink}
-        onClick={() => gtm({ event: 'click', label: 'Privacy' })}
+        onClick={() =>
+          gtm({ event: 'click', category: 'Privacy', label: 'Privacy' })
+        }
       >
         Privacy
       </Link>
