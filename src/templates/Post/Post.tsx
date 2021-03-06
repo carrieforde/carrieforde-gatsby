@@ -1,20 +1,32 @@
 import '@alcatraz-components/accordion';
+import { MDXProvider } from '@mdx-js/react';
 import 'cf-components-alert';
 import { graphql } from 'gatsby';
-import React from 'react';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import qs from 'qs';
+import React, { useEffect, useState } from 'react';
 import PageHeader from '../../components/PageHeader';
 import Pagination from '../../components/Pagination';
+import Paragraph from '../../components/Paragraph/Paragraph';
 import SEO from '../../components/SEO';
 import Site from '../../components/Site';
 import TableOfContents from '../../components/TableOfContents';
+import MergeFieldProvider from '../../components/MergeField/MergeField.context';
 import { PostProps } from './Post.interface';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 
-const Post: React.FC<PostProps> = ({ data, pageContext }) => {
+const shortcodes = { Paragraph };
+
+const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
   const post = data.mdx;
   const { frontmatter, body, tableOfContents } = post;
   const { title, date, updated, category, description, showToc } = frontmatter;
   const { next, previous } = pageContext;
+  const { search } = location;
+  const [queryData, updateQueryData] = useState<any>(undefined);
+
+  useEffect(() => {
+    updateQueryData(qs.parse(search, { ignoreQueryPrefix: true }));
+  }, [search]);
 
   return (
     <Site>
@@ -27,10 +39,13 @@ const Post: React.FC<PostProps> = ({ data, pageContext }) => {
         updated={updated}
       />
       {showToc && <TableOfContents {...tableOfContents} />}
-      <div className="post__content">
-        <MDXRenderer>{body}</MDXRenderer>
-      </div>
-
+      <MergeFieldProvider data={queryData}>
+        <div className="post__content">
+          <MDXProvider components={shortcodes}>
+            <MDXRenderer>{body}</MDXRenderer>
+          </MDXProvider>
+        </div>
+      </MergeFieldProvider>
       <Pagination next={next} previous={previous} />
     </Site>
   );

@@ -45,7 +45,7 @@ function TableOfContents({ items }: TableOfContentsProps): ReactElement {
         <Chevron />
         <span className={styles.tocButtonText}>Table of Contents</span>
       </button>
-      <h3 className={styles.tableOfContentsHeading}>Table of Contents</h3>
+      <h2 className={styles.tableOfContentsHeading}>Table of Contents</h2>
       <ul>
         {items.map(({ url, title }, index) => (
           <li key={`toc-${index}`}>

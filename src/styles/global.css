@@ -78,6 +78,10 @@ a:focus {
 	background-size: 5px 100%;
 }
 
+a code {
+	border-bottom: 2px solid var(--link-code);
+}
+
 li {
 	margin-bottom: 0;
 }
