@@ -20,21 +20,23 @@
 	--highlightAccent: #f7d87c;
 }
 
-.dark-mode {
-	--blockBackground: var(--color-neutral-9);
-	--baseColor: var(--color-neutral-2);
-	--borderColor: var(--color-neutral-8);
-	--commentColor: var(--color-neutral-5);
-	--punctuationColor: var(--color-neutral-3);
-	--propertyColor: var(--color-primary-3);
-	--selectorColor: var(--color-secondary-4);
-	--operatorColor: var(--color-warning-6);
-	--variableColor: var(--color-info-5);
-	--functionColor: var(--color-danger-3);
-	--keywordColor: var(--color-warning-5);
-	--selectedColor: #b3d4fc;
-	--inlineCodeColor: var(--blockBackground);
-	--inlineCodeBackground: var(--baseColor);
+@media (prefers-color-scheme: dark) {
+	:root {
+		--blockBackground: var(--color-neutral-9);
+		--baseColor: var(--color-neutral-2);
+		--borderColor: var(--color-neutral-8);
+		--commentColor: var(--color-neutral-5);
+		--punctuationColor: var(--color-neutral-3);
+		--propertyColor: var(--color-primary-3);
+		--selectorColor: var(--color-secondary-4);
+		--operatorColor: var(--color-warning-6);
+		--variableColor: var(--color-info-5);
+		--functionColor: var(--color-danger-3);
+		--keywordColor: var(--color-warning-5);
+		--selectedColor: #b3d4fc;
+		--inlineCodeColor: var(--blockBackground);
+		--inlineCodeBackground: var(--baseColor);
+	}
 }
 
 code,
