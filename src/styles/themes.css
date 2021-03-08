@@ -22,6 +22,26 @@
 
 	--box-shadow-color: var(--color-neutral-2);
 
+	/* Default */
+	--alert-bg-default: var(--color-neutral-1); /* background-color */
+	--alert-color-default: var(--color-neutral-8); /* text color */
+
+	/* Info */
+	--alert-bg-info: var(--color-info-1);
+	--alert-color-info: var(--color-info-10);
+
+	/* Tip / Success */
+	--alert-bg-tip: var(--color-secondary-1);
+	--alert-color-tip: var(--color-secondary-10);
+
+	/* Warning */
+	--alert-bg-warning: var(--color-warning-1);
+	--alert-color-warning: var(--color-warning-10);
+
+	/* Danger */
+	--alert-bg-danger: var(--color-danger-1);
+	--alert-color-danger: var(--color-danger-10);
+
 	--alcatraz-accordion-border: 1px solid var(--color-neutral-2);
 
 	--logo-c: var(--color-neutral-10);

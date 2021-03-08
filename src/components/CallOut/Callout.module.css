@@ -1,0 +1,39 @@
+.callOut {
+	background-color: var(--alert-bg-default);
+	border-radius: 3px;
+	color: var(--alert-color-default);
+	display: flex;
+	margin-bottom: var(--size-6);
+	margin-top: var(--size-6);
+	padding: 12px 24px;
+}
+
+.callOut a {
+	background: none;
+	text-decoration: underline;
+}
+
+.TIP {
+	background-color: var(--alert-bg-tip);
+	color: var(--alert-color-tip);
+}
+
+.INFO {
+	background-color: var(--alert-bg-info);
+	color: var(--alert-color-info);
+}
+
+.WARNING {
+	background-color: var(--alert-bg-warning);
+	color: var(--alert-color-warning);
+}
+
+.DANGER {
+	background-color: var(--alert-bg-danger);
+	color: var(--alert-color-danger);
+}
+
+.icon {
+	margin-right: var(--size-3);
+	margin-top: 0.3em;
+}
