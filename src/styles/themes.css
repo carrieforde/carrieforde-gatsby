@@ -9,6 +9,7 @@
 
 	--link: var(--color-primary-8);
 	--link-bg-color: var(--color-primary-1);
+	--link-code: var(--color-primary-8);
 
 	--blockquote-accent: var(--color-primary-1);
 
@@ -20,6 +21,26 @@
 	--button-bg-color: var(--color-primary-9);
 
 	--box-shadow-color: var(--color-neutral-2);
+
+	/* Default */
+	--alert-bg-default: var(--color-neutral-1); /* background-color */
+	--alert-color-default: var(--color-neutral-8); /* text color */
+
+	/* Info */
+	--alert-bg-info: var(--color-info-1);
+	--alert-color-info: var(--color-info-10);
+
+	/* Tip / Success */
+	--alert-bg-tip: var(--color-secondary-1);
+	--alert-color-tip: var(--color-secondary-10);
+
+	/* Warning */
+	--alert-bg-warning: var(--color-warning-1);
+	--alert-color-warning: var(--color-warning-10);
+
+	/* Danger */
+	--alert-bg-danger: var(--color-danger-1);
+	--alert-color-danger: var(--color-danger-10);
 
 	--alcatraz-accordion-border: 1px solid var(--color-neutral-2);
 
@@ -38,8 +59,10 @@
 		--body-bg-color: var(--color-neutral-10);
 		--text-color: var(--color-neutral-3);
 		--heading-color: var(--color-neutral-3);
+
 		--link: var(--color-primary-3);
 		--link-bg-color: var(--color-primary-7);
+		--link-code: var(--color-primary-3);
 
 		--footer-color: var(--color-neutral-5);
 
