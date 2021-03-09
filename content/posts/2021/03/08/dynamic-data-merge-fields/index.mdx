@@ -1,6 +1,6 @@
 ---
 title: 'Inject dynamic data into static content with merge fields'
-date: 2021-02-28
+date: 2021-03-08
 category: 'JavaScript'
 showToc: true
 ---
@@ -335,8 +335,267 @@ That's it. A whopping 13 lines of code. Nice, right? But something is missing, i
 
 Given that I use MDX (a flavor of markdown that accepts JSX) for my site, I am going to create a new component that will process merge fields. In theory, I could wrap an entire page in the component, but the data I get from GraphQL isn't a string.
 
-add a tip here about using Gatsby with Markdown, but without JSX
+<CallOut
+  type="TIP"
+  text="If you're using Gatsby markdown without MDX, wrapping the entire template in the merge field component is perfectly feasible."
+/>
 
-For this purpose I'll convert my existing `cf-alert` web component into a React component.
+For this purpose I'll convert my existing `cf-alert` web component into a React component called a `CallOut`.
 
-<Paragraph text="Hello {{firstName}}" />
+```tsx
+import { IconName } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import cn from 'classnames';
+import React from 'react';
+import MergeField from '../MergeField/MergeField';
+import { CallOutProps } from './CallOut.interface';
+import styles from './CallOut.module.css';
+
+const ICON_MAP: { [key: string]: IconName } = {
+  INFO: 'info-circle',
+  TIP: 'lightbulb-exclamation',
+  WARNING: 'exclamation-circle',
+  DANGER: 'exclamation-triangle',
+};
+
+const CallOut: React.FC<CallOutProps> = ({ type, text }) => {
+  const classes = cn(styles.callOut, {
+    [styles[type]]: !!type,
+  });
+
+  return (
+    <div className={classes}>
+      {type ? (
+        <FontAwesomeIcon
+          icon={['fal', ICON_MAP[type]]}
+          className={styles.icon}
+        />
+      ) : null}
+      <p>
+        <MergeField text={text} />
+      </p>
+    </div>
+  );
+};
+
+export default CallOut;
+```
+
+In the body of the component, you can see where the `MergeField` is used. It doesn't matter whether the callout contains a merge field or not, because it will simply return the original text string if a merge field doesn't exist. Let's give this a whirl.
+
+<CallOut text="I make {{adjective}} websites" />
+
+In the `CallOut` above, you should see "I make websites". Add a query parameter called `adjective` to the url string giving it an adjective of your choice, e.g. `?adjective=awesome`. I added "awesome" as my adjective, and I now see my `CallOut` says, "I make awesome websites". Nice, it works!
+
+## Enhancing merge fields with default values
+
+Currently, when our merge field can't substitute a value, it removes the merge field completely. This is great because it prevents us from rendering gibberish `{{mergeField}}` stuff to the screen. However, imagine a scenario where removing a merge field breaks the flow of the text. Let's consider an example:
+
+```
+I use {{technologies}} to build websites
+```
+
+If we either forget to pass a UTM parameter, or the API we're using to supply our dynamic data doesn't contain a corresponding value, then we'll end up with a sentence that makes little sense:
+
+```
+I use to build websites
+```
+
+Let's update our merge fields to accept an optional default value. Instead of adding just `{{technologies}}` I'll enhance the merge field with a default value after the field name separated by a pipe (`|`): `{{technologies|HTML, CSS, Javascript}}`. Now, if the `MergeField` can't find a value for `technologies`, it will be replaced with my default value, and my text will still make sense:
+
+```
+I use HTML, CSS, and Javascript to build websites
+```
+
+## Updating our exiting merge field utilities
+
+The first thing I'm going to do is add a new test case to `searchContent()` to find merge fields with default values.
+
+```ts
+describe('searchContent', () => {
+  it('should determine whether a merge field is present', () => {
+    /* ... */
+    expect(
+      searchContent('I use {{technologies|React}} to build websites.')
+    ).toBeTruthy();
+    expect(
+      searchContent(
+        'I use {{technologies|HTML, CSS, Javascript}} to build websites.'
+      )
+    ).toBeTruthy();
+  });
+});
+```
+
+Both of these assertions will fail because our `MERGE_FIELD_REGEX` does not include non-word characters. First, we'll update the regex to include a check for an optional `|` followed by one or more words:
+
+```ts
+export const MERGE_FIELD_REGEX = new RegExp(/{{[\w.]+(\|[\w]+)?}}/g);
+```
+
+We wrap the `|[\w]+` piece in parentheses to create a capture group, which helps group several different pieces of a regex together (in this case, the `|`, which was escaped with `\|`, by the way), and add a `?` after the closing parenthesis because that entire piece is optional.
+
+The first assertion should now pass, however, we'll need to update the regex further to include checks for punctuation to get the second assertion to pass:
+
+```ts
+export const MERGE_FIELD_REGEX = new RegExp(
+  /{{[\w.]+(\|[\w\s!@#$%^&*()-_=+[{|}\]\\;:'",<.>/?`~]+)?}}/g
+);
+```
+
+This regex _looks_ nasty, but the only special piece I added here was `\s`, which looks for whitespace. Everything else are punctuation marks. Our tests should be passing again.
+
+Next, we'll want to update our `extractMergeField()` method to include the default text.
+
+First, let's update the return interface to include an optional default value:
+
+```ts
+export interface ExtractedMergeField {
+  search: string;
+  fieldName: string;
+  defaultValue?: string;
+}
+```
+
+Next, we'll add a new test case:
+
+```ts
+expect(
+  extractMergeField('I use {{technologies|React}} to build websites.')
+).toEqual({
+  search: '{{technologies|React}}',
+  fieldName: 'technologies',
+  defaultValue: 'React',
+});
+expect(
+  extractMergeField(
+    'I use {{technologies|HTML, CSS, Javascript}} to build websites.'
+  )
+).toEqual({
+  search: '{{technologies|HTML, CSS, Javascript}}',
+  fieldName: 'technologies',
+  defaultValue: 'HTML, CSS, Javascript',
+});
+```
+
+We'll modify the initial variables a touch to include a check for the pipe. If the pipe doesn't exist, we won't return a default value, but if it does, we'll return the corresponding default value.
+
+```ts
+export function extractMergeField(text: string): ExtractedMergeField {
+  const start = text.indexOf('{{');
+  const end = text.indexOf('}}');
+  const field = text.substring(start + 2, end);
+  const pipe = field.indexOf('|');
+  const fieldName = field.includes('|') ? field.substring(0, pipe) : field;
+  const defaultValue = field.includes('|')
+    ? field.substring(pipe + 1, field.length)
+    : undefined;
+
+  return {
+    search: `{{${field}}}`,
+    fieldName,
+    defaultValue,
+  };
+}
+```
+
+This function in particular is starting to look a little gnarly. In the real world, I'd consider splitting it out a bit further to separate concerns and make testing easier. But for now, this gets our tests passing.
+
+Lastly, we'll need to update the `processMergeField()` function to swap out the default value when necessary. Let's add some new tests:
+
+```ts
+describe('processMergeField', () => {
+  it('should replace the merge field with the correct value', () => {
+    /* ... */
+    expect(
+      processMergeField('I use {{technologies|React}} to build websites.', data)
+    ).toEqual('I use React to build websites.');
+    expect(
+      processMergeField(
+        'I use {{technologies|HTML, CSS, Javascript}} to build websites.',
+        data
+      )
+    ).toEqual('I use HTML, CSS, Javascript to build websites.');
+});
+```
+
+Updating the `processMergeField()` function should be relatively easy. We just need to hook into the check that looks for whether or not `data[fieldName]` exists.
+
+```ts
+export function processMergeField(text: string, data: KeyValue): string {
+  const { search, fieldName, defaultValue } = extractMergeField(text);
+  // const value = _get(data, fieldName, '');
+
+  if (!search || !fieldName) {
+    return text;
+  }
+
+  if (!data || !data[fieldName]) {
+    if (defaultValue) {
+      return text.replace(search, defaultValue);
+    }
+
+    return text.replace(`${search} `, '');
+  }
+
+  return text.replace(search, data[fieldName]);
+}
+```
+
+This should be the final piece to adding a default value to our merge fields. Let's test it a `CallOut`:
+
+<CallOut text="I use {{technologies|HTML, CSS, and JavaScript}} to build websites." />
+
+By default, the text in the `CallOut` should read, "I use HTML, CSS, and JavaScript to build websites.". Try passing `?technologies=Gatsby and React` as a query string to see if it works.
+
+## Rendering multiple merge fields
+
+We now have the ability to render merge fields with or without a default, but one problem we'll still encounter is rendering multiple merge fields in a single block of text. If we try to render
+
+```
+I like {{ingredient1}} and {{ingredient2}} sandwiches
+```
+
+We'll see that `{{ingredient2}}` renders as a raw merge field. Let's fix this quick! First, add a new test in the `MergeField` component:
+
+```ts
+describe('MergeField', () => {
+  /* ... */
+
+  it('should correctly render multiple merge fields', () => {
+    const { container } = getComponentUnderTest({
+      text: 'i like {{ingredient1}} & {{ingredient2}} sandwiches',
+    });
+    expect(container.textContent).toEqual('i like PB & J sandwiches');
+  });
+});
+```
+
+Make sure you also update your `data` object to include your ingredients. Next, let's update the `MergeField` component:
+
+```tsx
+import React, { useContext } from 'react';
+import { MergeFieldContext } from './MergeField.context';
+import { MergeFieldProps } from './MergeField.interface';
+import { processMergeField, searchContent } from './MergeField.utils';
+import ReactHtmlParser from 'react-html-parser';
+
+const MergeField: React.FC<MergeFieldProps> = ({ text }) => {
+  const data = useContext(MergeFieldContext);
+  const processed = processMergeField(text, data);
+
+  if (searchContent(processed)) {
+    return <MergeField text={processed} />;
+  }
+
+  return <>{ReactHtmlParser(processed)}</>;
+};
+
+export default MergeField;
+```
+
+The upgrade here is pretty simple. After we've gotten the `processed` data back, we'll do another check using our `searchContent` function to see if there are more merge fields. If so, we'll recursively call the `MergeField` component. Otherwise, it'll return our processed data.
+
+<CallOut text="I like {{ingredient1|PB}} and {{ingredient2|J}} sandwiches" />
+
+With merge fields, we now have a way of injecting dynamic data into static content, whether it's from a CMS like WordPress, Contentful, etc. or whether you use markdown to manage your site content like I do for this site. In this example, I used query parameters as my data source, but the data just as easily could be retrieved from a rest API.

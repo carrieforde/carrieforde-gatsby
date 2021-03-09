@@ -1,12 +1,10 @@
-// export const MERGE_FIELD_REGEX = new RegExp(
-//   /{{[\w_]+(\|[\w\s!@#$%^&*()-_=+[{}\]|\\;:'",./<>?`~]+)?}}/g
-// );
-
 import { ExtractedMergeField } from './MergeField.interface';
 import { get as _get } from 'lodash';
 import { KeyValue } from '../../interfaces/KeyValue.type';
 
-export const MERGE_FIELD_REGEX = new RegExp(/{{[\w.]+}}/g);
+export const MERGE_FIELD_REGEX = new RegExp(
+  /{{[\w.]+(\|[\w\s!@#$%^&*()-_=+[{|}\]\\;:'",<.>/?`~]+)?}}/g
+);
 
 export function searchContent(text: string): boolean {
   return text.search(MERGE_FIELD_REGEX) >= 0;
@@ -15,25 +13,34 @@ export function searchContent(text: string): boolean {
 export function extractMergeField(text: string): ExtractedMergeField {
   const start = text.indexOf('{{');
   const end = text.indexOf('}}');
-  const fieldName = text.substring(start + 2, end);
+  const field = text.substring(start + 2, end);
+  const pipe = field.indexOf('|');
+  const fieldName = field.includes('|') ? field.substring(0, pipe) : field;
+  const defaultValue = field.includes('|')
+    ? field.substring(pipe + 1, field.length)
+    : undefined;
 
   return {
-    search: `{{${fieldName}}}`,
+    search: `{{${field}}}`,
     fieldName,
+    defaultValue,
   };
 }
 
 export function processMergeField(text: string, data: KeyValue): string {
-  const { search, fieldName } = extractMergeField(text);
-  // const value = _get(data, fieldName, '');
+  const { search, fieldName, defaultValue } = extractMergeField(text);
+  const value = _get(data, fieldName, defaultValue);
 
   if (!search || !fieldName) {
     return text;
   }
 
-  if (!data || !data[fieldName]) {
-    return text.replace(`${search} `, '');
+  if (!value) {
+    return text
+      .replace(search, '')
+      .replace(/\s{2,}/g, ' ')
+      .trim();
   }
 
-  return text.replace(search, data[fieldName]);
+  return text.replace(search, value);
 }

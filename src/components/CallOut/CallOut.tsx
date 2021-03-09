@@ -1,15 +1,10 @@
-import { IconName, IconProp } from '@fortawesome/fontawesome-svg-core';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import cn from 'classnames';
 import React from 'react';
 import MergeField from '../MergeField/MergeField';
-import {
-  extractMergeField,
-  searchContent,
-} from '../MergeField/MergeField.utils';
 import { CallOutProps } from './CallOut.interface';
 import styles from './CallOut.module.css';
-import ReactHtmlParser from 'react-html-parser';
 
 const ICON_MAP: { [key: string]: IconName } = {
   INFO: 'info-circle',
@@ -19,8 +14,6 @@ const ICON_MAP: { [key: string]: IconName } = {
 };
 
 const CallOut: React.FC<CallOutProps> = ({ type, text }) => {
-  const hasMergeField = searchContent(text);
-  const field = hasMergeField ? extractMergeField(text) : null;
   const classes = cn(styles.callOut, {
     [styles[type]]: !!type,
   });
@@ -34,11 +27,7 @@ const CallOut: React.FC<CallOutProps> = ({ type, text }) => {
         />
       ) : null}
       <p>
-        {hasMergeField && field ? (
-          <MergeField text={text} />
-        ) : (
-          ReactHtmlParser(text)
-        )}
+        <MergeField text={text} />
       </p>
     </div>
   );

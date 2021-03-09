@@ -4,6 +4,7 @@ import { KeyValue } from '../../interfaces/KeyValue.type';
 export interface ExtractedMergeField {
   search: string;
   fieldName: string;
+  defaultValue?: string;
 }
 
 export type MergeFieldContextProps = KeyValue;

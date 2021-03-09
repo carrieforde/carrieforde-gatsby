@@ -20,6 +20,8 @@ const data = {
     city: 'San Francisco',
     state: 'California',
   },
+  ingredient1: 'PB',
+  ingredient2: 'J',
 };
 
 describe('searchContent', () => {
@@ -30,6 +32,14 @@ describe('searchContent', () => {
     expect(searchContent('i like {{animal}}s')).toBeTruthy();
     expect(searchContent('<p>i like {{animal}}s</p>')).toBeTruthy();
     expect(searchContent('{{address.city}}')).toBeTruthy();
+    expect(
+      searchContent('I use {{technologies|React}} to build websites.')
+    ).toBeTruthy();
+    expect(
+      searchContent(
+        'I use {{technologies|HTML, CSS, Javascript}} to build websites.'
+      )
+    ).toBeTruthy();
   });
 });
 
@@ -42,11 +52,28 @@ describe('extractMergeField', () => {
       search: '{{address.city}}',
       fieldName: 'address.city',
     });
+    expect(
+      extractMergeField('I use {{technologies|React}} to build websites.')
+    ).toEqual({
+      search: '{{technologies|React}}',
+      fieldName: 'technologies',
+      defaultValue: 'React',
+    });
+    expect(
+      extractMergeField(
+        'I use {{technologies|HTML, CSS, Javascript}} to build websites.'
+      )
+    ).toEqual({
+      search: '{{technologies|HTML, CSS, Javascript}}',
+      fieldName: 'technologies',
+      defaultValue: 'HTML, CSS, Javascript',
+    });
   });
 });
 
 describe('processMergeField', () => {
   it('should replace the merge field with the correct value', () => {
+    expect(processMergeField('Hello {{firstName}}', {})).toEqual('Hello');
     expect(processMergeField('i make websites', data)).toEqual(
       'i make websites'
     );
@@ -59,10 +86,18 @@ describe('processMergeField', () => {
     expect(processMergeField('<p>i like {{animal}}s</p>', data)).toEqual(
       `<p>i like ${data.animal}s</p>`
     );
-    // expect(
-    //   processMergeField('i left my heart in {{address.city}}', data)
-    // ).toEqual(`i left my heart in ${data.address.city}`);
-    // expect(processMergeField('Hello {{firstName}}', {})).toEqual('Hello');
+    expect(
+      processMergeField('I use {{technologies|React}} to build websites.', data)
+    ).toEqual('I use React to build websites.');
+    expect(
+      processMergeField(
+        'I use {{technologies|HTML, CSS, Javascript}} to build websites.',
+        data
+      )
+    ).toEqual('I use HTML, CSS, Javascript to build websites.');
+    expect(
+      processMergeField('i left my heart in {{address.city}}', data)
+    ).toEqual(`i left my heart in ${data.address.city}`);
   });
 });
 
@@ -96,6 +131,13 @@ describe('MergeField', () => {
     const { container } = getComponentUnderTest({
       text: '<p>i like {{animal}}s</p>',
     });
-    expect(container.textContent).toEqual(`<p>i like ${data.animal}s</p>`);
+    expect(container.innerHTML).toEqual(`<p>i like ${data.animal}s</p>`);
+  });
+
+  it('should correctly render multiple merge fields', () => {
+    const { container } = getComponentUnderTest({
+      text: 'i like {{ingredient1}} & {{ingredient2}} sandwiches',
+    });
+    expect(container.textContent).toEqual('i like PB & J sandwiches');
   });
 });

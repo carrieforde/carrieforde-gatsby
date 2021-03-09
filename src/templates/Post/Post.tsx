@@ -13,8 +13,10 @@ import Site from '../../components/Site';
 import TableOfContents from '../../components/TableOfContents';
 import MergeFieldProvider from '../../components/MergeField/MergeField.context';
 import { PostProps } from './Post.interface';
+import CallOut from '../../components/CallOut/CallOut';
+import { KeyValue } from '../../interfaces/KeyValue.type';
 
-const shortcodes = { Paragraph };
+const shortcodes = { Paragraph, CallOut };
 
 const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
   const post = data.mdx;
@@ -22,7 +24,7 @@ const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
   const { title, date, updated, category, description, showToc } = frontmatter;
   const { next, previous } = pageContext;
   const { search } = location;
-  const [queryData, updateQueryData] = useState<any>(undefined);
+  const [queryData, updateQueryData] = useState<KeyValue>(undefined);
 
   useEffect(() => {
     updateQueryData(qs.parse(search, { ignoreQueryPrefix: true }));
