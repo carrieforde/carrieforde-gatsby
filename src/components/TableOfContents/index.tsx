@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import Chevron from '../../icons/chevron-circle-left-light.svg';
+import { gtm } from '../../utils/analytics';
 import { TableOfContentsProps } from './table-of-contents.interface';
 import styles from './TableOfContents.module.css';
 
@@ -40,7 +41,14 @@ function TableOfContents({ items }: TableOfContentsProps): ReactElement {
       <button
         type="button"
         className={styles.tocButton}
-        onClick={() => setTocState(!tocOpen)}
+        onClick={() => {
+          gtm({
+            event: 'click',
+            category: 'Table of Contents',
+            label: tocOpen ? 'Close' : 'Open',
+          });
+          return setTocState(!tocOpen);
+        }}
       >
         <Chevron />
         <span className={styles.tocButtonText}>Table of Contents</span>
@@ -49,7 +57,9 @@ function TableOfContents({ items }: TableOfContentsProps): ReactElement {
       <ul>
         {items.map(({ url, title }, index) => (
           <li key={`toc-${index}`}>
-            <a href={url}>{title}</a>
+            <a href={url} className="tocLink">
+              {title}
+            </a>
           </li>
         ))}
       </ul>
