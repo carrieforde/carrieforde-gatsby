@@ -5,7 +5,7 @@ category: 'JavaScript'
 showToc: true
 ---
 
-Last year, I worked on upgrading one of our consumer-facing applications from a standard Angular application with static content hard-coded within the application to an app that retrieved static content from WordPress. One of the early challenges we faced was figuring out how to inject dynamic data from our internal REST APIs into the content from our CMS.
+Last year, I worked on upgrading one of our consumer-facing applications from a standard Angular application with static content hard-coded within the application, to an app that retrieved static content from WordPress. One of the early challenges we faced was figuring out how to inject dynamic data from our internal REST APIs into the content from our CMS.
 
 Around the same time, I had been working on updating email templates. In these templates, we'd use variables surrounded in double curly braces (`{{}}`) to inject dynamic data. Since it was a pattern that everyone on the team was familiar with, I figured we could use the same idea in our new WordPress + Angular app.
 
@@ -35,7 +35,7 @@ Hello my name is Carrie and I make websites.
 
 ## Laying the foundation
 
-Now that we understand the basic functionality for our merge field, let's start building out the foundational code. This section will focus on the core functionality of finding, extracting, and processing the merge field.
+Now that we understand the basic functionality for our merge field, let's start building out the foundational code. This section will focus on the core functionality of finding, extracting, and processing a merge field.
 
 First, let's create a new `MergeField` component, then stub out our file structure:
 
@@ -52,11 +52,11 @@ First, let's create a new `MergeField` component, then stub out our file structu
 
 Let's walk through these files quick:
 
-- **`MergeField.context.tsx`**: we'll use context to set and access the data for use in the MergeField component
-- **`MergeField.interface.ts`**: where we'll define the interface(s) for our MergeField component, MergeFieldContext, and interfaces for some of our functions
-- **`MergeField.spec.tsx`**: where we'll test our component and it's associated functions. Given the complexity of the component, it's a really good idea to thoroughly test everything.
+- **`MergeField.context.tsx`**: creates the `MergeFieldContext` to set and access the data for use in the `MergeField` component
+- **`MergeField.interface.ts`**: defines the interface(s) for our `MergeField` component, `MergeFieldContext`, and interfaces for some of our functions
+- **`MergeField.spec.tsx`**: tests for our component and its associated functions. Given the complexity of the component, it's a really good idea to thoroughly test everything.
 - **`MergeField.tsx`**: contains the React code to render a merge field component
-- **`MergeField.utils.ts`**: we'll be creating some helper functions to swap the merge field for our real data, and too keep our React component clean, we'll define those in this file.
+- **`MergeField.utils.ts`**: houses core functions to swap the merge field for our real data, and our React component clean.
 
 We'll first need to figure out whether we have a merge field in our content, then extract the name of the field from the content. So our initial work will begin in `MergeField.utils.ts`.
 
@@ -89,7 +89,7 @@ Now that we have tests in place, we can begin filling in our `searchContent()` f
 export const MERGE_FIELD_REGEX = new RegExp(/{{\w+}}/g);
 ```
 
-Our RegEx searches the text for a string that contains the opening curly braces (`{{`), one or more words (`\w+`), and the closing curly braces (`}}`). We add the global flag to make sure we capture all instances. Now we can use our `MERGE_FIELD_REGEX` in our `searchContent()` function.
+Our RegEx searches the text for a string that contains the opening curly braces (`{{`), one or more words (`\w+`), and the closing curly braces (`}}`). We add the global flag (`g`) to make sure we capture all instances. Now we can use our `MERGE_FIELD_REGEX` in our `searchContent()` function.
 
 ```ts
 // MergeField.utils.ts
@@ -100,13 +100,13 @@ export function searchContent(text: string): boolean {
 }
 ```
 
-We have to use the [`search()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search) method on our string rather than `includes()` or `indexOf()` because of the RegEx. Since we only care whether the text contains a merge field or not, we indicate whether the search value is greater than or equal to 0.
+We have to use the [`search()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search) method on our string rather than `includes()` or `indexOf()` because we're using a RegEx. Since we only care whether the text contains a merge field or not, we indicate whether the search value is greater than or equal to 0.
 
 Now, if we run our tests, we should see that all are passing.
 
 ### Extracting the merge field
 
-Next, we need to extract our merge field from the text. We'll want to grab the merge field itself which we'll use when we search the text to replace it with the merge field value, as well as the actual field name. Since we'll be returning two pieces of information, we'll plan to return an object. Let's start by defining our interface.
+Next, we need to extract our merge field from the text. We'll want to grab the merge field itself which we'll use when searching the text and replacing it with the merge field's value. We also need the actual field name to look up the value in our `data` object. Since we'll be returning two pieces of information, we'll return an object. Let's start by defining our interface.
 
 ```ts
 // MergeField.interface.ts
@@ -149,11 +149,11 @@ export function extractMergeField(text: string): ExtractedMergeField {
 }
 ```
 
-First, we'll look for the index of the opening curly braces (`start`) and the closing curly `braces` so we can use `substring` to get the field name. `fieldName` is what will allow us to actually look up a value for our merge field when we swap the data. Once we have `fieldName`, we can return our object setting `search` to simply wrap `fieldName` in curly braces. We'll use `search` shortly when we process the merge field and replace it with our dynamic data.
+First, we'll look for the index of the opening curly braces (`start`) and the closing curly braces (`end`) so we can use `substring` to get the field name. `fieldName` is what will allow us to actually look up a value in the `data`. Once we have `fieldName`, we can return our object with `fieldName` and wrapping the `fieldName` in curly braces for the `search` value.
 
 ### Replacing the merge field with our data
 
-The next step is to process the merge field and replace it with the dynamic data we supply. Again, we'll start by writing tests.
+The next step is to process the merge field and replace it with the dynamic data. Again, we'll start by writing tests:
 
 ```ts
 describe('processMergeField', () => {
@@ -178,7 +178,7 @@ describe('processMergeField', () => {
 });
 ```
 
-In the first two assertions, we want our function to return the string `i make websites`. In the first scenario, no merge field is included in the text, so there's nothing to be replace, and in the second, we have a merge field, but there is no corresponding key for it in our `data` object. In the other assertions, we want to ensure that `{{animals}}` is swapped with `turtle`, corresponding to the `data` object we supplied.
+In the first two assertions, we want our function to return the string `i make websites`. In the first scenario, no merge field is included in the text, so there's nothing to replace. In the second, we have a merge field, but there is no corresponding key in our `data` object. In the other assertions, we want to ensure that `{{animal}}` is swapped with `turtle`, corresponding to the `data` we supplied.
 
 Again, if we run our tests now, we expect them to fail because we're following a test-driven approach. Let's work on the implementation:
 
@@ -199,13 +199,13 @@ export function processMergeField(text: string, data: KeyValue): string {
 }
 ```
 
-First, we'll check whether `extractMergeField` returned anything&ndash;if not, we'll simply return the text passed the the function. Next, we'll make sure we have `data` and `data[fieldName]`&dash; if not, we'll swap it for an empty space. Note there that we're actually replacing the space after the merge field, too. If we don't do this, we'll end up with two spaces where the merge field existed (remember, there's space before and after the field). The good news is that the tests catch this.
+First, we'll check whether `extractMergeField()` returned anything&ndash;if not, we'll simply return the text passed the the function. Next, we'll make sure we have `data` and `data[fieldName]`&dash; if not, we'll swap it for an empty space. Note that we're actually replacing the space after the merge field, too. If we don't do this, we'll end up with two spaces where the merge field existed (remember, there's space before and after the field). The good news is that the tests catch this.
 
 Lastly, if we have everything we need to update the merge field, we'll do a simple replace in the text, replacing our `search` with the actual value in our `data` object.
 
 ## Adding context and creating our components
 
-We'll use [Context](https://reactjs.org/docs/context.html) in React to set our `data` and make it accessible to the `MergeField` component. In my particular case, this is useful because I want to capture query parameters from Gatsby's `location` property, in my `Post` template processes them (I'm using [`qs`](https://www.npmjs.com/package/qs)), and make them available to any MDX components I may want to render.
+We'll use [Context](https://reactjs.org/docs/context.html) in React to set our `data` and make it accessible to the `MergeField` component. In my particular case, this is useful because I want to capture query parameters from Gatsby's `location` property. In the [`Post` template](https://github.com/carrieforde/carrieforde-gatsby/blob/main/src/templates/Post/Post.tsx), I will processes them (I'm using [`qs`](https://www.npmjs.com/package/qs)), and make them available to any MDX components I may want to render.
 
 We'll start off by defining the interfaces for our `MergeFieldContext`, and the `MergeFieldProvider`:
 
@@ -267,9 +267,7 @@ export interface MergeFieldProps {
 }
 ```
 
-We just need to pass the `MergeField` the text we want it to process. Next, we can create the component itself.
-
-And again, we'll add tests to make sure that our component outputs data as expected.
+We just need to pass the `MergeField` the text we want it to process. Next, we can create the component itself. Again, we'll add tests to make sure that our component outputs data as expected.
 
 ```tsx
 // MergeField.spec.tsx
@@ -310,6 +308,11 @@ describe('MergeField', () => {
 
 We're working through a lot of the same scenarios we had previously for the `processMergeField()` function. In a case like this, it may be unnecessary to actually retest all the scenarios, but I'll leave that to you.
 
+<CallOut
+  type="INFO"
+  text="Skipping the <code>MergeField</code> component tests only reduced coverage of the component by about 10 percent on the final project."
+/>
+
 Now, let's add the code for our component:
 
 ```tsx
@@ -340,7 +343,7 @@ Given that I use MDX (a flavor of markdown that accepts JSX) for my site, I am g
   text="If you're using Gatsby markdown without MDX, wrapping the entire template in the merge field component is perfectly feasible."
 />
 
-For this purpose I'll convert my existing `cf-alert` web component into a React component called a `CallOut`.
+For this purpose I'll convert my existing `cf-alert` web component into a React component called a `CallOut` (see tip box above for an example).
 
 ```tsx
 import { IconName } from '@fortawesome/fontawesome-svg-core';
@@ -381,7 +384,48 @@ const CallOut: React.FC<CallOutProps> = ({ type, text }) => {
 export default CallOut;
 ```
 
-In the body of the component, you can see where the `MergeField` is used. It doesn't matter whether the callout contains a merge field or not, because it will simply return the original text string if a merge field doesn't exist. Let's give this a whirl.
+In the body of the component, you can see where the `MergeField` is used. It doesn't matter whether the callout contains a merge field or not, because it will simply return the original text string if a merge field doesn't exist. We'll also need to set up our data source.
+
+```tsx
+const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
+  const post = data.mdx;
+  const { frontmatter, body, tableOfContents } = post;
+  const { title, date, updated, category, description, showToc } = frontmatter;
+  const { next, previous } = pageContext;
+  const { search } = location;
+  const [queryData, updateQueryData] = useState<KeyValue>(undefined);
+
+  useEffect(() => {
+    updateQueryData(qs.parse(search, { ignoreQueryPrefix: true }));
+  }, [search]);
+
+  return (
+    <Site>
+      <SEO title={title} description={description} />
+      <PageHeader
+        title={title}
+        description={description}
+        category={category}
+        date={date}
+        updated={updated}
+      />
+      {showToc && <TableOfContents {...tableOfContents} />}
+      <MergeFieldProvider data={queryData}>
+        <div className="post__content">
+          <MDXProvider components={shortcodes}>
+            <MDXRenderer>{body}</MDXRenderer>
+          </MDXProvider>
+        </div>
+      </MergeFieldProvider>
+      <Pagination next={next} previous={previous} />
+    </Site>
+  );
+};
+
+export default Post;
+```
+
+In the `Post` component, you'll see that I am passing `queryData` to the `MergeFieldProvider`. I recommend a combination of state and `useEffect` here so you can ensure your provider is getting the latest data. Now that we have our component and data, we're ready to give our new component a whirl:
 
 <CallOut text="I make {{adjective}} websites" />
 
@@ -395,7 +439,7 @@ Currently, when our merge field can't substitute a value, it removes the merge f
 I use {{technologies}} to build websites
 ```
 
-If we either forget to pass a UTM parameter, or the API we're using to supply our dynamic data doesn't contain a corresponding value, then we'll end up with a sentence that makes little sense:
+If we either forget to pass a query parameter, or the API we're using to supply our dynamic data doesn't contain a corresponding value, then we'll end up with a sentence that makes little sense:
 
 ```
 I use to build websites
@@ -407,9 +451,9 @@ Let's update our merge fields to accept an optional default value. Instead of ad
 I use HTML, CSS, and Javascript to build websites
 ```
 
-## Updating our exiting merge field utilities
+## Updating our existing merge field utilities
 
-The first thing I'm going to do is add a new test case to `searchContent()` to find merge fields with default values.
+The first thing I'm going to do is add a new test case to `searchContent()` to find merge fields with default values:
 
 ```ts
 describe('searchContent', () => {
@@ -433,7 +477,7 @@ Both of these assertions will fail because our `MERGE_FIELD_REGEX` does not incl
 export const MERGE_FIELD_REGEX = new RegExp(/{{[\w.]+(\|[\w]+)?}}/g);
 ```
 
-We wrap the `|[\w]+` piece in parentheses to create a capture group, which helps group several different pieces of a regex together (in this case, the `|`, which was escaped with `\|`, by the way), and add a `?` after the closing parenthesis because that entire piece is optional.
+We wrap the `|[\w]+` piece in parentheses to create a capture group which helps group several different pieces of a regex together (in this case, the `|`, which was escaped with `\|`, by the way). Adding a `?` after the closing parenthesis indicates the entire capture group is optional.
 
 The first assertion should now pass, however, we'll need to update the regex further to include checks for punctuation to get the second assertion to pass:
 
@@ -443,9 +487,7 @@ export const MERGE_FIELD_REGEX = new RegExp(
 );
 ```
 
-This regex _looks_ nasty, but the only special piece I added here was `\s`, which looks for whitespace. Everything else are punctuation marks. Our tests should be passing again.
-
-Next, we'll want to update our `extractMergeField()` method to include the default text.
+This regex _looks_ nasty, but the only special piece I added here was `\s`, which looks for whitespace. Everything else are punctuation marks. Now that our tests are passing again, we'll want to update our `extractMergeField()` method to include the default text.
 
 First, let's update the return interface to include an optional default value:
 
@@ -524,8 +566,6 @@ Updating the `processMergeField()` function should be relatively easy. We just n
 ```ts
 export function processMergeField(text: string, data: KeyValue): string {
   const { search, fieldName, defaultValue } = extractMergeField(text);
-  // const value = _get(data, fieldName, '');
-
   if (!search || !fieldName) {
     return text;
   }
@@ -542,7 +582,7 @@ export function processMergeField(text: string, data: KeyValue): string {
 }
 ```
 
-This should be the final piece to adding a default value to our merge fields. Let's test it a `CallOut`:
+This should be the final piece to adding a default value to our merge fields. Let's test the `CallOut`:
 
 <CallOut text="I use {{technologies|HTML, CSS, and JavaScript}} to build websites." />
 
@@ -550,7 +590,7 @@ By default, the text in the `CallOut` should read, "I use HTML, CSS, and JavaScr
 
 ## Rendering multiple merge fields
 
-We now have the ability to render merge fields with or without a default, but one problem we'll still encounter is rendering multiple merge fields in a single block of text. If we try to render
+We now have the ability to render merge fields with or without a default, but one problem we'll still encounter is rendering multiple merge fields in a single block of text. If we try to render:
 
 ```
 I like {{ingredient1}} and {{ingredient2}} sandwiches
@@ -570,6 +610,11 @@ describe('MergeField', () => {
   });
 });
 ```
+
+<CallOut
+  type="TIP"
+  text="The above assertion is the only one needed for the <code>MergeField</code> to get 100 percent test coverage. The utility tests cover the rest."
+/>
 
 Make sure you also update your `data` object to include your ingredients. Next, let's update the `MergeField` component:
 
@@ -594,8 +639,10 @@ const MergeField: React.FC<MergeFieldProps> = ({ text }) => {
 export default MergeField;
 ```
 
-The upgrade here is pretty simple. After we've gotten the `processed` data back, we'll do another check using our `searchContent` function to see if there are more merge fields. If so, we'll recursively call the `MergeField` component. Otherwise, it'll return our processed data.
+The upgrade here is pretty simple. After we've gotten the `processed` data back, we'll do another check using our `searchContent` function to see if there are more merge fields. If so, we'll recursively call the `MergeField` component. Otherwise, it'll return our processed data:
 
 <CallOut text="I like {{ingredient1|PB}} and {{ingredient2|J}} sandwiches" />
 
-With merge fields, we now have a way of injecting dynamic data into static content, whether it's from a CMS like WordPress, Contentful, etc. or whether you use markdown to manage your site content like I do for this site. In this example, I used query parameters as my data source, but the data just as easily could be retrieved from a rest API.
+Merge fields offer us a powerful way of injecting dynamic data into static content, whether it's from a CMS like WordPress, or whether you use markdown to manage your site content. In this example, I used query parameters as my data source, but the data just as easily could be retrieved from a rest API.
+
+If you would like to explore the full working example presented in this post, check out the [Github repo](https://github.com/carrieforde/carrieforde-gatsby).
