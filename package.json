@@ -117,7 +117,7 @@
     "test": "jest -w 1 --coverage --watchAll=false",
     "test:watch": "jest --watch",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook:build": "build-storybook"
   },
   "repository": {
     "type": "git",
