@@ -1,6 +1,6 @@
 import { graphql, StaticQuery } from 'gatsby';
 import React from 'react';
-import Footer from '../Footer';
+import Footer from '../Footer/Footer';
 import Header from '../Header';
 import { SiteProps } from './Site.interface';
 import styles from './site.module.css';

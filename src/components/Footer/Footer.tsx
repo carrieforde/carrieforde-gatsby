@@ -5,7 +5,7 @@ import styles from './footer.module.css';
 import utils from '../../styles/utilities.module.css';
 import { gtm } from '../../utils/analytics';
 
-const Footer: React.FC<void> = () => (
+const Footer: React.FC<unknown> = () => (
   <footer className={styles.footer}>
     <p>
       <Link
