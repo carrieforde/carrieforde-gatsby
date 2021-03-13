@@ -4,6 +4,7 @@ import {
   faGithub,
   faLinkedinIn,
 } from '@fortawesome/free-brands-svg-icons';
+import { faChevronCircleLeft } from '@fortawesome/pro-light-svg-icons';
 import {
   faInfoCircle,
   faLightbulbExclamation,
@@ -20,5 +21,6 @@ library.add(
   faPaperPlane,
   faLinkedinIn,
   faGithub,
-  faCodepen
+  faCodepen,
+  faChevronCircleLeft
 );

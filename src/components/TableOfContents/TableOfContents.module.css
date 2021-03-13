@@ -19,26 +19,6 @@
 	margin-top: 0;
 }
 
-.tableOfContents ul {
-	line-height: 1.4;
-	list-style: decimal;
-	margin: 0 0 0 var(--size-4);
-}
-
-.tableOfContents ul ul {
-	list-style: lower-roman;
-	margin-top: var(--size-2);
-}
-
-.tableOfContents li > p {
-	margin-bottom: 0;
-}
-
-.tableOfContents a {
-	background: none;
-	color: var(--link);
-}
-
 .tocOpen {
 	transform: translateX(0);
 }
@@ -59,9 +39,7 @@
 }
 
 .tocButton svg {
-	height: 24px;
 	transition: transform 0.3s ease-in-out;
-	width: 24px;
 }
 
 .tocOpen .tocButton svg {

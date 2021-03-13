@@ -5,4 +5,5 @@ export interface TableOfContentsProps {
 export interface TocItem {
   url: string;
   title: string;
+  items?: TocItem[];
 }

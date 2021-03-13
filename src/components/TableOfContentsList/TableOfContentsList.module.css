@@ -1,0 +1,8 @@
+.tableOfContentsList {
+	padding-left: var(--size-5);
+}
+
+.toclLink {
+	background: none;
+	color: var(--link);
+}

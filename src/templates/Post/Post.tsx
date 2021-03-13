@@ -10,7 +10,7 @@ import Pagination from '../../components/Pagination';
 import Paragraph from '../../components/Paragraph/Paragraph';
 import SEO from '../../components/SEO';
 import Site from '../../components/Site';
-import TableOfContents from '../../components/TableOfContents';
+import TableOfContents from '../../components/TableOfContents/TableOfContents';
 import MergeFieldProvider from '../../components/MergeField/MergeField.context';
 import { PostProps } from './Post.interface';
 import CallOut from '../../components/CallOut/CallOut';

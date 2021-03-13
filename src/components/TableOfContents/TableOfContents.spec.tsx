@@ -1,0 +1,52 @@
+import React from 'react';
+import { act, fireEvent, render } from '@testing-library/react';
+import { Default } from './TableOfContents.stories';
+
+const getComponentPieces = (container: HTMLElement) => {
+  const toc = container.querySelector('.tableOfContents');
+  const button = container.querySelector('.tocButton');
+  const list = container.querySelector('.tableOfContentsList');
+
+  return {
+    toc,
+    button,
+    list,
+  };
+};
+
+describe('TableOfContents', () => {
+  it('should render a table of contents', () => {
+    const { container } = render(<Default {...Default.args} />);
+    const { toc, list } = getComponentPieces(container);
+    expect(toc).toHaveClass('tableOfContents');
+    expect(list).toBeTruthy();
+  });
+
+  it('should handle clicks correctly', () => {
+    const { container } = render(<Default {...Default.args} />);
+    const { toc, button } = getComponentPieces(container);
+
+    fireEvent.click(button);
+    expect(toc).toHaveClass('tocOpen');
+
+    fireEvent.click(button);
+    expect(toc).not.toHaveClass('tocOpen');
+
+    fireEvent.click(button);
+    expect(toc).toHaveClass('tocOpen');
+
+    fireEvent.click(container);
+    expect(toc).not.toHaveClass('tocOpen');
+  });
+
+  it('should handle key presses', () => {
+    const { container } = render(<Default {...Default.args} />);
+    const { toc, button } = getComponentPieces(container);
+
+    fireEvent.click(button);
+    expect(toc).toHaveClass('tocOpen');
+
+    fireEvent.keyUp(container, { key: 'Escape', code: 'Escape' });
+    expect(toc).not.toHaveClass('tocOpen');
+  });
+});

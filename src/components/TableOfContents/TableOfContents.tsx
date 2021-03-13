@@ -1,11 +1,18 @@
-import React, { ReactElement, useEffect, useState } from 'react';
-import Chevron from '../../icons/chevron-circle-left-light.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useEffect, useState } from 'react';
 import { gtm } from '../../utils/analytics';
-import { TableOfContentsProps } from './table-of-contents.interface';
+import { TableOfContentsProps } from './TableOfContents.interface';
 import styles from './TableOfContents.module.css';
+import cn from 'classnames';
+import TableOfContentsList from '../TableOfContentsList/TableOfContentsList';
 
-function TableOfContents({ items }: TableOfContentsProps): ReactElement {
+const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
   const [tocOpen, setTocState] = useState(false);
+
+  const classes = cn(styles.tableOfContents, {
+    [styles.tocOpen]: tocOpen,
+  });
+
   const handleClick = () => {
     if (tocOpen) {
       setTocState(!tocOpen);
@@ -19,7 +26,7 @@ function TableOfContents({ items }: TableOfContentsProps): ReactElement {
     }
   };
   const handleKeyup = (e: KeyboardEvent) => {
-    if (tocOpen && e.keyCode === 27) {
+    if (tocOpen && e.key === 'Escape') {
       setTocState(!tocOpen);
     }
   };
@@ -35,9 +42,7 @@ function TableOfContents({ items }: TableOfContentsProps): ReactElement {
   }, [tocOpen]);
 
   return (
-    <div
-      className={`${styles.tableOfContents} ${tocOpen ? styles.tocOpen : null}`}
-    >
+    <div className={classes}>
       <button
         type="button"
         className={styles.tocButton}
@@ -50,21 +55,13 @@ function TableOfContents({ items }: TableOfContentsProps): ReactElement {
           return setTocState(!tocOpen);
         }}
       >
-        <Chevron />
+        <FontAwesomeIcon icon={['fal', 'chevron-circle-left']} size="lg" />
         <span className={styles.tocButtonText}>Table of Contents</span>
       </button>
       <h2 className={styles.tableOfContentsHeading}>Table of Contents</h2>
-      <ul>
-        {items.map(({ url, title }, index) => (
-          <li key={`toc-${index}`}>
-            <a href={url} className="tocLink">
-              {title}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <TableOfContentsList listItems={items} />
     </div>
   );
-}
+};
 
 export default TableOfContents;
