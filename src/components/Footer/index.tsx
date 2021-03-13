@@ -1,6 +1,6 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import SocialNav from '../SocialNav';
+import SocialNav from '../SocialNav/SocialNav';
 import styles from './footer.module.css';
 import utils from '../../styles/utilities.module.css';
 import { gtm } from '../../utils/analytics';
