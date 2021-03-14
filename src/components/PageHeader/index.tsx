@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Category from '../Category';
 import PageDescription from '../PageDescription';
-import PageTitle from '../PageTitle';
+import PageTitle from '../PageTitle/PageTitle';
 import TimeStamp from '../TimeStamp/TimeStamp';
 import { PageHeaderProps } from './PageHeader.interface';
 import styles from './pageHeader.module.css';
