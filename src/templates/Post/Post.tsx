@@ -6,7 +6,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import qs from 'qs';
 import React, { useEffect, useState } from 'react';
 import PageHeader from '../../components/PageHeader';
-import Pagination from '../../components/Pagination';
+import Pagination from '../../components/Pagination/Pagination';
 import Paragraph from '../../components/Paragraph/Paragraph';
 import SEO from '../../components/SEO';
 import Site from '../../components/Site';
@@ -25,6 +25,8 @@ const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
   const { next, previous } = pageContext;
   const { search } = location;
   const [queryData, updateQueryData] = useState<KeyValue>(undefined);
+
+  console.log(JSON.stringify(pageContext));
 
   useEffect(() => {
     updateQueryData(qs.parse(search, { ignoreQueryPrefix: true }));
