@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Category from '../Category';
-import PageDescription from '../PageDescription';
+import PageDescription from '../PageDescription/PageDescription';
 import PageTitle from '../PageTitle/PageTitle';
 import TimeStamp from '../TimeStamp/TimeStamp';
 import { PageHeaderProps } from './PageHeader.interface';

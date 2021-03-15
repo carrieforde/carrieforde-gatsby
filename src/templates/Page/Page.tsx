@@ -8,7 +8,7 @@ import Site from '../../components/Site';
 import { PageProps } from '../../interfaces/page.interface';
 import ExperienceTabs from '../../components/ExperienceTabs';
 import { MDXProvider } from '@mdx-js/react';
-import PageDescription from '../../components/PageDescription';
+import PageDescription from '../../components/PageDescription/PageDescription';
 
 const shortcodes = { ExperienceTabs, PageDescription };
 
