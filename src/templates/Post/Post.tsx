@@ -7,7 +7,7 @@ import qs from 'qs';
 import React, { useEffect, useState } from 'react';
 import CallOut from '../../components/CallOut/CallOut';
 import MergeFieldProvider from '../../components/MergeField/MergeField.context';
-import PageHeader from '../../components/PageHeader';
+import PageHeader from '../../components/PageHeader/PageHeader';
 import Pagination from '../../components/Pagination/Pagination';
 import SEO from '../../components/SEO';
 import Site from '../../components/Site';
