@@ -6,7 +6,6 @@ import PageHeader from '../../components/PageHeader/PageHeader';
 import SEO from '../../components/SEO';
 import Site from '../../components/Site';
 import blog from '../../styles/blog.module.css';
-import { Edge } from '../../interfaces/edge.interface';
 import { getComponentKey } from '../../utils/utilities';
 
 const Category: React.FC<CategoryProps> = ({ pageContext, data }) => {

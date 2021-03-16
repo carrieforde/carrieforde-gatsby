@@ -1,9 +1,8 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
-import Category from '../Category';
+import Category from '../Category/Category';
 import TimeStamp from '../TimeStamp/TimeStamp';
-import timeStampStyles from '../TimeStamp/timeStamp.module.css';
 import { ArticleProps } from './Article.interface';
 import styles from './article.module.css';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Category from '../Category';
+import Category from '../Category/Category';
 import PageDescription from '../PageDescription/PageDescription';
 import PageTitle from '../PageTitle/PageTitle';
 import TimeStamp from '../TimeStamp/TimeStamp';
