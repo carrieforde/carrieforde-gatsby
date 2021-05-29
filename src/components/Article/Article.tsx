@@ -28,7 +28,7 @@ const Article: React.FC<ArticleProps> = ({
         </span>
       </header>
       <div className={styles.articleDescription}>
-        {ReactHtmlParser(description || excerpt)}
+        {ReactHtmlParser(description ?? excerpt)}
       </div>
     </article>
   );

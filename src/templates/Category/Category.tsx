@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby';
 import React from 'react';
-import Article from '../../components/Article';
+import Article from '../../components/Article/Article';
 import { CategoryProps } from '../../components/Category/Category.interface';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import SEO from '../../components/SEO';
