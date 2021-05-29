@@ -7,6 +7,6 @@ export default {
   component: Footer,
 } as Meta;
 
-const Template: Story<null> = () => <Footer />;
+const Template: Story<void> = () => <Footer />;
 
-export const Default = Template.bind({});
+export const DefaultFooter = Template.bind({});
