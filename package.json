@@ -42,7 +42,7 @@
     "postcss-custom-properties": "^9.1.1",
     "postcss-nesting": "^7.0.0",
     "postcss-preset-env": "^6.6.0",
-    "prismjs": "^1.21.0",
+    "prismjs": "^1.24.0",
     "prop-types": "^15.7.2",
     "qs": "^6.9.6",
     "react": "^16.8.6",
