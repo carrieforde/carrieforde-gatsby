@@ -5,18 +5,17 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import qs from 'qs';
 import React, { useEffect, useState } from 'react';
-import PageHeader from '../../components/PageHeader';
-import Pagination from '../../components/Pagination';
-import Paragraph from '../../components/Paragraph/Paragraph';
+import CallOut from '../../components/CallOut/CallOut';
+import MergeFieldProvider from '../../components/MergeField/MergeField.context';
+import PageHeader from '../../components/PageHeader/PageHeader';
+import Pagination from '../../components/Pagination/Pagination';
 import SEO from '../../components/SEO';
 import Site from '../../components/Site';
-import TableOfContents from '../../components/TableOfContents';
-import MergeFieldProvider from '../../components/MergeField/MergeField.context';
-import { PostProps } from './Post.interface';
-import CallOut from '../../components/CallOut/CallOut';
+import TableOfContents from '../../components/TableOfContents/TableOfContents';
 import { KeyValue } from '../../interfaces/KeyValue.type';
+import { PostProps } from './Post.interface';
 
-const shortcodes = { Paragraph, CallOut };
+const shortcodes = { CallOut };
 
 const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
   const post = data.mdx;
@@ -25,6 +24,8 @@ const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
   const { next, previous } = pageContext;
   const { search } = location;
   const [queryData, updateQueryData] = useState<KeyValue>(undefined);
+
+  console.log(JSON.stringify(pageContext));
 
   useEffect(() => {
     updateQueryData(qs.parse(search, { ignoreQueryPrefix: true }));

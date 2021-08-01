@@ -1,13 +1,22 @@
 import React from 'react';
 import CallOut from './CallOut';
 import { CallOutProps } from './CallOut.interface';
+import { Story, Meta } from '@storybook/react';
+import MergeFieldProvider from '../MergeField/MergeField.context';
 
 export default {
   title: 'Call Out',
   component: CallOut,
-};
+  decorators: [
+    (Story) => (
+      <MergeFieldProvider data={{ animal: 'turtle' }}>
+        <Story />
+      </MergeFieldProvider>
+    ),
+  ],
+} as Meta;
 
-const Template: React.FC<CallOutProps> = (args) => <CallOut {...args} />;
+const Template: Story<CallOutProps> = (args) => <CallOut {...args} />;
 
 export const Default = Template.bind({});
 export const Tip = Template.bind({});

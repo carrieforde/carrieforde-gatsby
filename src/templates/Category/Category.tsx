@@ -1,12 +1,11 @@
 import { graphql } from 'gatsby';
 import React from 'react';
-import Article from '../../components/Article';
+import Article from '../../components/Article/Article';
 import { CategoryProps } from '../../components/Category/Category.interface';
-import PageHeader from '../../components/PageHeader';
+import PageHeader from '../../components/PageHeader/PageHeader';
 import SEO from '../../components/SEO';
 import Site from '../../components/Site';
 import blog from '../../styles/blog.module.css';
-import { Edge } from '../../interfaces/edge.interface';
 import { getComponentKey } from '../../utils/utilities';
 
 const Category: React.FC<CategoryProps> = ({ pageContext, data }) => {

@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useMemo } from 'react';
 import {
   MergeFieldContextProps,
   MergeFieldProviderProps,
@@ -16,8 +16,9 @@ const MergeFieldProvider: React.FC<MergeFieldProviderProps> = ({
   data,
   children,
 }) => {
+  const providedData = useMemo(() => data, [data]);
   return (
-    <MergeFieldContext.Provider value={data}>
+    <MergeFieldContext.Provider value={providedData}>
       {children}
     </MergeFieldContext.Provider>
   );

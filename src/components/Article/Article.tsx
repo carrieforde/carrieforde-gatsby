@@ -1,9 +1,8 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
-import Category from '../Category';
-import TimeStamp from '../TimeStamp';
-import timeStampStyles from '../TimeStamp/timeStamp.module.css';
+import Category from '../Category/Category';
+import TimeStamp from '../TimeStamp/TimeStamp';
 import { ArticleProps } from './Article.interface';
 import styles from './article.module.css';
 
@@ -22,14 +21,14 @@ const Article: React.FC<ArticleProps> = ({
         <Link to={fields.slug}>
           <h2 className={styles.articleTitle}>{ReactHtmlParser(title)}</h2>
         </Link>
-        <TimeStamp date={date} className={timeStampStyles.timeStampIsSmall} />
+        <TimeStamp date={date} isSmall={true} />
         <span className={styles.articleSeparator}>&#9656;</span>
         <span className={styles.articleTimeToRead}>
           {timeToRead} minute read
         </span>
       </header>
       <div className={styles.articleDescription}>
-        {ReactHtmlParser(description || excerpt)}
+        {ReactHtmlParser(description ?? excerpt)}
       </div>
     </article>
   );

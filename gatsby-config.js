@@ -3,12 +3,28 @@ module.exports = {
     title: `Carrie Forde`,
     description: `Carrie Forde is a front end software engineer in San Mateo, California who specializes in building elegant, maintainable, and performant websites.`,
     author: `@carrieforde`,
-    socials: {
-      mail: 'carrie@carrieforde.com',
-      linkedin: 'https://linkedin.com/in/carrieforde',
-      github: 'https://github.com/carrieforde',
-      codepen: 'https://codepen.io/carrieforde',
-    },
+    socials: [
+      {
+        label: 'Email',
+        value: 'mailto:carrie@carrieforde.com',
+        icon: ['fal', 'paper-plane'],
+      },
+      {
+        label: 'LinkedIn',
+        value: 'https://linkedin.com/in/carrieforde',
+        icon: ['fab', 'linkedin-in'],
+      },
+      {
+        label: 'Github',
+        value: 'https://github.com/carrieforde',
+        icon: ['fab', 'github'],
+      },
+      {
+        value: 'CodePen',
+        label: 'https://codepen.io/carrieforde',
+        icon: ['fab', 'codepen'],
+      },
+    ],
     siteUrl: 'https://carrieforde.com',
   },
   plugins: [
@@ -114,7 +130,6 @@ module.exports = {
         ],
       },
     },
-    '@danbruegge/gatsby-plugin-stylelint',
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

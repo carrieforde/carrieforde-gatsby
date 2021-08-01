@@ -48,6 +48,19 @@ ul {
 	font-size: var(--font-size-2);
 }
 
+ol ol,
+ul ul {
+	margin-top: var(--size-2);
+}
+
+ol ol {
+	list-style: lower-alpha;
+}
+
+ol ol ol {
+	list-style: lower-roman;
+}
+
 @media screen and (min-width: 600px) {
 	ol,
 	ul {
