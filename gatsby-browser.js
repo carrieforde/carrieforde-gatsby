@@ -9,5 +9,4 @@ import './src/styles/settings.css';
 import './src/styles/themes.css';
 import './src/styles/global.css';
 import './src/styles/prismjs.css';
-// import 'prismjs/themes/prism-solarizedlight.css';
 import './src/utils/fontawesome';

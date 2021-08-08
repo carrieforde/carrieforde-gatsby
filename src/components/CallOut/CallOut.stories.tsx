@@ -8,9 +8,9 @@ export default {
   title: 'Call Out',
   component: CallOut,
   decorators: [
-    (Story) => (
+    (Comp) => (
       <MergeFieldProvider data={{ animal: 'turtle' }}>
-        <Story />
+        <Comp />
       </MergeFieldProvider>
     ),
   ],

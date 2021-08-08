@@ -1,6 +1,5 @@
 import { Link } from 'gatsby';
-import React from 'react';
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { gtm } from 'utils/analytics';
 import styles from './mainMenu.module.css';
 
