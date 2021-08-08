@@ -1,11 +1,11 @@
 import { graphql } from 'gatsby';
 import React from 'react';
-import Article from '../components/Article/Article';
-import PageHeader from '../components/PageHeader/PageHeader';
-import SEO from '../components/SEO';
-import Site from '../components/Site';
-import { BlogProps } from '../interfaces/blog.interface';
-import blog from '../styles/blog.module.css';
+import Article from 'components/Article/Article';
+import PageHeader from 'components/PageHeader/PageHeader';
+import SEO from 'components/Seo/Seo';
+import Site from 'components/Site/Site';
+import { BlogProps } from 'entities/blog.interface';
+import blog from 'styles/blog.module.css';
 
 const Blog: React.FC<BlogProps> = ({ data }) => {
   return (

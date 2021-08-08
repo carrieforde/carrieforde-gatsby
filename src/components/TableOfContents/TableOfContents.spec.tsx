@@ -1,5 +1,5 @@
+import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
-import { act, fireEvent, render } from '@testing-library/react';
 import { Default } from './TableOfContents.stories';
 
 const getComponentPieces = (container: HTMLElement) => {

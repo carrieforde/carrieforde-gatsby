@@ -1,6 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import { slugify } from '../../utils/utilities';
+import { slugify } from 'utils/utilities';
+
 import { CategoryProps } from './Category.interface';
 import styles from './category.module.css';
 

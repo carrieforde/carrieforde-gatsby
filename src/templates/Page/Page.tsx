@@ -2,13 +2,13 @@ import 'cf-components-alert';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
-import PageHeader from '../../components/PageHeader/PageHeader';
-import SEO from '../../components/SEO';
-import Site from '../../components/Site';
-import { PageProps } from '../../interfaces/page.interface';
-import ExperienceTabs from '../../components/ExperienceTabs';
+import PageHeader from 'components/PageHeader/PageHeader';
+import SEO from 'components/Seo/Seo';
+import Site from 'components/Site/Site';
+import { PageProps } from 'entities/page.interface';
+import ExperienceTabs from 'components/ExperienceTabs/ExperienceTabs';
 import { MDXProvider } from '@mdx-js/react';
-import PageDescription from '../../components/PageDescription/PageDescription';
+import PageDescription from 'components/PageDescription/PageDescription';
 
 const shortcodes = { ExperienceTabs, PageDescription };
 
@@ -37,7 +37,7 @@ const Page: React.FC<PageProps> = ({ data }) => {
 export default Page;
 
 export const query = graphql`
-  query($slug: String) {
+  query ($slug: String) {
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title

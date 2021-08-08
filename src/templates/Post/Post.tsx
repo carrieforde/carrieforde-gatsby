@@ -1,18 +1,17 @@
 import '@alcatraz-components/accordion';
 import { MDXProvider } from '@mdx-js/react';
 import 'cf-components-alert';
+import CallOut from 'components/CallOut/CallOut';
+import MergeFieldProvider from 'components/MergeField/MergeField.context';
+import PageHeader from 'components/PageHeader/PageHeader';
+import Pagination from 'components/Pagination/Pagination';
+import SEO from 'components/Seo/Seo';
+import Site from 'components/Site/Site';
+import TableOfContents from 'components/TableOfContents/TableOfContents';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import qs from 'qs';
 import React, { useEffect, useState } from 'react';
-import CallOut from '../../components/CallOut/CallOut';
-import MergeFieldProvider from '../../components/MergeField/MergeField.context';
-import PageHeader from '../../components/PageHeader/PageHeader';
-import Pagination from '../../components/Pagination/Pagination';
-import SEO from '../../components/SEO';
-import Site from '../../components/Site';
-import TableOfContents from '../../components/TableOfContents/TableOfContents';
-import { KeyValue } from '../../interfaces/KeyValue.type';
 import { PostProps } from './Post.interface';
 
 const shortcodes = { CallOut };
@@ -23,7 +22,7 @@ const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
   const { title, date, updated, category, description, showToc } = frontmatter;
   const { next, previous } = pageContext;
   const { search } = location;
-  const [queryData, updateQueryData] = useState<KeyValue>(undefined);
+  const [queryData, updateQueryData] = useState<Record<string, any>>(undefined);
 
   console.log(JSON.stringify(pageContext));
 
@@ -57,7 +56,7 @@ const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
 export default Post;
 
 export const query = graphql`
-  query($slug: String) {
+  query ($slug: String) {
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title

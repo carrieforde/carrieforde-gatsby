@@ -1,6 +1,6 @@
 import React from 'react';
-import SEO from '../components/SEO';
-import Site from '../components/Site';
+import SEO from 'components/Seo/Seo';
+import Site from 'components/Site/Site';
 
 const NotFoundPage: React.FC<unknown> = () => (
   <Site>

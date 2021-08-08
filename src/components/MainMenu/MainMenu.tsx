@@ -1,31 +1,35 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import { gtm } from '../../utils/analytics';
+import { useCallback } from 'react';
+import { gtm } from 'utils/analytics';
 import styles from './mainMenu.module.css';
 
-const MainMenu: React.FC<void> = () => {
-  const gtmObj = { event: 'click', category: 'Main Menu' };
+const MainMenu: React.VFC = () => {
+  const handleClick = useCallback(
+    (label: string) => gtm({ event: 'click', category: 'Main Menu', label }),
+    []
+  );
 
   return (
     <nav className={styles.mainNavigation}>
       <Link
         className={styles.link}
         to="/#about"
-        onClick={() => gtm({ ...gtmObj, label: 'About' })}
+        onClick={() => handleClick('About')}
       >
         About
       </Link>
       <Link
         className={styles.link}
         to="/#experience"
-        onClick={() => gtm({ ...gtmObj, label: 'Experience' })}
+        onClick={() => handleClick('Experience')}
       >
         Experience
       </Link>
       <Link
         className={styles.link}
         to="/blog"
-        onClick={() => gtm({ ...gtmObj, label: 'Blog' })}
+        onClick={() => handleClick('Blog')}
       >
         Blog
       </Link>

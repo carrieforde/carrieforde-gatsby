@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { SocialProps } from '../../entities/socials.interface';
-import withSocials from '../../HOC/withSocials/withSocials';
+import { SocialProps } from 'entities/socials.interface';
+import withSocials from 'HOC/withSocials/withSocials';
 import { SocialNavProps } from './SocialNav.interface';
 import styles from './socialNav.module.css';
 

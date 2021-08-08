@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Default, Info, WithMergeField } from './CallOut.stories';
-import MergeFieldProvider from '../MergeField/MergeField.context';
+import MergeFieldProvider from 'components/MergeField/MergeField.context';
 
-const wrapper = ({ children }: any) => (
+const wrapper: React.FC = ({ children }) => (
   <MergeFieldProvider data={{ animal: 'turtle' }}>
     {children}
   </MergeFieldProvider>

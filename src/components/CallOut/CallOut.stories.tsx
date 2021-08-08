@@ -2,7 +2,7 @@ import React from 'react';
 import CallOut from './CallOut';
 import { CallOutProps } from './CallOut.interface';
 import { Story, Meta } from '@storybook/react';
-import MergeFieldProvider from '../MergeField/MergeField.context';
+import MergeFieldProvider from 'components/MergeField/MergeField.context';
 
 export default {
   title: 'Call Out',
@@ -52,8 +52,7 @@ Danger.args = {
 
 MultiLine.args = {
   type: 'INFO',
-  text:
-    'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.',
+  text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.',
 };
 
 WithMergeField.args = {

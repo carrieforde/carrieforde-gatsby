@@ -1,6 +1,6 @@
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React, { useState } from 'react';
-import { getComponentKey } from '../../utils/utilities';
+import { getComponentKey } from 'utils/utilities';
 import { TabsProps } from './Tabs.interface';
 import styles from './tabs.module.css';
 

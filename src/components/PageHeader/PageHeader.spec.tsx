@@ -14,9 +14,8 @@ describe('PageHeader', () => {
 
   it('should render just a title', () => {
     const { container } = render(<Default {...Default.args} />);
-    const { category, pageDesc, timeStamp, updated } = getComponentPieces(
-      container
-    );
+    const { category, pageDesc, timeStamp, updated } =
+      getComponentPieces(container);
     expect(category).toBeNull();
     expect(pageDesc).toBeNull();
     expect(timeStamp).toBeNull();
@@ -25,9 +24,8 @@ describe('PageHeader', () => {
 
   it('should render all pieces', () => {
     const { container } = render(<WithUpdate {...WithUpdate.args} />);
-    const { category, pageDesc, timeStamp, updated } = getComponentPieces(
-      container
-    );
+    const { category, pageDesc, timeStamp, updated } =
+      getComponentPieces(container);
     expect(category).toBeTruthy();
     expect(pageDesc).toBeTruthy();
     expect(timeStamp).toBeTruthy();

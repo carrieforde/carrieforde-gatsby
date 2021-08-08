@@ -1,8 +1,9 @@
 import { IconName } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import cn from 'classnames';
+import MergeField from 'components/MergeField/MergeField';
 import React from 'react';
-import MergeField from '../MergeField/MergeField';
+
 import { CallOutProps } from './CallOut.interface';
 import styles from './Callout.module.css';
 

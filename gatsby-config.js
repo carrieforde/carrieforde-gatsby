@@ -1,8 +1,29 @@
+const fs = require('fs');
+const path = require('path');
+
+function buildPaths() {
+  const baseDir = fs.readdirSync(path.resolve(__dirname, 'src'));
+  const paths = {};
+
+  baseDir.forEach((dir) => {
+    if (!dir.includes('entities')) {
+      paths[dir] = path.resolve(__dirname, 'src', dir);
+    }
+  });
+
+  console.log(paths);
+
+  return paths;
+}
+
+const srcPaths = buildPaths();
+
 module.exports = {
   siteMetadata: {
-    title: `Carrie Forde`,
-    description: `Carrie Forde is a front end software engineer in San Mateo, California who specializes in building elegant, maintainable, and performant websites.`,
-    author: `@carrieforde`,
+    title: 'Carrie Forde',
+    description:
+      'Carrie Forde is a front end software engineer in San Mateo, California who specializes in building elegant, maintainable, and performant websites.',
+    author: '@carrieforde',
     socials: [
       {
         label: 'Email',
@@ -28,39 +49,39 @@ module.exports = {
     siteUrl: 'https://carrieforde.com',
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `posts`,
+        name: 'posts',
         path: `${__dirname}/content/posts`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `pages`,
+        name: 'pages',
         path: `${__dirname}/content/pages`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `jobs`,
+        name: 'jobs',
         path: `${__dirname}/content/jobs`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
+        name: 'images',
         path: `${__dirname}/src/images`,
       },
     },
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
-        extensions: [`.md`, `.mdx`],
+        extensions: ['.md', '.mdx'],
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
@@ -70,7 +91,7 @@ module.exports = {
           },
           'gatsby-remark-autolink-headers',
           {
-            resolve: `gatsby-remark-prismjs`,
+            resolve: 'gatsby-remark-prismjs',
             options: {
               classPrefix: 'language-',
               inlineCodeMarker: null,
@@ -82,21 +103,25 @@ module.exports = {
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        name: `Carrie Forde`,
-        short_name: `carrieforde`,
-        start_url: `/`,
-        background_color: `#fff`,
-        theme_color: `#3525e6`,
-        display: `minimal-ui`,
-        icon: `src/images/carrie-forde-icon.png`, // This path is relative to the root of the site.
+        name: 'Carrie Forde',
+        short_name: 'carrieforde',
+        start_url: '/',
+        background_color: '#fff',
+        theme_color: '#3525e6',
+        display: 'minimal-ui',
+        icon: 'src/images/carrie-forde-icon.png', // This path is relative to the root of the site.
       },
     },
     'gatsby-plugin-typescript',
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: srcPaths,
+    },
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
@@ -106,13 +131,13 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-typography`,
+      resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: `src/utils/typography`,
+        pathToConfigModule: 'src/utils/typography',
       },
     },
     {
-      resolve: `gatsby-plugin-postcss`,
+      resolve: 'gatsby-plugin-postcss',
       options: {
         postCssPlugins: [
           require('postcss-preset-env')({
@@ -131,7 +156,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: process.env.GATSBY_GA_ID,
       },
@@ -143,9 +168,9 @@ module.exports = {
       },
     },
     'gatsby-plugin-netlify',
-    `gatsby-plugin-offline`,
+    'gatsby-plugin-offline',
     {
-      resolve: `gatsby-plugin-feed`,
+      resolve: 'gatsby-plugin-feed',
       options: {
         query: `
           {

@@ -1,8 +1,8 @@
+import Category from 'components/Category/Category';
+import PageDescription from 'components/PageDescription/PageDescription';
+import PageTitle from 'components/PageTitle/PageTitle';
+import TimeStamp from 'components/TimeStamp/TimeStamp';
 import React from 'react';
-import Category from '../Category/Category';
-import PageDescription from '../PageDescription/PageDescription';
-import PageTitle from '../PageTitle/PageTitle';
-import TimeStamp from '../TimeStamp/TimeStamp';
 import { PageHeaderProps } from './PageHeader.interface';
 import styles from './pageHeader.module.css';
 

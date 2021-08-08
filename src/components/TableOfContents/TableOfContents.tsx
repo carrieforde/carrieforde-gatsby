@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
-import { gtm } from '../../utils/analytics';
+import { gtm } from 'utils/analytics';
 import { TableOfContentsProps } from './TableOfContents.interface';
 import styles from './TableOfContents.module.css';
 import cn from 'classnames';
-import TableOfContentsList from '../TableOfContentsList/TableOfContentsList';
+import TableOfContentsList from 'components/TableOfContentsList/TableOfContentsList';
 
 const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
   const [tocOpen, setTocState] = useState(false);

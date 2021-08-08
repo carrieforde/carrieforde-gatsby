@@ -1,14 +1,14 @@
+import Article from 'components/Article/Article';
+import PageHeader from 'components/PageHeader/PageHeader';
+import SEO from 'components/Seo/Seo';
+import Site from 'components/Site/Site';
 import { graphql } from 'gatsby';
 import React from 'react';
-import Article from '../../components/Article/Article';
-import { CategoryProps } from '../../components/Category/Category.interface';
-import PageHeader from '../../components/PageHeader/PageHeader';
-import SEO from '../../components/SEO';
-import Site from '../../components/Site';
-import blog from '../../styles/blog.module.css';
-import { getComponentKey } from '../../utils/utilities';
+import blog from 'styles/blog.module.css';
+import { getComponentKey } from 'utils/utilities';
+import { CategoryPageProps } from './Category.interface';
 
-const Category: React.FC<CategoryProps> = ({ pageContext, data }) => {
+const Category: React.FC<CategoryPageProps> = ({ pageContext, data }) => {
   const { category } = pageContext;
   return (
     <Site>

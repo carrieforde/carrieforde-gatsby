@@ -1,7 +1,6 @@
-import { BlogProps } from '../../interfaces/blog.interface';
-import { Edge } from '../../interfaces/edge.interface';
+import { Edge } from 'entities/edge.interface';
 
-export interface CategoryProps {
+export interface CategoryPageProps {
   pageContext: {
     category: string;
   };

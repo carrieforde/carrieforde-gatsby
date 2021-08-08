@@ -1,6 +1,6 @@
+import { Meta, Story } from '@storybook/react';
 import React from 'react';
-import { SocialNav } from './SocialNav';
-import { Story, Meta } from '@storybook/react';
+import SocialNav from './SocialNav';
 import { SocialNavProps } from './SocialNav.interface';
 
 export default {

@@ -1,9 +1,9 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import SocialNav from '../SocialNav/SocialNav';
 import styles from './footer.module.css';
-import utils from '../../styles/utilities.module.css';
-import { gtm } from '../../utils/analytics';
+import utils from 'styles/utilities.module.css';
+import { gtm } from 'utils/analytics';
+import { SocialNavMenu } from 'components/SocialNav/SocialNav.stories';
 
 const Footer: React.VFC = () => (
   <footer className={styles.footer}>
@@ -20,7 +20,7 @@ const Footer: React.VFC = () => (
       <span className={styles.bullet}>&bull;</span>
       Copyright &copy; 2013 &ndash; {new Date().getFullYear()} Carrie Forde.
     </p>
-    <SocialNav />
+    <SocialNavMenu />
   </footer>
 );
 
