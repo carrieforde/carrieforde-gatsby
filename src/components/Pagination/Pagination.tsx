@@ -3,15 +3,20 @@ import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import { gtm } from '../../utils/analytics';
 import { PaginationProps } from './Pagination.interface';
-import styles from './pagination.module.css';
+import {
+  pagination,
+  previous as paginationPrev,
+  arrow,
+  next as paginationNext,
+} from './pagination.module.css';
 
 const Pagination: React.FC<PaginationProps> = ({ next, previous }) => {
   const gtmObj = { event: 'click', category: 'Pagination' };
   return (
-    <nav className={styles.pagination}>
+    <nav className={pagination}>
       {previous && (
         <Link
-          className={styles.previous}
+          className={paginationPrev}
           to={previous.fields.slug}
           onClick={() =>
             gtm({
@@ -20,13 +25,13 @@ const Pagination: React.FC<PaginationProps> = ({ next, previous }) => {
             })
           }
         >
-          <span className={styles.arrow}>&larr;</span>
+          <span className={arrow}>&larr;</span>
           <p>{ReactHtmlParser(previous.frontmatter.title)}</p>
         </Link>
       )}
       {next && (
         <Link
-          className={styles.next}
+          className={paginationNext}
           to={next.fields.slug}
           onClick={() =>
             gtm({
@@ -36,7 +41,7 @@ const Pagination: React.FC<PaginationProps> = ({ next, previous }) => {
           }
         >
           <p>{ReactHtmlParser(next.frontmatter.title)}</p>
-          <span className={styles.arrow}>&rarr;</span>
+          <span className={arrow}>&rarr;</span>
         </Link>
       )}
     </nav>

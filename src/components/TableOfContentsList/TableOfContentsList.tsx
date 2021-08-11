@@ -1,14 +1,17 @@
 import React from 'react';
 import { TableOfContentsListProps } from './TableOfContentsList.interface';
-import styles from './TableOfContentsList.module.css';
+import {
+  tableOfContentsList,
+  toclLink,
+} from './TableOfContentsList.module.css';
 
 const TableOfContentsList: React.FC<TableOfContentsListProps> = ({
   listItems,
 }) => (
-  <ol className={styles.tableOfContentsList}>
+  <ol className={tableOfContentsList}>
     {listItems.map((item) => (
       <li key={item.title}>
-        <a href={item.url} className={styles.toclLink}>
+        <a href={item.url} className={toclLink}>
           {item.title}
         </a>
         {item.items && <TableOfContentsList listItems={item.items} />}

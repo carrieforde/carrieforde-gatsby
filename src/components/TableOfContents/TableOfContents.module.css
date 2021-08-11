@@ -19,7 +19,7 @@
 	margin-top: 0;
 }
 
-.tocOpen {
+.tocIsOpen {
 	transform: translateX(0);
 }
 

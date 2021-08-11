@@ -2,23 +2,23 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import Article from '../components/Article/Article';
 import PageHeader from '../components/PageHeader/PageHeader';
-import SEO from '../components/SEO';
+import Seo from '../components/Seo/Seo';
 import Site from '../components/Site';
 import { BlogProps } from '../interfaces/blog.interface';
-import blog from '../styles/blog.module.css';
+import { postList, postListItem } from '../styles/blog.module.css';
 
 const Blog: React.FC<BlogProps> = ({ data }) => {
   return (
     <Site>
-      <SEO title="Blog" />
+      <Seo title="Blog" />
       <PageHeader
         title="Blog"
         description="Occasional posts on JavaScript, WordPress, and front end development."
       />
 
-      <ul className={blog.postList}>
+      <ul className={postList}>
         {data.allMdx.edges.map(({ node }, index) => (
-          <li key={index} className={blog.postListItem}>
+          <li key={index} className={postListItem}>
             <Article {...node} />
           </li>
         ))}

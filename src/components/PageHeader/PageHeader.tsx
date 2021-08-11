@@ -4,7 +4,7 @@ import PageDescription from '../PageDescription/PageDescription';
 import PageTitle from '../PageTitle/PageTitle';
 import TimeStamp from '../TimeStamp/TimeStamp';
 import { PageHeaderProps } from './PageHeader.interface';
-import styles from './pageHeader.module.css';
+import { dateSeparator } from './pageHeader.module.css';
 
 const PageHeader: React.FC<PageHeaderProps> = ({
   title,
@@ -26,7 +26,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
     {date && <TimeStamp date={date} />}
     {updated && (
       <>
-        <span className={styles.dateSeparator}>&#9656;</span>
+        <span className={dateSeparator}>&#9656;</span>
         <TimeStamp date={updated} updated={true} />
       </>
     )}

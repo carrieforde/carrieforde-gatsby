@@ -3,7 +3,7 @@ import React from 'react';
 import Footer from '../Footer/Footer';
 import Header from '../Header';
 import { SiteProps } from './Site.interface';
-import styles from './site.module.css';
+import { site, page } from './site.module.css';
 
 const Site: React.FC<SiteProps> = ({ children }) => (
   <StaticQuery
@@ -17,9 +17,9 @@ const Site: React.FC<SiteProps> = ({ children }) => (
       }
     `}
     render={(data) => (
-      <div className={styles.site}>
+      <div className={site}>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <main className={styles.page}>{children}</main>
+        <main className={page}>{children}</main>
         <Footer />
       </div>
     )}
