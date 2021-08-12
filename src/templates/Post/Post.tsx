@@ -9,7 +9,7 @@ import CallOut from '../../components/CallOut/CallOut';
 import MergeFieldProvider from '../../components/MergeField/MergeField.context';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import Pagination from '../../components/Pagination/Pagination';
-import SEO from '../../components/SEO';
+import Seo from '../../components/Seo/Seo';
 import Site from '../../components/Site';
 import TableOfContents from '../../components/TableOfContents/TableOfContents';
 import { KeyValue } from '../../interfaces/KeyValue.type';
@@ -25,15 +25,13 @@ const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
   const { search } = location;
   const [queryData, updateQueryData] = useState<KeyValue>(undefined);
 
-  console.log(JSON.stringify(pageContext));
-
   useEffect(() => {
     updateQueryData(qs.parse(search, { ignoreQueryPrefix: true }));
   }, [search]);
 
   return (
     <Site>
-      <SEO title={title} description={description} />
+      <Seo title={title} description={description} />
       <PageHeader
         title={title}
         description={description}
@@ -57,7 +55,7 @@ const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
 export default Post;
 
 export const query = graphql`
-  query($slug: String) {
+  query ($slug: String) {
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title

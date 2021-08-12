@@ -1,3 +1,25 @@
+const dynamicPlugins = [];
+
+// Add GA.
+if (process.env.GATSBY_GA_ID) {
+  dynamicPlugins.push({
+    resolve: `gatsby-plugin-google-analytics`,
+    options: {
+      trackingId: process.env.GATSBY_GA_ID,
+    },
+  });
+}
+
+// Add GTM.
+if (process.env.GATSBY_GTM_ID) {
+  dynamicPlugins.push({
+    resolve: 'gatsby-plugin-google-tagmanager',
+    options: {
+      id: process.env.GATSBY_GTM_ID,
+    },
+  });
+}
+
 module.exports = {
   siteMetadata: {
     title: `Carrie Forde`,
@@ -28,6 +50,7 @@ module.exports = {
     siteUrl: 'https://carrieforde.com',
   },
   plugins: [
+    ...dynamicPlugins,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -130,18 +153,6 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: process.env.GATSBY_GA_ID,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-tagmanager',
-      options: {
-        id: process.env.GATSBY_GTM_ID,
-      },
-    },
     'gatsby-plugin-netlify',
     `gatsby-plugin-offline`,
     {
@@ -205,7 +216,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: ['/experience/*'],
+        excludes: ['/experience/*'],
       },
     },
     'gatsby-plugin-robots-txt',

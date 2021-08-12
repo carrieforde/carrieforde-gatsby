@@ -3,13 +3,14 @@ import React from 'react';
 import Logo from '../../icons/carrie-forde-logo.svg';
 import MainMenu from '../MainMenu';
 import { HeaderProps } from './Header.interface';
-import styles from './header.module.css';
+import { siteHeader, siteBranding, siteLogo } from './header.module.css';
+import { visuallyHidden } from '../../styles/utilities.module.css';
 
 const Header: React.FC<HeaderProps> = ({ siteTitle = '' }) => (
-  <header className={styles.siteHeader}>
-    <Link className={styles.siteBranding} to="/">
-      <Logo className={styles.siteLogo} />
-      <h1 className={styles.siteTitle}>{siteTitle}</h1>
+  <header className={siteHeader}>
+    <Link className={siteBranding} to="/">
+      <Logo className={siteLogo} />
+      <h1 className={visuallyHidden}>{siteTitle}</h1>
     </Link>
     <MainMenu />
   </header>

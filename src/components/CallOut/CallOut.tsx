@@ -4,7 +4,7 @@ import cn from 'classnames';
 import React from 'react';
 import MergeField from '../MergeField/MergeField';
 import { CallOutProps } from './CallOut.interface';
-import styles from './Callout.module.css';
+import * as styles from './Callout.module.css';
 
 const ICON_MAP: { [key: string]: IconName } = {
   INFO: 'info-circle',

@@ -2,15 +2,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { gtm } from '../../utils/analytics';
 import { TableOfContentsProps } from './TableOfContents.interface';
-import styles from './TableOfContents.module.css';
+import {
+  tableOfContents,
+  tocIsOpen,
+  tocButton,
+  tocButtonText,
+  tableOfContentsHeading,
+} from './TableOfContents.module.css';
 import cn from 'classnames';
 import TableOfContentsList from '../TableOfContentsList/TableOfContentsList';
 
 const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
   const [tocOpen, setTocState] = useState(false);
 
-  const classes = cn(styles.tableOfContents, {
-    [styles.tocOpen]: tocOpen,
+  const classes = cn(tableOfContents, {
+    [tocIsOpen]: tocOpen,
   });
 
   const handleClick = () => {
@@ -18,10 +24,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
       setTocState(!tocOpen);
     }
 
-    if (
-      !tocOpen &&
-      document.activeElement.classList.contains(styles.tocButton)
-    ) {
+    if (!tocOpen && document.activeElement.classList.contains(tocButton)) {
       setTocState(!tocOpen);
     }
   };
@@ -45,7 +48,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
     <div className={classes}>
       <button
         type="button"
-        className={styles.tocButton}
+        className={tocButton}
         onClick={() => {
           gtm({
             event: 'click',
@@ -56,9 +59,9 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
         }}
       >
         <FontAwesomeIcon icon={['fal', 'chevron-circle-left']} size="lg" />
-        <span className={styles.tocButtonText}>Table of Contents</span>
+        <span className={tocButtonText}>Table of Contents</span>
       </button>
-      <h2 className={styles.tableOfContentsHeading}>Table of Contents</h2>
+      <h2 className={tableOfContentsHeading}>Table of Contents</h2>
       <TableOfContentsList listItems={items} />
     </div>
   );

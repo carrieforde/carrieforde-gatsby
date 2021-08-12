@@ -4,7 +4,14 @@ import ReactHtmlParser from 'react-html-parser';
 import Category from '../Category/Category';
 import TimeStamp from '../TimeStamp/TimeStamp';
 import { ArticleProps } from './Article.interface';
-import styles from './article.module.css';
+import {
+  article,
+  articleDescription,
+  articleHeader,
+  articleSeparator,
+  articleTimeToRead,
+  articleTitle,
+} from './article.module.css';
 
 const Article: React.FC<ArticleProps> = ({
   excerpt,
@@ -15,19 +22,17 @@ const Article: React.FC<ArticleProps> = ({
   const { title, date, category, description } = frontmatter;
 
   return (
-    <article className={styles.article}>
-      <header className={styles.articleHeader}>
+    <article className={article}>
+      <header className={articleHeader}>
         <Category category={category} />
         <Link to={fields.slug}>
-          <h2 className={styles.articleTitle}>{ReactHtmlParser(title)}</h2>
+          <h2 className={articleTitle}>{ReactHtmlParser(title)}</h2>
         </Link>
         <TimeStamp date={date} isSmall={true} />
-        <span className={styles.articleSeparator}>&#9656;</span>
-        <span className={styles.articleTimeToRead}>
-          {timeToRead} minute read
-        </span>
+        <span className={articleSeparator}>&#9656;</span>
+        <span className={articleTimeToRead}>{timeToRead} minute read</span>
       </header>
-      <div className={styles.articleDescription}>
+      <div className={articleDescription}>
         {ReactHtmlParser(description ?? excerpt)}
       </div>
     </article>
