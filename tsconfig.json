@@ -9,5 +9,5 @@
     "esModuleInterop": true,
     "baseUrl": "src"
   },
-  "include": ["./src/**/*", "tests"]
+  "include": ["./src/**/*", "tests", "__mocks__/gatsby.mock.js"]
 }

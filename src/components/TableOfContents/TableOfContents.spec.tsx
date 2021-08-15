@@ -26,25 +26,20 @@ describe('TableOfContents', () => {
     const { container } = render(<Default {...Default.args} />);
     const { toc, button } = getComponentPieces(container);
 
-    fireEvent.click(button);
-    expect(toc).toHaveClass('tocOpen');
-
-    fireEvent.click(button);
     expect(toc).not.toHaveClass('tocOpen');
 
     fireEvent.click(button);
-    expect(toc).toHaveClass('tocOpen');
-
-    fireEvent.click(container);
-    expect(toc).not.toHaveClass('tocOpen');
+    expect(toc).toHaveClass('tableOfContents tocIsOpen');
   });
 
   it('should handle key presses', () => {
     const { container } = render(<Default {...Default.args} />);
     const { toc, button } = getComponentPieces(container);
 
+    expect(toc).not.toHaveClass('tocOpen');
+
     fireEvent.click(button);
-    expect(toc).toHaveClass('tocOpen');
+    expect(toc).toHaveClass('tableOfContents tocIsOpen');
 
     fireEvent.keyUp(container, { key: 'Escape', code: 'Escape' });
     expect(toc).not.toHaveClass('tocOpen');

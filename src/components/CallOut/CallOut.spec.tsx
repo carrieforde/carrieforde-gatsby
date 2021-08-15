@@ -11,12 +11,12 @@ const wrapper = ({ children }: any) => (
 
 describe('CallOut', () => {
   const getComponentPieces = (container: HTMLElement) => {
-    const wrapper = container.querySelector('.callOut');
+    const callout = container.querySelector('.callOut');
     const text = container.querySelector('p');
     const icon = container.querySelector('svg');
 
     return {
-      wrapper,
+      callout,
       text,
       icon,
     };
@@ -24,18 +24,18 @@ describe('CallOut', () => {
 
   it('should render a callout', () => {
     const { container } = render(<Default {...Default.args} />);
-    const { wrapper, text, icon } = getComponentPieces(container);
+    const { callout, text, icon } = getComponentPieces(container);
 
-    expect(wrapper).toHaveClass('callOut');
+    expect(callout).toHaveClass('callOut');
     expect(text.textContent).toEqual(Default.args.text);
     expect(icon).toBeNull();
   });
 
   it('should render a callout with an icon', () => {
     const { container } = render(<Info {...Info.args} />);
-    const { wrapper, text, icon } = getComponentPieces(container);
+    const { callout, text, icon } = getComponentPieces(container);
 
-    expect(wrapper).toHaveClass('callOut INFO');
+    expect(callout).toHaveClass('callOut INFO');
     expect(text.textContent).toEqual(Info.args.text);
     expect(icon).toBeTruthy();
   });

@@ -213,3 +213,23 @@ alcatraz-accordion {
 		font-size: var(--font-size-3);
 	}
 }
+
+.TIP {
+	background-color: var(--alert-bg-tip);
+	color: var(--alert-color-tip);
+}
+
+.INFO {
+	background-color: var(--alert-bg-info);
+	color: var(--alert-color-info);
+}
+
+.WARNING {
+	background-color: var(--alert-bg-warning);
+	color: var(--alert-color-warning);
+}
+
+.DANGER {
+	background-color: var(--alert-bg-danger);
+	color: var(--alert-color-danger);
+}
