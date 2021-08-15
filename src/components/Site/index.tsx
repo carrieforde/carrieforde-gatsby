@@ -1,7 +1,7 @@
 import { graphql, StaticQuery } from 'gatsby';
 import React from 'react';
-import Footer from '../Footer/Footer';
-import Header from '../Header';
+import Footer from 'components/Footer/Footer';
+import Header from 'components/Header';
 import { SiteProps } from './Site.interface';
 import { site, page } from './site.module.css';
 

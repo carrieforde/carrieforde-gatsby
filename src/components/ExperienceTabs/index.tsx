@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { ReactElement } from 'react';
-import Tabs from '../Tabs';
+import Tabs from 'components/Tabs';
 
 function ExperienceTabs(): ReactElement {
   const { allMdx } = useStaticQuery(graphql`

@@ -2,13 +2,13 @@ import 'cf-components-alert';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
-import PageHeader from '../../components/PageHeader/PageHeader';
-import Seo from '../../components/Seo/Seo';
-import Site from '../../components/Site';
-import { PageProps } from '../../interfaces/page.interface';
-import ExperienceTabs from '../../components/ExperienceTabs';
+import PageHeader from 'components/PageHeader/PageHeader';
+import Seo from 'components/Seo/Seo';
+import Site from 'components/Site';
+import { PageProps } from 'interfaces/page.interface';
+import ExperienceTabs from 'components/ExperienceTabs';
 import { MDXProvider } from '@mdx-js/react';
-import PageDescription from '../../components/PageDescription/PageDescription';
+import PageDescription from 'components/PageDescription/PageDescription';
 
 const shortcodes = { ExperienceTabs, PageDescription };
 

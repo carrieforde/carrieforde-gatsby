@@ -1,6 +1,6 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import { gtm } from '../../utils/analytics';
+import { gtm } from 'utils/analytics';
 import { mainNavigation, link } from './mainMenu.module.css';
 
 const MainMenu: React.VFC = () => {

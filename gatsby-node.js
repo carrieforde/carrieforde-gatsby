@@ -141,6 +141,9 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   if (stage === 'build-html') {
     actions.setWebpackConfig({
+      resolve: {
+        modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      },
       module: {
         rules: [
           {
@@ -152,6 +155,12 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
             use: loaders.null(),
           },
         ],
+      },
+    });
+  } else {
+    actions.setWebpackConfig({
+      resolve: {
+        modules: [path.resolve(__dirname, 'src'), 'node_modules'],
       },
     });
   }

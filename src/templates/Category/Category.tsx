@@ -1,12 +1,12 @@
 import { graphql } from 'gatsby';
 import React from 'react';
-import Article from '../../components/Article/Article';
+import Article from 'components/Article/Article';
 import { CategoryProps } from './Category.interface';
-import PageHeader from '../../components/PageHeader/PageHeader';
-import Seo from '../../components/Seo/Seo';
-import Site from '../../components/Site';
-import { postList, postListItem } from '../../styles/blog.module.css';
-import { getComponentKey } from '../../utils/utilities';
+import PageHeader from 'components/PageHeader/PageHeader';
+import Seo from 'components/Seo/Seo';
+import Site from 'components/Site';
+import { postList, postListItem } from 'styles/blog.module.css';
+import { getComponentKey } from 'utils/utilities';
 
 const Category: React.FC<CategoryProps> = ({ pageContext, data }) => {
   const { category } = pageContext;
