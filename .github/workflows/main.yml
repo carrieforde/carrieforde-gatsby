@@ -10,17 +10,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x]
-
     steps:
       - uses: actions/checkout@v2
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '16'
 
       - name: Install Dependencies
         run: NPM_TOKEN=${{ secrets.NPM_TOKEN }} yarn
@@ -28,3 +24,21 @@ jobs:
       - name: Run tests
         run: NPM_TOKEN=${{ secrets.NPM_TOKEN }} yarn test
 
+      - name: Coverage reports
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: coverage 
+          path: test-report.xml
+
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
