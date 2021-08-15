@@ -19,4 +19,5 @@ module.exports = {
     },
   },
   setupFiles: ['<rootDir>/tests/loadershim.js'],
+  testResultsProcessor: 'jest-sonar-reporter',
 };
