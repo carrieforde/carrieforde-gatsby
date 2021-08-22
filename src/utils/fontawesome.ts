@@ -4,12 +4,12 @@ import {
   faGithub,
   faLinkedinIn,
 } from '@fortawesome/free-brands-svg-icons';
-import { faChevronCircleLeft } from '@fortawesome/pro-light-svg-icons';
 import {
-  faInfoCircle,
-  faLightbulbExclamation,
+  faChevronCircleLeft,
   faExclamationCircle,
   faExclamationTriangle,
+  faInfoCircle,
+  faLightbulbExclamation,
   faPaperPlane,
 } from '@fortawesome/pro-light-svg-icons';
 

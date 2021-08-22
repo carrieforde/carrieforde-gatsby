@@ -14,8 +14,8 @@ const PageDescription: React.FC<PageDescriptionProps> = ({
   if (multiLineDescription) {
     return (
       <>
-        {multiLineDescription.map((description: string) => (
-          <PageDescription key={description} description={description} />
+        {multiLineDescription.map((d: string) => (
+          <PageDescription key={d} description={d} />
         ))}
       </>
     );
