@@ -1,0 +1,13 @@
+.textWithSeparator {
+	color: var(--heading-color-alt);
+	display: inline-block;
+	font-size: var(--font-size-1);
+	font-weight: 300;
+	margin-bottom: var(--size-2);
+	margin-top: var(--size-2);
+}
+
+.textWithSeparator__separator {
+	margin-left: var(--size-1);
+	margin-right: var(--size-1);
+}
