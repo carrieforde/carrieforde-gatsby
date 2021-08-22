@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { KeyValue } from '../../interfaces/KeyValue.type';
+import { KeyValue } from 'interfaces/KeyValue.type';
 
 export interface ExtractedMergeField {
   search: string;

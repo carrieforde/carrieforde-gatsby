@@ -6,7 +6,8 @@
     "module": "commonjs",
     "target": "es5",
     "jsx": "react",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": "src"
   },
-  "include": ["./src/**/*", "tests"]
+  "include": ["./src/**/*", "tests", "__mocks__/gatsby.mock.js"]
 }

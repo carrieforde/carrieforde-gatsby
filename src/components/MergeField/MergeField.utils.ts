@@ -1,6 +1,6 @@
 import { ExtractedMergeField } from './MergeField.interface';
 import { get as _get } from 'lodash';
-import { KeyValue } from '../../interfaces/KeyValue.type';
+import { KeyValue } from 'interfaces/KeyValue.type';
 
 export const MERGE_FIELD_REGEX = new RegExp(
   /{{[\w.]+(\|[\w\s!@#$%^&*()-_=+[{|}\]\\;:'",<.>/?`~]+)?}}/g

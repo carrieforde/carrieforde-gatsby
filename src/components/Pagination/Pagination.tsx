@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
-import { gtm } from '../../utils/analytics';
+import { gtm } from 'utils/analytics';
 import { PaginationProps } from './Pagination.interface';
 import {
   pagination,
