@@ -1,6 +1,6 @@
+import parse from 'html-react-parser';
 import React from 'react';
 import { PageDescriptionProps } from './PageDescription.interface';
-import ReactHtmlParser from 'react-html-parser';
 import { pageDescription } from './pageDescription.module.css';
 
 const PageDescription: React.FC<PageDescriptionProps> = ({
@@ -8,7 +8,7 @@ const PageDescription: React.FC<PageDescriptionProps> = ({
   multiLineDescription,
 }) => {
   if (description) {
-    return <p className={pageDescription}>{ReactHtmlParser(description)}</p>;
+    return <p className={pageDescription}>{parse(description)}</p>;
   }
 
   if (multiLineDescription) {

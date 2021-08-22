@@ -12,6 +12,8 @@ import {
   locationDate,
   separator,
 } from './tabs.module.css';
+import { MDXProvider } from '@mdx-js/react';
+import { MDX_COMPONENTS } from 'constants/mdx-components';
 
 const Tabs: React.FC<TabsProps> = ({ edges }) => {
   const [currentTab, setCurrentTab] = useState(0);
@@ -64,7 +66,9 @@ const Tabs: React.FC<TabsProps> = ({ edges }) => {
             </p>
 
             <div>
-              <MDXRenderer>{body}</MDXRenderer>
+              <MDXProvider components={MDX_COMPONENTS}>
+                <MDXRenderer>{body}</MDXRenderer>
+              </MDXProvider>
             </div>
           </div>
         );

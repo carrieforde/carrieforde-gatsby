@@ -1,8 +1,9 @@
-import { Link } from 'gatsby';
-import React from 'react';
-import ReactHtmlParser from 'react-html-parser';
 import Category from 'components/Category/Category';
+import Heading from 'components/Heading/Heading';
 import TimeStamp from 'components/TimeStamp/TimeStamp';
+import { Link } from 'gatsby';
+import parse from 'html-react-parser';
+import React from 'react';
 import { ArticleProps } from './Article.interface';
 import {
   article,
@@ -26,15 +27,15 @@ const Article: React.FC<ArticleProps> = ({
       <header className={articleHeader}>
         <Category category={category} />
         <Link to={fields.slug}>
-          <h2 className={articleTitle}>{ReactHtmlParser(title)}</h2>
+          <Heading level="h2" className={articleTitle}>
+            {title}
+          </Heading>
         </Link>
         <TimeStamp date={date} isSmall={true} />
         <span className={articleSeparator}>&#9656;</span>
         <span className={articleTimeToRead}>{timeToRead} minute read</span>
       </header>
-      <div className={articleDescription}>
-        {ReactHtmlParser(description ?? excerpt)}
-      </div>
+      <p className={articleDescription}>{parse(description ?? excerpt)}</p>
     </article>
   );
 };
