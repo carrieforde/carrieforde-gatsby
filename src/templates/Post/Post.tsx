@@ -14,8 +14,7 @@ import Site from 'components/Site';
 import TableOfContents from 'components/TableOfContents/TableOfContents';
 import { KeyValue } from 'interfaces/KeyValue.type';
 import { PostProps } from './Post.interface';
-
-const shortcodes = { CallOut };
+import { MDX_COMPONENTS } from 'constants/mdx-components';
 
 const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
   const post = data.mdx;
@@ -42,7 +41,7 @@ const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
       {showToc && <TableOfContents {...tableOfContents} />}
       <MergeFieldProvider data={queryData}>
         <div className="post__content">
-          <MDXProvider components={shortcodes}>
+          <MDXProvider components={MDX_COMPONENTS}>
             <MDXRenderer>{body}</MDXRenderer>
           </MDXProvider>
         </div>
