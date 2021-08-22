@@ -12,6 +12,8 @@ This site is based off the default [Gatsby Starter](https://github.com/gatsbyjs/
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/30bde48a-a28b-45e4-bd15-afe554a3f2a8/deploy-status)](https://app.netlify.com/sites/carrieforde/deploys)
 
+[![Travis CI Status](https://app.travis-ci.com/carrieforde/carrieforde-gatsby.svg?branch=main)](https://app.travis-ci.com/carrieforde/carrieforde-gatsby.svg?branch=main)
+
 ## 🚀Quick start
 
 1. Clone the repo locally
