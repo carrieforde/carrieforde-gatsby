@@ -1,17 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Heading should render the Heading component 1`] = `
-<div>
-  <h1>
-    Using cat rivalry to understand the 
-    <code>
-      bind()
-    </code>
-     method
-  </h1>
-</div>
-`;
-
 exports[`Heading should render the Heading component as an h1 1`] = `
 <div>
   <h1>

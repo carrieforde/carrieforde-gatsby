@@ -1,5 +1,22 @@
-import { Edge } from 'interfaces/edge.interface';
+import { ReactNode } from 'react';
 
 export interface TabsProps {
-  edges: Edge[];
+  tabItems: Tab[];
+  ariaLabel: string;
+}
+
+export interface Tab {
+  title: string; // what appears on the button
+  content: ReactNode & string;
+}
+
+export interface TabButtonProps {
+  id: string;
+  ariaSelected: boolean;
+  onClick: () => void;
+}
+
+export interface TabPanelProps {
+  id: string;
+  hidden: boolean;
 }
