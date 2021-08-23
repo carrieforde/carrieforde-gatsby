@@ -3,14 +3,29 @@ import { useMemo } from 'react';
 import { HeadingProps } from './Heading.interface';
 import parse from 'html-react-parser';
 
-const Heading: React.FC<HeadingProps> = ({ level, className, children }) => {
+const Heading: React.FC<HeadingProps> = ({
+  level,
+  className,
+  children,
+  weight,
+}) => {
   const HeadingLevel = useMemo(() => level, []);
+  const styles = useMemo(
+    () => ({
+      fontWeight: weight,
+    }),
+    []
+  );
   const content = useMemo(
     () => (typeof children === 'string' ? parse(children) : children),
     []
   );
 
-  return <HeadingLevel className={className}>{content}</HeadingLevel>;
+  return (
+    <HeadingLevel className={className} style={styles}>
+      {content}
+    </HeadingLevel>
+  );
 };
 
 export default Heading;

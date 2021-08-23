@@ -1,17 +1,21 @@
+import cn from 'classnames';
 import { kebabCase } from 'lodash';
-import React, { useCallback, useState } from 'react';
-import { useMemo } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { TabButtonProps, TabPanelProps, TabsProps } from './Tabs.interface';
 import {
-  tabs,
-  tabsList,
   tabButton,
   tabButtonIsActive,
   tabPanel,
+  tabs,
+  tabsList,
 } from './Tabs.module.css';
-import cn from 'classnames';
 
-const Tabs: React.FC<TabsProps> = ({ tabItems, ariaLabel }) => {
+const Tabs: React.FC<TabsProps> = ({
+  tabItems,
+  ariaLabel,
+  panelClass,
+  buttonClass,
+}) => {
   const initialTab = useMemo(() => kebabCase(tabItems[0].title), []);
   const [currentTab, setCurrentTab] = useState<string>(initialTab);
   const handleClick = useCallback((key: string) => setCurrentTab(key), []);
@@ -25,8 +29,9 @@ const Tabs: React.FC<TabsProps> = ({ tabItems, ariaLabel }) => {
 
           return (
             <TabButton
-              key={key}
+              key={`${key}-button`}
               id={key}
+              className={buttonClass}
               onClick={() => handleClick(key)}
               ariaSelected={ariaSelected}
             >
@@ -41,7 +46,7 @@ const Tabs: React.FC<TabsProps> = ({ tabItems, ariaLabel }) => {
         const hidden = currentTab === key ? false : true;
 
         return (
-          <TabPanel key={key} id={key} hidden={hidden}>
+          <TabPanel key={key} id={key} className={panelClass} hidden={hidden}>
             {content}
           </TabPanel>
         );
@@ -52,11 +57,14 @@ const Tabs: React.FC<TabsProps> = ({ tabItems, ariaLabel }) => {
 
 const TabButton: React.FC<TabButtonProps> = ({
   id,
+  className,
   ariaSelected,
   onClick,
   children,
 }) => {
-  const classes = cn(tabButton, { [tabButtonIsActive]: ariaSelected });
+  const classes = cn(tabButton, className, {
+    [tabButtonIsActive]: ariaSelected,
+  });
 
   return (
     <button
@@ -73,17 +81,26 @@ const TabButton: React.FC<TabButtonProps> = ({
   );
 };
 
-const TabPanel: React.FC<TabPanelProps> = ({ id, hidden, children }) => (
-  <div
-    className={tabPanel}
-    id={`${id}-panel`}
-    role="tabpanel"
-    aria-labelledby={`${id}-tab`}
-    hidden={hidden}
-    tabIndex={0}
-  >
-    {children}
-  </div>
-);
+const TabPanel: React.FC<TabPanelProps> = ({
+  id,
+  className,
+  hidden,
+  children,
+}) => {
+  const classes = cn(tabPanel, className);
+
+  return (
+    <div
+      className={classes}
+      id={`${id}-panel`}
+      role="tabpanel"
+      aria-labelledby={`${id}-tab`}
+      hidden={hidden}
+      tabIndex={0}
+    >
+      {children}
+    </div>
+  );
+};
 
 export default Tabs;
