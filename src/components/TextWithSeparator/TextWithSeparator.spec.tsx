@@ -1,6 +1,5 @@
-import React from 'react';
-import TextWithSeparator from './TextWithSeparator';
 import { render } from '@testing-library/react';
+import React from 'react';
 import { Default, WithCustomSeparator } from './TextWithSeparator.stories';
 
 describe('TextWithSeparator', () => {

@@ -1,6 +1,5 @@
+import { act, fireEvent, render } from '@testing-library/react';
 import React from 'react';
-import Tabs from './Tabs';
-import { render, act, fireEvent } from '@testing-library/react';
 import { Default } from './Tabs.stories';
 
 describe('Tabs', () => {

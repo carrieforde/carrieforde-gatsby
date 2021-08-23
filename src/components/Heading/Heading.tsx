@@ -1,7 +1,6 @@
-import React from 'react';
-import { useMemo } from 'react';
-import { HeadingProps } from './Heading.interface';
 import parse from 'html-react-parser';
+import React, { useMemo } from 'react';
+import { HeadingProps } from './Heading.interface';
 
 const Heading: React.FC<HeadingProps> = ({
   level,

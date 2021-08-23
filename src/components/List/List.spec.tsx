@@ -1,6 +1,5 @@
-import React from 'react';
-import List from './List';
 import { render } from '@testing-library/react';
+import React from 'react';
 import { BulletedList, NumberedList } from './List.stories';
 
 function getListComponents(container: HTMLElement) {

@@ -1,6 +1,5 @@
-import React from 'react';
-import Heading from './Heading';
 import { render } from '@testing-library/react';
+import React from 'react';
 import { H1, H2 } from './Heading.stories';
 
 describe('Heading', () => {
