@@ -1,13 +1,13 @@
 import { Link } from 'gatsby';
+import parse from 'html-react-parser';
 import React from 'react';
-import ReactHtmlParser from 'react-html-parser';
 import { gtm } from 'utils/analytics';
 import { PaginationProps } from './Pagination.interface';
 import {
-  pagination,
-  previous as paginationPrev,
   arrow,
   next as paginationNext,
+  pagination,
+  previous as paginationPrev,
 } from './pagination.module.css';
 
 const Pagination: React.FC<PaginationProps> = ({ next, previous }) => {
@@ -26,7 +26,7 @@ const Pagination: React.FC<PaginationProps> = ({ next, previous }) => {
           }
         >
           <span className={arrow}>&larr;</span>
-          <p>{ReactHtmlParser(previous.frontmatter.title)}</p>
+          <p>{parse(previous.frontmatter.title)}</p>
         </Link>
       )}
       {next && (
@@ -40,7 +40,7 @@ const Pagination: React.FC<PaginationProps> = ({ next, previous }) => {
             })
           }
         >
-          <p>{ReactHtmlParser(next.frontmatter.title)}</p>
+          <p>{parse(next.frontmatter.title)}</p>
           <span className={arrow}>&rarr;</span>
         </Link>
       )}

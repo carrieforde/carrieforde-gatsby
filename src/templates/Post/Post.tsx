@@ -1,21 +1,19 @@
 import '@alcatraz-components/accordion';
 import { MDXProvider } from '@mdx-js/react';
 import 'cf-components-alert';
-import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import qs from 'qs';
-import React, { useEffect, useState } from 'react';
-import CallOut from 'components/CallOut/CallOut';
 import MergeFieldProvider from 'components/MergeField/MergeField.context';
 import PageHeader from 'components/PageHeader/PageHeader';
 import Pagination from 'components/Pagination/Pagination';
 import Seo from 'components/Seo/Seo';
 import Site from 'components/Site';
 import TableOfContents from 'components/TableOfContents/TableOfContents';
+import { MDX_COMPONENTS } from 'constants/mdx-components';
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { KeyValue } from 'interfaces/KeyValue.type';
+import qs from 'qs';
+import React, { useEffect, useState } from 'react';
 import { PostProps } from './Post.interface';
-
-const shortcodes = { CallOut };
 
 const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
   const post = data.mdx;
@@ -42,7 +40,7 @@ const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
       {showToc && <TableOfContents {...tableOfContents} />}
       <MergeFieldProvider data={queryData}>
         <div className="post__content">
-          <MDXProvider components={shortcodes}>
+          <MDXProvider components={MDX_COMPONENTS}>
             <MDXRenderer>{body}</MDXRenderer>
           </MDXProvider>
         </div>

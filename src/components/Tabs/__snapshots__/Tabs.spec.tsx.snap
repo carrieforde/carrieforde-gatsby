@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs should render the Tabs component 1`] = `
+<div>
+  <div
+    class="tabs"
+  >
+    <div
+      aria-label="Experience"
+      class="tabsList"
+      role="tablist"
+    >
+      <button
+        aria-controls="ffn-panel"
+        aria-selected="true"
+        class="tabButton tabButtonIsActive"
+        id="ffn-tab"
+        role="tab"
+        tabindex="-1"
+      >
+        FFN
+      </button>
+      <button
+        aria-controls="wds-panel"
+        aria-selected="false"
+        class="tabButton"
+        id="wds-tab"
+        role="tab"
+        tabindex="-1"
+      >
+        WDS
+      </button>
+      <button
+        aria-controls="might-yminno-panel"
+        aria-selected="false"
+        class="tabButton"
+        id="might-yminno-tab"
+        role="tab"
+        tabindex="-1"
+      >
+        MIGHTYminno
+      </button>
+      <button
+        aria-controls="cisco-panel"
+        aria-selected="false"
+        class="tabButton"
+        id="cisco-tab"
+        role="tab"
+        tabindex="-1"
+      >
+        Cisco
+      </button>
+    </div>
+    <div
+      aria-labelledby="ffn-tab"
+      class="tabPanel"
+      id="ffn-panel"
+      role="tabpanel"
+      tabindex="0"
+    >
+      <h3>
+        Senior Software Engineer
+      </h3>
+      <p>
+        I do things
+      </p>
+    </div>
+    <div
+      aria-labelledby="wds-tab"
+      class="tabPanel"
+      hidden=""
+      id="wds-panel"
+      role="tabpanel"
+      tabindex="0"
+    >
+      Some content
+    </div>
+    <div
+      aria-labelledby="might-yminno-tab"
+      class="tabPanel"
+      hidden=""
+      id="might-yminno-panel"
+      role="tabpanel"
+      tabindex="0"
+    >
+      Some content
+    </div>
+    <div
+      aria-labelledby="cisco-tab"
+      class="tabPanel"
+      hidden=""
+      id="cisco-panel"
+      role="tabpanel"
+      tabindex="0"
+    >
+      Some content
+    </div>
+  </div>
+</div>
+`;

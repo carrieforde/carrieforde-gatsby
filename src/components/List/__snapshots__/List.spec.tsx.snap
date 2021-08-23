@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List should render a bulleted list 1`] = `
+<div>
+  <ul>
+    <li>
+      Typescript
+    </li>
+    <li>
+      React
+    </li>
+    <li>
+      HTML
+    </li>
+    <li>
+      CSS (& Sass)
+    </li>
+    <li>
+      Git
+    </li>
+    <li>
+      Firebase
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`List should render a numbered list 1`] = `
+<div>
+  <ol>
+    <li>
+      Typescript
+    </li>
+    <li>
+      React
+    </li>
+    <li>
+      HTML
+    </li>
+    <li>
+      CSS (& Sass)
+    </li>
+    <li>
+      Git
+    </li>
+    <li>
+      Firebase
+    </li>
+  </ol>
+</div>
+`;

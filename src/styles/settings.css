@@ -97,6 +97,7 @@
 	--font-family-body: 'Libre Franklin', sans-serif;
 	--font-family-monospace: 'IBM Plex Mono', monospace;
 
+	--transition-background-color: background-color 0.3s ease-in-out;
 	--transition-background: background 0.3s ease-in-out;
 	--transition-transform: transform 0.3s ease;
 	--transition-left: right 0.3s ease;
