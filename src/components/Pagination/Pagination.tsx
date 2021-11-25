@@ -1,17 +1,17 @@
-import { Link } from 'gatsby';
-import parse from 'html-react-parser';
-import React from 'react';
-import { gtm } from 'utils/analytics';
-import { PaginationProps } from './Pagination.interface';
+import { Link } from "gatsby";
+import parse from "html-react-parser";
+import React from "react";
+import { gtm } from "utils/analytics";
+import { PaginationProps } from "./Pagination.interface";
 import {
   arrow,
   next as paginationNext,
   pagination,
   previous as paginationPrev,
-} from './pagination.module.css';
+} from "./pagination.module.css";
 
 const Pagination: React.FC<PaginationProps> = ({ next, previous }) => {
-  const gtmObj = { event: 'click', category: 'Pagination' };
+  const gtmObj = { event: "click", category: "Pagination" };
   return (
     <nav className={pagination}>
       {previous && (

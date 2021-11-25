@@ -1,10 +1,10 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import TableOfContentsList from './TableOfContentsList';
-import { TableOfContentsListProps } from './TableOfContentsList.interface';
+import React from "react";
+import { Story, Meta } from "@storybook/react";
+import TableOfContentsList from "./TableOfContentsList";
+import { TableOfContentsListProps } from "./TableOfContentsList.interface";
 
 export default {
-  title: 'TableOfContentsList',
+  title: "TableOfContentsList",
   component: TableOfContentsList,
 } as Meta;
 
@@ -18,16 +18,16 @@ export const MultiLevel = Template.bind({});
 SingleLevel.args = {
   listItems: [
     {
-      url: '#gutenberg-is-greatuntil-you-need-custom-components',
-      title: 'Gutenberg is great…until you need custom components',
+      url: "#gutenberg-is-greatuntil-you-need-custom-components",
+      title: "Gutenberg is great…until you need custom components",
     },
     {
-      url: '#markdown-to-the-rescue',
-      title: 'Markdown to the rescue',
+      url: "#markdown-to-the-rescue",
+      title: "Markdown to the rescue",
     },
     {
-      url: '#an-improved-editing-experience',
-      title: 'An improved editing experience',
+      url: "#an-improved-editing-experience",
+      title: "An improved editing experience",
     },
   ],
 };
@@ -35,58 +35,58 @@ SingleLevel.args = {
 MultiLevel.args = {
   listItems: [
     {
-      url: '#getting-started-with-webpack',
-      title: 'Getting started with webpack',
+      url: "#getting-started-with-webpack",
+      title: "Getting started with webpack",
     },
     {
-      url: '#creating-a-webpack-file-for-a-wordpress-theme',
-      title: 'Creating a webpack file for a WordPress theme',
+      url: "#creating-a-webpack-file-for-a-wordpress-theme",
+      title: "Creating a webpack file for a WordPress theme",
       items: [
         {
-          url: '#basic-webpack-setup',
-          title: 'Basic webpack setup',
+          url: "#basic-webpack-setup",
+          title: "Basic webpack setup",
         },
         {
-          url: '#setting-up-development-modes',
-          title: 'Setting up development modes',
+          url: "#setting-up-development-modes",
+          title: "Setting up development modes",
           items: [
             {
-              url: '#adding-node-scripts',
-              title: 'Adding Node scripts',
+              url: "#adding-node-scripts",
+              title: "Adding Node scripts",
             },
           ],
         },
         {
-          url: '#loaders',
-          title: 'Loaders',
+          url: "#loaders",
+          title: "Loaders",
           items: [
             {
-              url: '#going-beyond-javascript',
-              title: 'Going beyond JavaScript',
+              url: "#going-beyond-javascript",
+              title: "Going beyond JavaScript",
             },
           ],
         },
         {
-          url: '#plugins',
-          title: 'Plugins',
+          url: "#plugins",
+          title: "Plugins",
           items: [
             {
-              url: '#using-plugins-for-bundle-optimization',
-              title: 'Using plugins for bundle optimization',
+              url: "#using-plugins-for-bundle-optimization",
+              title: "Using plugins for bundle optimization",
             },
             {
-              url: '#browser-reloading-with-browsersync',
-              title: 'Browser Reloading with BrowserSync',
+              url: "#browser-reloading-with-browsersync",
+              title: "Browser Reloading with BrowserSync",
             },
           ],
         },
         {
-          url: '#multiple-entries--outputs',
-          title: 'Multiple entries & outputs',
+          url: "#multiple-entries--outputs",
+          title: "Multiple entries & outputs",
         },
         {
-          url: '#finishing-touches',
-          title: 'Finishing touches',
+          url: "#finishing-touches",
+          title: "Finishing touches",
         },
       ],
     },

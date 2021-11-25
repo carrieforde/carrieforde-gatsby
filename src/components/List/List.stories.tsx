@@ -1,10 +1,10 @@
-import React from 'react';
-import List, { ListItem } from './List';
-import { ListProps } from './List.interface';
-import { Story, Meta } from '@storybook/react';
+import React from "react";
+import List, { ListItem } from "./List";
+import { ListProps } from "./List.interface";
+import { Story, Meta } from "@storybook/react";
 
 export default {
-  title: 'List',
+  title: "List",
   component: List,
 } as Meta;
 
@@ -14,7 +14,7 @@ export const BulletedList = Template.bind({});
 export const NumberedList = Template.bind({});
 
 BulletedList.args = {
-  type: 'BULLETED',
+  type: "BULLETED",
   children: [
     <ListItem key="Typescript">Typescript</ListItem>,
     <ListItem key="React">React</ListItem>,
@@ -27,5 +27,5 @@ BulletedList.args = {
 
 NumberedList.args = {
   ...BulletedList.args,
-  type: 'NUMBERED',
+  type: "NUMBERED",
 };

@@ -1,6 +1,6 @@
-import { Frontmatter } from './frontmatter.interface';
-import { Fields } from './fields.interface';
-import { TocItem } from '../components/TableOfContents/TableOfContents.interface';
+import { Frontmatter } from "./frontmatter.interface";
+import { Fields } from "./fields.interface";
+import { TocItem } from "../components/TableOfContents/TableOfContents.interface";
 
 export interface Node {
   frontmatter: Frontmatter;

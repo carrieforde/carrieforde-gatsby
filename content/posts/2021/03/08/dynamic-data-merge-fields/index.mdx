@@ -1,7 +1,7 @@
 ---
-title: 'Inject dynamic data into static content with merge fields'
+title: "Inject dynamic data into static content with merge fields"
 date: 2021-03-08
-category: 'JavaScript'
+category: "JavaScript"
 showToc: true
 ---
 
@@ -69,13 +69,13 @@ The first utility we'll create is one to search the given text (a string or mark
 Let's first write up some tests:
 
 ```ts
-describe('searchContent', () => {
-  it('should determine whether a merge field is present', () => {
-    expect(searchContent('')).toBeFalsy();
-    expect(searchContent('{{animal}}')).toBeTruthy();
-    expect(searchContent('i like turtles')).toBeFalsy();
-    expect(searchContent('i like {{animal}}s')).toBeTruthy();
-    expect(searchContent('<p>i like {{animal}}s</p>')).toBeTruthy();
+describe("searchContent", () => {
+  it("should determine whether a merge field is present", () => {
+    expect(searchContent("")).toBeFalsy();
+    expect(searchContent("{{animal}}")).toBeTruthy();
+    expect(searchContent("i like turtles")).toBeFalsy();
+    expect(searchContent("i like {{animal}}s")).toBeTruthy();
+    expect(searchContent("<p>i like {{animal}}s</p>")).toBeTruthy();
   });
 });
 ```
@@ -120,15 +120,15 @@ Now we can write our tests.
 
 ```ts
 // MergeField.spec.tsx
-describe('extractMergeField', () => {
+describe("extractMergeField", () => {
   const extracted = {
-    search: '{{animal}}',
-    fieldName: 'animal',
+    search: "{{animal}}",
+    fieldName: "animal",
   };
-  it('should return an object with the merge field and the field name', () => {
-    expect(extractMergeField('{{animal}}')).toEqual(extracted);
-    expect(extractMergeField('i like {{animals}}')).toEqual(extracted);
-    expect(extractMergeField('<p>i like {{animal}}s</p>')).toEqual(extracted);
+  it("should return an object with the merge field and the field name", () => {
+    expect(extractMergeField("{{animal}}")).toEqual(extracted);
+    expect(extractMergeField("i like {{animals}}")).toEqual(extracted);
+    expect(extractMergeField("<p>i like {{animal}}s</p>")).toEqual(extracted);
   });
 });
 ```
@@ -138,8 +138,8 @@ If we run our tests now, we know they'll fail, so let's work on getting them to 
 ```ts
 // MergeField.utils.ts
 export function extractMergeField(text: string): ExtractedMergeField {
-  const start = text.indexOf('{{');
-  const end = text.indexOf('}}');
+  const start = text.indexOf("{{");
+  const end = text.indexOf("}}");
   const fieldName = text.substring(start + 2, end);
 
   return {
@@ -156,22 +156,22 @@ First, we'll look for the index of the opening curly braces (`start`) and the cl
 The next step is to process the merge field and replace it with the dynamic data. Again, we'll start by writing tests:
 
 ```ts
-describe('processMergeField', () => {
+describe("processMergeField", () => {
   const data = {
-    animal: 'turtle',
+    animal: "turtle",
   };
 
-  it('should replace the merge field with the correct value', () => {
-    expect(processMergeField('i make websites', data)).toEqual(
-      'i make websites'
+  it("should replace the merge field with the correct value", () => {
+    expect(processMergeField("i make websites", data)).toEqual(
+      "i make websites"
     );
-    expect(processMergeField('i make {{adjective}} websites', data)).toEqual(
-      'i make websites'
+    expect(processMergeField("i make {{adjective}} websites", data)).toEqual(
+      "i make websites"
     );
-    expect(processMergeField('i like {{animal}}s', data)).toEqual(
+    expect(processMergeField("i like {{animal}}s", data)).toEqual(
       `i like ${data.animal}s`
     );
-    expect(processMergeField('<p>i like {{animal}}s</p>', data)).toEqual(
+    expect(processMergeField("<p>i like {{animal}}s</p>", data)).toEqual(
       `<p>i like ${data.animal}s</p>`
     );
   });
@@ -184,7 +184,10 @@ Again, if we run our tests now, we expect them to fail because we're following a
 
 ```ts
 // MergeField.utils.ts
-export function processMergeField(text: string, data: KeyValue): string {
+export function processMergeField(
+  text: string,
+  data: Record<string, any>
+): string {
   const { search, fieldName } = extractMergeField(text);
 
   if (!search || !fieldName) {
@@ -192,7 +195,7 @@ export function processMergeField(text: string, data: KeyValue): string {
   }
 
   if (!data || !data[fieldName]) {
-    return text.replace(`${search} `, '');
+    return text.replace(`${search} `, "");
   }
 
   return text.replace(search, data[fieldName]);
@@ -211,10 +214,10 @@ We'll start off by defining the interfaces for our `MergeFieldContext`, and the 
 
 ```ts
 // MergeField.interface.ts
-export type MergeFieldContextProps = KeyValue;
+export type MergeFieldContextProps = Record<string, any>;
 
 export interface MergeFieldProviderProps {
-  data: KeyValue;
+  data: Record<string, any>;
   children: ReactNode;
 }
 ```
@@ -225,11 +228,11 @@ Next, let's create the context.
 
 ```ts
 // MergeField.context.ts
-import React, { createContext } from 'react';
+import React, { createContext } from "react";
 import {
   MergeFieldContextProps,
   MergeFieldProviderProps,
-} from './MergeField.interface';
+} from "./MergeField.interface";
 
 const defaultMergeFieldContext = {};
 
@@ -237,7 +240,7 @@ export const MergeFieldContext = createContext<MergeFieldContextProps>(
   defaultMergeFieldContext
 );
 
-MergeFieldContext.displayName = 'MergeFieldContext';
+MergeFieldContext.displayName = "MergeFieldContext";
 
 const MergeFieldProvider: React.FC<MergeFieldProviderProps> = ({
   data,
@@ -271,7 +274,7 @@ We just need to pass the `MergeField` the text we want it to process. Next, we c
 
 ```tsx
 // MergeField.spec.tsx
-describe('MergeField', () => {
+describe("MergeField", () => {
   const wrapper = ({ children }: any) => (
     <MergeFieldProvider data={data}>{children}</MergeFieldProvider>
   );
@@ -280,26 +283,26 @@ describe('MergeField', () => {
       wrapper,
     });
 
-  it('should return the text with no change', () => {
-    const { container } = getComponentUnderTest({ text: 'i make websites' });
-    expect(container.textContent).toEqual('i make websites');
+  it("should return the text with no change", () => {
+    const { container } = getComponentUnderTest({ text: "i make websites" });
+    expect(container.textContent).toEqual("i make websites");
   });
 
-  it('should replace a merge field without data', () => {
+  it("should replace a merge field without data", () => {
     const { container } = getComponentUnderTest({
-      text: 'i make {{adjective}} websites',
+      text: "i make {{adjective}} websites",
     });
-    expect(container.textContent).toEqual('i make websites');
+    expect(container.textContent).toEqual("i make websites");
   });
 
-  it('should correctly render a merge field in a regular string', () => {
-    const { container } = getComponentUnderTest({ text: 'i like {{animal}}s' });
+  it("should correctly render a merge field in a regular string", () => {
+    const { container } = getComponentUnderTest({ text: "i like {{animal}}s" });
     expect(container.textContent).toEqual(`i like ${data.animal}s`);
   });
 
-  it('should correctly render a merge field with markup', () => {
+  it("should correctly render a merge field with markup", () => {
     const { container } = getComponentUnderTest({
-      text: '<p>i like {{animal}}s</p>',
+      text: "<p>i like {{animal}}s</p>",
     });
     expect(container.textContent).toEqual(`<p>i like ${data.animal}s</p>`);
   });
@@ -317,10 +320,10 @@ Now, let's add the code for our component:
 
 ```tsx
 // MergeField.tsx
-import React, { useContext } from 'react';
-import { MergeFieldContext } from './MergeField.context';
-import { MergeFieldProps } from './MergeField.interface';
-import { processMergeField } from './MergeField.utils';
+import React, { useContext } from "react";
+import { MergeFieldContext } from "./MergeField.context";
+import { MergeFieldProps } from "./MergeField.interface";
+import { processMergeField } from "./MergeField.utils";
 
 const MergeField: React.FC<MergeFieldProps> = ({ text }) => {
   const data = useContext(MergeFieldContext);
@@ -346,19 +349,19 @@ Given that I use MDX (a flavor of markdown that accepts JSX) for my site, I am g
 For this purpose I'll convert my existing `cf-alert` web component into a React component called a `CallOut` (see tip box above for an example).
 
 ```tsx
-import { IconName } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import cn from 'classnames';
-import React from 'react';
-import MergeField from '../MergeField/MergeField';
-import { CallOutProps } from './CallOut.interface';
-import styles from './CallOut.module.css';
+import { IconName } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import cn from "classnames";
+import React from "react";
+import MergeField from "../MergeField/MergeField";
+import { CallOutProps } from "./CallOut.interface";
+import styles from "./CallOut.module.css";
 
 const ICON_MAP: { [key: string]: IconName } = {
-  INFO: 'info-circle',
-  TIP: 'lightbulb-exclamation',
-  WARNING: 'exclamation-circle',
-  DANGER: 'exclamation-triangle',
+  INFO: "info-circle",
+  TIP: "lightbulb-exclamation",
+  WARNING: "exclamation-circle",
+  DANGER: "exclamation-triangle",
 };
 
 const CallOut: React.FC<CallOutProps> = ({ type, text }) => {
@@ -370,7 +373,7 @@ const CallOut: React.FC<CallOutProps> = ({ type, text }) => {
     <div className={classes}>
       {type ? (
         <FontAwesomeIcon
-          icon={['fal', ICON_MAP[type]]}
+          icon={["fal", ICON_MAP[type]]}
           className={styles.icon}
         />
       ) : null}
@@ -393,7 +396,7 @@ const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
   const { title, date, updated, category, description, showToc } = frontmatter;
   const { next, previous } = pageContext;
   const { search } = location;
-  const [queryData, updateQueryData] = useState<KeyValue>(undefined);
+  const [queryData, updateQueryData] = useState<Record<string, any>>(undefined);
 
   useEffect(() => {
     updateQueryData(qs.parse(search, { ignoreQueryPrefix: true }));
@@ -456,15 +459,15 @@ I use HTML, CSS, and Javascript to build websites
 The first thing I'm going to do is add a new test case to `searchContent()` to find merge fields with default values:
 
 ```ts
-describe('searchContent', () => {
-  it('should determine whether a merge field is present', () => {
+describe("searchContent", () => {
+  it("should determine whether a merge field is present", () => {
     /* ... */
     expect(
-      searchContent('I use {{technologies|React}} to build websites.')
+      searchContent("I use {{technologies|React}} to build websites.")
     ).toBeTruthy();
     expect(
       searchContent(
-        'I use {{technologies|HTML, CSS, Javascript}} to build websites.'
+        "I use {{technologies|HTML, CSS, Javascript}} to build websites."
       )
     ).toBeTruthy();
   });
@@ -503,20 +506,20 @@ Next, we'll add a new test case:
 
 ```ts
 expect(
-  extractMergeField('I use {{technologies|React}} to build websites.')
+  extractMergeField("I use {{technologies|React}} to build websites.")
 ).toEqual({
-  search: '{{technologies|React}}',
-  fieldName: 'technologies',
-  defaultValue: 'React',
+  search: "{{technologies|React}}",
+  fieldName: "technologies",
+  defaultValue: "React",
 });
 expect(
   extractMergeField(
-    'I use {{technologies|HTML, CSS, Javascript}} to build websites.'
+    "I use {{technologies|HTML, CSS, Javascript}} to build websites."
   )
 ).toEqual({
-  search: '{{technologies|HTML, CSS, Javascript}}',
-  fieldName: 'technologies',
-  defaultValue: 'HTML, CSS, Javascript',
+  search: "{{technologies|HTML, CSS, Javascript}}",
+  fieldName: "technologies",
+  defaultValue: "HTML, CSS, Javascript",
 });
 ```
 
@@ -524,12 +527,12 @@ We'll modify the initial variables a touch to include a check for the pipe. If t
 
 ```ts
 export function extractMergeField(text: string): ExtractedMergeField {
-  const start = text.indexOf('{{');
-  const end = text.indexOf('}}');
+  const start = text.indexOf("{{");
+  const end = text.indexOf("}}");
   const field = text.substring(start + 2, end);
-  const pipe = field.indexOf('|');
-  const fieldName = field.includes('|') ? field.substring(0, pipe) : field;
-  const defaultValue = field.includes('|')
+  const pipe = field.indexOf("|");
+  const fieldName = field.includes("|") ? field.substring(0, pipe) : field;
+  const defaultValue = field.includes("|")
     ? field.substring(pipe + 1, field.length)
     : undefined;
 
@@ -564,7 +567,10 @@ describe('processMergeField', () => {
 Updating the `processMergeField()` function should be relatively easy. We just need to hook into the check that looks for whether or not `data[fieldName]` exists.
 
 ```ts
-export function processMergeField(text: string, data: KeyValue): string {
+export function processMergeField(
+  text: string,
+  data: Record<string, any>
+): string {
   const { search, fieldName, defaultValue } = extractMergeField(text);
   if (!search || !fieldName) {
     return text;
@@ -575,7 +581,7 @@ export function processMergeField(text: string, data: KeyValue): string {
       return text.replace(search, defaultValue);
     }
 
-    return text.replace(`${search} `, '');
+    return text.replace(`${search} `, "");
   }
 
   return text.replace(search, data[fieldName]);
@@ -599,14 +605,14 @@ I like {{ingredient1}} and {{ingredient2}} sandwiches
 We'll see that `{{ingredient2}}` renders as a raw merge field. Let's fix this quick! First, add a new test in the `MergeField` component:
 
 ```ts
-describe('MergeField', () => {
+describe("MergeField", () => {
   /* ... */
 
-  it('should correctly render multiple merge fields', () => {
+  it("should correctly render multiple merge fields", () => {
     const { container } = getComponentUnderTest({
-      text: 'i like {{ingredient1}} & {{ingredient2}} sandwiches',
+      text: "i like {{ingredient1}} & {{ingredient2}} sandwiches",
     });
-    expect(container.textContent).toEqual('i like PB & J sandwiches');
+    expect(container.textContent).toEqual("i like PB & J sandwiches");
   });
 });
 ```
@@ -619,11 +625,11 @@ describe('MergeField', () => {
 Make sure you also update your `data` object to include your ingredients. Next, let's update the `MergeField` component:
 
 ```tsx
-import React, { useContext } from 'react';
-import { MergeFieldContext } from './MergeField.context';
-import { MergeFieldProps } from './MergeField.interface';
-import { processMergeField, searchContent } from './MergeField.utils';
-import parse from 'html-react-parser';
+import React, { useContext } from "react";
+import { MergeFieldContext } from "./MergeField.context";
+import { MergeFieldProps } from "./MergeField.interface";
+import { processMergeField, searchContent } from "./MergeField.utils";
+import parse from "html-react-parser";
 
 const MergeField: React.FC<MergeFieldProps> = ({ text }) => {
   const data = useContext(MergeFieldContext);

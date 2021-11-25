@@ -1,10 +1,10 @@
-import Tabs from 'components/Tabs/Tabs';
-import { Tab } from 'components/Tabs/Tabs.interface';
-import { graphql, useStaticQuery } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { Edge } from 'interfaces/edge.interface';
-import React, { useMemo } from 'react';
-import { jobPanel } from './Jobs.module.css';
+import Tabs from "components/Tabs/Tabs";
+import { Tab } from "components/Tabs/Tabs.interface";
+import { graphql, useStaticQuery } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import { Edge } from "interfaces/edge.interface";
+import React, { useMemo } from "react";
+import { jobPanel } from "./Jobs.module.css";
 
 const Jobs: React.FC = () => {
   const { allMdx } = useStaticQuery(graphql`

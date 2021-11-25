@@ -7,7 +7,7 @@ export interface Location {
   origin: string;
   pathname: string;
   port: string;
-  protocol: 'http:' | 'https:';
+  protocol: "http:" | "https:";
   search?: string;
   state?: any;
 }

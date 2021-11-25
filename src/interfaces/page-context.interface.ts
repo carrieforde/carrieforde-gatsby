@@ -1,5 +1,5 @@
-import { Fields } from './fields.interface';
-import { Frontmatter } from './frontmatter.interface';
+import { Fields } from "./fields.interface";
+import { Frontmatter } from "./frontmatter.interface";
 
 export interface PageContext {
   slug?: string;

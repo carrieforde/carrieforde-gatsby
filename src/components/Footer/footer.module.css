@@ -1,11 +1,11 @@
 .footer {
-	color: var(--footer-color);
-	font-size: var(--font-size-1);
-	font-weight: 300;
-	margin-top: var(--size-10);
-	text-align: center;
+  color: var(--footer-color);
+  font-size: var(--font-size-1);
+  font-weight: 300;
+  margin-top: var(--size-10);
+  text-align: center;
 }
 
 .bullet {
-	margin: 0 var(--size-1);
+  margin: 0 var(--size-1);
 }

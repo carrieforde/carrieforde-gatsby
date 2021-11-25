@@ -1,14 +1,14 @@
 .siteHeader {
-	align-items: flex-end;
-	display: flex;
-	justify-content: space-between;
-	line-height: 1;
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  line-height: 1;
 }
 
 .siteBranding {
-	background: none;
+  background: none;
 }
 
 .siteLogo {
-	width: 50px;
+  width: 50px;
 }

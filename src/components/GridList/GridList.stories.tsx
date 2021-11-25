@@ -1,9 +1,9 @@
-import { Meta, Story } from '@storybook/react';
-import React from 'react';
-import GridList, { GridListItem } from './GridList';
+import { Meta, Story } from "@storybook/react";
+import React from "react";
+import GridList, { GridListItem } from "./GridList";
 
 export default {
-  title: 'GridList',
+  title: "GridList",
   component: GridList,
 } as Meta;
 

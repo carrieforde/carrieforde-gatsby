@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-const gatsby = jest.requireActual('gatsby');
+const gatsby = jest.requireActual("gatsby");
 
 const graphql = jest.fn();
 const Link = jest.fn().mockImplementation(
@@ -16,7 +16,7 @@ const Link = jest.fn().mockImplementation(
     to,
     ...rest
   }) =>
-    React.createElement('a', {
+    React.createElement("a", {
       ...rest,
       href: to,
     })

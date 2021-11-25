@@ -1,11 +1,11 @@
 .site {
-	margin-left: auto;
-	margin-right: auto;
-	max-width: 100%;
-	padding: var(--size-5) var(--size-5) var(--size-7);
-	width: var(--size-15);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  padding: var(--size-5) var(--size-5) var(--size-7);
+  width: var(--size-15);
 }
 
 .page {
-	margin-top: var(--size-7);
+  margin-top: var(--size-7);
 }

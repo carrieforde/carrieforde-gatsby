@@ -1,7 +1,7 @@
-import parse from 'html-react-parser';
-import React from 'react';
-import { PageDescriptionProps } from './PageDescription.interface';
-import { pageDescription } from './pageDescription.module.css';
+import parse from "html-react-parser";
+import React from "react";
+import { PageDescriptionProps } from "./PageDescription.interface";
+import { pageDescription } from "./pageDescription.module.css";
 
 const PageDescription: React.FC<PageDescriptionProps> = ({
   description,

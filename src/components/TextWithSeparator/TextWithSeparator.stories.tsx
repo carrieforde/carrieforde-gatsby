@@ -1,10 +1,10 @@
-import React from 'react';
-import TextWithSeparator from './TextWithSeparator';
-import { TextWithSeparatorProps } from './TextWithSeparator.interface';
-import { Story, Meta } from '@storybook/react';
+import React from "react";
+import TextWithSeparator from "./TextWithSeparator";
+import { TextWithSeparatorProps } from "./TextWithSeparator.interface";
+import { Story, Meta } from "@storybook/react";
 
 export default {
-  title: 'TextWithSeparator',
+  title: "TextWithSeparator",
   component: TextWithSeparator,
 } as Meta;
 
@@ -16,12 +16,12 @@ export const Default = Template.bind({});
 export const WithCustomSeparator = Template.bind({});
 
 Default.args = {
-  text1: 'San Mateo, CA',
-  text2: 'June 2018 &ndash; Present',
+  text1: "San Mateo, CA",
+  text2: "June 2018 &ndash; Present",
 };
 
 WithCustomSeparator.args = {
-  text1: 'March 08, 2021',
-  text2: '9 minute read',
-  separator: '&vert;',
+  text1: "March 08, 2021",
+  text2: "9 minute read",
+  separator: "&vert;",
 };

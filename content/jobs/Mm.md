@@ -1,5 +1,5 @@
 ---
-company: 'MIGHTYminnow'
+company: "MIGHTYminnow"
 date: 2015-07-05
 ---
 

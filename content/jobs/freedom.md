@@ -1,6 +1,6 @@
 ---
-company: 'Freedom Financial Network'
-date: '2018-06-11'
+company: "Freedom Financial Network"
+date: "2018-06-11"
 ---
 
 <Heading level="h3" weight={300}>Senior Software Engineer @ Freedom Financial Network</Heading>

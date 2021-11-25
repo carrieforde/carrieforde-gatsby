@@ -1,10 +1,10 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import Pagination from './Pagination';
-import { PaginationProps } from './Pagination.interface';
+import React from "react";
+import { Story, Meta } from "@storybook/react";
+import Pagination from "./Pagination";
+import { PaginationProps } from "./Pagination.interface";
 
 export default {
-  title: 'Pagination',
+  title: "Pagination",
   component: Pagination,
 } as Meta;
 
@@ -16,25 +16,25 @@ export const PreviousNext = Template.bind({});
 
 Previous.args = {
   previous: {
-    fields: { slug: '/angular-testing-with-protractor-cucumber/' },
-    frontmatter: { title: 'Testing Angular apps with Protractor & Cucumber' },
+    fields: { slug: "/angular-testing-with-protractor-cucumber/" },
+    frontmatter: { title: "Testing Angular apps with Protractor & Cucumber" },
   },
 };
 
 Next.args = {
   next: {
-    fields: { slug: '/webpack-wordpress/' },
-    frontmatter: { title: 'Webpack for WordPress' },
+    fields: { slug: "/webpack-wordpress/" },
+    frontmatter: { title: "Webpack for WordPress" },
   },
 };
 
 PreviousNext.args = {
   previous: {
-    fields: { slug: '/angular-testing-with-protractor-cucumber/' },
-    frontmatter: { title: 'Testing Angular apps with Protractor & Cucumber' },
+    fields: { slug: "/angular-testing-with-protractor-cucumber/" },
+    frontmatter: { title: "Testing Angular apps with Protractor & Cucumber" },
   },
   next: {
-    fields: { slug: '/webpack-wordpress/' },
-    frontmatter: { title: 'Webpack for WordPress' },
+    fields: { slug: "/webpack-wordpress/" },
+    frontmatter: { title: "Webpack for WordPress" },
   },
 };

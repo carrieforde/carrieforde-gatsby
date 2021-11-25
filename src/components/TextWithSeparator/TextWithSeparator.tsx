@@ -1,15 +1,15 @@
-import React from 'react';
-import { TextWithSeparatorProps } from './TextWithSeparator.interface';
-import parse from 'html-react-parser';
+import React from "react";
+import { TextWithSeparatorProps } from "./TextWithSeparator.interface";
+import parse from "html-react-parser";
 import {
   textWithSeparator,
   textWithSeparator__separator,
-} from './TextWithSeparator.module.css';
+} from "./TextWithSeparator.module.css";
 
 const TextWithSeparator: React.FC<TextWithSeparatorProps> = ({
   text1,
   text2,
-  separator = '&#9656;',
+  separator = "&#9656;",
 }) => {
   return (
     <p className={textWithSeparator}>

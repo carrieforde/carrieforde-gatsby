@@ -1,9 +1,9 @@
-import { graphql, StaticQuery } from 'gatsby';
-import React from 'react';
-import Footer from 'components/Footer/Footer';
-import Header from 'components/Header';
-import { SiteProps } from './Site.interface';
-import { site, page } from './site.module.css';
+import { graphql, StaticQuery } from "gatsby";
+import React from "react";
+import Footer from "components/Footer/Footer";
+import Header from "components/Header";
+import { SiteProps } from "./Site.interface";
+import { site, page } from "./site.module.css";
 
 const Site: React.FC<SiteProps> = ({ children }) => (
   <StaticQuery

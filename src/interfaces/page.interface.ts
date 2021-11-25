@@ -1,6 +1,6 @@
-import { GatsbyImageProps } from 'gatsby-image';
-import { Edge } from './edge.interface';
-import { Node } from './node.interface';
+import { GatsbyImageProps } from "gatsby-image";
+import { Edge } from "./edge.interface";
+import { Node } from "./node.interface";
 
 export interface PageProps {
   data: {

@@ -1,4 +1,4 @@
-import { ListType } from 'entities/list-type.type';
+import { ListType } from "entities/list-type.type";
 
 export interface ListProps {
   type: ListType;

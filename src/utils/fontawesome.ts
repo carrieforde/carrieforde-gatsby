@@ -1,9 +1,9 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faCodepen,
   faGithub,
   faLinkedinIn,
-} from '@fortawesome/free-brands-svg-icons';
+} from "@fortawesome/free-brands-svg-icons";
 import {
   faChevronCircleLeft,
   faExclamationCircle,
@@ -11,7 +11,7 @@ import {
   faInfoCircle,
   faLightbulbExclamation,
   faPaperPlane,
-} from '@fortawesome/pro-light-svg-icons';
+} from "@fortawesome/pro-light-svg-icons";
 
 library.add(
   faInfoCircle,

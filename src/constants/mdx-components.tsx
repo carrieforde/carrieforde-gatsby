@@ -1,9 +1,9 @@
-import PageDescription from 'components/PageDescription/PageDescription';
-import CallOut from 'components/CallOut/CallOut';
-import GridList, { GridListItem } from 'components/GridList/GridList';
-import TextWithSeparator from 'components/TextWithSeparator/TextWithSeparator';
-import Heading from 'components/Heading/Heading';
-import Jobs from 'components/Jobs/Jobs';
+import PageDescription from "components/PageDescription/PageDescription";
+import CallOut from "components/CallOut/CallOut";
+import GridList, { GridListItem } from "components/GridList/GridList";
+import TextWithSeparator from "components/TextWithSeparator/TextWithSeparator";
+import Heading from "components/Heading/Heading";
+import Jobs from "components/Jobs/Jobs";
 
 export const MDX_COMPONENTS = {
   PageDescription,

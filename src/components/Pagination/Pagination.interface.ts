@@ -1,5 +1,5 @@
-import { Fields } from 'interfaces/fields.interface';
-import { Frontmatter } from 'interfaces/frontmatter.interface';
+import { Fields } from "interfaces/fields.interface";
+import { Frontmatter } from "interfaces/frontmatter.interface";
 
 export interface PaginationProps {
   previous?: {

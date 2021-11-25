@@ -1,5 +1,5 @@
 ---
-title: 'Alerts'
+title: "Alerts"
 ---
 
 <cf-alert>

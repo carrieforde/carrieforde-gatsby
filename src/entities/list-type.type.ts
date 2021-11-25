@@ -1,1 +1,1 @@
-export type ListType = 'BULLETED' | 'NUMBERED';
+export type ListType = "BULLETED" | "NUMBERED";

@@ -1,9 +1,9 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import Footer from './Footer';
+import React from "react";
+import { Story, Meta } from "@storybook/react";
+import Footer from "./Footer";
 
 export default {
-  title: 'Footer',
+  title: "Footer",
   component: Footer,
 } as Meta;
 

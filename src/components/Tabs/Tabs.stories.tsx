@@ -1,11 +1,11 @@
-import React from 'react';
-import Tabs from './Tabs';
-import { TabsProps } from './Tabs.interface';
-import { Story, Meta } from '@storybook/react';
-import Heading from 'components/Heading/Heading';
+import React from "react";
+import Tabs from "./Tabs";
+import { TabsProps } from "./Tabs.interface";
+import { Story, Meta } from "@storybook/react";
+import Heading from "components/Heading/Heading";
 
 export default {
-  title: 'Tabs',
+  title: "Tabs",
   component: Tabs,
 } as Meta;
 
@@ -14,10 +14,10 @@ const Template: Story<TabsProps> = (args) => <Tabs {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  ariaLabel: 'Experience',
+  ariaLabel: "Experience",
   tabItems: [
     {
-      title: 'FFN',
+      title: "FFN",
       content: (
         <>
           <Heading level="h3">Senior Software Engineer</Heading>
@@ -26,16 +26,16 @@ Default.args = {
       ),
     },
     {
-      title: 'WDS',
-      content: 'Some content',
+      title: "WDS",
+      content: "Some content",
     },
     {
-      title: 'MIGHTYminno',
-      content: 'Some content',
+      title: "MIGHTYminno",
+      content: "Some content",
     },
     {
-      title: 'Cisco',
-      content: 'Some content',
+      title: "Cisco",
+      content: "Some content",
     },
   ],
 };
