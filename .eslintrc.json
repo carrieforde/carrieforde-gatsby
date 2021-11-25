@@ -12,14 +12,19 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:prettier/recommended",
-    "prettier/react"
+    "plugin:prettier/recommended"
   ],
   "rules": {
     "react/prop-types": 0,
     "@typescript-eslint/no-var-requires": 1
   },
-  "plugins": ["react", "jsx-a11y", "react-hooks", "@typescript-eslint"],
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "react-hooks",
+    "@typescript-eslint",
+    "prettier"
+  ],
   "env": {
     "browser": true,
     "es6": true,

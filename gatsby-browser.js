@@ -5,9 +5,8 @@
  */
 
 // You can delete this file if you're not using it
-import './src/styles/settings.css';
-import './src/styles/themes.css';
-import './src/styles/global.css';
-import './src/styles/prismjs.css';
-// import 'prismjs/themes/prism-solarizedlight.css';
-import './src/utils/fontawesome';
+import "./src/styles/settings.css";
+import "./src/styles/themes.css";
+import "./src/styles/global.css";
+import "./src/styles/prismjs.css";
+import "./src/utils/fontawesome";

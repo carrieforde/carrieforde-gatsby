@@ -13,7 +13,7 @@ if (process.env.GATSBY_GA_ID) {
 // Add GTM.
 if (process.env.GATSBY_GTM_ID) {
   dynamicPlugins.push({
-    resolve: 'gatsby-plugin-google-tagmanager',
+    resolve: "gatsby-plugin-google-tagmanager",
     options: {
       id: process.env.GATSBY_GTM_ID,
     },
@@ -27,27 +27,27 @@ module.exports = {
     author: `@carrieforde`,
     socials: [
       {
-        label: 'Email',
-        value: 'mailto:carrie@carrieforde.com',
-        icon: ['fal', 'paper-plane'],
+        label: "Email",
+        value: "mailto:carrie@carrieforde.com",
+        icon: ["fal", "paper-plane"],
       },
       {
-        label: 'LinkedIn',
-        value: 'https://linkedin.com/in/carrieforde',
-        icon: ['fab', 'linkedin-in'],
+        label: "LinkedIn",
+        value: "https://linkedin.com/in/carrieforde",
+        icon: ["fab", "linkedin-in"],
       },
       {
-        label: 'Github',
-        value: 'https://github.com/carrieforde',
-        icon: ['fab', 'github'],
+        label: "Github",
+        value: "https://github.com/carrieforde",
+        icon: ["fab", "github"],
       },
       {
-        value: 'CodePen',
-        label: 'https://codepen.io/carrieforde',
-        icon: ['fab', 'codepen'],
+        value: "CodePen",
+        label: "https://codepen.io/carrieforde",
+        icon: ["fab", "codepen"],
       },
     ],
-    siteUrl: 'https://carrieforde.com',
+    siteUrl: "https://carrieforde.com",
   },
   plugins: [
     ...dynamicPlugins,
@@ -81,21 +81,21 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-mdx',
+      resolve: "gatsby-plugin-mdx",
       options: {
         extensions: [`.md`, `.mdx`],
         gatsbyRemarkPlugins: [
           {
-            resolve: 'gatsby-remark-images',
+            resolve: "gatsby-remark-images",
             options: {
               maxWidth: 640,
             },
           },
-          'gatsby-remark-autolink-headers',
+          "gatsby-remark-autolink-headers",
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              classPrefix: 'language-',
+              classPrefix: "language-",
               inlineCodeMarker: null,
               aliases: {},
               showLineNumbers: false,
@@ -119,9 +119,9 @@ module.exports = {
         icon: `src/images/carrie-forde-icon.png`, // This path is relative to the root of the site.
       },
     },
-    'gatsby-plugin-typescript',
+    "gatsby-plugin-typescript",
     {
-      resolve: 'gatsby-plugin-react-svg',
+      resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
           include: /icons/,
@@ -134,26 +134,7 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    {
-      resolve: `gatsby-plugin-postcss`,
-      options: {
-        postCssPlugins: [
-          require('postcss-preset-env')({
-            stage: 0,
-            browsers: 'last 2 versions',
-            autoprefixer: { grid: true },
-            importFrom: './src/styles/settings.css',
-          }),
-          require('postcss-unit-conversion')({
-            base: 18,
-            precision: 5,
-            toEM: ['letter-spacing', 'text-shadow'],
-            toREM: ['font-size', 'margin', 'padding', 'width', 'height'],
-          }),
-        ],
-      },
-    },
-
+    "gatsby-plugin-postcss",
     `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-feed`,
@@ -180,7 +161,7 @@ module.exports = {
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ 'content:encoded': edge.node.html }],
+                  custom_elements: [{ "content:encoded": edge.node.html }],
                 });
               });
             },
@@ -202,23 +183,23 @@ module.exports = {
                 }
               }
             `,
-            output: '/rss.xml',
-            title: 'Carrie Forde Blog RSS Feed',
+            output: "/rss.xml",
+            title: "Carrie Forde Blog RSS Feed",
             // optional configuration to insert feed reference in pages:
             // if `string` is used, it will be used to create RegExp and then test if pathname of
             // current page satisfied this regular expression;
             // if not provided or `undefined`, all pages will have feed reference inserted
-            match: '^/blog/',
+            match: "^/blog/",
           },
         ],
       },
     },
     {
-      resolve: 'gatsby-plugin-sitemap',
+      resolve: "gatsby-plugin-sitemap",
       options: {
-        excludes: ['/experience/*'],
+        excludes: ["/experience/*"],
       },
     },
-    'gatsby-plugin-robots-txt',
+    "gatsby-plugin-robots-txt",
   ],
 };
