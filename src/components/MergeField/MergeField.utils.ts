@@ -1,9 +1,7 @@
 import { get as _get } from "lodash";
 import { ExtractedMergeField } from "./MergeField.interface";
 
-export const MERGE_FIELD_REGEX = new RegExp(
-  /{{[\w.]+(\|[\w\s!@#$%^&*()-_=+[{|}\]\\;:'",<.>/?`~]+)?}}/g
-);
+export const MERGE_FIELD_REGEX = new RegExp(/{{[\w.]+(\|.+)?}}/g);
 
 export function searchContent(text: string): boolean {
   return text.search(MERGE_FIELD_REGEX) >= 0;
