@@ -1,8 +1,8 @@
-import React, { createContext, useMemo } from 'react';
+import React, { createContext, useMemo } from "react";
 import {
   MergeFieldContextProps,
   MergeFieldProviderProps,
-} from './MergeField.interface';
+} from "./MergeField.interface";
 
 const defaultMergeFieldContext = {};
 
@@ -10,7 +10,7 @@ export const MergeFieldContext = createContext<MergeFieldContextProps>(
   defaultMergeFieldContext
 );
 
-MergeFieldContext.displayName = 'MergeFieldContext';
+MergeFieldContext.displayName = "MergeFieldContext";
 
 const MergeFieldProvider: React.FC<MergeFieldProviderProps> = ({
   data,

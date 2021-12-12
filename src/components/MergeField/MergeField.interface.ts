@@ -1,5 +1,4 @@
-import { ReactNode } from 'react';
-import { KeyValue } from 'interfaces/KeyValue.type';
+import { ReactNode } from "react";
 
 export interface ExtractedMergeField {
   search: string;
@@ -7,10 +6,10 @@ export interface ExtractedMergeField {
   defaultValue?: string;
 }
 
-export type MergeFieldContextProps = KeyValue;
+export type MergeFieldContextProps = Record<string, any>;
 
 export interface MergeFieldProviderProps {
-  data: KeyValue;
+  data: Record<string, any>;
   children: ReactNode;
 }
 

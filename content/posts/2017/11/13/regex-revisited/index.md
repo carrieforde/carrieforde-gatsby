@@ -1,7 +1,7 @@
 ---
-title: 'RegEx Revisited'
+title: "RegEx Revisited"
 date: 2017-11-13
-category: 'Development'
+category: "Development"
 ---
 
 In the past week or so, I delved deeply into the terrifying world of regular expressions (regex). It turns out that regex isn’t that scary, and if you play with it enough, it is actually kinda…fun? My first foray into regex was when I was working through How to Learn JavaScript Properly. It was a great primer, but what I learned recently at Bov Academy has taken my understanding of regex to an entirely new, terrifying level.
@@ -111,7 +111,8 @@ This string group starts with the double quote, then we hit this guy `[^"]`, whi
 Checking for strings as values is actually the most complicated part of the value regex because we need to specify what’s allowable within the string. Checking for the remaining valid values is actually relatively easy.
 
 ```js
-var pattern = /^{\s*(("\w+"):\s*(("[^"][\w\s!@#\$%^&amp;_()\-+={}[\];:',.&lt;&gt;?/]+")|\d+|true|false|null|undefined|{[\S\s]_}|\[[\S\s]_]))_/;
+var pattern =
+  /^{\s*(("\w+"):\s*(("[^"][\w\s!@#\$%^&amp;_()\-+={}[\];:',.&lt;&gt;?/]+")|\d+|true|false|null|undefined|{[\S\s]_}|\[[\S\s]_]))_/;
 ```
 
 That looks gnarly, but let’s break it down starting with `|\d+`. Whenever we encounter `\d` in regex, it means that we’re looking for any digit between 0 and 9. And you’ll remember when we add a `+`, it means we’re looking for one or more of a character group. So in this case, we’re looking for one or more digits. The pipe (`|`) that proceeds the `\d` is very similar to the `||` that we might see in JavaScript or PHP. Basically it says we want to match our string OR digits.
@@ -129,7 +130,8 @@ We’ve now defined parameters for keys and all allowable values. But if you plu
 What we also notice is that the regex stops at the comma. It’s almost as simple as tacking on a comma at the end, but not quite. We need to add an opening parenthesis just after the opening curly brace for the entire regex, and we’ll add another closing parenthesis before the closing `/`. The comma will go between the final two closing parentheses. We’ll also add our handy zero or more `*` to allow for multiple key-value pairs. Now our regex is looking like this:
 
 ```js
-var pattern = /^{(\s*(("\w+"):\s*(("[^"][\w\s!@#\$%^&_()\-+={}[\];:',.<>?/]+")|\d+|true|false|null|undefined|{[\S\s]_}|\[[\S\s]_])),)_/;
+var pattern =
+  /^{(\s*(("\w+"):\s*(("[^"][\w\s!@#\$%^&_()\-+={}[\];:',.<>?/]+")|\d+|true|false|null|undefined|{[\S\s]_}|\[[\S\s]_])),)_/;
 ```
 
 And now we have all but the last key-value pair and closing curly brace highlighted.
@@ -141,7 +143,8 @@ And now we have all but the last key-value pair and closing curly brace highligh
 Capturing that last key-value pair isn’t too complicated. We can simply copy the key-value portion of the regex and paste that after the final `_` in our existing regex. But this time, we need to remove the comma and that final `_`.
 
 ```js
-var pattern = /^{(\s*(("\w+"):\s*(("[^"][\w\s!@#$%^&*()\-+={}[\];:',.<>?/]+")|\d+|true|false|null|undefined|{[\S\s]*}|\[[\S\s]*])),)*\s*(("\w+"):\s*(("[^"][\w\s!@#$%^&amp;_()\-+={}[\];:',.<>?/]+")|\d+|true|false|null|undefined|{[\S\s]_}|\[[\S\s]_])\s_)}$/;
+var pattern =
+  /^{(\s*(("\w+"):\s*(("[^"][\w\s!@#$%^&*()\-+={}[\];:',.<>?/]+")|\d+|true|false|null|undefined|{[\S\s]*}|\[[\S\s]*])),)*\s*(("\w+"):\s*(("[^"][\w\s!@#$%^&amp;_()\-+={}[\];:',.<>?/]+")|\d+|true|false|null|undefined|{[\S\s]_}|\[[\S\s]_])\s_)}$/;
 ```
 
 I have also added the check for our closing curly brace, `}$`. The `$` indicates that the end of the string must be the curly brace. You may also notice that I added a `\s*` before the closing parenthesis to allow for any amount of whitespace before we hit the end of the JSON object.
@@ -192,7 +195,7 @@ I used the match method to store the links as an array to my links variable. The
 
 ```js
 // Pull out the external links & email addresses.
-links.forEach(function(link) {
+links.forEach(function (link) {
   var address = link.match(/((https\*:\/\/)[\w=?:/.@-]+)|(mailto:[\w@.-]+)/gi),
     text = link.match(/(?!>)([\w\s.,;:-]+)(?=<\/a>)/gi);
 
@@ -205,7 +208,7 @@ links.forEach(function(link) {
   if (address[0].match(/((https*:\/\/)[\w=?:/.@-]+)/gi)) {
     var obj = {
       url: address[0],
-      text: text[0]
+      text: text[0],
     };
 
     harvested.links.push(obj);

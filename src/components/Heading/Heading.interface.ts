@@ -1,4 +1,4 @@
-import { HeadingLevel } from 'entities/heading-level.type';
+import { HeadingLevel } from "entities/heading-level.type";
 
 export interface HeadingProps {
   level: HeadingLevel;

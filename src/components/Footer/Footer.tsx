@@ -1,9 +1,9 @@
-import { Link } from 'gatsby';
-import React from 'react';
-import SocialNav from 'components/SocialNav/SocialNav';
-import { footer, bullet } from './footer.module.css';
-import { noBackgroundLink } from 'styles/utilities.module.css';
-import { gtm } from 'utils/analytics';
+import { Link } from "gatsby";
+import React from "react";
+import SocialNav from "components/SocialNav/SocialNav";
+import { footer, bullet } from "./footer.module.css";
+import { noBackgroundLink } from "styles/utilities.module.css";
+import { gtm } from "utils/analytics";
 
 const Footer: React.VFC = () => (
   <footer className={footer}>
@@ -12,7 +12,7 @@ const Footer: React.VFC = () => (
         to="/privacy"
         className={noBackgroundLink}
         onClick={() =>
-          gtm({ event: 'click', category: 'Privacy', label: 'Privacy' })
+          gtm({ event: "click", category: "Privacy", label: "Privacy" })
         }
       >
         Privacy

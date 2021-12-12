@@ -1,42 +1,42 @@
 :root {
-	--blockBackground: var(--color-neutral-1);
-	--baseColor: var(--color-neutral-9);
-	--borderColor: var(--color-neutral-3);
+  --blockBackground: var(--color-neutral-1);
+  --baseColor: var(--color-neutral-9);
+  --borderColor: var(--color-neutral-3);
 
-	--commentColor: var(--color-neutral-4);
-	--punctuationColor: var(--color-neutral-6);
-	--propertyColor: var(--color-primary-8);
-	--selectorColor: var(--color-secondary-7);
-	--operatorColor: var(--color-warning-9);
-	--variableColor: var(--color-info-9);
-	--functionColor: var(--color-danger-9);
-	--keywordColor: var(--color-warning-7);
-	--selectedColor: #b3d4fc;
+  --commentColor: var(--color-neutral-4);
+  --punctuationColor: var(--color-neutral-6);
+  --propertyColor: var(--color-primary-8);
+  --selectorColor: var(--color-secondary-7);
+  --operatorColor: var(--color-warning-9);
+  --variableColor: var(--color-info-9);
+  --functionColor: var(--color-danger-9);
+  --keywordColor: var(--color-warning-7);
+  --selectedColor: #b3d4fc;
 
-	--inlineCodeColor: var(--blockBackground);
-	--inlineCodeBackground: var(--baseColor);
+  --inlineCodeColor: var(--blockBackground);
+  --inlineCodeBackground: var(--baseColor);
 
-	--highlightBackground: #f7ebc6;
-	--highlightAccent: #f7d87c;
+  --highlightBackground: #f7ebc6;
+  --highlightAccent: #f7d87c;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--blockBackground: var(--color-neutral-9);
-		--baseColor: var(--color-neutral-2);
-		--borderColor: var(--color-neutral-8);
-		--commentColor: var(--color-neutral-5);
-		--punctuationColor: var(--color-neutral-3);
-		--propertyColor: var(--color-primary-3);
-		--selectorColor: var(--color-secondary-4);
-		--operatorColor: var(--color-warning-6);
-		--variableColor: var(--color-info-5);
-		--functionColor: var(--color-danger-3);
-		--keywordColor: var(--color-warning-5);
-		--selectedColor: #b3d4fc;
-		--inlineCodeColor: var(--blockBackground);
-		--inlineCodeBackground: var(--baseColor);
-	}
+  :root {
+    --blockBackground: var(--color-neutral-9);
+    --baseColor: var(--color-neutral-2);
+    --borderColor: var(--color-neutral-8);
+    --commentColor: var(--color-neutral-5);
+    --punctuationColor: var(--color-neutral-3);
+    --propertyColor: var(--color-primary-3);
+    --selectorColor: var(--color-secondary-4);
+    --operatorColor: var(--color-warning-6);
+    --variableColor: var(--color-info-5);
+    --functionColor: var(--color-danger-3);
+    --keywordColor: var(--color-warning-5);
+    --selectedColor: #b3d4fc;
+    --inlineCodeColor: var(--blockBackground);
+    --inlineCodeBackground: var(--baseColor);
+  }
 }
 
 code,
@@ -45,61 +45,54 @@ pre,
 samp,
 tt,
 var {
-	background-color: var(--blockBackground);
-	border-radius: 3px;
-	color: var(--baseColor); /* base00 */
-	font-family: var(--font-family-monospace);
-	font-size: 18px;
-	hyphens: none;
-	line-height: 1.5;
-	tab-size: 4;
-	text-align: left;
-	word-break: normal;
-	word-spacing: normal;
-	word-wrap: normal;
+  background-color: var(--blockBackground);
+  border-radius: 3px;
+  color: var(--baseColor); /* base00 */
+  font-family: var(--font-family-monospace);
+  font-size: 18px;
+  hyphens: none;
+  line-height: 1.5;
+  tab-size: 4;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
 }
 
 pre {
-	border: 1px solid var(--borderColor);
-	margin-bottom: var(--size-6);
-	margin-top: var(--size-6);
-	overflow-x: auto;
-	padding: var(--size-4);
+  border: 1px solid var(--borderColor);
+  margin-bottom: var(--size-6);
+  margin-top: var(--size-6);
+  overflow-x: auto;
+  padding: var(--size-4);
 }
 
-pre code[class^='language-'] {
-	font-size: var(--font-size-2);
-	padding: 0;
-	white-space: pre;
+pre code[class^="language-"] {
+  font-size: var(--font-size-2);
+  padding: 0;
+  white-space: pre;
 }
 
-pre[class*='language-']::-moz-selection,
-pre[class*='language-'] ::-moz-selection,
-code[class*='language-']::-moz-selection,
-code[class*='language-'] ::-moz-selection {
-	background: var(--prismjs-selection); /* base02 */
-}
-
-pre[class*='language-']::selection,
-pre[class*='language-'] ::selection,
-code[class*='language-']::selection,
-code[class*='language-'] ::selection {
-	background: var(--prismjs-selection); /* base02 */
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  background: var(--prismjs-selection); /* base02 */
 }
 
 .namespace {
-	opacity: 0.7;
+  opacity: 0.7;
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: var(--commentColor);
+  color: var(--commentColor);
 }
 
 .token.punctuation {
-	color: var(--punctuationColor);
+  color: var(--punctuationColor);
 }
 
 .token.property,
@@ -109,7 +102,7 @@ code[class*='language-'] ::selection {
 .token.constant,
 .token.symbol,
 .token.deleted {
-	color: var(--propertyColor);
+  color: var(--propertyColor);
 }
 
 .token.selector,
@@ -118,7 +111,7 @@ code[class*='language-'] ::selection {
 .token.char,
 .token.builtin,
 .token.inserted {
-	color: var(--selectorColor);
+  color: var(--selectorColor);
 }
 
 .token.operator,
@@ -126,32 +119,34 @@ code[class*='language-'] ::selection {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-	color: var(--operatorColor);
+  color: var(--operatorColor);
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-	color: var(--keywordColor);
+  color: var(--keywordColor);
 }
 
 .token.function {
-	color: var(--functionColor);
+  color: var(--functionColor);
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-	color: var(--variableColor);
+  color: var(--variableColor);
 }
 
 .token.important,
 .token.bold {
-	font-weight: bold;
+  font-weight: bold;
 }
+
 .token.italic {
-	font-style: italic;
+  font-style: italic;
 }
+
 .token.entity {
-	cursor: help;
+  cursor: help;
 }

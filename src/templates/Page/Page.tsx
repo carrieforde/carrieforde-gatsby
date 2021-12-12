@@ -1,13 +1,12 @@
-import { MDXProvider } from '@mdx-js/react';
-import 'cf-components-alert';
-import PageHeader from 'components/PageHeader/PageHeader';
-import Seo from 'components/Seo/Seo';
-import Site from 'components/Site';
-import { MDX_COMPONENTS } from 'constants/mdx-components';
-import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { PageProps } from 'interfaces/page.interface';
-import React from 'react';
+import { MDXProvider } from "@mdx-js/react";
+import PageHeader from "components/PageHeader/PageHeader";
+import Seo from "components/Seo/Seo";
+import Site from "components/Site";
+import { MDX_COMPONENTS } from "constants/mdx-components";
+import { graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import { PageProps } from "interfaces/page.interface";
+import React from "react";
 
 const Page: React.FC<PageProps> = ({ data }) => {
   const page = data.mdx;

@@ -1,14 +1,14 @@
-import cn from 'classnames';
-import { kebabCase } from 'lodash';
-import React, { useCallback, useMemo, useState } from 'react';
-import { TabButtonProps, TabPanelProps, TabsProps } from './Tabs.interface';
+import cn from "classnames";
+import { kebabCase } from "lodash";
+import React, { useCallback, useMemo, useState } from "react";
+import { TabButtonProps, TabPanelProps, TabsProps } from "./Tabs.interface";
 import {
   tabButton,
   tabButtonIsActive,
   tabPanel,
   tabs,
   tabsList,
-} from './Tabs.module.css';
+} from "./Tabs.module.css";
 
 const Tabs: React.FC<TabsProps> = ({
   tabItems,

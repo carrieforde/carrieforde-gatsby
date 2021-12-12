@@ -5,14 +5,14 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
-import Helmet from 'react-helmet';
-import { SeoProps } from './Seo.interface';
+import { graphql, useStaticQuery } from "gatsby";
+import React from "react";
+import Helmet from "react-helmet";
+import { SeoProps } from "./Seo.interface";
 
 const Seo: React.FC<SeoProps> = ({
-  description = '',
-  lang = 'en',
+  description = "",
+  lang = "en",
   meta = [],
   title,
 }) => {

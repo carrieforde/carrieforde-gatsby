@@ -1,11 +1,11 @@
-import '../src/styles/settings.css';
-import '../src/styles/themes.css';
-import '../src/styles/global.css';
-import '../src/styles/prismjs.css';
-import '../src/utils/fontawesome';
+import "../src/styles/settings.css";
+import "../src/styles/themes.css";
+import "../src/styles/global.css";
+import "../src/styles/prismjs.css";
+import "../src/utils/fontawesome";
 
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  actions: { argTypesRegex: "^on[A-Z].*" },
 };
 
 global.___loader = {
@@ -13,8 +13,8 @@ global.___loader = {
   hovering: () => {},
 };
 
-global.__BASE_PATH__ = '/';
+global.__BASE_PATH__ = "/";
 
 window.___navigate = (pathname) => {
-  action('NavigateTo:')(pathname);
+  action("NavigateTo:")(pathname);
 };

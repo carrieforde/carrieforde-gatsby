@@ -1,16 +1,16 @@
-import { render } from '@testing-library/react';
-import React from 'react';
-import { BulletedList, NumberedList } from './List.stories';
+import { render } from "@testing-library/react";
+import React from "react";
+import { BulletedList, NumberedList } from "./List.stories";
 
 function getListComponents(container: HTMLElement) {
   return {
-    bulleted: container.querySelector('ul'),
-    numbered: container.querySelector('ol'),
+    bulleted: container.querySelector("ul"),
+    numbered: container.querySelector("ol"),
   };
 }
 
-describe('List', () => {
-  it('should render a bulleted list', () => {
+describe("List", () => {
+  it("should render a bulleted list", () => {
     const { container } = render(<BulletedList {...BulletedList.args} />);
     const { bulleted, numbered } = getListComponents(container);
 
@@ -19,7 +19,7 @@ describe('List', () => {
     expect(numbered).not.toBeInTheDocument();
   });
 
-  it('should render a numbered list', () => {
+  it("should render a numbered list", () => {
     const { container } = render(<NumberedList {...NumberedList.args} />);
     const { bulleted, numbered } = getListComponents(container);
 

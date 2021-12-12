@@ -1,11 +1,11 @@
-import React from 'react';
-import { TimeStampProps } from './TimeStamp.interface';
+import React from "react";
+import { TimeStampProps } from "./TimeStamp.interface";
 import {
   timeStamp,
   timeStampIsSmall,
   timeStampUpdated,
-} from './timeStamp.module.css';
-import cn from 'classnames';
+} from "./timeStamp.module.css";
+import cn from "classnames";
 
 const TimeStamp: React.FC<TimeStampProps> = ({ date, isSmall, updated }) => {
   const dateTime = new Date(date).toISOString();

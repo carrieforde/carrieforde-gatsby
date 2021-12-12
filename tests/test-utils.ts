@@ -1,2 +1,2 @@
-import '@testing-library/jest-dom';
-import '../src/utils/fontawesome';
+import "@testing-library/jest-dom";
+import "../src/utils/fontawesome";

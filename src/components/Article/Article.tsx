@@ -1,10 +1,10 @@
-import Category from 'components/Category/Category';
-import Heading from 'components/Heading/Heading';
-import TimeStamp from 'components/TimeStamp/TimeStamp';
-import { Link } from 'gatsby';
-import parse from 'html-react-parser';
-import React from 'react';
-import { ArticleProps } from './Article.interface';
+import Category from "components/Category/Category";
+import Heading from "components/Heading/Heading";
+import TimeStamp from "components/TimeStamp/TimeStamp";
+import { Link } from "gatsby";
+import parse from "html-react-parser";
+import React from "react";
+import { ArticleProps } from "./Article.interface";
 import {
   article,
   articleDescription,
@@ -12,7 +12,7 @@ import {
   articleSeparator,
   articleTimeToRead,
   articleTitle,
-} from './article.module.css';
+} from "./article.module.css";
 
 const Article: React.FC<ArticleProps> = ({
   excerpt,

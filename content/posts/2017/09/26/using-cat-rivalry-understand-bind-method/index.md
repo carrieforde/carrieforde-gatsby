@@ -1,7 +1,7 @@
 ---
-title: 'Using cat rivalry to understand the <code>bind()</code> method'
+title: "Using cat rivalry to understand the <code>bind()</code> method"
 date: 2017-09-26
-category: 'JavaScript'
+category: "JavaScript"
 ---
 
 A few weeks ago, I used the rivalry between my girl cats, Whitney and Minnie, to solidify my understanding of JavaScript’s `bind()` method. I thought I’d share it because let’s be honest, the MDN explanation of `bind()` is confusing:
@@ -13,24 +13,24 @@ A few weeks ago, I used the rivalry between my girl cats, Whitney and Minnie, to
 The JavaScript `bind()` method allows developers to rebind or “rescope” the `this` keyword. When working with objects, and functions within objects, `this` refers to the object within which we are working. For example, in the the code below, `this` within the `getKittyInfo()` method refers to the `kitten` object:
 
 ```js
-var nemesis = 'dog';
+var nemesis = "dog";
 var kitten = {
-  name: 'Whitney',
+  name: "Whitney",
   age: 11,
-  color: 'orange',
-  markings: 'torbie',
-  nemesis: 'Minnie',
-  getKittyInfo: function() {
+  color: "orange",
+  markings: "torbie",
+  nemesis: "Minnie",
+  getKittyInfo: function () {
     console.log(
       this.name +
-        ' is an ' +
+        " is an " +
         this.age +
-        ' year-old ' +
+        " year-old " +
         this.color +
-        ' ' +
+        " " +
         this.markings
     );
-  }
+  },
 };
 kitten.getKittyInfo();
 ```
@@ -48,28 +48,28 @@ However, whenever a function is _inside_ another function, `this` is bound to th
 So, when we add the `archNemesis()` within `getKittyInfo()`, our `archNemesis()`'s `this` is instead bound to the global object (i.e. `nemisis`) instead of our kitten object:
 
 ```js
-var nemesis = 'dog';
+var nemesis = "dog";
 var kitten = {
-  name: 'Whitney',
+  name: "Whitney",
   age: 11,
-  color: 'orange',
-  markings: 'torbie',
-  nemesis: 'Her younger sister, Minnie',
-  getKittyInfo: function() {
+  color: "orange",
+  markings: "torbie",
+  nemesis: "Her younger sister, Minnie",
+  getKittyInfo: function () {
     console.log(
       this.name +
-        ' is an ' +
+        " is an " +
         this.age +
-        ' year-old ' +
+        " year-old " +
         this.color +
-        ' ' +
+        " " +
         this.markings
     );
     function archNemesis() {
-      console.log('Arch nemesis: ' + this.nemesis);
+      console.log("Arch nemesis: " + this.nemesis);
     }
     archNemesis();
-  }
+  },
 };
 kitten.getKittyInfo();
 ```
@@ -91,29 +91,29 @@ This tells our function that we’d prefer to use our `kitten` object’s this i
 In the final example below, you can see how this was done within the kitten object’s `archNemesis()` function:
 
 ```js
-var nemesis = 'dog';
+var nemesis = "dog";
 var kitten = {
-  name: 'Whitney',
+  name: "Whitney",
   age: 11,
-  color: 'orange',
-  markings: 'torbie',
-  nemesis: 'Her younger sister, Minnie',
-  getKittyInfo: function() {
+  color: "orange",
+  markings: "torbie",
+  nemesis: "Her younger sister, Minnie",
+  getKittyInfo: function () {
     console.log(
       this.name +
-        ' is an ' +
+        " is an " +
         this.age +
-        ' year-old ' +
+        " year-old " +
         this.color +
-        ' ' +
+        " " +
         this.markings
     );
     function archNemesis() {
-      console.log('Arch nemesis: ' + this.nemesis);
+      console.log("Arch nemesis: " + this.nemesis);
     }
     var boundNemesis = archNemesis.bind(this);
     boundNemesis();
-  }
+  },
 };
 kitten.getKittyInfo();
 ```

@@ -1,6 +1,6 @@
-import parse from 'html-react-parser';
-import React, { useMemo } from 'react';
-import { HeadingProps } from './Heading.interface';
+import parse from "html-react-parser";
+import React, { useMemo } from "react";
+import { HeadingProps } from "./Heading.interface";
 
 const Heading: React.FC<HeadingProps> = ({
   level,
@@ -16,7 +16,7 @@ const Heading: React.FC<HeadingProps> = ({
     []
   );
   const content = useMemo(
-    () => (typeof children === 'string' ? parse(children) : children),
+    () => (typeof children === "string" ? parse(children) : children),
     []
   );
 

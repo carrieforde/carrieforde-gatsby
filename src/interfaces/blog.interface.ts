@@ -1,4 +1,4 @@
-import { Edge } from './edge.interface';
+import { Edge } from "./edge.interface";
 
 export interface BlogProps {
   data: {

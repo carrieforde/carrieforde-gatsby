@@ -1,9 +1,9 @@
-import React from 'react';
-import { TableOfContentsListProps } from './TableOfContentsList.interface';
+import React from "react";
+import { TableOfContentsListProps } from "./TableOfContentsList.interface";
 import {
   tableOfContentsList,
   toclLink,
-} from './TableOfContentsList.module.css';
+} from "./TableOfContentsList.module.css";
 
 const TableOfContentsList: React.FC<TableOfContentsListProps> = ({
   listItems,

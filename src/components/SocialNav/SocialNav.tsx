@@ -1,13 +1,13 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { SocialProps } from 'entities/socials.interface';
-import withSocials from 'HOC/withSocials/withSocials';
-import { SocialNavProps } from './SocialNav.interface';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
+import { SocialProps } from "entities/socials.interface";
+import withSocials from "HOC/withSocials/withSocials";
+import { SocialNavProps } from "./SocialNav.interface";
 import {
   socialNav,
   socialNavItem,
   socialNavLabel,
-} from './socialNav.module.css';
+} from "./socialNav.module.css";
 
 const SocialNav: React.FC<SocialNavProps> = ({ socials }) => {
   return (

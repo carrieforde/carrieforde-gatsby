@@ -1,9 +1,9 @@
-const path = require('path');
-const { createFilePath } = require('gatsby-source-filesystem');
+const path = require("path");
+const { createFilePath } = require("gatsby-source-filesystem");
 
-const slugify = (slug) => slug.replace(/\s/g, '-').toLowerCase();
+const slugify = (slug) => slug.replace(/\s/g, "-").toLowerCase();
 const getPostSlug = (slug) => {
-  const splitSlug = slug.split('/');
+  const splitSlug = slug.split("/");
   return `/${splitSlug[splitSlug.length - 1]}/`;
 };
 
@@ -16,7 +16,7 @@ const getPostSlug = (slug) => {
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === 'Mdx') {
+  if (node.internal.type === "Mdx") {
     const slug = createFilePath({
       node,
       getNode,
@@ -26,12 +26,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
     createNodeField({
       node,
-      name: 'slug',
+      name: "slug",
       value: getPostSlug(slug),
     });
   }
 
-  if (node.internal.type === 'allMdx') {
+  if (node.internal.type === "allMdx") {
     const category = createFilePath({
       node,
       getNode,
@@ -40,7 +40,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
     createNodeField({
       node,
-      name: 'category',
+      name: "category",
       value: category,
     });
   }
@@ -105,7 +105,7 @@ exports.createPages = async ({ graphql, actions }) => {
   posts.edges.forEach((post) => {
     createPage({
       path: post.node.fields.slug,
-      component: path.resolve('./src/templates/Post/Post.tsx'),
+      component: path.resolve("./src/templates/Post/Post.tsx"),
       context: {
         slug: post.node.fields.slug,
         previous: post.previous ? post.previous : null,
@@ -116,10 +116,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
   pages.edges.forEach((page) => {
     createPage({
-      path: page.node.fields.slug.includes('home')
-        ? '/'
+      path: page.node.fields.slug.includes("home")
+        ? "/"
         : page.node.fields.slug,
-      component: path.resolve('./src/templates/Page/Page.tsx'),
+      component: path.resolve("./src/templates/Page/Page.tsx"),
       context: {
         slug: page.node.fields.slug,
       },
@@ -129,7 +129,7 @@ exports.createPages = async ({ graphql, actions }) => {
   categories.group.forEach((category) => {
     createPage({
       path: `category/${slugify(category.fieldValue)}`,
-      component: path.resolve('./src/templates/Category/Category.tsx'),
+      component: path.resolve("./src/templates/Category/Category.tsx"),
       context: {
         category: category.fieldValue,
       },
@@ -139,10 +139,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
 // Fix polyfill for webcomponents.
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  if (stage === 'build-html') {
+  if (stage === "build-html") {
     actions.setWebpackConfig({
       resolve: {
-        modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+        modules: [path.resolve(__dirname, "src"), "node_modules"],
       },
       module: {
         rules: [
@@ -160,7 +160,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   } else {
     actions.setWebpackConfig({
       resolve: {
-        modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+        modules: [path.resolve(__dirname, "src"), "node_modules"],
       },
     });
   }

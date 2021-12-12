@@ -1,15 +1,15 @@
 ---
-title: 'How to build an interactive web component with LitElement'
+title: "How to build an interactive web component with LitElement"
 date: 2020-03-28
-category: 'JavaScript'
+category: "JavaScript"
 showToc: true
 ---
 
 <cf-alert type="info">
-  You can find the{' '}
+  You can find the{" "}
   <a href="https://github.com/alcatraz-components/accordion">
     source code for the accordion web component
-  </a>{' '}
+  </a>{" "}
   on Github.
 </cf-alert>
 
@@ -78,7 +78,7 @@ Let's start by simply outputting &ldquo;Hello World&rdquo;. Add the following co
 
 ```js
 // index.js
-import { LitElement, html } from 'lit-element';
+import { LitElement, html } from "lit-element";
 
 class MyAccordion extends LitElement {
   render() {
@@ -86,7 +86,7 @@ class MyAccordion extends LitElement {
   }
 }
 
-customElements.define('my-accordion', MyAccordion);
+customElements.define("my-accordion", MyAccordion);
 ```
 
 The `render()` method returns our component's HTML template. The `html` function is simply a wrapper for creating the template. `customElements.define()` allows us to define a name for our web component, and associate the extended `LitElement` class to this tag.
@@ -126,7 +126,7 @@ First, we'll update the `render()` method and replace `Hello World 🌍` with a 
 
 ```js
 // index.js
-import { LitElement, html } from 'lit-element';
+import { LitElement, html } from "lit-element";
 
 class MyAccordion extends LitElement {
   render() {
@@ -134,7 +134,7 @@ class MyAccordion extends LitElement {
   }
 }
 
-customElements.define('my-accordion', MyAccordion);
+customElements.define("my-accordion", MyAccordion);
 ```
 
 A `slot` is like a placeholder for other content in a component. In this case, we've left our `slot` unnamed, but you can name slots to have specific areas for your component's content. At this point, this is all we need the accordion file to do. We'll use this component as a wrapper for our &ldquo;panels&rdquo;, and actually output our content in a separate web component.
@@ -142,7 +142,7 @@ A `slot` is like a placeholder for other content in a component. In this case, w
 Let's go ahead and create a new JS file called `panel.js`. Following the [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/) for accordions, we'll do our best to ensure our panel template uses semantic markup and ARIA attributes appropriately.
 
 ```js
-import { LitElement, html } from 'lit-element';
+import { LitElement, html } from "lit-element";
 
 class MyAccordionPanel extends LitElement {
   render() {
@@ -171,13 +171,13 @@ class MyAccordionPanel extends LitElement {
   }
 }
 
-customElements.define('my-accordion-panel', MyAccordionPanel);
+customElements.define("my-accordion-panel", MyAccordionPanel);
 ```
 
 We can quickly test the panel behaves as expected. First, add the following line to `index.js`:
 
 ```js
-import './panel';
+import "./panel";
 ```
 
 Then add an instance of the panel inside your `my-accordion` element in `index.html`:
@@ -196,13 +196,13 @@ Now if we refresh the browser, we should see our updated web component with the 
 This is a good start, but we want to allow users to add their own content to `my-accordion-panel`. The easiest change to make the component more flexible is to replace the content within the `div` with a `slot`. Next, we'll introduce properties to handle the button text and panel state.
 
 ```js
-import { LitElement, html } from 'lit-element';
+import { LitElement, html } from "lit-element";
 
 class MyAccordionPanel extends LitElement {
   constructor() {
     super();
 
-    this.label = '';
+    this.label = "";
     this.expanded = false;
   }
 
@@ -218,7 +218,7 @@ class MyAccordionPanel extends LitElement {
   }
 
   kebabCase(string) {
-    return string.replace(/\s/g, '-').toLowerCase();
+    return string.replace(/\s/g, "-").toLowerCase();
   }
 
   render() {
@@ -246,7 +246,7 @@ class MyAccordionPanel extends LitElement {
   }
 }
 
-customElements.define('my-accordion-panel', MyAccordionPanel);
+customElements.define("my-accordion-panel", MyAccordionPanel);
 ```
 
 The first thing we're doing is setting up the class `constructor`. Because the panel class extends LitElement, we need to call `super()`, then we can add and set default values for the properties we want to use: `label` and `expanded`.
@@ -298,8 +298,8 @@ The basic mechanics of the accordion are fine, but it doesn't look pretty, so in
 We'll start our styles by adding a border around `my-accordion`. To do this, we'll add a `styles()` getter to the `MyAccordion` class:
 
 ```js
-import { LitElement, html, css } from 'lit-element';
-import './panel';
+import { LitElement, html, css } from "lit-element";
+import "./panel";
 
 class MyAccordion extends LitElement {
   static get styles() {
@@ -316,7 +316,7 @@ class MyAccordion extends LitElement {
   }
 }
 
-customElements.define('my-accordion', MyAccordion);
+customElements.define("my-accordion", MyAccordion);
 ```
 
 We use `:host` here to target the _host_ (i.e. container) of the [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM). The shadow DOM here being the contents of our component's HTML template. By default, a host does not have any properties, so in order to get the `border` to display properly, `display: block` needs to be added.
@@ -358,7 +358,7 @@ class MyAccordionPanel extends LitElement {
   /* ... */
 }
 
-customElements.define('my-accordion-panel', MyAccordionPanel);
+customElements.define("my-accordion-panel", MyAccordionPanel);
 ```
 
 It might be alarming to see no classes used in the styles, but the neat thing about web components and the shadow DOM is that we can use element selectors in our styles with no fear of them being overwritten by styles in our application.
@@ -384,7 +384,7 @@ class MyAccordion extends LitElement {
   /* ... */
 }
 
-customElements.define('my-accordion', MyAccordion);
+customElements.define("my-accordion", MyAccordion);
 ```
 
 To use CSS custom properties as values in your CSS, it must be wrapped in `var()`, which accepts two parameters:
@@ -443,7 +443,7 @@ class MyAccordionPanel extends LitElement {
   /* ... */
 }
 
-customElements.define('my-accordion-panel', MyAccordionPanel);
+customElements.define("my-accordion-panel", MyAccordionPanel);
 ```
 
 Now that our accordion is fairly customizable, let's refactor things a bit to make it more accessibility friendly.
@@ -475,7 +475,7 @@ class MyAccordion extends LitElement {
   /* ... */
 }
 
-customElements.define('my-accordion', MyAccordion);
+customElements.define("my-accordion", MyAccordion);
 ```
 
 So the first thing we'll need is a list of all the panels (`this.panels`) that belong to the `MyAccordion`. We'll also set a flag (`this.multiPanel`) to determine whether we'll allow one panel to be open at a time, or multiple panels to be open at once. Finally, we have a flag to help us determine whether the component has been initialized (`this.initialized`). Since this is truly a flag and not a property of the web component, it is not part of the `properties()` getter.
@@ -490,9 +490,9 @@ class MyAccordion extends LitElement {
   shouldUpdate(changedProperties) {
     if (!this.initialized) {
       this.panels = Array.from(this.children);
-      this.panels.map((panel) => panel.setAttribute('tabIndex', '0'));
-      this.addEventListener('click', this.handleClick);
-      this.addEventListener('keyup', this.handleKeyup);
+      this.panels.map((panel) => panel.setAttribute("tabIndex", "0"));
+      this.addEventListener("click", this.handleClick);
+      this.addEventListener("keyup", this.handleKeyup);
       this.initialized = true;
     }
 
@@ -506,7 +506,7 @@ class MyAccordion extends LitElement {
   /* ... */
 }
 
-customElements.define('my-accordion', MyAccordion);
+customElements.define("my-accordion", MyAccordion);
 ```
 
 We're doing a few things here to instantiate our component:
@@ -525,7 +525,7 @@ class MyAccordionPanel extends LitElement {
   constructor() {
     super();
 
-    this.label = '';
+    this.label = "";
     this.expanded = false;
   }
 
@@ -564,7 +564,7 @@ class MyAccordionPanel extends LitElement {
   }
 
   kebabCase(string) {
-    return string.replace(/\s/g, '-').toLowerCase();
+    return string.replace(/\s/g, "-").toLowerCase();
   }
 
   render() {
@@ -591,7 +591,7 @@ class MyAccordionPanel extends LitElement {
   }
 }
 
-customElements.define('my-accordion-panel', MyAccordionPanel);
+customElements.define("my-accordion-panel", MyAccordionPanel);
 ```
 
 In the code above, I've removed the `exapand()` method, and removed the `@click` that called it from the `button`. Now if you try interacting with `my-accordion` in the browser, nothing should happen. Let's focus on reimplementing this functionality in the `handleClick()` method on `MyAccordion`.
@@ -606,10 +606,10 @@ class MyAccordion extends LitElement {
 
     this.panels.map((panel) => {
       if (panel === target) {
-        if (panel.hasAttribute('expanded')) {
-          panel.removeAttribute('expanded');
+        if (panel.hasAttribute("expanded")) {
+          panel.removeAttribute("expanded");
         } else {
-          panel.setAttribute('expanded', true);
+          panel.setAttribute("expanded", true);
         }
       }
     });
@@ -618,7 +618,7 @@ class MyAccordion extends LitElement {
   }
 }
 
-customElements.define('my-accordion', MyAccordion);
+customElements.define("my-accordion", MyAccordion);
 ```
 
 Clicking within `my-accordion`, will return an event, and the target of this event will be one of our accordion panels. We want to take the `event.target` (which I destructured above with `const { target } = event;`) and compare it to our array of panels. When `target` matches the current `panel`, we need to check whether it's currently expanded or not. We'll return the panels once we've mapped over the entire `panels` array.
@@ -637,16 +637,16 @@ class MyAccordion extends LitElement {
       if (
         !this.multiPanel &&
         panel !== target &&
-        panel.hasAttribute('expanded')
+        panel.hasAttribute("expanded")
       ) {
-        panel.removeAttribute('expanded');
+        panel.removeAttribute("expanded");
       }
 
       if (panel === target) {
-        if (panel.hasAttribute('expanded')) {
-          panel.removeAttribute('expanded');
+        if (panel.hasAttribute("expanded")) {
+          panel.removeAttribute("expanded");
         } else {
-          panel.setAttribute('expanded', true);
+          panel.setAttribute("expanded", true);
         }
       }
     });
@@ -655,7 +655,7 @@ class MyAccordion extends LitElement {
   }
 }
 
-customElements.define('my-accordion', MyAccordion);
+customElements.define("my-accordion", MyAccordion);
 ```
 
 Until now, the panel actually defaulted to multi-panel support. As we mapped over each item in `panels`, the `handleClick()` method merely checked whether the target panel's state changed. To fully implement multi-panel, we'll first check whether the `multiPanel` property is truthy, _and_ the current panel is **not** the same as `target` _and_ whether the current panel has the `expanded` attribute. If all those conditions are true, we'll close the panel.
@@ -683,16 +683,16 @@ class MyAccordion extends LitElement {
       if (
         !this.multiPanel &&
         panel !== target &&
-        panel.hasAttribute('expanded')
+        panel.hasAttribute("expanded")
       ) {
-        panel.removeAttribute('expanded');
+        panel.removeAttribute("expanded");
       }
 
       if (panel === target) {
-        if (panel.hasAttribute('expanded')) {
-          panel.removeAttribute('expanded');
+        if (panel.hasAttribute("expanded")) {
+          panel.removeAttribute("expanded");
         } else {
-          panel.setAttribute('expanded', true);
+          panel.setAttribute("expanded", true);
         }
       }
     });
@@ -703,7 +703,7 @@ class MyAccordion extends LitElement {
   /* ... */
 }
 
-customElements.define('my-accordion', MyAccordion);
+customElements.define("my-accordion", MyAccordion);
 ```
 
 The first thing we'll do to implement `handleKeyup()` is stub out the `switch` we'll use to check which key has been pressed.
@@ -742,7 +742,7 @@ class MyAccordion extends LitElement {
   /* ... */
 }
 
-customElements.define('my-accordion', MyAccordion);
+customElements.define("my-accordion", MyAccordion);
 ```
 
 We're using `keyCode` here instead of `key` because the value returned for `SPACE` is blank and difficult to manage. I used `let` for the `target` because we'll be reassigning the value in the next step. Implementing the logic for each of the `keyup` scenarios is relatively simple:
@@ -793,7 +793,7 @@ class MyAccordion extends LitElement {
   /* ... */
 }
 
-customElements.define('my-accordion', MyAccordion);
+customElements.define("my-accordion", MyAccordion);
 ```
 
 When we press the down arrow, we check to see whether the target is the last panel in `panels`. If it is, we set the `target` to the first panel in `panels`. Otherwise, we simply set the target panel to the next `my-accordion-panel`.
@@ -805,8 +805,8 @@ To help users keep track of which panel is selected, we update focus by calling 
 All of this is great, but there is one small problem: tab functionality is now broken when `my-accordion` has focus. Let's make one more change to restore tab functionality:
 
 ```js
-import { LitElement, html, css } from 'lit-element';
-import './panel';
+import { LitElement, html, css } from "lit-element";
+import "./panel";
 
 class MyAccordion extends LitElement {
   /* ... */
@@ -870,7 +870,7 @@ class MyAccordion extends LitElement {
   /* ... */
 }
 
-customElements.define('my-accordion', MyAccordion);
+customElements.define("my-accordion", MyAccordion);
 ```
 
 We abstract out the check to set the next / previous panel so we can use it in our arrow and tab keyups without duplicating code. Adding a check for `event.shiftKey` in the `TAB` case allows us to handle instances when a user presses `SHIFT` + `TAB` in sequence.

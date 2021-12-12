@@ -1,8 +1,9 @@
-import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
-import { SocialNavQuery } from './withSocials.interface';
+import { SocialProps } from "entities/socials.interface";
+import { graphql, useStaticQuery } from "gatsby";
+import React from "react";
+import { SocialNavQuery } from "./withSocials.interface";
 
-const withSocials = <T extends unknown>(
+const withSocials = <T extends SocialProps>(
   Component: React.ComponentType<T>
 ): React.FC<T> => {
   const WrappedComponent: React.FC<T> = (props) => {

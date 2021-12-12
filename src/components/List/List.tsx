@@ -1,8 +1,8 @@
-import React, { useMemo } from 'react';
-import { ListItemProps, ListProps } from './List.interface';
+import React, { useMemo } from "react";
+import { ListItemProps, ListProps } from "./List.interface";
 
 const List: React.FC<ListProps> = ({ type, className, children }) => {
-  const ListType = useMemo(() => (type === 'BULLETED' ? 'ul' : 'ol'), []);
+  const ListType = useMemo(() => (type === "BULLETED" ? "ul" : "ol"), []);
 
   return <ListType className={className}>{children}</ListType>;
 };

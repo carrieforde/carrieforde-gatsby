@@ -1,6 +1,6 @@
 ---
-title: 'Aurora Project: a clean, modern Sass and ES Next-ready project boilerplate'
-category: 'Development'
+title: "Aurora Project: a clean, modern Sass and ES Next-ready project boilerplate"
+category: "Development"
 date: 2018-03-05
 ---
 

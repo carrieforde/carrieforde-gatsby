@@ -1,6 +1,6 @@
 ---
-title: 'Testing Angular apps with Protractor & Cucumber'
-category: 'JavaScript'
+title: "Testing Angular apps with Protractor & Cucumber"
+category: "JavaScript"
 date: 2019-09-10
 showToc: true
 ---
@@ -39,13 +39,13 @@ The first step of the Protractor tutorial is to [write a test](https://www.protr
 
 ```ts
 // app.e2e-spec.ts
-import { browser } from 'protractor';
+import { browser } from "protractor";
 
-describe('Protractor demo app', () => {
-  it('should have a title', () => {
-    browser.get('http://juliemr.github.io/protractor-demo/');
+describe("Protractor demo app", () => {
+  it("should have a title", () => {
+    browser.get("http://juliemr.github.io/protractor-demo/");
 
-    expect(browser.getTitle()).toEqual('Super Calculator');
+    expect(browser.getTitle()).toEqual("Super Calculator");
   });
 });
 ```
@@ -75,24 +75,24 @@ This test isn't very exciting. Let's go ahead and add to our spec by adding the 
 
 ```ts
 // app.e2e-spec.ts
-import { browser, element, by } from 'protractor';
+import { browser, element, by } from "protractor";
 
-describe('Protractor demo app', () => {
-  it('should have a title', () => {
-    browser.get('http://juliemr.github.io/protractor-demo/');
+describe("Protractor demo app", () => {
+  it("should have a title", () => {
+    browser.get("http://juliemr.github.io/protractor-demo/");
 
-    expect(browser.getTitle()).toEqual('Super Calculator');
+    expect(browser.getTitle()).toEqual("Super Calculator");
   });
 
-  it('should add one and two', () => {
-    browser.get('http://juliemr.github.io/protractor-demo/');
+  it("should add one and two", () => {
+    browser.get("http://juliemr.github.io/protractor-demo/");
 
-    element(by.model('first')).sendKeys(1);
-    element(by.model('second')).sendKeys(2);
+    element(by.model("first")).sendKeys(1);
+    element(by.model("second")).sendKeys(2);
 
-    element(by.id('gobutton')).click();
+    element(by.id("gobutton")).click();
 
-    expect(element(by.binding('latest')).getText()).toEqual('5');
+    expect(element(by.binding("latest")).getText()).toEqual("5");
   });
 });
 ```
@@ -107,43 +107,43 @@ Let's continue with the next step of the tutorial, where we'll add more scenario
 
 ```ts
 // app.e2e-spec.ts
-import { browser, element, by } from 'protractor';
+import { browser, element, by } from "protractor";
 
-describe('Protractor demo app', () => {
-  const firstNumber = element(by.model('first'));
-  const secondNumber = element(by.model('second'));
-  const goButton = element(by.id('gobutton'));
-  const latestResult = element(by.binding('latest'));
+describe("Protractor demo app", () => {
+  const firstNumber = element(by.model("first"));
+  const secondNumber = element(by.model("second"));
+  const goButton = element(by.id("gobutton"));
+  const latestResult = element(by.binding("latest"));
 
   beforeEach(() => {
-    browser.get('http://juliemr.github.io/protractor-demo/');
+    browser.get("http://juliemr.github.io/protractor-demo/");
   });
 
-  it('should have a title', () => {
-    expect(browser.getTitle()).toEqual('Super Calculator');
+  it("should have a title", () => {
+    expect(browser.getTitle()).toEqual("Super Calculator");
   });
 
-  it('should add one and two', () => {
+  it("should add one and two", () => {
     firstNumber.sendKeys(1);
     secondNumber.sendKeys(2);
 
     goButton.click();
 
-    expect(latestResult.getText()).toEqual('3');
+    expect(latestResult.getText()).toEqual("3");
   });
 
-  it('should add four and six', () => {
+  it("should add four and six", () => {
     firstNumber.sendKeys(4);
     secondNumber.sendKeys(6);
 
     goButton.click();
 
-    expect(latestResult.getText()).toEqual('10');
+    expect(latestResult.getText()).toEqual("10");
   });
 
-  it('should read the value from an input', () => {
+  it("should read the value from an input", () => {
     firstNumber.sendKeys(1);
-    expect(firstNumber.getAttribute('value')).toEqual('1');
+    expect(firstNumber.getAttribute("value")).toEqual("1");
   });
 });
 ```
@@ -162,7 +162,7 @@ This first thing we're going to do is add our elements to the file:
 
 ```ts
 // app.po.ts
-import { ElementFinder, element, by } from 'protractor';
+import { ElementFinder, element, by } from "protractor";
 
 export class CalculatorPage {
   firstNumber: ElementFinder;
@@ -171,10 +171,10 @@ export class CalculatorPage {
   latestResult: ElementFinder;
 
   constructor() {
-    this.firstNumber = element(by.model('first'));
-    this.secondNumber = element(by.model('second'));
-    this.goButton = element(by.id('gobutton'));
-    this.latestResult = element(by.binding('latest'));
+    this.firstNumber = element(by.model("first"));
+    this.secondNumber = element(by.model("second"));
+    this.goButton = element(by.id("gobutton"));
+    this.latestResult = element(by.binding("latest"));
   }
 }
 ```
@@ -185,41 +185,41 @@ We can now update our spec file, replacing the variables within the spec with th
 
 ```ts
 // app.e2e-spec.ts
-import { browser } from 'protractor';
-import { CalculatorPage } from './app.po';
+import { browser } from "protractor";
+import { CalculatorPage } from "./app.po";
 
 const calc = new CalculatorPage();
 
-describe('Protractor demo app', () => {
+describe("Protractor demo app", () => {
   beforeEach(() => {
-    browser.get('http://juliemr.github.io/protractor-demo/');
+    browser.get("http://juliemr.github.io/protractor-demo/");
   });
 
-  it('should have a title', () => {
-    expect(browser.getTitle()).toEqual('Super Calculator');
+  it("should have a title", () => {
+    expect(browser.getTitle()).toEqual("Super Calculator");
   });
 
-  it('should add one and two', () => {
+  it("should add one and two", () => {
     calc.firstNumber.sendKeys(1);
     calc.secondNumber.sendKeys(2);
 
     calc.goButton.click();
 
-    expect(calc.latestResult.getText()).toEqual('3');
+    expect(calc.latestResult.getText()).toEqual("3");
   });
 
-  it('should add four and six', () => {
+  it("should add four and six", () => {
     calc.firstNumber.sendKeys(4);
     calc.secondNumber.sendKeys(6);
 
     calc.goButton.click();
 
-    expect(calc.latestResult.getText()).toEqual('10');
+    expect(calc.latestResult.getText()).toEqual("10");
   });
 
-  it('should read the value from an input', () => {
+  it("should read the value from an input", () => {
     calc.firstNumber.sendKeys(1);
-    expect(calc.firstNumber.getAttribute('value')).toEqual('1');
+    expect(calc.firstNumber.getAttribute("value")).toEqual("1");
   });
 });
 ```
@@ -233,7 +233,7 @@ Let's go ahead and add some methods to our page object.
 
 ```ts
 // app.po.ts
-import { ElementFinder, element, by, browser } from 'protractor';
+import { ElementFinder, element, by, browser } from "protractor";
 
 export class CalculatorPage {
   firstNumber: ElementFinder;
@@ -242,14 +242,14 @@ export class CalculatorPage {
   latestResult: ElementFinder;
 
   constructor() {
-    this.firstNumber = element(by.model('first'));
-    this.secondNumber = element(by.model('second'));
-    this.goButton = element(by.id('gobutton'));
-    this.latestResult = element(by.binding('latest'));
+    this.firstNumber = element(by.model("first"));
+    this.secondNumber = element(by.model("second"));
+    this.goButton = element(by.id("gobutton"));
+    this.latestResult = element(by.binding("latest"));
   }
 
   async navigateTo() {
-    await browser.get('http://juliemr.github.io/protractor-demo/');
+    await browser.get("http://juliemr.github.io/protractor-demo/");
   }
 
   async setValues(first: number, second: number) {
@@ -265,37 +265,37 @@ When we use the `async` / `await` methods in our spec, we'll need to make sure w
 
 ```ts
 // app.e2e-spec.ts
-import { browser } from 'protractor';
-import { CalculatorPage } from './app.po';
+import { browser } from "protractor";
+import { CalculatorPage } from "./app.po";
 
 const calc = new CalculatorPage();
 
-describe('Protractor demo app', () => {
+describe("Protractor demo app", () => {
   beforeEach(async () => {
     await calc.navigateTo();
   });
 
-  it('should have a title', () => {
-    expect(browser.getTitle()).toEqual('Super Calculator');
+  it("should have a title", () => {
+    expect(browser.getTitle()).toEqual("Super Calculator");
   });
 
-  it('should add one and two', async () => {
+  it("should add one and two", async () => {
     await calc.setValues(1, 2);
     await calc.goButton.click();
 
-    expect(calc.latestResult.getText()).toEqual('3');
+    expect(calc.latestResult.getText()).toEqual("3");
   });
 
-  it('should add four and six', async () => {
+  it("should add four and six", async () => {
     await calc.setValues(4, 6);
     await calc.goButton.click();
 
-    expect(calc.latestResult.getText()).toEqual('10');
+    expect(calc.latestResult.getText()).toEqual("10");
   });
 
-  it('should read the value from an input', () => {
+  it("should read the value from an input", () => {
     calc.firstNumber.sendKeys(1);
-    expect(calc.firstNumber.getAttribute('value')).toEqual('1');
+    expect(calc.firstNumber.getAttribute("value")).toEqual("1");
   });
 });
 ```
@@ -349,14 +349,14 @@ Now that we have a Cucumber test case, we'll need to make some updates to `e2e/p
  */
 exports.config = {
   allScriptsTimeout: 11000,
-  specs: ['./features/*.feature'],
+  specs: ["./features/*.feature"],
   capabilities: {
-    browserName: 'chrome'
+    browserName: "chrome",
   },
   directConnect: true,
-  baseUrl: 'http://localhost:4200/',
-  framework: 'custom',
-  frameworkPath: require.resolve('protractor-cucumber-framekwork')
+  baseUrl: "http://localhost:4200/",
+  framework: "custom",
+  frameworkPath: require.resolve("protractor-cucumber-framekwork"),
 };
 ```
 
@@ -374,21 +374,21 @@ Under `e2e`, add a new `steps` directory, and add a file called `calculator.step
 
 ```ts
 // calculator.steps.ts
-import { Given, When, Then } from 'cucumber';
+import { Given, When, Then } from "cucumber";
 
-Given('I have navigated to the calculator', () => {
+Given("I have navigated to the calculator", () => {
   // Write code here that turns the phrase above into concrete actions
-  return 'pending';
+  return "pending";
 });
 
-When('I add two numbers {string} and {string}', (string, string2) => {
+When("I add two numbers {string} and {string}", (string, string2) => {
   // Write code here that turns the phrase above into concrete actions
-  return 'pending';
+  return "pending";
 });
 
-Then('the displayed output should be {string}', string => {
+Then("the displayed output should be {string}", (string) => {
   // Write code here that turns the phrase above into concrete actions
-  return 'pending';
+  return "pending";
 });
 ```
 
@@ -398,10 +398,10 @@ Let's focus on the `Given` block first. For this step, we just need to navigate 
 
 ```ts
 // calculator.steps.ts
-import { CalculatorPage } from '../src/app.po';
+import { CalculatorPage } from "../src/app.po";
 const calc = new CalculatorPage();
 
-Given('I have navigated to the calculator', async () => {
+Given("I have navigated to the calculator", async () => {
   await calc.navigateTo();
 });
 ```
@@ -410,7 +410,7 @@ Before proceeding, we need to add a global `timeout.ts` file within our `steps` 
 
 ```ts
 // timeout.ts
-import { setDefaultTimeout } from 'cucumber';
+import { setDefaultTimeout } from "cucumber";
 
 setDefaultTimeout(60 * 1000);
 ```
@@ -424,22 +424,22 @@ Additionally, we need to make two updates to our `protractor.conf.js` file:
  */
 exports.config = {
   allScriptsTimeout: 11000,
-  specs: ['./features/*.feature'],
+  specs: ["./features/*.feature"],
   capabilities: {
-    browserName: 'chrome'
+    browserName: "chrome",
   },
   directConnect: true,
-  baseUrl: 'http://localhost:4200/',
-  framework: 'custom',
-  frameworkPath: require.resolve('protractor-cucumber-framework'),
+  baseUrl: "http://localhost:4200/",
+  framework: "custom",
+  frameworkPath: require.resolve("protractor-cucumber-framework"),
   cucumberOpts: {
-    require: ['./steps/*.steps.ts']
+    require: ["./steps/*.steps.ts"],
   },
   onPrepare() {
-    require('ts-node').register({
-      project: require('path').join(__dirname, './tsconfig.json')
+    require("ts-node").register({
+      project: require("path").join(__dirname, "./tsconfig.json"),
     });
-  }
+  },
 };
 ```
 
@@ -455,22 +455,22 @@ At this point, we can work on implementing the other steps:
 
 ```ts
 // calculator.steps.ts
-import { Given, When, Then } from 'cucumber';
-import { CalculatorPage } from '../src/app.po';
+import { Given, When, Then } from "cucumber";
+import { CalculatorPage } from "../src/app.po";
 
 const calc = new CalculatorPage();
 
-Given('I have navigated to the calculator', async () => {
+Given("I have navigated to the calculator", async () => {
   await calc.navigateTo();
 });
 
-When('I add two numbers {string} and {string}', async (string, string2) => {
+When("I add two numbers {string} and {string}", async (string, string2) => {
   await calc.setValues(string, string2);
   await calc.goButton.click();
 });
 
-Then('the displayed output should be {string}', string => {
-  calc.latestResult.getText().then(text => console.log(text));
+Then("the displayed output should be {string}", (string) => {
+  calc.latestResult.getText().then((text) => console.log(text));
 });
 ```
 
@@ -488,24 +488,24 @@ Let's add Chai to our `calculator.steps.ts` file and write our first assertion:
 
 ```ts
 // calculator.steps.ts
-import { Given, When, Then } from 'cucumber';
-import { CalculatorPage } from '../src/app.po';
-import * as chai from 'chai';
+import { Given, When, Then } from "cucumber";
+import { CalculatorPage } from "../src/app.po";
+import * as chai from "chai";
 
 const calc = new CalculatorPage();
 const expect = chai.expect;
 
-Given('I have navigated to the calculator', async () => {
+Given("I have navigated to the calculator", async () => {
   await calc.navigateTo();
 });
 
-When('I add two numbers {string} and {string}', async (string, string2) => {
+When("I add two numbers {string} and {string}", async (string, string2) => {
   await calc.setValues(string, string2);
   await calc.goButton.click();
 });
 
-Then('the displayed output should be {string}', string => {
-  calc.latestResult.getText().then(text => expect(text).to.equal(string));
+Then("the displayed output should be {string}", (string) => {
+  calc.latestResult.getText().then((text) => expect(text).to.equal(string));
 });
 ```
 
@@ -517,10 +517,10 @@ We can clean up our assertion and remove the promise chain by pulling in Chai as
 
 ```ts
 // calculator.steps.ts
-import { Given, When, Then, Before } from 'cucumber';
-import { CalculatorPage } from '../src/app.po';
-import * as chai from 'chai';
-import * as chaiAsPromised from 'chai-as-promised';
+import { Given, When, Then, Before } from "cucumber";
+import { CalculatorPage } from "../src/app.po";
+import * as chai from "chai";
+import * as chaiAsPromised from "chai-as-promised";
 
 const calc = new CalculatorPage();
 const expect = chai.expect;
@@ -529,16 +529,16 @@ Before(() => {
   chai.use(chaiAsPromised);
 });
 
-Given('I have navigated to the calculator', async () => {
+Given("I have navigated to the calculator", async () => {
   await calc.navigateTo();
 });
 
-When('I add two numbers {string} and {string}', async (string, string2) => {
+When("I add two numbers {string} and {string}", async (string, string2) => {
   await calc.setValues(string, string2);
   await calc.goButton.click();
 });
 
-Then('the displayed output should be {string}', string => {
+Then("the displayed output should be {string}", (string) => {
   expect(calc.latestResult.getText()).to.eventually.equal(string);
 });
 ```
@@ -574,11 +574,11 @@ Let's make a small tweak to the step definition file to add a `sleep`, which wil
 
 ```ts
 // calculator.step.ts
-import { Given, When, Then, Before } from 'cucumber';
-import { CalculatorPage } from '../src/app.po';
-import * as chai from 'chai';
-import * as chaiAsPromised from 'chai-as-promised';
-import { browser } from 'protractor';
+import { Given, When, Then, Before } from "cucumber";
+import { CalculatorPage } from "../src/app.po";
+import * as chai from "chai";
+import * as chaiAsPromised from "chai-as-promised";
+import { browser } from "protractor";
 
 const calc = new CalculatorPage();
 const expect = chai.expect;
@@ -587,16 +587,16 @@ Before(() => {
   chai.use(chaiAsPromised);
 });
 
-Given('I have navigated to the calculator', async () => {
+Given("I have navigated to the calculator", async () => {
   await calc.navigateTo();
 });
 
-When('I add two numbers {string} and {string}', async (string, string2) => {
+When("I add two numbers {string} and {string}", async (string, string2) => {
   await calc.setValues(string, string2);
   await calc.goButton.click();
 });
 
-Then('the displayed output should be {string}', string => {
+Then("the displayed output should be {string}", (string) => {
   browser.sleep(3000);
   expect(calc.latestResult.getText()).to.eventually.equal(string);
 });
@@ -612,9 +612,9 @@ It's pretty neat that we have two passing scenarios now, but we didn't make any 
 When we ran `npm run e2e` after adding the first scenario, some of the stubbed out steps contained parameters:
 
 ```ts
-When('I add two numbers {string} and {string}', (string, string2) => {
+When("I add two numbers {string} and {string}", (string, string2) => {
   // Write code here that turns the phrase above into concrete actions
-  return 'pending';
+  return "pending";
 });
 ```
 
@@ -705,7 +705,7 @@ E/launcher - Error while waiting for Protractor to sync with the page: "both ang
 After a lot of searching, painful tutorials, and some trial and error, I finally figured out this error occurs because Protractor doesn't have enough time with the browser open to actually hit the site under test. If you're encountering a similar issue, you might want to try something like this:
 
 ```ts
-Given('I have navigated to the calculator', async () => {
+Given("I have navigated to the calculator", async () => {
   await browser.wait(calc.navigateTo(), 5000);
 });
 ```

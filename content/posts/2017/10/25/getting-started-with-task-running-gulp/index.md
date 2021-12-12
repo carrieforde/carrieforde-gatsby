@@ -1,7 +1,7 @@
 ---
-title: 'Getting started with task running & Gulp'
+title: "Getting started with task running & Gulp"
 date: 2017-10-25
-category: 'Development'
+category: "Development"
 showToc: true
 ---
 
@@ -68,11 +68,11 @@ Alright, now we have Gulp and our local packages installed, let’s go ahead and
 Open the Gulpfile and add the following:
 
 ```js
-var gulp = require('gulp');
+var gulp = require("gulp");
 
-gulp.task('default', function() {
+gulp.task("default", function () {
   // place code for your default task here
-  console.log('Gulp is working!');
+  console.log("Gulp is working!");
 });
 ```
 
@@ -87,17 +87,17 @@ Now that we’ve established the basic pattern for pulling in our packages and a
 The first thing we need to do when adding a new package for usage with Gulp is load it into our Gulpfile:
 
 ```js
-var sass = require('gulp-sass');
+var sass = require("gulp-sass");
 ```
 
 Now that we have loaded sass to our file, let’s go ahead and set up the Sass task using `gulp.task()`, which takes two parameters: the name of the task, and a function which tells Gulp what to do to complete this task:
 
 ```js
-gulp.task('sass', function() {
+gulp.task("sass", function () {
   return gulp
-    .src('./sass/*.scss')
-    .pipe(sass.sync().on('error', sass.logError))
-    .pipe(gulp.dest('./'));
+    .src("./sass/*.scss")
+    .pipe(sass.sync().on("error", sass.logError))
+    .pipe(gulp.dest("./"));
 });
 ```
 
@@ -116,8 +116,8 @@ Now, if we have some Sass files in the Sass directory, we can run `gulp sass` fr
 As you can imagine, running gulp sass every time you need to compile your stylesheets becomes cumbersome quickly. Let’s go ahead and add a task which will automatically compile our Sass every time we save a file, called `watch`:
 
 ```js
-gulp.task('watch', function() {
-  gulp.watch('./sass/*.scss', ['sass']);
+gulp.task("watch", function () {
+  gulp.watch("./sass/*.scss", ["sass"]);
 });
 ```
 
