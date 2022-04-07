@@ -311,10 +311,10 @@ describe("MergeField", () => {
 
 We're working through a lot of the same scenarios we had previously for the `processMergeField()` function. In a case like this, it may be unnecessary to actually retest all the scenarios, but I'll leave that to you.
 
-<CallOut
-  type="INFO"
-  text="Skipping the <code>MergeField</code> component tests only reduced coverage of the component by about 10 percent on the final project."
-/>
+<CallOut type="info">
+  Skipping the <code>MergeField</code> component tests only reduced coverage of
+  the component by about 10 percent on the final project.
+</CallOut>
 
 Now, let's add the code for our component:
 
@@ -341,10 +341,10 @@ That's it. A whopping 13 lines of code. Nice, right? But something is missing, i
 
 Given that I use MDX (a flavor of markdown that accepts JSX) for my site, I am going to create a new component that will process merge fields. In theory, I could wrap an entire page in the component, but the data I get from GraphQL isn't a string.
 
-<CallOut
-  type="TIP"
-  text="If you're using Gatsby markdown without MDX, wrapping the entire template in the merge field component is perfectly feasible."
-/>
+<CallOut type="tip">
+  If you're using Gatsby markdown without MDX, wrapping the entire template in
+  the merge field component is perfectly feasible.
+</CallOut>
 
 For this purpose I'll convert my existing `cf-alert` web component into a React component called a `CallOut` (see tip box above for an example).
 
@@ -617,10 +617,10 @@ describe("MergeField", () => {
 });
 ```
 
-<CallOut
-  type="TIP"
-  text="The above assertion is the only one needed for the <code>MergeField</code> to get 100 percent test coverage. The utility tests cover the rest."
-/>
+<CallOut type="tip">
+  The above assertion is the only one needed for the <code>MergeField</code> to
+  get 100 percent test coverage. The utility tests cover the rest.
+</CallOut>
 
 Make sure you also update your `data` object to include your ingredients. Next, let's update the `MergeField` component:
 

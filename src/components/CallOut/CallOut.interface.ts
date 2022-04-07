@@ -1,4 +1,6 @@
+import { AlertLevel } from "entities/alertLevel";
+
 export interface CallOutProps {
-  type?: "TIP" | "INFO" | "WARNING" | "DANGER";
-  text: string;
+  type?: AlertLevel;
+  text?: string;
 }

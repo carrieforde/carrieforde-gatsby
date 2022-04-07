@@ -5,18 +5,17 @@ import React from "react";
 import MergeField from "components/MergeField/MergeField";
 import { CallOutProps } from "./CallOut.interface";
 import { callOut, icon } from "./Callout.module.css";
+import { AlertLevel } from "entities/alertLevel";
 
-const ICON_MAP: { [key: string]: IconName } = {
-  INFO: "info-circle",
-  TIP: "lightbulb-exclamation",
-  WARNING: "exclamation-circle",
-  DANGER: "exclamation-triangle",
+const ICON_MAP: Record<AlertLevel, IconName> = {
+  info: "info-circle",
+  tip: "lightbulb-exclamation",
+  warning: "exclamation-circle",
+  danger: "exclamation-triangle",
 };
 
-const CallOut: React.FC<CallOutProps> = ({ type, text }) => {
-  const classes = cn(callOut, {
-    [type]: !!type,
-  });
+const CallOut: React.FC<CallOutProps> = ({ type, text, children }) => {
+  const classes = cn(callOut, type);
 
   return (
     <div className={classes}>
@@ -24,7 +23,8 @@ const CallOut: React.FC<CallOutProps> = ({ type, text }) => {
         <FontAwesomeIcon icon={["fal", ICON_MAP[type]]} className={icon} />
       )}
       <p>
-        <MergeField text={text} />
+        {text && <MergeField text={text} />}
+        {children}
       </p>
     </div>
   );

@@ -188,22 +188,22 @@ alcatraz-accordion {
   }
 }
 
-.TIP {
-  background-color: var(--alert-bg-tip);
-  color: var(--alert-color-tip);
+.tip {
+  background-color: var(--alert-bg-tip) !important;
+  color: var(--alert-color-tip) !important;
 }
 
-.INFO {
-  background-color: var(--alert-bg-info);
-  color: var(--alert-color-info);
+.info {
+  background-color: var(--alert-bg-info) !important;
+  color: var(--alert-color-info) !important;
 }
 
-.WARNING {
-  background-color: var(--alert-bg-warning);
-  color: var(--alert-color-warning);
+.warning {
+  background-color: var(--alert-bg-warning) !important;
+  color: var(--alert-color-warning) !important;
 }
 
-.DANGER {
-  background-color: var(--alert-bg-danger);
-  color: var(--alert-color-danger);
+.danger {
+  background-color: var(--alert-bg-danger) !important;
+  color: var(--alert-color-danger) !important;
 }

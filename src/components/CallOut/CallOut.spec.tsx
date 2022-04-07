@@ -35,7 +35,7 @@ describe("CallOut", () => {
     const { container } = render(<Info {...Info.args} />);
     const { callout, text, icon } = getComponentPieces(container);
 
-    expect(callout).toHaveClass("callOut INFO");
+    expect(callout).toHaveClass("callOut info");
     expect(text.textContent).toEqual(Info.args.text);
     expect(icon).toBeTruthy();
   });

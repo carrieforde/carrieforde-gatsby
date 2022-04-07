@@ -14,5 +14,5 @@ export interface MergeFieldProviderProps {
 }
 
 export interface MergeFieldProps {
-  text: string;
+  text: ReactNode;
 }
