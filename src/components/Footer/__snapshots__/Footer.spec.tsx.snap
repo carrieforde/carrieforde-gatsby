@@ -17,7 +17,7 @@ exports[`Footer should render correctly 1`] = `
       >
         •
       </span>
-      Copyright © 2013 – 2021 Carrie Forde.
+      Copyright © 2013 – 2022 Carrie Forde.
     </p>
     <ul
       class="socialNav"

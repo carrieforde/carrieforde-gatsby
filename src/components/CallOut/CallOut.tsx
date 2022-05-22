@@ -7,7 +7,7 @@ import { CallOutProps } from "./CallOut.interface";
 import { callOut, icon } from "./Callout.module.css";
 import { AlertLevel } from "entities/alertLevel";
 
-const ICON_MAP: Record<AlertLevel, IconName> = {
+export const ICON_MAP: Record<AlertLevel, IconName> = {
   info: "info-circle",
   tip: "lightbulb-exclamation",
   warning: "exclamation-circle",

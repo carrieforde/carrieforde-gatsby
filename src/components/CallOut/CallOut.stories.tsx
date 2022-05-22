@@ -58,5 +58,5 @@ MultiLine.args = {
 };
 
 WithMergeField.args = {
-  children: "I like {{animal}}s",
+  text: "I like {{animal}}s",
 };
