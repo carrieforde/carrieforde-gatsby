@@ -147,10 +147,6 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
       module: {
         rules: [
           {
-            test: /cf-alert/,
-            use: loaders.null(),
-          },
-          {
             test: /@alcatraz-components\/accordion/,
             use: loaders.null(),
           },

@@ -5,13 +5,13 @@ category: "JavaScript"
 showToc: true
 ---
 
-<cf-alert type="info">
+<CallOut type="info">
   You can find the{" "}
   <a href="https://github.com/alcatraz-components/accordion">
     source code for the accordion web component
   </a>{" "}
   on Github.
-</cf-alert>
+</CallOut>
 
 Last spring, I worked on a project where we supplied static content from a WordPress site to a React app via the REST API. The challenge we faced in this project was that the content from the WordPress site included interactive components.
 
@@ -91,10 +91,10 @@ customElements.define("my-accordion", MyAccordion);
 
 The `render()` method returns our component's HTML template. The `html` function is simply a wrapper for creating the template. `customElements.define()` allows us to define a name for our web component, and associate the extended `LitElement` class to this tag.
 
-<cf-alert type="warning">
+<CallOut type="warning">
   All custom elements (i.e. web components) must use hyphenated names to avoid
   conflicting with existing HTML elements.
-</cf-alert>
+</CallOut>
 
 Now that the web component is defined, we're ready to use it in our HTML. Let's add a basic HTML5 scaffold to `index.html` adding our web component script, and placing an instance of our custom element in the `body`:
 

@@ -7,9 +7,12 @@ description: "With the rise of React in WordPress, there are more and more devel
 showToc: true
 ---
 
-<cf-alert type="info">
-  If you're looking for a fully-fleshed out version of <code>_s</code> with webpack, check out the <a href="https://github.com/carrieforde/_s-with-webpack">_s-with-webpack</a> repo.
-</cf-alert>
+<CallOut type="info">
+  If you're looking for a fully-fleshed out version of <code>_s</code> with
+  webpack, check out the{" "}
+  <a href="https://github.com/carrieforde/_s-with-webpack">_s-with-webpack</a>{" "}
+  repo.
+</CallOut>
 
 In this post, I’ll cover webpack at a high level (what it is, and why we might reach for it), and show you how you can unleash the power of webpack in your WordPress projects to manage and bundle front end assets.
 
@@ -695,7 +698,9 @@ module.exports = {
 Each key in the entry object can take either a string, or an array. To keep our JavaScript files tidy and strictly JavaScript, I have converted the `frontend` entry to an array and added it here. Additionally, I updated the CSS plugin to use the `[name]` placeholder: `new MiniCssExtractPlugin({ filename: '[name].css' })`.
 
 <cf-alert type="tip">
-  If you’re using React in your theme, you may want to consider adding <code>babel-polyfill</code> so you can support IE11. Babel suggests adding it as the first item of your frontend entry's array.
+  If you’re using React in your theme, you may want to consider adding{" "}
+  <code>babel-polyfill</code> so you can support IE11. Babel suggests adding it
+  as the first item of your frontend entry's array.
 </cf-alert>
 
 ### Finishing touches
