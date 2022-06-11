@@ -41,11 +41,6 @@ module.exports = {
         value: "https://github.com/carrieforde",
         icon: ["fab", "github"],
       },
-      {
-        value: "CodePen",
-        label: "https://codepen.io/carrieforde",
-        icon: ["fab", "codepen"],
-      },
     ],
     siteUrl: "https://carrieforde.com",
   },
