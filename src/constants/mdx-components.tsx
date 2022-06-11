@@ -4,6 +4,7 @@ import GridList, { GridListItem } from "components/GridList/GridList";
 import TextWithSeparator from "components/TextWithSeparator/TextWithSeparator";
 import Heading from "components/Heading/Heading";
 import Jobs from "components/Jobs/Jobs";
+import ArticleList from "components/ArticleList/ArticleList";
 
 export const MDX_COMPONENTS = {
   PageDescription,
@@ -13,4 +14,5 @@ export const MDX_COMPONENTS = {
   TextWithSeparator,
   Heading,
   Jobs,
+  ArticleList,
 };

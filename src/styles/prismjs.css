@@ -77,7 +77,7 @@ pre[class*="language-"]::selection,
 pre[class*="language-"] ::selection,
 code[class*="language-"]::selection,
 code[class*="language-"] ::selection {
-  background: var(--prismjs-selection); /* base02 */
+  background: var(--selectedColor); /* base02 */
 }
 
 .namespace {

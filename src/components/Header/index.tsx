@@ -1,10 +1,9 @@
 import { Link } from "gatsby";
-import React from "react";
 import Logo from "icons/carrie-forde-logo.svg";
-import MainMenu from "components/MainMenu";
-import { HeaderProps } from "./Header.interface";
-import { siteHeader, siteBranding, siteLogo } from "./header.module.css";
+import React from "react";
 import { visuallyHidden } from "styles/utilities.module.css";
+import { HeaderProps } from "./Header.interface";
+import { siteBranding, siteHeader, siteLogo } from "./header.module.css";
 
 const Header: React.FC<HeaderProps> = ({ siteTitle = "" }) => (
   <header className={siteHeader}>
@@ -12,7 +11,6 @@ const Header: React.FC<HeaderProps> = ({ siteTitle = "" }) => (
       <Logo className={siteLogo} />
       <h1 className={visuallyHidden}>{siteTitle}</h1>
     </Link>
-    <MainMenu />
   </header>
 );
 

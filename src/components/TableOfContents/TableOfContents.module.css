@@ -47,5 +47,5 @@
 }
 
 .tocButtonText {
-  composes: visuallyHidden from "../../styles/utilities.module.css";
+  composes: visuallyHidden from "styles/utilities.module.css";
 }

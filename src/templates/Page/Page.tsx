@@ -5,7 +5,7 @@ import Site from "components/Site";
 import { MDX_COMPONENTS } from "constants/mdx-components";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import { PageProps } from "interfaces/page.interface";
+import { PageProps } from "entities/page.interface";
 import React from "react";
 
 const Page: React.FC<PageProps> = ({ data }) => {
