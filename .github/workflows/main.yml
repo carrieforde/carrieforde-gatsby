@@ -27,9 +27,9 @@ jobs:
           cache: "npm"
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
       - name: Install project dependencies
-        run: yarn --frozen-lockfile
+        run: NPM_TOKEN=${{ secrets.NPM_TOKEN }} yarn --frozen-lockfile
       - name: Run tests
-        run: yarn test:ci
+        run: NPM_TOKEN=${{ secrets.NPM_TOKEN }} yarn test:ci
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
