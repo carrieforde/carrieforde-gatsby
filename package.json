@@ -111,7 +111,7 @@
     "preflight": "run-s format lint test",
     "serve": "gatsby serve",
     "test": "jest -w 1 --coverage --watchAll=false",
-    "test:ci": "jest --ci --coverage --testResultsProcessor jest-sonar-reporter",
+    "test:ci": "jest --ci --coverage",
     "test:watch": "jest --watch",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook"
