@@ -1,0 +1,187 @@
+import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs";
+
+import Typography from "./typography";
+
+<Meta title="Typography" component={Typography} />
+
+# Typography
+
+This is the typography documentation.
+
+## Variants
+
+We have several variants.
+
+### Title
+
+The `component` prop defaults to `h1` when using the title. If you'd like to style a different HTML element as a title, provide the `component` prop.
+
+<Canvas>
+  <Story
+    name="title"
+    args={{ variant: "title" }}
+    render={(args) => (
+      <Typography {...args}>The quick fox jumps over the lazy dog</Typography>
+    )}
+  />
+</Canvas>
+
+### Subtitle
+
+<Canvas>
+  <Story
+    name="subtitle"
+    args={{ variant: "subtitle" }}
+    render={(args) => (
+      <Typography {...args}>The quick fox jumps over the lazy dog</Typography>
+    )}
+  />
+</Canvas>
+
+### Body1
+
+<Canvas>
+  <Story
+    name="body1"
+    args={{ variant: "body1" }}
+    render={(args) => (
+      <Typography {...args}>The quick fox jumps over the lazy dog</Typography>
+    )}
+  />
+</Canvas>
+
+### Body2
+
+<Canvas>
+  <Story
+    name="body2"
+    args={{ variant: "body2" }}
+    render={(args) => (
+      <Typography {...args}>The quick fox jumps over the lazy dog</Typography>
+    )}
+  />
+</Canvas>
+
+### Overline
+
+<Canvas>
+  <Story
+    name="overline"
+    args={{ variant: "overline" }}
+    render={(args) => (
+      <Typography {...args}>The quick fox jumps over the lazy dog</Typography>
+    )}
+  />
+</Canvas>
+
+## Playground & API
+
+Use the controls below to set props for the `Typography` component. Once you're finished, you can copy the code needed to render the component in your UI.
+
+<Canvas withSource="open">
+  <Story
+    name="playground"
+    render={(args) => (
+      <Typography {...args}>
+        The quick brown fox jumps over the lazy dog
+      </Typography>
+    )}
+  />
+</Canvas>
+
+<ArgsTable story="playground" />
+
+## Style API
+
+Use [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) to customize the appearance of buttons to suit your theme. Defaults are shown in code below.
+
+```css
+:root {
+  /* Base styles (theme) */
+  --base-font-size: 18px;
+  --base-font-weight: 400;
+
+  --font-family-body: "Libre Franklin", sans-serif;
+  --font-family-monospace: "IBM Plex Mono", monospace;
+
+  --text-color: var(--dark-text-color);
+  --heading-color: var(--color-default-800);
+
+  /* Title */
+  --title-color: var(--color-default-500, #627d98);
+  --title-font-family: var(--font-family-body, "Libre Franklin", sans-serif);
+  --title-font-size: 36px;
+  --title-font-weight: 300;
+  --title-line-height: 1.1;
+
+  /* Subtitle */
+  --subtitle-color: var(--heading-color);
+  --subtitle-font-family: var(--font-family-body, "Libre Franklin", sans-serif);
+  --subtitle-font-size: 18px;
+  --subtitle-font-weight: 600;
+  --subtitle-line-height: 1.4;
+
+  /* Body 1 */
+  --body1-color: var(--heading-color);
+  --body1-font-family: var(--font-family-body, "Libre Franklin", sans-serif);
+  --body1-font-size: var(--base-font-size, 18px);
+  --body1-font-weight: var(--base-font-weight, 400)
+
+  /* Body 2 */
+  --body2-color: var(--heading-color);
+  --body2-font-family: var(--font-family-body, "Libre Franklin", sans-serif);
+  --body2-font-size: 14px;
+  --body2-font-weight: 500;
+  --body2-line-height: 1.2;
+  --body2-margin-bottom: 4px;
+
+  /* Overline */
+  --overline-color: var(--heading-color);
+  --overline-font-family: var(--font-family-body, "Libre Franklin", sans-serif);
+  --overline-font-size: 12px;
+  --overline-font-weight: 300;
+  --overline-margin-bottom: 4px;
+  --overline-text-transform: uppercase;
+}
+```
+
+### Custom styling example
+
+<Canvas>
+  <Story
+    name="styling"
+    args={{ variant: "title", component: "span" }}
+    render={(args) => (
+      <div
+        style={{
+          "--title-color": "hotpink",
+          "--title-font-family": "Times New Roman",
+          "--title-font-size": "200px",
+        }}
+      >
+        <Typography {...args}>
+          The quick brown fox jumps over the lazy dog
+        </Typography>
+      </div>
+    )}
+  />
+</Canvas>
+
+### Dark mode & responsive styles
+
+Modifying button styles can be particularly useful if implementing dark mode.
+
+```css
+@media (prefers-color-scheme: dark) {
+  :root {
+    --title-color: var(--color-default-300);
+  }
+}
+
+@media screen and (min-width: 600px) {
+  :root {
+    --title-font-size: 60px;
+    --subtitle-font-size: 20px;
+  }
+}
+```
