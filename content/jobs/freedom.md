@@ -1,10 +1,11 @@
 ---
-company: "Freedom Financial Network"
-date: "2018-06-11"
+company: Freedom Financial Network
+date: 2018-06-11
+title: Staff Software Engineer
+location: San Mateo, CA
+startDate: 2018-06-11
+endDate: 2022-02-24
 ---
-
-<Heading level="h3" weight={300}>Senior Software Engineer @ Freedom Financial Network</Heading>
-<TextWithSeparator text1="San Mateo, CA" text2="June 2018 - Present" />
 
 Lead architecture and development of company WordPress properties, while working to improve site performance metrics. Develop sophisticated templates and features using JavaScript (including React), Sass, and PHP. Responsible for technical SEO on [freedomdebtrelief.com](https://www.freedomdebtrelief.com).
 

@@ -1,7 +1,7 @@
 ---
-title: "RegEx Revisited"
+title: RegEx Revisited
 date: 2017-11-13
-category: "Development"
+category: Development
 ---
 
 In the past week or so, I delved deeply into the terrifying world of regular expressions (regex). It turns out that regex isn’t that scary, and if you play with it enough, it is actually kinda…fun? My first foray into regex was when I was working through How to Learn JavaScript Properly. It was a great primer, but what I learned recently at Bov Academy has taken my understanding of regex to an entirely new, terrifying level.

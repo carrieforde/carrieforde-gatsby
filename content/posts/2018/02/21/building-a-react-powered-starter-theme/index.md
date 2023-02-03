@@ -1,7 +1,7 @@
 ---
-title: "Building a React-powered starter theme"
+title: Building a React-powered starter theme
 date: 2018-02-21
-category: "WordPress"
+category: WordPress
 ---
 
 As I near the final stretch in my Bov Academy studies, it’s time for me to choose a final project. For my final project, I have decided to capitalize on my love of JavaScript + WordPress. So, in this post, I want to introduce [Aurora Theme](https://aurorathe.me/)–a React-powered starter theme for WordPress.

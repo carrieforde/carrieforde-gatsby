@@ -1,7 +1,7 @@
 ---
-title: "Getting started with task running & Gulp"
+title: Getting started with task running & Gulp
 date: 2017-10-25
-category: "Development"
+category: Development
 showToc: true
 ---
 

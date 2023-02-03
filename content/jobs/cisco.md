@@ -1,10 +1,11 @@
 ---
-company: "Cisco"
+company: Cisco
 date: 2009-10-11
+title: Project Manager
+location: Feltham, UK
+startDate: 2009-10-11
+endDate: 2013-11-29
 ---
-
-<Heading level="h3" weight={300}>Business Process Analyst @ Cisco</Heading>
-<TextWithSeparator text1="Feltham, UK" text2="October 2009 - November 2013" />
 
 Managed team of three employees to perform data analysis, reporting, training and tool support for sales operations team of 50 in Europe, the Middle East, Africa, and Russia (EMEAR).
 
