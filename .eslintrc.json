@@ -11,17 +11,22 @@
     "prettier",
     "plugin:storybook/recommended"
   ],
-  "overrides": [],
+  "overrides": [
+    {
+      "files": ["*.md", ".mdx"],
+      "excludedFiles": "README.md",
+      "extends": ["plugin:mdx/recommended"],
+      "settings": {
+        "mdx/code-blocks": true
+      }
+    }
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "jsx-a11y"
-  ],
+  "plugins": ["react", "@typescript-eslint", "jsx-a11y"],
   "rules": {
     "react/jsx-sort-props": "warn",
     "react/prop-types": "off",

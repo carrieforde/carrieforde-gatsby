@@ -1,6 +1,7 @@
-import * as React from "react";
 import cn from "classnames";
-import styles from "./typography.module.css";
+import * as React from "react";
+
+import * as styles from "./typography.module.css";
 
 type TypographyVariant = "title" | "subtitle" | "body1" | "body2" | "overline";
 
