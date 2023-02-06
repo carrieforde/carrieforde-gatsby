@@ -43,6 +43,12 @@
   text-transform: var(--overline-text-transform, uppercase);
 }
 
+.finePrint {
+  color: var(--fine-print-color, var(--text-color));
+  font-family: var(--fine-print-font-family, var(--font-family-body));
+  font-size: var(--fine-print-font-size, 12px);
+}
+
 @media screen and (min-width: 600px) {
   .title {
     font-size: var(--title-font-size, 60px);

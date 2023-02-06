@@ -1,0 +1,21 @@
+.menu {
+  composes: listReset from "styles/utilities.module.css";
+  display: inline-flex;
+  gap: 12px;
+}
+
+@media screen and (min-width: 750px) {
+  .mainNavigation {
+    left: calc(50% + 640px / 2); /* 50% + page width / 2 */
+    margin-left: 24px;
+    position: fixed;
+    top: 124px; /* aligns with top of page content */
+    writing-mode: vertical-lr;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .mainNavigation {
+    margin-left: 36px;
+  }
+}

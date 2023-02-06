@@ -5,26 +5,28 @@ const config: GatsbyConfig = {
     title: `Carrie Forde`,
     description: `Carrie Forde is a front end software engineer in San Mateo, California who specializes in building elegant, maintainable, and performant websites.`,
     author: `@carrieforde`,
-    socials: [
+    mainNavigation: [
       {
-        label: "Email",
-        value: "mailto:carrie@carrieforde.com",
-        icon: ["fal", "paper-plane"],
+        to: "/",
+        text: "Home",
       },
       {
-        label: "LinkedIn",
-        value: "https://linkedin.com/in/carrieforde",
-        icon: ["fab", "linkedin-in"],
+        to: "/blog",
+        text: "Blog",
+      },
+    ],
+    footerLinks: [
+      {
+        text: "Email",
+        to: "mailto:carrie@carrieforde.com",
       },
       {
-        label: "Github",
-        value: "https://github.com/carrieforde",
-        icon: ["fab", "github"],
+        text: "LinkedIn",
+        to: "https://linkedin.com/in/carrieforde",
       },
       {
-        value: "CodePen",
-        label: "https://codepen.io/carrieforde",
-        icon: ["fab", "codepen"],
+        text: "Github",
+        to: "https://github.com/carrieforde",
       },
     ],
     siteUrl: "https://carrieforde.com",
@@ -75,6 +77,14 @@ const config: GatsbyConfig = {
         path: `${__dirname}/content/jobs`,
       },
       __key: "jobs",
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /svg/,
+        },
+      },
     },
   ],
 };

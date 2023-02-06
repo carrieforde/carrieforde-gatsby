@@ -122,6 +122,9 @@ export const createPages: GatsbyNode["createPages"] = async ({
       component: `${path.resolve(
         "./src/templates/page.tsx"
       )}?__contentFilePath=${node.internal.contentFilePath}`,
+      context: {
+        slug: node.fields.slug,
+      },
     });
   });
 

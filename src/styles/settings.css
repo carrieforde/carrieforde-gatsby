@@ -131,6 +131,15 @@
   --link-code: var(--color-primary-main);
 
   --blockquote-accent: var(--color-primary-light);
+
+  --logo-gradient-start: var(--color-primary-700);
+  --logo-gradient-1: var(--color-primary-600);
+  --logo-gradient-2: var(--color-primary-500);
+  --logo-gradient-3: var(--color-primary-400);
+  --logo-gradient-4: var(--color-primary-300);
+  --logo-gradient-end: var(--color-primary-200);
+  --logo-c: var(--color-default-800);
+  --logo-bar: var(--color-default-100);
 }
 
 /* Dark Mode theme settings */
@@ -170,164 +179,5 @@
 
     /* Typography styles */
     --title-color: var(--color-default-300);
-  }
-
-  /* Global Styles */
-  * {
-    box-sizing: border-box;
-  }
-
-  @media screen and (min-width: 600px) {
-    html {
-      font-size: 18px;
-    }
-  }
-
-  body {
-    background-color: var(--body-bg-color);
-    color: var(--text-color);
-    font-family: var(--font-family-body);
-    line-height: 1.75;
-    word-wrap: break-word;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: var(--heading-color);
-    font-weight: 600;
-    line-height: 1.1;
-    margin-bottom: 8px;
-    margin-top: 0;
-  }
-
-  * + h1,
-  * + h2,
-  * + h3,
-  * + h4,
-  * + h5,
-  * + h6 {
-    margin-top: 48px;
-  }
-
-  p {
-    margin-bottom: 0;
-    margin-top: 0;
-  }
-
-  p + p {
-    margin-top: 32px;
-  }
-
-  ol,
-  ul {
-    font-size: 14px;
-  }
-
-  ol ol,
-  ul ul {
-    margin-top: 8px;
-  }
-
-  ol ol {
-    list-style: lower-alpha;
-  }
-
-  p + ul,
-  p + ol {
-    margin-top: 16px;
-  }
-
-  li {
-    margin-bottom: 0;
-  }
-
-  li + li,
-  li > ul,
-  li > ol {
-    margin-top: 8px;
-  }
-
-  ol ol ol {
-    list-style: lower-roman;
-  }
-
-  @media screen and (min-width: 600px) {
-    ol,
-    ul {
-      font-size: 16px;
-    }
-  }
-
-  a {
-    background: linear-gradient(
-        to bottom,
-        var(--link-bg-color) 50%,
-        var(--link-bg-color) 50%
-      )
-      0 0.75em / 3px 0.5em repeat-x;
-    color: inherit;
-    text-decoration: none;
-    transition: background 0.3s ease-in-out;
-  }
-
-  a:hover,
-  a:focus {
-    background-position: 0 100%;
-    background-size: 5px 100%;
-  }
-
-  a code {
-    border-bottom: 2px solid var(--link-code);
-  }
-
-  blockquote {
-    color: var(--heading-color);
-    margin: 48px 32px;
-    position: relative;
-  }
-
-  blockquote::before {
-    color: var(--blockquote-accent);
-    content: "\0201C";
-    font-size: 72px;
-    left: -35px;
-    line-height: 1;
-    position: absolute;
-    top: -35px;
-    z-index: -1;
-  }
-
-  cite {
-    display: block;
-    font-size: 12px;
-    margin-top: 12px;
-  }
-
-  acronym[title] {
-    text-decoration: none;
-  }
-
-  var {
-    font-style: normal;
-  }
-
-  sub,
-  sup {
-    font-size: 12px;
-  }
-
-  img {
-    margin-bottom: 24px;
-  }
-
-  button {
-    background-color: transparent;
-    border: none;
-    color: var(--heading-color);
-    display: inline-block;
   }
 }

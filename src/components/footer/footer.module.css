@@ -1,0 +1,25 @@
+.centerFlex {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.footer {
+  composes: finePrint from "components/typography/typography.module.css";
+  margin-top: 128px;
+}
+
+.footerMenu {
+  composes: listReset from "styles/utilities.module.css";
+  composes: centerFlex;
+  font-size: var(--fine-print-font-size);
+  margin-top: 16px;
+}
+
+.footerLink:hover {
+  text-decoration: underline wavy var(--color-secondary-500);
+}
+
+.copyright {
+  composes: centerFlex;
+}

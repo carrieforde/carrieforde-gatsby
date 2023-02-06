@@ -2567,60 +2567,84 @@ type SitePluginSortInput = {
 type SiteSiteMetadata = {
   readonly author: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
+  readonly footerLinks: Maybe<ReadonlyArray<Maybe<SiteSiteMetadataFooterLinks>>>;
+  readonly mainNavigation: Maybe<ReadonlyArray<Maybe<SiteSiteMetadataMainNavigation>>>;
   readonly siteUrl: Maybe<Scalars['String']>;
-  readonly socials: Maybe<ReadonlyArray<Maybe<SiteSiteMetadataSocials>>>;
   readonly title: Maybe<Scalars['String']>;
 };
 
 type SiteSiteMetadataFieldSelector = {
   readonly author: InputMaybe<FieldSelectorEnum>;
   readonly description: InputMaybe<FieldSelectorEnum>;
+  readonly footerLinks: InputMaybe<SiteSiteMetadataFooterLinksFieldSelector>;
+  readonly mainNavigation: InputMaybe<SiteSiteMetadataMainNavigationFieldSelector>;
   readonly siteUrl: InputMaybe<FieldSelectorEnum>;
-  readonly socials: InputMaybe<SiteSiteMetadataSocialsFieldSelector>;
   readonly title: InputMaybe<FieldSelectorEnum>;
 };
 
 type SiteSiteMetadataFilterInput = {
   readonly author: InputMaybe<StringQueryOperatorInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
+  readonly footerLinks: InputMaybe<SiteSiteMetadataFooterLinksFilterListInput>;
+  readonly mainNavigation: InputMaybe<SiteSiteMetadataMainNavigationFilterListInput>;
   readonly siteUrl: InputMaybe<StringQueryOperatorInput>;
-  readonly socials: InputMaybe<SiteSiteMetadataSocialsFilterListInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
 };
 
-type SiteSiteMetadataSocials = {
-  readonly icon: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly label: Maybe<Scalars['String']>;
-  readonly value: Maybe<Scalars['String']>;
+type SiteSiteMetadataFooterLinks = {
+  readonly text: Maybe<Scalars['String']>;
+  readonly to: Maybe<Scalars['String']>;
 };
 
-type SiteSiteMetadataSocialsFieldSelector = {
-  readonly icon: InputMaybe<FieldSelectorEnum>;
-  readonly label: InputMaybe<FieldSelectorEnum>;
-  readonly value: InputMaybe<FieldSelectorEnum>;
+type SiteSiteMetadataFooterLinksFieldSelector = {
+  readonly text: InputMaybe<FieldSelectorEnum>;
+  readonly to: InputMaybe<FieldSelectorEnum>;
 };
 
-type SiteSiteMetadataSocialsFilterInput = {
-  readonly icon: InputMaybe<StringQueryOperatorInput>;
-  readonly label: InputMaybe<StringQueryOperatorInput>;
-  readonly value: InputMaybe<StringQueryOperatorInput>;
+type SiteSiteMetadataFooterLinksFilterInput = {
+  readonly text: InputMaybe<StringQueryOperatorInput>;
+  readonly to: InputMaybe<StringQueryOperatorInput>;
 };
 
-type SiteSiteMetadataSocialsFilterListInput = {
-  readonly elemMatch: InputMaybe<SiteSiteMetadataSocialsFilterInput>;
+type SiteSiteMetadataFooterLinksFilterListInput = {
+  readonly elemMatch: InputMaybe<SiteSiteMetadataFooterLinksFilterInput>;
 };
 
-type SiteSiteMetadataSocialsSortInput = {
-  readonly icon: InputMaybe<SortOrderEnum>;
-  readonly label: InputMaybe<SortOrderEnum>;
-  readonly value: InputMaybe<SortOrderEnum>;
+type SiteSiteMetadataFooterLinksSortInput = {
+  readonly text: InputMaybe<SortOrderEnum>;
+  readonly to: InputMaybe<SortOrderEnum>;
+};
+
+type SiteSiteMetadataMainNavigation = {
+  readonly text: Maybe<Scalars['String']>;
+  readonly to: Maybe<Scalars['String']>;
+};
+
+type SiteSiteMetadataMainNavigationFieldSelector = {
+  readonly text: InputMaybe<FieldSelectorEnum>;
+  readonly to: InputMaybe<FieldSelectorEnum>;
+};
+
+type SiteSiteMetadataMainNavigationFilterInput = {
+  readonly text: InputMaybe<StringQueryOperatorInput>;
+  readonly to: InputMaybe<StringQueryOperatorInput>;
+};
+
+type SiteSiteMetadataMainNavigationFilterListInput = {
+  readonly elemMatch: InputMaybe<SiteSiteMetadataMainNavigationFilterInput>;
+};
+
+type SiteSiteMetadataMainNavigationSortInput = {
+  readonly text: InputMaybe<SortOrderEnum>;
+  readonly to: InputMaybe<SortOrderEnum>;
 };
 
 type SiteSiteMetadataSortInput = {
   readonly author: InputMaybe<SortOrderEnum>;
   readonly description: InputMaybe<SortOrderEnum>;
+  readonly footerLinks: InputMaybe<SiteSiteMetadataFooterLinksSortInput>;
+  readonly mainNavigation: InputMaybe<SiteSiteMetadataMainNavigationSortInput>;
   readonly siteUrl: InputMaybe<SortOrderEnum>;
-  readonly socials: InputMaybe<SiteSiteMetadataSocialsSortInput>;
   readonly title: InputMaybe<SortOrderEnum>;
 };
 
@@ -2673,6 +2697,11 @@ type CategoryQueryVariables = Exact<{
 
 type CategoryQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly frontmatter: { readonly category: string | null, readonly date: string | null, readonly description: ReadonlyArray<string | null> | null, readonly title: string | null } | null }> } };
 
+type FooterLinksQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type FooterLinksQuery = { readonly site: { readonly siteMetadata: { readonly footerLinks: ReadonlyArray<{ readonly to: string | null, readonly text: string | null } | null> | null } | null } | null };
+
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 
 type GatsbyImageSharpFixed_noBase64Fragment = { readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
@@ -2699,6 +2728,11 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = { readonly tracedSVG: st
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: number, readonly maxWidth: number };
 
+type MainNavigationQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type MainNavigationQuery = { readonly site: { readonly siteMetadata: { readonly mainNavigation: ReadonlyArray<{ readonly to: string | null, readonly text: string | null } | null> | null } | null } | null };
+
 type PageQueryVariables = Exact<{
   slug: InputMaybe<Scalars['String']>;
 }>;
@@ -2712,6 +2746,11 @@ type PostQueryVariables = Exact<{
 
 
 type PostQuery = { readonly mdx: { readonly tableOfContents: Record<string, unknown> | null, readonly frontmatter: { readonly category: string | null, readonly date: string | null, readonly description: ReadonlyArray<string | null> | null, readonly showToc: boolean | null, readonly title: string | null, readonly updated: string | null } | null } | null };
+
+type SeoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SeoQuery = { readonly site: { readonly siteMetadata: { readonly author: string | null, readonly title: string | null, readonly description: string | null } | null } | null };
 
 type ContentQueryVariables = Exact<{ [key: string]: never; }>;
 

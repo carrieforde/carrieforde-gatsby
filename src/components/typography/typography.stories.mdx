@@ -74,6 +74,18 @@ The `component` prop defaults to `h1` when using the title. If you'd like to sty
   />
 </Canvas>
 
+### Fine Print
+
+<Canvas>
+  <Story
+    name="finePrint"
+    args={{ variant: "fintPrint" }}
+    render={(args) => (
+      <Typography {...args}>The quick fox jumps over the lazy dog</Typography>
+    )}
+  />
+</Canvas>
+
 ## Playground & API
 
 Use the controls below to set props for the `Typography` component. Once you're finished, you can copy the code needed to render the component in your UI.
@@ -142,6 +154,11 @@ Use [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Usi
   --overline-font-weight: 300;
   --overline-margin-bottom: 4px;
   --overline-text-transform: uppercase;
+
+  /* Fine Print */
+  --fine-print-color: var(--text-color);
+  --fine-print-font-family: var(--font-family-body);
+  --fine-print-font-size: 12px;
 }
 ```
 
