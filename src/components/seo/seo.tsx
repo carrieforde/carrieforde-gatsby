@@ -1,9 +1,16 @@
 import { graphql, useStaticQuery } from "gatsby";
 import * as React from "react";
 
-export const Seo: React.FC<
-  React.PropsWithChildren<Queries.PageQuery["mdx"]>
-> = ({ children, frontmatter }) => {
+type SeoProps = {
+  title?: string | null;
+  description?: readonly (string | null)[] | null;
+};
+
+export const Seo: React.FC<React.PropsWithChildren<SeoProps>> = ({
+  children,
+  title,
+  description,
+}) => {
   const { site } = useStaticQuery<Queries.SeoQuery>(graphql`
     query Seo {
       site {
@@ -16,9 +23,9 @@ export const Seo: React.FC<
     }
   `);
 
-  const titleText = [frontmatter?.title, site?.siteMetadata?.title].join(" | ");
-  const metaTitle = frontmatter?.title ?? site?.siteMetadata?.title ?? "";
-  const metaDescription = frontmatter?.description?.join(" ") ?? "";
+  const titleText = [title, site?.siteMetadata?.title].join(" | ");
+  const metaTitle = title ?? site?.siteMetadata?.title ?? "";
+  const metaDescription = description?.join(" ") ?? "";
   const author = site?.siteMetadata?.author ?? "";
 
   return (

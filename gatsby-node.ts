@@ -2,6 +2,7 @@ import path from "path";
 
 import type { GatsbyNode } from "gatsby";
 import { createFilePath } from "gatsby-source-filesystem";
+import readingTime from "reading-time";
 
 function slugify(str: string) {
   return str.replace(/\s/g, "").toLowerCase();
@@ -29,6 +30,13 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = ({
       node,
       name: "slug",
       value: getPostSlug(slug),
+    });
+
+    // Add { field: { timeToRead } } to query result.
+    createNodeField({
+      node,
+      name: "timeToRead",
+      value: readingTime((node as any).body),
     });
   }
 };

@@ -1,3 +1,4 @@
+import { MDXProvider } from "@mdx-js/react";
 import Footer from "components/footer/footer";
 import Header from "components/header/header";
 import { Link } from "components/link/link";
@@ -22,22 +23,24 @@ export const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
   }, [location.hash]);
 
   return (
-    <div className={s.layout}>
-      <Link to="#content" variant="skipLink">
-        Skip to content
-      </Link>
-      <Header />
+    <MDXProvider>
+      <div className={s.layout}>
+        <Link to="#content" variant="skipLink">
+          Skip to content
+        </Link>
+        <Header />
 
-      <main
-        className={s.siteMain}
-        id="content"
-        ref={contentRef}
-        tabIndex={location.hash.includes("content") ? -1 : undefined}
-      >
-        {children}
-      </main>
+        <main
+          className={s.siteMain}
+          id="content"
+          ref={contentRef}
+          tabIndex={location.hash.includes("content") ? -1 : undefined}
+        >
+          {children}
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </MDXProvider>
   );
 };

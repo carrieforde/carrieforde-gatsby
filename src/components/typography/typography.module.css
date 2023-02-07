@@ -1,9 +1,16 @@
+.typography {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
 .title {
   color: var(--title-color, var(--color-default-500));
   font-family: var(--title-font-family, var(--font-family-body));
   font-size: var(--title-font-size, 36px);
   font-weight: var(--title-font-weight, 300);
   line-height: var(--title-line-height, 1.1);
+  margin-bottom: var(--title-margin-bottom, 0);
+  margin-top: var(--title-margin-top, 0);
 }
 
 .subtitle {
@@ -12,6 +19,8 @@
   font-size: var(--subtitle-font-size, 18px);
   font-weight: var(--subtitle-font-weight, 600);
   line-height: var(--subtitle-line-height, 1.4);
+  margin-bottom: var(--subtitle-margin-bottom, 0);
+  margin-top: var(--subtitle-margin-top, 0);
 }
 
 * + .subtitle {
@@ -23,6 +32,8 @@
   font-family: var(--body1-font-family, var(--font-family-body));
   font-size: var(--body1-font-size, var(--base-font-size));
   font-weight: var(--body1-font-weight, var(--base-font-weight));
+  margin-bottom: var(--body1-margin-bottom, 0);
+  margin-top: var(--body1-margin-top, 0);
 }
 
 .body2 {
@@ -32,6 +43,7 @@
   font-weight: var(--body2-font-weight, 500);
   line-height: var(--body2-line-height, 1.2);
   margin-bottom: var(--body2-margin-bottom, 4px);
+  margin-top: var(--body2-margin-top, 0);
 }
 
 .overline {
@@ -40,6 +52,7 @@
   font-size: var(--overline-font-size, 12px);
   font-weight: var(--overline-font-weight, 300);
   margin-bottom: var(--overline-margin-bottom, 4px);
+  margin-top: var(--overline-margin-top, 0);
   text-transform: var(--overline-text-transform, uppercase);
 }
 
@@ -47,6 +60,9 @@
   color: var(--fine-print-color, var(--text-color));
   font-family: var(--fine-print-font-family, var(--font-family-body));
   font-size: var(--fine-print-font-size, 12px);
+  font-weight: var(--fine-print-font-weight, 300);
+  margin-bottom: var(--fine-print-margin-bottom, 0);
+  margin-top: var(--fine-print-margin-top, 0);
 }
 
 @media screen and (min-width: 600px) {

@@ -1,4 +1,3 @@
-import { MDXProvider } from "@mdx-js/react";
 import { Layout, PageHeader, Seo } from "components";
 import { graphql, HeadProps, PageProps } from "gatsby";
 import * as React from "react";
@@ -17,7 +16,7 @@ const Page: React.FC<PageProps<Queries.PageQuery>> = ({
   return (
     <Layout location={location}>
       <PageHeader description={description} title={title} />
-      <MDXProvider>{children}</MDXProvider>
+      {children}
     </Layout>
   );
 };
@@ -25,7 +24,10 @@ const Page: React.FC<PageProps<Queries.PageQuery>> = ({
 export default Page;
 
 export const Head: React.FC<HeadProps<Queries.PageQuery>> = ({ data }) => (
-  <Seo frontmatter={data.mdx?.frontmatter ?? null} />
+  <Seo
+    description={data.mdx?.frontmatter?.description}
+    title={data.mdx?.frontmatter?.title}
+  />
 );
 
 export const query = graphql`

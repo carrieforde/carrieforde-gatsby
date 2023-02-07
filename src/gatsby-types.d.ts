@@ -1326,18 +1326,50 @@ type MdxFieldSelector = {
 
 type MdxFields = {
   readonly slug: Maybe<Scalars['String']>;
+  readonly timeToRead: Maybe<MdxFieldsTimeToRead>;
 };
 
 type MdxFieldsFieldSelector = {
   readonly slug: InputMaybe<FieldSelectorEnum>;
+  readonly timeToRead: InputMaybe<MdxFieldsTimeToReadFieldSelector>;
 };
 
 type MdxFieldsFilterInput = {
   readonly slug: InputMaybe<StringQueryOperatorInput>;
+  readonly timeToRead: InputMaybe<MdxFieldsTimeToReadFilterInput>;
 };
 
 type MdxFieldsSortInput = {
   readonly slug: InputMaybe<SortOrderEnum>;
+  readonly timeToRead: InputMaybe<MdxFieldsTimeToReadSortInput>;
+};
+
+type MdxFieldsTimeToRead = {
+  readonly minutes: Maybe<Scalars['Float']>;
+  readonly text: Maybe<Scalars['String']>;
+  readonly time: Maybe<Scalars['Int']>;
+  readonly words: Maybe<Scalars['Int']>;
+};
+
+type MdxFieldsTimeToReadFieldSelector = {
+  readonly minutes: InputMaybe<FieldSelectorEnum>;
+  readonly text: InputMaybe<FieldSelectorEnum>;
+  readonly time: InputMaybe<FieldSelectorEnum>;
+  readonly words: InputMaybe<FieldSelectorEnum>;
+};
+
+type MdxFieldsTimeToReadFilterInput = {
+  readonly minutes: InputMaybe<FloatQueryOperatorInput>;
+  readonly text: InputMaybe<StringQueryOperatorInput>;
+  readonly time: InputMaybe<IntQueryOperatorInput>;
+  readonly words: InputMaybe<IntQueryOperatorInput>;
+};
+
+type MdxFieldsTimeToReadSortInput = {
+  readonly minutes: InputMaybe<SortOrderEnum>;
+  readonly text: InputMaybe<SortOrderEnum>;
+  readonly time: InputMaybe<SortOrderEnum>;
+  readonly words: InputMaybe<SortOrderEnum>;
 };
 
 type MdxFilterInput = {
@@ -2695,7 +2727,7 @@ type CategoryQueryVariables = Exact<{
 }>;
 
 
-type CategoryQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly frontmatter: { readonly category: string | null, readonly date: string | null, readonly description: ReadonlyArray<string | null> | null, readonly title: string | null } | null }> } };
+type CategoryQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly excerpt: string | null, readonly id: string, readonly frontmatter: { readonly category: string | null, readonly date: string | null, readonly description: ReadonlyArray<string | null> | null, readonly title: string | null } | null, readonly fields: { readonly slug: string | null, readonly timeToRead: { readonly minutes: number | null } | null } | null }> } };
 
 type FooterLinksQueryVariables = Exact<{ [key: string]: never; }>;
 

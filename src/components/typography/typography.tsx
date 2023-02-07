@@ -1,7 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
 
-import * as styles from "./typography.module.css";
+import * as s from "./typography.module.css";
 
 type TypographyVariant =
   | "title"
@@ -19,7 +19,8 @@ type TypographyComponent =
   | "h5"
   | "h6"
   | "p"
-  | "span";
+  | "span"
+  | "time";
 
 export type TypographyProps = {
   variant?: TypographyVariant;
@@ -34,8 +35,8 @@ export const Typography = ({
   className,
 }: React.PropsWithChildren<TypographyProps>) => {
   const Comp = variant === "title" && !component ? "h1" : component ?? "p";
-  const classes = cn("typography", className, {
-    [styles[variant ?? ""]]: !!variant && styles[variant],
+  const classes = cn("typography", s.typography, className, {
+    [s[variant ?? ""]]: !!variant && s[variant],
   });
 
   return <Comp className={classes}>{children}</Comp>;

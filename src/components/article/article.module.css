@@ -1,0 +1,20 @@
+.article {
+  --title-font-size: 24px;
+  --title-color: var(--heading-color);
+
+  --overline-color: var(--color-primary-main);
+  --overline-margin-bottom: 4px;
+}
+
+.articleMeta {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+@media screen and (min-width: 600px) {
+  .article {
+    --title-font-size: 28px;
+  }
+}

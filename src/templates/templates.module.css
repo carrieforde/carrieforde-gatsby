@@ -1,0 +1,7 @@
+.postList {
+  composes: listReset from "styles/utilities.module.css";
+}
+
+.postList li + li {
+  margin-top: 48px;
+}
