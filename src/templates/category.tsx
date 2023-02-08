@@ -26,7 +26,7 @@ const Category: React.FC<
       <ul className={s.postList}>
         {data.allMdx.nodes.map((node) => {
           if (!node.fields?.slug || !node.frontmatter) {
-            return;
+            return null;
           }
 
           const { slug, timeToRead } = node.fields;

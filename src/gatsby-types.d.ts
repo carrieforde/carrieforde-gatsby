@@ -2722,6 +2722,14 @@ type WebPOptions = {
   readonly quality: InputMaybe<Scalars['Int']>;
 };
 
+type BlogQueryVariables = Exact<{
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+}>;
+
+
+type BlogQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly excerpt: string | null, readonly id: string, readonly frontmatter: { readonly title: string | null, readonly category: string | null, readonly date: string | null, readonly description: ReadonlyArray<string | null> | null } | null, readonly fields: { readonly slug: string | null, readonly timeToRead: { readonly minutes: number | null } | null } | null }> } };
+
 type CategoryQueryVariables = Exact<{
   category: Scalars['String'];
 }>;
@@ -2787,7 +2795,7 @@ type SeoQuery = { readonly site: { readonly siteMetadata: { readonly author: str
 type ContentQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type ContentQuery = { readonly categories: { readonly group: ReadonlyArray<{ readonly fieldValue: string | null, readonly nodes: ReadonlyArray<{ readonly internal: { readonly contentFilePath: string | null } }> }> }, readonly pages: { readonly nodes: ReadonlyArray<{ readonly fields: { readonly slug: string | null } | null, readonly internal: { readonly contentFilePath: string | null } }> }, readonly posts: { readonly edges: ReadonlyArray<{ readonly next: { readonly fields: { readonly slug: string | null } | null } | null, readonly previous: { readonly fields: { readonly slug: string | null } | null } | null, readonly node: { readonly fields: { readonly slug: string | null } | null, readonly internal: { readonly contentFilePath: string | null } } }> } };
+type ContentQuery = { readonly categories: { readonly group: ReadonlyArray<{ readonly fieldValue: string | null, readonly nodes: ReadonlyArray<{ readonly internal: { readonly contentFilePath: string | null } }> }> }, readonly pages: { readonly nodes: ReadonlyArray<{ readonly fields: { readonly slug: string | null } | null, readonly internal: { readonly contentFilePath: string | null } }> }, readonly posts: { readonly totalCount: number, readonly edges: ReadonlyArray<{ readonly next: { readonly fields: { readonly slug: string | null } | null } | null, readonly previous: { readonly fields: { readonly slug: string | null } | null } | null, readonly node: { readonly fields: { readonly slug: string | null } | null, readonly internal: { readonly contentFilePath: string | null } } }> } };
 
 
 }

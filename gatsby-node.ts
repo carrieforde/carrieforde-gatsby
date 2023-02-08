@@ -11,6 +11,8 @@ function getPostSlug(slug: string) {
   return `/${slug.split("/").at(-1)}/`;
 }
 
+const POSTS_PER_PAGE = 5;
+
 // Allows us to inject custom fields into our data.
 export const onCreateNode: GatsbyNode["onCreateNode"] = ({
   node,
@@ -95,6 +97,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
             }
           }
         }
+        totalCount
       }
     }
   `);
@@ -104,6 +107,21 @@ export const createPages: GatsbyNode["createPages"] = async ({
   }
 
   const { categories, pages, posts } = result.data as Queries.ContentQuery;
+  const numberOfPagesBlog = Math.ceil(posts.totalCount / POSTS_PER_PAGE);
+
+  // Paginated blog pages.
+  Array.from({ length: numberOfPagesBlog }).forEach((_, idx) => {
+    createPage({
+      path: idx === 0 ? "blog" : `blog/${idx + 1}`,
+      component: `${path.resolve("./src/templates/blog.tsx")}`,
+      context: {
+        limit: POSTS_PER_PAGE,
+        skip: idx * POSTS_PER_PAGE,
+        pageCount: numberOfPagesBlog,
+        currentPage: idx + 1,
+      },
+    });
+  });
 
   categories.group.forEach((group) => {
     if (!group.fieldValue) {

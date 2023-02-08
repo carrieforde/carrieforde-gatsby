@@ -7,3 +7,4 @@ export * from "./main-navigation/main-navigation";
 export * from "./page-header/page-header";
 export * from "./seo/seo";
 export * from "./typography/typography";
+export * from "./pagination/pagination";

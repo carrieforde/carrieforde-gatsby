@@ -1,0 +1,49 @@
+.pagination {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  margin-left: -8px;
+  margin-right: -8px;
+  margin-top: 64px;
+}
+
+.numbers {
+  display: inline-flex;
+  gap: 4px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.link {
+  composes: body2 from "components/typography/typography.module.css";
+  display: flex;
+  gap: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+
+  --body2-color: var(--color-primary-main);
+}
+
+.linkActive {
+  composes: navigationActive from "components/link/link.module.css";
+}
+
+.nextLink {
+  composes: link;
+}
+
+.previousLink {
+  composes: link;
+}
+
+.arrow {
+  transition: transform 0.3s ease-in;
+}
+
+.previousLink:hover .arrow {
+  transform: translateX(-4px);
+}
+
+.nextLink:hover .arrow {
+  transform: translateX(4px);
+}

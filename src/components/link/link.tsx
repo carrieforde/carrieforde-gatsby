@@ -7,6 +7,7 @@ import * as s from "./link.module.css";
 type LinkProps = Pick<GatsbyLinkProps<unknown>, "to"> & {
   variant?: "navigation" | "skipLink";
   color?: "primary" | "inherit";
+  activeClassName?: string;
   className?: string;
 };
 
@@ -15,6 +16,7 @@ export const Link: React.FC<React.PropsWithChildren<LinkProps>> = ({
   variant,
   to,
   color,
+  activeClassName,
   className,
 }) => {
   const classes = cn("link", s.link, className, {
@@ -23,7 +25,7 @@ export const Link: React.FC<React.PropsWithChildren<LinkProps>> = ({
     [s.primary]: color === "primary" || variant === "navigation",
     [s.inherit]: color === "inherit",
   });
-  const activeClasses = cn("active", {
+  const activeClasses = cn("active", activeClassName, {
     [s.navigationActive]: variant === "navigation",
   });
 
