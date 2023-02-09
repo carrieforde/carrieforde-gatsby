@@ -1,0 +1,152 @@
+:root {
+  --block-background: var(--color-default-50);
+  --base-color: var(--color-default-800);
+  --border-color: var(--color-default-200);
+
+  --comment-color: var(--color-default-300);
+  --punctuation-color: var(--color-default-500);
+  --property-color: var(--color-primary-700);
+  --selector-color: var(--color-secondary-600);
+  --operator-color: var(--color-warning-800);
+  --variable-color: var(--color-info-800);
+  --function-color: var(--color-danger-800);
+  --keyword-color: var(--color-warning-600);
+  --selected-color: #b3d4fc;
+
+  --inline-code-color: var(--block-background);
+  --inline-code-background: var(--base-color);
+
+  --highlight-background: #f7ebc6;
+  --highlight-accent: #f7d87c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --block-background: var(--color-default-800);
+    --base-color: var(--color-default-100);
+    --border-color: var(--color-default-700);
+    --comment-color: var(--color-default-400);
+    --punctuation-color: var(--color-default-200);
+    --property-color: var(--color-primary-200);
+    --selector-color: var(--color-secondary-300);
+    --operator-color: var(--color-warning-500);
+    --variable-color: var(--color-info-400);
+    --function-color: var(--color-danger-200);
+    --keyword-color: var(--color-warning-400);
+    --selected-color: #b3d4fc;
+    --inline-code-color: var(--block-background);
+    --inline-code-background: var(--base-color);
+  }
+}
+
+code,
+kbd,
+pre,
+samp,
+tt,
+var {
+  background-color: var(--block-background);
+  border-radius: 3px;
+  color: var(--base-color); /* base00 */
+  font-family: var(--font-family-monospace);
+  font-size: 18px;
+  hyphens: none;
+  line-height: 1.5;
+  tab-size: 4;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+}
+
+pre {
+  border: 1px solid var(--border-color);
+  margin-bottom: var(--size-6);
+  margin-top: var(--size-6);
+  overflow-x: auto;
+  padding: var(--size-4);
+}
+
+pre code[class^="language-"] {
+  font-size: var(--font-size-2);
+  padding: 0;
+  white-space: pre;
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  background: var(--prismjs-selection); /* base02 */
+}
+
+.namespace {
+  opacity: 0.7;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: var(--comment-color);
+}
+
+.token.punctuation {
+  color: var(--punctuation-color);
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: var(--property-color);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: var(--selector-color);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: var(--operator-color);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: var(--keyword-color);
+}
+
+.token.function {
+  color: var(--function-color);
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: var(--variable-color);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}

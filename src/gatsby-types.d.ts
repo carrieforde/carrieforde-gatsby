@@ -2785,7 +2785,7 @@ type PostQueryVariables = Exact<{
 }>;
 
 
-type PostQuery = { readonly mdx: { readonly tableOfContents: Record<string, unknown> | null, readonly frontmatter: { readonly category: string | null, readonly date: string | null, readonly description: ReadonlyArray<string | null> | null, readonly showToc: boolean | null, readonly title: string | null, readonly updated: string | null } | null } | null };
+type PostQuery = { readonly mdx: { readonly tableOfContents: Record<string, unknown> | null, readonly excerpt: string | null, readonly frontmatter: { readonly category: string | null, readonly date: string | null, readonly description: ReadonlyArray<string | null> | null, readonly showToc: boolean | null, readonly title: string | null, readonly updated: string | null } | null } | null };
 
 type SeoQueryVariables = Exact<{ [key: string]: never; }>;
 

@@ -50,11 +50,6 @@ describe("Protractor demo app", () => {
 });
 ```
 
-<CallOut type="tip">
-  If you use VS Code and type the code into your spec, VS Code will pull the
-  required import statement(s) into your file.
-</CallOut>
-
 Since Protractor is already set up in our project and it comes with a a configuration file (`e2e/protractor.conf.js`), we can simply run our test:
 
 ```bash
@@ -314,14 +309,6 @@ First, we'll need to install a few dependencies. Go ahead and run the following 
 ```bash
 npm install --save-dev @types/{chai,chai-as-promised,cucumber} chai chai-as-promised cucumber cucumber-html-reporter protractor-cucumber-framework
 ```
-
-<cf-alert type="info">
-  If you're using VS Code, now is a good time to add the{" "}
-  <a href="https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete">
-    Cucumber (Gherkin) Full Support
-  </a>{" "}
-  extension. This extension helps stub out tests more quickly with code hinting.
-</cf-alert>
 
 Next, let's create a Cucumber feature file. The [Cucumber Guide](https://cucumber.io/docs/guides/10-minute-tutorial/) has a pretty good tutorial for writing Cucumber tests. But for continuity we'll continue with our calculator test.
 

@@ -46,6 +46,8 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = ({
 // This maps content to automatically generate pages by whatever taxonomy we choose.
 // In this case, we're creating `category`, `page`, and `post` taxonomies, mapping
 // each to a specified React template.
+//
+// We can also use this to create our `blog` our `posts` page.
 export const createPages: GatsbyNode["createPages"] = async ({
   graphql,
   actions: { createPage },
@@ -154,22 +156,23 @@ export const createPages: GatsbyNode["createPages"] = async ({
     });
   });
 
-  // posts.edges.forEach((edge) => {
-  //   if (!edge.node.fields?.slug) {
-  //     return;
-  //   }
+  posts.edges.forEach((edge) => {
+    if (!edge.node.fields?.slug) {
+      return;
+    }
 
-  //   createPage({
-  //     path: edge.node.fields.slug,
-  //     component: `${path.resolve(
-  //       "./src/templates/post.tsx"
-  //     )}?__contentFilePath=${edge.node.internal.contentFilePath}`,
-  //     context: {
-  //       next: edge.next,
-  //       previous: edge.previous,
-  //     },
-  //   });
-  // });
+    createPage({
+      path: edge.node.fields.slug,
+      component: `${path.resolve(
+        "./src/templates/post.tsx"
+      )}?__contentFilePath=${edge.node.internal.contentFilePath}`,
+      context: {
+        next: edge.next,
+        previous: edge.previous,
+        slug: edge.node.fields.slug,
+      },
+    });
+  });
 };
 
 // Hook into webpack for custom handling of things, like absolute paths in Typescript.

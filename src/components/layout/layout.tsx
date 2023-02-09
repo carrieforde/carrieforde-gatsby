@@ -1,4 +1,5 @@
 import { MDXProvider } from "@mdx-js/react";
+import Banner from "components/banner/banner";
 import Footer from "components/footer/footer";
 import Header from "components/header/header";
 import { Link } from "components/link/link";
@@ -6,6 +7,8 @@ import { PageProps } from "gatsby";
 import * as React from "react";
 
 import * as s from "./layout.module.css";
+
+const SHORTCODES = { Banner, Link };
 
 type LayoutProps = {
   location: PageProps["location"];
@@ -23,7 +26,7 @@ export const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
   }, [location.hash]);
 
   return (
-    <MDXProvider>
+    <MDXProvider components={SHORTCODES}>
       <div className={s.layout}>
         <Link to="#content" variant="skipLink">
           Skip to content

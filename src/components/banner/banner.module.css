@@ -1,0 +1,45 @@
+.banner {
+  background-color: var(
+    --banner-default-background-color,
+    var(--color-default-light)
+  );
+  border-radius: 4px;
+  color: var(--banner-default-color, var(--color-default-dark));
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  margin-top: 32px;
+  padding: 16px 24px;
+}
+
+.error {
+  background-color: var(
+    --banner-error-background-color,
+    var(--color-error-light)
+  );
+  color: var(--banner-error-color, var(--color-error-dark));
+}
+
+.info {
+  background-color: var(
+    --banner-info-background-color,
+    var(--color-info-light)
+  );
+  color: var(--banner-info-color, var(--color-info-dark));
+}
+
+.success {
+  background-color: var(
+    --banner-success-background-color,
+    var(--color-success-light)
+  );
+  color: var(--banner-success-color, var(--color-success-dark));
+}
+
+.warning {
+  background-color: var(
+    --banner-warning-background-color,
+    var(--color-warning-light)
+  );
+  color: var(--banner-warning-color, var(--color-warning-dark));
+}

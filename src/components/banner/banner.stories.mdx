@@ -1,0 +1,77 @@
+import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs";
+
+import Banner from "./banner";
+
+<Meta title="Banner" component={Banner} />
+
+# Banner
+
+## Variants
+
+### Default
+
+<Canvas>
+  <Story
+    name="default"
+    args={{ variant: "default" }}
+    render={(args) => <Banner {...args}>This is the default banner.</Banner>}
+  />
+</Canvas>
+
+### Error
+
+<Canvas>
+  <Story
+    name="error"
+    args={{ variant: "error" }}
+    render={(args) => <Banner {...args}>Oops, there was an error!</Banner>}
+  />
+</Canvas>
+
+### Info
+
+<Canvas>
+  <Story
+    name="info"
+    args={{ variant: "info" }}
+    render={(args) => <Banner {...args}>A banner for your information</Banner>}
+  />
+</Canvas>
+
+### Success
+
+<Canvas>
+  <Story
+    name="success"
+    args={{ variant: "success" }}
+    render={(args) => <Banner {...args}>There was a success</Banner>}
+  />
+</Canvas>
+
+### Warning
+
+<Canvas>
+  <Story
+    name="warning"
+    args={{ variant: "warning" }}
+    render={(args) => (
+      <Banner {...args}>Watch out! It's a warning banner.</Banner>
+    )}
+  />
+</Canvas>
+
+### Success with custom icon
+
+<Canvas>
+  <Story
+    name="custom icon"
+    args={{ variant: "success", icon: "💡" }}
+    render={(args) => (
+      <Banner {...args}>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.
+        Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.
+        Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
+      </Banner>
+    )}
+  />
+</Canvas>

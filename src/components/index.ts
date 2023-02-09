@@ -8,3 +8,5 @@ export * from "./page-header/page-header";
 export * from "./seo/seo";
 export * from "./typography/typography";
 export * from "./pagination/pagination";
+export * from "./banner/banner";
+export * from "./merge-field/merge-field";
