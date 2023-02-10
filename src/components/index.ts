@@ -10,3 +10,4 @@ export * from "./typography/typography";
 export * from "./pagination/pagination";
 export * from "./banner/banner";
 export * from "./merge-field/merge-field";
+export * from "./drawer/drawer";
