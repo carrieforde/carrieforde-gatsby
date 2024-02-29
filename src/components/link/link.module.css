@@ -1,0 +1,35 @@
+.link {
+  background: none;
+  text-decoration: none;
+}
+
+.navigation {
+  text-transform: uppercase;
+}
+
+.navigationActive {
+  text-decoration-color: var(
+    --link-navigation-active-text-decoration-color,
+    var(--color-secondary-400)
+  );
+  text-decoration-line: var(
+    --link-navigation-active-text-decoration-line,
+    underline
+  );
+  text-decoration-style: var(
+    --link-navigation-active-text-decoration-style,
+    wavy
+  );
+}
+
+.skipLink {
+  composes: visuallyHiddenFocusable from "styles/utilities.module.css";
+}
+
+.primary {
+  color: var(--link-color-primary, var(--color-primary-700));
+}
+
+.inherit {
+  color: inherit;
+}

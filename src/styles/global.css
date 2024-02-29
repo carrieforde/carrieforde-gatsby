@@ -1,6 +1,17 @@
+/* Global Styles */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
 @media screen and (min-width: 600px) {
   html {
-    font-size: 112.5%; /* 18px */
+    font-size: 18px;
   }
 }
 
@@ -9,6 +20,7 @@ body {
   color: var(--text-color);
   font-family: var(--font-family-body);
   line-height: 1.75;
+  margin: 0;
   word-wrap: break-word;
 }
 
@@ -21,7 +33,7 @@ h6 {
   color: var(--heading-color);
   font-weight: 600;
   line-height: 1.1;
-  margin-bottom: var(--size-2);
+  margin-bottom: 8px;
   margin-top: 0;
 }
 
@@ -31,7 +43,7 @@ h6 {
 * + h4,
 * + h5,
 * + h6 {
-  margin-top: var(--size-7);
+  margin-top: 48px;
 }
 
 p {
@@ -40,17 +52,17 @@ p {
 }
 
 p + p {
-  margin-top: var(--size-6);
+  margin-top: 32px;
 }
 
 ol,
 ul {
-  font-size: var(--font-size-2);
+  font-size: 14px;
 }
 
 ol ol,
 ul ul {
-  margin-top: var(--size-2);
+  margin-top: 8px;
 }
 
 ol ol {
@@ -59,7 +71,7 @@ ol ol {
 
 p + ul,
 p + ol {
-  margin-top: var(--size-4);
+  margin-top: 16px;
 }
 
 li {
@@ -69,7 +81,7 @@ li {
 li + li,
 li > ul,
 li > ol {
-  margin-top: var(--size-2);
+  margin-top: 8px;
 }
 
 ol ol ol {
@@ -79,7 +91,7 @@ ol ol ol {
 @media screen and (min-width: 600px) {
   ol,
   ul {
-    font-size: var(--font-size-3);
+    font-size: 16px;
   }
 }
 
@@ -92,7 +104,7 @@ a {
     0 0.75em / 3px 0.5em repeat-x;
   color: inherit;
   text-decoration: none;
-  transition: var(--transition-background);
+  transition: background 0.3s ease-in-out;
 }
 
 a:hover,
@@ -107,14 +119,14 @@ a code {
 
 blockquote {
   color: var(--heading-color);
-  margin: var(--size-7) var(--size-6);
+  margin: 48px 32px;
   position: relative;
 }
 
 blockquote::before {
   color: var(--blockquote-accent);
   content: "\0201C";
-  font-size: var(--size-11);
+  font-size: 72px;
   left: -35px;
   line-height: 1;
   position: absolute;
@@ -124,8 +136,8 @@ blockquote::before {
 
 cite {
   display: block;
-  font-size: var(--font-size-1);
-  margin-top: var(--size-3);
+  font-size: 12px;
+  margin-top: 12px;
 }
 
 acronym[title] {
@@ -138,11 +150,11 @@ var {
 
 sub,
 sup {
-  font-size: var(--font-size-1);
+  font-size: 12px;
 }
 
 img {
-  margin-bottom: var(--size-5);
+  margin-bottom: 24px;
 }
 
 button {
@@ -150,60 +162,4 @@ button {
   border: none;
   color: var(--heading-color);
   display: inline-block;
-}
-
-/**
- * Web components
- */
-alcatraz-accordion {
-  margin-bottom: var(--size-6);
-  margin-top: var(--size-6);
-}
-
-.gatsby-resp-image-link {
-  background: none;
-}
-
-.pageHeader + .page__content {
-  margin-top: var(--size-7);
-}
-
-.anchor {
-  background: none;
-  left: -20px;
-  position: absolute;
-}
-
-.avatar {
-  clip-path: circle();
-  margin: 0 auto var(--size-6);
-  shape-outside: circle();
-  width: var(--size-12);
-}
-
-@media screen and (min-width: 600px) {
-  .avatar {
-    float: right;
-    margin-left: var(--size-5);
-  }
-}
-
-.tip {
-  background-color: var(--alert-bg-tip) !important;
-  color: var(--alert-color-tip) !important;
-}
-
-.info {
-  background-color: var(--alert-bg-info) !important;
-  color: var(--alert-color-info) !important;
-}
-
-.warning {
-  background-color: var(--alert-bg-warning) !important;
-  color: var(--alert-color-warning) !important;
-}
-
-.danger {
-  background-color: var(--alert-bg-danger) !important;
-  color: var(--alert-color-danger) !important;
 }

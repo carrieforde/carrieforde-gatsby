@@ -1,8 +1,9 @@
 ---
 title: "Recap: JAMstack Conf SF"
 date: 2019-10-24
-category: "JavaScript"
-description: "Developers from across the country (and world!) converged in San Francisco for two days packed with talks about JAMstack, the bevy of tools in the space, and the benefits of adopting JAMstack."
+category: JavaScript
+description:
+  - Developers from across the country (and world!) converged in San Francisco for two days packed with talks about JAMstack, the bevy of tools in the space, and the benefits of adopting JAMstack.
 ---
 
 There's a lot of buzz in the front end community around JAMstack&mdash;JavaScript, APIs, and markup. It's a term that broadly reflects the modern front end developer's stack. With front end focus often being on frameworks (React, Vue, Angular, etc.), one could argue there's typically more emphasis on the **J** in JAMstack than the A or M.

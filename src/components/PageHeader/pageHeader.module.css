@@ -1,8 +1,0 @@
-.dateSeparator {
-  color: var(--heading-color-alt);
-  display: inline-block;
-  font-size: var(--font-size-2);
-  font-weight: 300;
-  margin-left: var(--size-1);
-  margin-right: var(--size-1);
-}

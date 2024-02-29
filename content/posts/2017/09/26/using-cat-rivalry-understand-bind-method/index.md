@@ -1,7 +1,7 @@
 ---
-title: "Using cat rivalry to understand the <code>bind()</code> method"
+title: Using cat rivalry to understand the <code>bind()</code> method
 date: 2017-09-26
-category: "JavaScript"
+category: JavaScript
 ---
 
 A few weeks ago, I used the rivalry between my girl cats, Whitney and Minnie, to solidify my understanding of JavaScript’s `bind()` method. I thought I’d share it because let’s be honest, the MDN explanation of `bind()` is confusing:

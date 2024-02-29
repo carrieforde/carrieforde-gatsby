@@ -1,7 +1,7 @@
 ---
-title: "Inject dynamic data into static content with merge fields"
+title: Inject dynamic data into static content with merge fields
 date: 2021-03-08
-category: "JavaScript"
+category: JavaScript
 showToc: true
 ---
 
@@ -311,10 +311,10 @@ describe("MergeField", () => {
 
 We're working through a lot of the same scenarios we had previously for the `processMergeField()` function. In a case like this, it may be unnecessary to actually retest all the scenarios, but I'll leave that to you.
 
-<CallOut type="info">
+<Banner variant="info">
   Skipping the <code>MergeField</code> component tests only reduced coverage of
   the component by about 10 percent on the final project.
-</CallOut>
+</Banner>
 
 Now, let's add the code for our component:
 
@@ -341,12 +341,12 @@ That's it. A whopping 13 lines of code. Nice, right? But something is missing, i
 
 Given that I use MDX (a flavor of markdown that accepts JSX) for my site, I am going to create a new component that will process merge fields. In theory, I could wrap an entire page in the component, but the data I get from GraphQL isn't a string.
 
-<CallOut type="tip">
+<Banner variant="success">
   If you're using Gatsby markdown without MDX, wrapping the entire template in
   the merge field component is perfectly feasible.
-</CallOut>
+</Banner>
 
-For this purpose I'll convert my existing `cf-alert` web component into a React component called a `CallOut` (see tip box above for an example).
+For this purpose I'll convert my existing `cf-alert` web component into a React component called a `Banner` (see tip box above for an example).
 
 ```tsx
 import { IconName } from "@fortawesome/fontawesome-svg-core";
@@ -354,8 +354,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cn from "classnames";
 import React from "react";
 import MergeField from "../MergeField/MergeField";
-import { CallOutProps } from "./CallOut.interface";
-import styles from "./CallOut.module.css";
+import { BannerProps } from "./Banner.interface";
+import styles from "./Banner.module.css";
 
 const ICON_MAP: { [key: string]: IconName } = {
   INFO: "info-circle",
@@ -364,8 +364,8 @@ const ICON_MAP: { [key: string]: IconName } = {
   DANGER: "exclamation-triangle",
 };
 
-const CallOut: React.FC<CallOutProps> = ({ type, text }) => {
-  const classes = cn(styles.callOut, {
+const Banner: React.FC<BannerProps> = ({ type, text }) => {
+  const classes = cn(styles.Banner, {
     [styles[type]]: !!type,
   });
 
@@ -384,10 +384,10 @@ const CallOut: React.FC<CallOutProps> = ({ type, text }) => {
   );
 };
 
-export default CallOut;
+export default Banner;
 ```
 
-In the body of the component, you can see where the `MergeField` is used. It doesn't matter whether the callout contains a merge field or not, because it will simply return the original text string if a merge field doesn't exist. We'll also need to set up our data source.
+In the body of the component, you can see where the `MergeField` is used. It doesn't matter whether the Banner contains a merge field or not, because it will simply return the original text string if a merge field doesn't exist. We'll also need to set up our data source.
 
 ```tsx
 const Post: React.FC<PostProps> = ({ data, pageContext, location }) => {
@@ -430,9 +430,9 @@ export default Post;
 
 In the `Post` component, you'll see that I am passing `queryData` to the `MergeFieldProvider`. I recommend a combination of state and `useEffect` here so you can ensure your provider is getting the latest data. Now that we have our component and data, we're ready to give our new component a whirl:
 
-<CallOut text="I make {{adjective}} websites" />
+<Banner text="I make {{adjective}} websites" />
 
-In the `CallOut` above, you should see "I make websites". Add a query parameter called `adjective` to the url string giving it an adjective of your choice, e.g. `?adjective=awesome`. I added "awesome" as my adjective, and I now see my `CallOut` says, "I make awesome websites". Nice, it works!
+In the `Banner` above, you should see "I make websites". Add a query parameter called `adjective` to the url string giving it an adjective of your choice, e.g. `?adjective=awesome`. I added "awesome" as my adjective, and I now see my `Banner` says, "I make awesome websites". Nice, it works!
 
 ## Enhancing merge fields with default values
 
@@ -588,11 +588,11 @@ export function processMergeField(
 }
 ```
 
-This should be the final piece to adding a default value to our merge fields. Let's test the `CallOut`:
+This should be the final piece to adding a default value to our merge fields. Let's test the `Banner`:
 
-<CallOut text="I use {{technologies|HTML, CSS, and JavaScript}} to build websites." />
+<Banner text="I use {{technologies|HTML, CSS, and JavaScript}} to build websites." />
 
-By default, the text in the `CallOut` should read, "I use HTML, CSS, and JavaScript to build websites.". Try passing `?technologies=Gatsby and React` as a query string to see if it works.
+By default, the text in the `Banner` should read, "I use HTML, CSS, and JavaScript to build websites.". Try passing `?technologies=Gatsby and React` as a query string to see if it works.
 
 ## Rendering multiple merge fields
 
@@ -617,10 +617,10 @@ describe("MergeField", () => {
 });
 ```
 
-<CallOut type="tip">
+<Banner variant="success">
   The above assertion is the only one needed for the <code>MergeField</code> to
   get 100 percent test coverage. The utility tests cover the rest.
-</CallOut>
+</Banner>
 
 Make sure you also update your `data` object to include your ingredients. Next, let's update the `MergeField` component:
 
@@ -647,7 +647,7 @@ export default MergeField;
 
 The upgrade here is pretty simple. After we've gotten the `processed` data back, we'll do another check using our `searchContent` function to see if there are more merge fields. If so, we'll recursively call the `MergeField` component. Otherwise, it'll return our processed data:
 
-<CallOut text="I like {{ingredient1|PB}} and {{ingredient2|J}} sandwiches" />
+<Banner text="I like {{ingredient1|PB}} and {{ingredient2|J}} sandwiches" />
 
 Merge fields offer us a powerful way of injecting dynamic data into static content, whether it's from a CMS like WordPress, or whether you use markdown to manage your site content. In this example, I used query parameters as my data source, but the data just as easily could be retrieved from a rest API.
 

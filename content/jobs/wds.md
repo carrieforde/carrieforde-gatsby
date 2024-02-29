@@ -1,10 +1,11 @@
 ---
-company: "WebDevStudios"
+company: WebDevStudios
 date: 2016-06-23
+title: Senior Front End Developer
+location: Glenside, PA (remote)
+startDate: 2016-06-23
+endDate: 2017-08-18
 ---
-
-<Heading level="h3" weight={300}>Senior Front End Developer @ WebDevStudios</Heading>
-<TextWithSeparator text1="Glenside, PA (remote)" text2="June 2016 - August 2017" />
 
 Responsible for large, complex front end features, and transforming design mockups into functional WordPress themes using Sass, jQuery, and PHP. Mentored front end developer team members through code reviews and pair programming activities.
 

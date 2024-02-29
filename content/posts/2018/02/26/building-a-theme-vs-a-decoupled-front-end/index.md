@@ -1,8 +1,6 @@
 ---
-
-title: 'Building a theme vs. a decoupled front end
-'
-category: 'WordPress'
+title: Building a theme vs. a decoupled front end
+category: WordPress
 date: 2018-02-26
 ---
 

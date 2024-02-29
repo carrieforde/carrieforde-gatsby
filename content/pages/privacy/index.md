@@ -89,7 +89,7 @@ For the purposes of this Privacy Policy:
   use of the Service or from the Service infrastructure itself (for example,
   the duration of a page visit).
 
-- Website refers to Carrie Forde, accessible from <https://carrieforde.com>
+- Website refers to Carrie Forde, accessible from [https://carrieforde.com](https://carrieforde.com)
 
 - You means the individual accessing or using the Service, or the company,
   or other legal entity on behalf of which such individual is accessing or
@@ -148,9 +148,11 @@ Our Service. The technologies We use may include:
   by the same browser settings as those used for Browser Cookies. For more
   information on how You can delete Flash Cookies, please read "Where can I
   change the settings for disabling, or deleting local shared objects?"
-  available at <https://helpx.adobe.com/flash-player/kb/disable-local-
+  available at [https://helpx.adobe.com/flash-player/kb/disable-local-
   shared-objects-
-  flash.html#main*Where_can_I_change_the_settings_for_disabling\_\_or_deleting_local_shared_objects*>
+  flash.html#main*Where_can_I_change_the_settings_for_disabling\_\_or_deleting_local_shared_objects*](https://helpx.adobe.com/flash-player/kb/disable-local-
+  shared-objects-
+  flash.html#main*Where_can_I_change_the_settings_for_disabling\_\_or_deleting_local_shared_objects*)
 - Web Beacons. Certain sections of our Service and our emails may contain
   small electronic files known as web beacons (also referred to as clear
   gifs, pixel tags, and single-pixel gifs) that permit the Company, for
@@ -382,7 +384,7 @@ Service.
   about visits activity.
 
   For more information on the privacy practices of Google, please visit the
-  Google Privacy & Terms web page: <https://policies.google.com/privacy>
+  Google Privacy & Terms web page: [https://policies.google.com/privacy](https://policies.google.com/privacy)
 
 ## CCPA Privacy
 
@@ -774,8 +776,8 @@ Website
 You can opt out of receiving ads that are personalized as served by our
 Service Providers by following our instructions presented on the Service:
 
-  * The NAI's opt-out platform: <http://www.networkadvertising.org/choices/>
-  * The EDAA's opt-out platform <http://www.youronlinechoices.com/>
+  * The NAI's opt-out platform: [http://www.networkadvertising.org/choices/](http://www.networkadvertising.org/choices/)
+  * The EDAA's opt-out platform [http://www.youronlinechoices.com/](http://www.youronlinechoices.com/)
   * The DAA's opt-out platform:
     [http://optout.aboutads.info/?c=2&lang=EN](http://optout.aboutads.info/?c=2&lang=EN)
 

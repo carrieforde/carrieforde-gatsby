@@ -1,41 +1,41 @@
 :root {
-  --blockBackground: var(--color-neutral-1);
-  --baseColor: var(--color-neutral-9);
-  --borderColor: var(--color-neutral-3);
+  --block-background: var(--color-default-50);
+  --base-color: var(--color-default-800);
+  --border-color: var(--color-default-200);
 
-  --commentColor: var(--color-neutral-4);
-  --punctuationColor: var(--color-neutral-6);
-  --propertyColor: var(--color-primary-8);
-  --selectorColor: var(--color-secondary-7);
-  --operatorColor: var(--color-warning-9);
-  --variableColor: var(--color-info-9);
-  --functionColor: var(--color-danger-9);
-  --keywordColor: var(--color-warning-7);
-  --selectedColor: #b3d4fc;
+  --comment-color: var(--color-default-300);
+  --punctuation-color: var(--color-default-500);
+  --property-color: var(--color-primary-700);
+  --selector-color: var(--color-secondary-600);
+  --operator-color: var(--color-warning-800);
+  --variable-color: var(--color-info-800);
+  --function-color: var(--color-danger-800);
+  --keyword-color: var(--color-warning-600);
+  --selected-color: #b3d4fc;
 
-  --inlineCodeColor: var(--blockBackground);
-  --inlineCodeBackground: var(--baseColor);
+  --inline-code-color: var(--block-background);
+  --inline-code-background: var(--base-color);
 
-  --highlightBackground: #f7ebc6;
-  --highlightAccent: #f7d87c;
+  --highlight-background: #f7ebc6;
+  --highlight-accent: #f7d87c;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --blockBackground: var(--color-neutral-9);
-    --baseColor: var(--color-neutral-2);
-    --borderColor: var(--color-neutral-8);
-    --commentColor: var(--color-neutral-5);
-    --punctuationColor: var(--color-neutral-3);
-    --propertyColor: var(--color-primary-3);
-    --selectorColor: var(--color-secondary-4);
-    --operatorColor: var(--color-warning-6);
-    --variableColor: var(--color-info-5);
-    --functionColor: var(--color-danger-3);
-    --keywordColor: var(--color-warning-5);
-    --selectedColor: #b3d4fc;
-    --inlineCodeColor: var(--blockBackground);
-    --inlineCodeBackground: var(--baseColor);
+    --block-background: var(--color-default-800);
+    --base-color: var(--color-default-100);
+    --border-color: var(--color-default-700);
+    --comment-color: var(--color-default-400);
+    --punctuation-color: var(--color-default-200);
+    --property-color: var(--color-primary-200);
+    --selector-color: var(--color-secondary-300);
+    --operator-color: var(--color-warning-500);
+    --variable-color: var(--color-info-400);
+    --function-color: var(--color-danger-200);
+    --keyword-color: var(--color-warning-400);
+    --selected-color: #b3d4fc;
+    --inline-code-color: var(--block-background);
+    --inline-code-background: var(--base-color);
   }
 }
 
@@ -45,9 +45,9 @@ pre,
 samp,
 tt,
 var {
-  background-color: var(--blockBackground);
+  background-color: var(--block-background);
   border-radius: 3px;
-  color: var(--baseColor); /* base00 */
+  color: var(--base-color); /* base00 */
   font-family: var(--font-family-monospace);
   font-size: 18px;
   hyphens: none;
@@ -60,7 +60,7 @@ var {
 }
 
 pre {
-  border: 1px solid var(--borderColor);
+  border: 1px solid var(--border-color);
   margin-bottom: var(--size-6);
   margin-top: var(--size-6);
   overflow-x: auto;
@@ -88,11 +88,11 @@ code[class*="language-"] ::selection {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: var(--commentColor);
+  color: var(--comment-color);
 }
 
 .token.punctuation {
-  color: var(--punctuationColor);
+  color: var(--punctuation-color);
 }
 
 .token.property,
@@ -102,7 +102,7 @@ code[class*="language-"] ::selection {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: var(--propertyColor);
+  color: var(--property-color);
 }
 
 .token.selector,
@@ -111,7 +111,7 @@ code[class*="language-"] ::selection {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: var(--selectorColor);
+  color: var(--selector-color);
 }
 
 .token.operator,
@@ -119,23 +119,23 @@ code[class*="language-"] ::selection {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: var(--operatorColor);
+  color: var(--operator-color);
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  color: var(--keywordColor);
+  color: var(--keyword-color);
 }
 
 .token.function {
-  color: var(--functionColor);
+  color: var(--function-color);
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-  color: var(--variableColor);
+  color: var(--variable-color);
 }
 
 .token.important,

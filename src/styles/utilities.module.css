@@ -29,6 +29,10 @@
   padding: 0;
 }
 
-.noBackgroundLink {
-  background: transparent;
+.listReset li {
+  margin-top: 0;
+}
+
+.noScroll {
+  overflow-y: hidden;
 }
